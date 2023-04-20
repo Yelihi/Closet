@@ -73,6 +73,10 @@ app.use("/auth", googleRouter);
 app.use("/post", postRouter);
 app.use("/posts", postsRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello Express");
+});
+
 app.listen(80, () => {
   console.log("서버 실행 중!");
 });
