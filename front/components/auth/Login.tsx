@@ -12,6 +12,7 @@ import AButton from '../recycle/element/button/AButton';
 import useInput from '../../hooks/useInput';
 
 import { loginRequestAction } from '../../reducers/user';
+import { backUrl } from '../../config/config';
 
 import type { SIprops } from './Signup';
 
@@ -51,7 +52,7 @@ const Login = (props: SIprops) => {
             <AButton color='black' ref={buttonRef} onClick={onSubmit} disabled={!(isEmailValid && isPasswordValid)} dest='Sign in' />
             <AButton ref={buttonRef} color='' onClick={toggleGotoAccount} disabled={false} dest='Create account' />
             <LDivider plain>OR</LDivider>
-            <AButton As='a' ref={LinkRef} color='' disabled={false} dest='Sign in Google' src={google} href='http://localhost:3065/auth/google' />
+            <AButton As='a' ref={LinkRef} color='' disabled={false} dest='Sign in Google' src={google} href={`${backUrl}/auth/google`} />
           </LoginForm>
         </LoginSection>
       </LoginBox>
