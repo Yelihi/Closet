@@ -73,6 +73,6 @@ app.use("/auth", googleRouter);
 app.use("/post", postRouter);
 app.use("/posts", postsRouter);
 
-app.listen(3065, () => {
+app.listen(80, () => {
   console.log("서버 실행 중!");
 });
