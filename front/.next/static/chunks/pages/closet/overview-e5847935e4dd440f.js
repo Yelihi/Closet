@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1db89a69b39650b03214351fd80ff2efcc931ef5cf0a3561931c19de8f36a277
-size 446
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[294],{76620:function(__unused_webpack_module,__unused_webpack_exports,__webpack_require__){(window.__NEXT_P=window.__NEXT_P||[]).push(["/closet/overview",function(){return __webpack_require__(61684)}])}},function(__webpack_require__){__webpack_require__.O(0,[907,556,463,684,774,888,179],function(){return __webpack_require__(__webpack_require__.s=76620)}),_N_E=__webpack_require__.O()}]);

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ec1e443724004373e11487db1bc091a5ea02ff2a61f54bc9af7ef354945b2d2b
-size 644
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/closet/administration": "pages/closet/administration.html",
+  "/closet/reports/color": "pages/closet/reports/color.html",
+  "/closet/reports/price": "pages/closet/reports/price.html",
+  "/closet/reports/sort": "pages/closet/reports/sort.html",
+  "/api/hello": "pages/api/hello.js",
+  "/closet/add": "pages/closet/add.js",
+  "/closet/overview": "pages/closet/overview.js",
+  "/userlogin": "pages/userlogin.js",
+  "/closet/details/[id]": "pages/closet/details/[id].js",
+  "/closet/store": "pages/closet/store.js",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}

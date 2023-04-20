@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:344549d068969d703c9b3a7e267299b615e5b45ffe677e4a9e34d788a6d2420c
-size 613
+{"version":1,"images":{"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","loaderFile":"","domains":["localhost"],"disableStaticImages":false,"minimumCacheTTL":60,"formats":["image/webp"],"dangerouslyAllowSVG":false,"contentSecurityPolicy":"script-src 'none'; frame-src 'none'; sandbox;","remotePatterns":[{"protocol":"http","hostname":"^(?:^(?:localhost)$)$","port":"3065","pathname":"^(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?))$"}],"unoptimized":false,"sizes":[640,750,828,1080,1200,1920,2048,3840,16,32,48,64,96,128,256,384]}}
