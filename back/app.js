@@ -73,28 +73,6 @@ app.use("/auth", googleRouter);
 app.use("/post", postRouter);
 app.use("/posts", postsRouter);
 
-// const client = new vision.ImageAnnotatorClient({
-//   keyFilename: "APIKEY.json",
-// });
-
-// const filename = "./uploads/이력서프로필사진2.jpeg";
-
-// async function detectObject(filename) {
-//   const request = {
-//     image: { content: fs.readFileSync(filename) },
-//   };
-//   const [result] = await client.objectLocalization(request);
-//   const objects = result.localizedObjectAnnotations;
-//   const response = [];
-//   objects.forEach((object) => {
-//     let obj = { name: object.name, confidence: object.score };
-//     response.push(obj);
-//   });
-//   console.log(response);
-// }
-
-// detectObject(filename);
-
 app.listen(3065, () => {
   console.log("서버 실행 중!");
 });
