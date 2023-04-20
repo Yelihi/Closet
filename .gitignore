@@ -128,7 +128,7 @@ typings/
 .cache
 
 # next.js build output
-.next
+
 
 # nuxt.js build output
 .nuxt
@@ -142,7 +142,7 @@ typings/
 node_modules
 closet.pem
 .env
-.next
+
 
 # APIKEY.json
 APIKEY.json
@@ -160,7 +160,7 @@ APIKEY.json
 /coverage
 
 # next.js
-/.next/
+
 /out/
 
 # production
