@@ -29,8 +29,20 @@ if (process.env.NODE_ENV === "production") {
   app.use(morgan("combined")); // 배포
   app.use(hpp());
   app.use(helmet());
+  app.use(
+    cors({
+      origin: "http://43.200.191.213/",
+      credentials: true,
+    })
+  );
 } else {
   app.use(morgan("dev")); // 개발
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
 }
 
 db.sequelize
@@ -39,13 +51,6 @@ db.sequelize
     console.log("db 연결 성공");
   })
   .catch(console.error);
-
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
 
 app.use("/", express.static(path.join(__dirname, "uploads")));
 console.log(path.join(__dirname, "upload"));
