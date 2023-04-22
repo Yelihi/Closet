@@ -500,7 +500,7 @@ module.exports = import("swr");;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [675,676,664,152,780,536,159,98,672,478,232,690], () => (__webpack_exec__(3404)));
+var __webpack_exports__ = __webpack_require__.X(0, [675,676,664,152,780,445,159,98,672,478,232,690], () => (__webpack_exec__(3404)));
 module.exports = __webpack_exports__;
 
 })();

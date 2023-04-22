@@ -742,7 +742,7 @@ module.exports = import("redux-saga");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [675,780,536], () => (__webpack_exec__(1731)));
+var __webpack_exports__ = __webpack_require__.X(0, [675,780,445], () => (__webpack_exec__(1731)));
 module.exports = __webpack_exports__;
 
 })();

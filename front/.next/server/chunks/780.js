@@ -3,6 +3,33 @@ exports.id = 780;
 exports.ids = [780];
 exports.modules = {
 
+/***/ 7837:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "B3": () => (/* binding */ base64URL),
+/* harmony export */   "TA": () => (/* binding */ backUrl),
+/* harmony export */   "Y$": () => (/* binding */ mutateFetcher)
+/* harmony export */ });
+/* unused harmony export fetcher */
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9648);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_0__]);
+axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+const backUrl = 'http://15.164.228.34';
+const base64URL = 'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
+const mutateFetcher = url => axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url, {
+  withCredentials: true
+}).then(result => result.data);
+const fetcher = (url, queryParameter) => axios.get(`${url}${queryParameter}`, {
+  withCredentials: true
+}).then(result => result.data);
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 2910:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -618,19 +645,21 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony export */ });
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6477);
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9648);
-/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7857);
-/* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2073);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_1__, _user__WEBPACK_IMPORTED_MODULE_2__, _post__WEBPACK_IMPORTED_MODULE_3__]);
-([axios__WEBPACK_IMPORTED_MODULE_1__, _user__WEBPACK_IMPORTED_MODULE_2__, _post__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7837);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9648);
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7857);
+/* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2073);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_config_config__WEBPACK_IMPORTED_MODULE_1__, axios__WEBPACK_IMPORTED_MODULE_2__, _user__WEBPACK_IMPORTED_MODULE_3__, _post__WEBPACK_IMPORTED_MODULE_4__]);
+([_config_config__WEBPACK_IMPORTED_MODULE_1__, axios__WEBPACK_IMPORTED_MODULE_2__, _user__WEBPACK_IMPORTED_MODULE_3__, _post__WEBPACK_IMPORTED_MODULE_4__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 
 
-axios__WEBPACK_IMPORTED_MODULE_1__["default"].defaults.baseURL = 'http://localhost:3065';
-axios__WEBPACK_IMPORTED_MODULE_1__["default"].defaults.withCredentials = true;
+
+axios__WEBPACK_IMPORTED_MODULE_2__["default"].defaults.baseURL = _config_config__WEBPACK_IMPORTED_MODULE_1__/* .backUrl */ .TA;
+axios__WEBPACK_IMPORTED_MODULE_2__["default"].defaults.withCredentials = true;
 
 
 function* rootSaga() {
-  yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.all)([(0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.fork)(_user__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z), (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.fork)(_post__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z)]);
+  yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.all)([(0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.fork)(_user__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z), (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__.fork)(_post__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z)]);
 }
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
