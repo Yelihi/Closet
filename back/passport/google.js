@@ -1,6 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+const { backUrl } = require("../config/url");
 const { User } = require("../models");
 
 module.exports = () => {
@@ -9,7 +10,7 @@ module.exports = () => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3065/auth/google/callback",
+        callbackURL: `${backUrl}/auth/google/callback`,
         passReqToCallback: true,
       },
       // 왜 req 를 추가해야 profile 이 읽히는지 모르겠다...

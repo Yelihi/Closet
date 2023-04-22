@@ -27,12 +27,12 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['localhost'],
+    domains: ['http://15.164.228.34'],
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'localhost',
-        port: '3065',
+        hostname: '15.164.228.34',
+        port: '80',
         pathname: '/**',
       },
     ],

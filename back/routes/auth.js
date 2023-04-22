@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const { frontUrl } = require("../config/url");
 
 const router = express.Router();
 
@@ -15,8 +16,8 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/closet/overview",
-    failureRedirect: "http://localhost:3000/userlogin",
+    successRedirect: `${frontUrl}/closet/overview`,
+    failureRedirect: `${frontUrl}/userlogin`,
   })
 );
 
@@ -24,7 +25,7 @@ router.get(
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     req.logout();
-    res.redirect("http://localhost:3000/userlogin");
+    res.redirect(`${frontUrl}/userlogin`);
   });
 });
 
