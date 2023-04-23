@@ -587,7 +587,7 @@ const getServerSideProps = _store_configureStore__WEBPACK_IMPORTED_MODULE_7__/* 
   store.dispatch(redux_saga__WEBPACK_IMPORTED_MODULE_6__.END);
   await store.sagaTask?.toPromise();
 
-  if (store.getState().user.me) {
+  if (!store.getState().user.me) {
     return {
       redirect: {
         destination: '/userlogin',

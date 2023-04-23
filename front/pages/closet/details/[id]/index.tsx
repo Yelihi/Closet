@@ -194,7 +194,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
 
   store.dispatch(END);
   await (store as SagaStore).sagaTask?.toPromise();
-  if (store.getState().user.me) {
+  if (!store.getState().user.me) {
     return {
       redirect: {
         destination: '/userlogin',
