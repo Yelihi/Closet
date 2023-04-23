@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['http://api.closet-online.com'],
+    domains: ['api.closet-online.com'],
   },
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
