@@ -95,9 +95,6 @@ router.post("/create", isNotLoggedIn, async (req, res, next) => {
     if (exUser) {
       return res.status(403).send("이미 사용중인 아이디입니다.");
     }
-    if (exNickName) {
-      return res.status(403).send("이미 사용중인 닉네임 입니다.");
-    }
     if (req.body.password.length < 8) {
       return res.status(403).send("비밀번호는 8자리 이상이여야 합니다.");
     }
