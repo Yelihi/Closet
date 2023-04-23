@@ -4,6 +4,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['http://api.closet-online.com'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'api.closet-online.com',
+        port: '80',
+        pathname: '/**',
+      },
+    ],
+  },
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
     const plugins = [...config.plugins];
@@ -25,17 +36,6 @@ const nextConfig = {
         permanent: false,
       },
     ];
-  },
-  images: {
-    domains: ['http://api.closet-online.com'],
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'api.closet-online.com',
-        port: '80',
-        pathname: '/**',
-      },
-    ],
   },
 };
 
