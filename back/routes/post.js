@@ -14,6 +14,7 @@ const router = express.Router();
 const client = new vision.ImageAnnotatorClient({
   keyFilename: "/home/ubuntu/Closet/back/APIKEY.json",
 });
+console.log("client", client);
 
 try {
   fs.accessSync("uploads");
