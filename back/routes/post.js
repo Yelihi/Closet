@@ -12,7 +12,7 @@ const getCatagori = require("../core/utils");
 const router = express.Router();
 
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: "APIKEY.json",
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
 });
 
 try {
