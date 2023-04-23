@@ -12,7 +12,7 @@ const getCatagori = require("../core/utils");
 const router = express.Router();
 
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: "APIKEY.json",
+  keyFilename: "/home/ubuntu/Closet/back/APIKEY.json",
 });
 
 try {
@@ -44,7 +44,9 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
   try {
     const filename = path.resolve(__dirname, "..", req.file.path);
     console.log("filename", filename);
-    const request = fs.readFileSync(filename);
+    const request = {
+      image: { content: fs.readFileSync(filename) },
+    };
     console.log("request", request);
     const [result] = await client.objectLocalization(request);
     console.log("result", result);
