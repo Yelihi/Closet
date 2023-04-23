@@ -6,7 +6,7 @@ module.exports = {
     return queryInterface.sequelize.transaction((t) => {
       return Promise.all([
         queryInterface.addColumn(
-          "Cloths",
+          "cloths",
           "preference",
           {
             type: Sequelize.DataTypes.FLOAT,
@@ -19,7 +19,7 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction((t) => {
-      return Promise.all([queryInterface.removeColumn("Cloth", "preference", { transaction: t })]);
+      return Promise.all([queryInterface.removeColumn("cloths", "preference", { transaction: t })]);
     });
   },
 };
