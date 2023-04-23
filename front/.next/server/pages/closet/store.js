@@ -1182,6 +1182,16 @@ const getServerSideProps = _store_configureStore__WEBPACK_IMPORTED_MODULE_11__/*
   });
   store.dispatch(redux_saga__WEBPACK_IMPORTED_MODULE_10__.END);
   await store.sagaTask?.toPromise();
+
+  if (store.getState().user.me) {
+    return {
+      redirect: {
+        destination: '/userlogin',
+        permanent: false
+      }
+    };
+  }
+
   return {
     props: {
       device: isMobile ? 'phone' : 'desktop'
