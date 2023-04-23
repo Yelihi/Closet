@@ -7,10 +7,10 @@
   "/closet/reports/sort": "pages/closet/reports/sort.html",
   "/closet/add": "pages/closet/add.js",
   "/closet/overview": "pages/closet/overview.js",
-  "/api/hello": "pages/api/hello.js",
-  "/closet/details/[id]": "pages/closet/details/[id].js",
   "/userlogin": "pages/userlogin.js",
+  "/closet/details/[id]": "pages/closet/details/[id].js",
   "/closet/store": "pages/closet/store.js",
+  "/api/hello": "pages/api/hello.js",
   "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }

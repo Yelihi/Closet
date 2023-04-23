@@ -17,7 +17,7 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_0__]);
 axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
-const backUrl = 'http://15.164.228.34';
+const backUrl = 'http://api.closet-online.com';
 const base64URL = 'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg==';
 const mutateFetcher = url => axios__WEBPACK_IMPORTED_MODULE_0__["default"].get(url, {
   withCredentials: true
