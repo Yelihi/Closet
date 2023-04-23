@@ -37,11 +37,12 @@ const upload = multer({
   limits: { fileSize: 20 * 1024 * 1024 }, // 20mb
 });
 
+// `../uploads/${req.file.filename}`
 router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next) => {
   // POST /post/images 파일 한개씩 업로드
   console.log(req.file);
   try {
-    const filename = path.resolve(__dirname, `../uploads/${req.file.filename}`);
+    const filename = path.resolve(__dirname, req.file.path);
     const request = {
       image: { content: fs.readFileSync(filename) },
     };
