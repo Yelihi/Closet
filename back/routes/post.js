@@ -3,6 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const db = require("../models");
+const dotenv = require("dotenv");
 const vision = require("@google-cloud/vision");
 const { isLoggedIn } = require("./middlewares");
 
@@ -10,6 +11,7 @@ const { User, Cloth, Image, Muffler, Outer, Pant, Shirt, Shoe, Top } = require("
 const getCatagori = require("../core/utils");
 
 const router = express.Router();
+dotenv.config();
 
 const client = new vision.ImageAnnotatorClient({
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
