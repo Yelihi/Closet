@@ -3,23 +3,19 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.sequelize.transaction((t) => {
-      return Promise.all([
-        queryInterface.addColumn(
-          "cloths",
-          "preference",
-          {
-            type: Sequelize.DataTypes.FLOAT,
-            allowNull: false,
-          },
-          { transaction: t }
-        ),
-      ]);
-    });
+    /**
+     * Add altering commands here.
+     *
+     * Example:
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     */
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.sequelize.transaction((t) => {
-      return Promise.all([queryInterface.removeColumn("cloths", "preference", { transaction: t })]);
-    });
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
   },
 };
