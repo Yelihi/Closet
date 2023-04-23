@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("passport");
-const { frontUrl } = require("../config/url");
+const frontUrl = require("../config/frontUrl");
 
 const router = express.Router();
 

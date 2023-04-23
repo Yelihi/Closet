@@ -1,7 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-const { backUrl } = require("../config/url");
+const backUrl = require("../config/backUrl");
 const { User } = require("../models");
 
 module.exports = () => {

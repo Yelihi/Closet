@@ -110,6 +110,8 @@ router.post("/create", isNotLoggedIn, async (req, res, next) => {
       nickname: req.body.nickname,
       password: hashedPassword,
       src: req.body.src,
+      snsId: "local",
+      provider: "local",
     });
     res.status(200).send("가입해주셔서 감사합니다.");
   } catch (err) {
