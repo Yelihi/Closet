@@ -12,7 +12,7 @@ const getCatagori = require("../core/utils");
 const router = express.Router();
 
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: "/home/ubuntu/Closet/back/APIKEY.json",
+  keyFilename: "APIKEY.json",
 });
 
 try {
