@@ -45,7 +45,7 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
     const filename = path.resolve(__dirname, "..", req.file.path);
     console.log("filename", filename);
     const request = {
-      image: { content: fs.readFileSync(filename) },
+      image: { content: Buffer.from(fs.readFileSync(filename)) },
     };
     console.log("request", request);
     const [result] = await client.objectLocalization(request);
