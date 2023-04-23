@@ -27,11 +27,11 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['http://15.164.228.34'],
+    domains: ['http://api.closet-online.com'],
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '15.164.228.34',
+        hostname: 'api.closet-online.com',
         port: '80',
         pathname: '/**',
       },

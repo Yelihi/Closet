@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(helmet());
   app.use(
     cors({
-      origin: "http://43.200.191.213/",
+      origin: "http://closet-online.com/",
       credentials: true,
     })
   );
