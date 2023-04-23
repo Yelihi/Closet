@@ -9,6 +9,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
+        hostname: 'api.closet-online.com',
+        port: '80',
+        pathname: '/**',
       },
     ],
   },
