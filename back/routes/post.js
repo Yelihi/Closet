@@ -77,7 +77,7 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
       resArray.push(obj);
     });
     const resultObject = {
-      src: req.file.filename,
+      src: req.file.location,
       visionSearch: resArray,
     };
     res.status(200).json(resultObject);
