@@ -207,7 +207,7 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
                         let cate = watch('categori');
                         let isClothes = v.visionSearch.some(v => visionAI.includes(v.name));
                         let isCategori = v.visionSearch.map(v => v.name).some(item => categoriToVisionAI[cate]?.includes(item));
-                        let confidence = categoriToVisionAI[cate]?.includes(v.visionSearch[0].name);
+                        let confidence = v.visionSearch.length > 0 && categoriToVisionAI[cate]?.includes(v.visionSearch[0].name);
                         return (
                           <>
                             <VisionAICard imageUploadLoding={imageUploadLoding} src={v.src} index={i} isClothes={isClothes} isCategori={isCategori} confidence={confidence} />
