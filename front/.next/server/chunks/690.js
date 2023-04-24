@@ -483,7 +483,7 @@ const ItemForm = ({
                   let cate = watch('categori');
                   let isClothes = v.visionSearch.some(v => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .visionAI.includes */ .$n.includes(v.name));
                   let isCategori = v.visionSearch.map(v => v.name).some(item => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(item));
-                  let confidence = _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(v.visionSearch[0].name);
+                  let confidence = v.visionSearch.length > 0 && _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(v.visionSearch[0].name);
                   return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
                     children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(VisionAICard, {
                       imageUploadLoding: imageUploadLoding,
