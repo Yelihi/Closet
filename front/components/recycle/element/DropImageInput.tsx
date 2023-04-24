@@ -30,7 +30,7 @@ function DropImageInput() {
       console.log('image', e.dataTransfer.files);
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
       [].forEach.call(e.dataTransfer.files, file => {
-        imageFormData.append('image', encodeURI(file));
+        imageFormData.append('image', file);
       });
       dispatch({
         type: t.UPLOAD_IMAGES_REQUEST,
@@ -45,7 +45,7 @@ function DropImageInput() {
       console.log('image', e.target.files);
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
       [].forEach.call(e.target.files, file => {
-        imageFormData.append('image', encodeURI(file));
+        imageFormData.append('image', file);
       });
       dispatch({
         type: t.UPLOAD_IMAGES_REQUEST,

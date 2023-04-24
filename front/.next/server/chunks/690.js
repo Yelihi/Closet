@@ -1090,7 +1090,7 @@ function DropImageInput() {
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
 
       [].forEach.call(e.dataTransfer.files, file => {
-        imageFormData.append('image', encodeURI(file));
+        imageFormData.append('image', file);
       });
       dispatch({
         type: _reducers_type__WEBPACK_IMPORTED_MODULE_6__/* .UPLOAD_IMAGES_REQUEST */ .QA,
@@ -1107,7 +1107,7 @@ function DropImageInput() {
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
 
       [].forEach.call(e.target.files, file => {
-        imageFormData.append('image', encodeURI(file));
+        imageFormData.append('image', file);
       });
       dispatch({
         type: _reducers_type__WEBPACK_IMPORTED_MODULE_6__/* .UPLOAD_IMAGES_REQUEST */ .QA,

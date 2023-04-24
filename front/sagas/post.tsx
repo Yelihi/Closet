@@ -17,7 +17,7 @@ interface Success {
 }
 
 function uploadImageAPI(data: Iterable<[PropertyKey, Object]>) {
-  return axios.post('/post/images', data);
+  return axios.post('/post/images', data, { headers: { 'Content-Type': `multipart/form-data; charset=UTF-8` } });
 }
 
 function* uploadImage(action: AnyAction) {

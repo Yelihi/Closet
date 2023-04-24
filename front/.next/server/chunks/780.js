@@ -683,7 +683,11 @@ axios__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (awa
  // reducers
 
 function uploadImageAPI(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/post/images', data);
+  return axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/post/images', data, {
+    headers: {
+      'Content-Type': `multipart/form-data; charset=UTF-8`
+    }
+  });
 }
 
 function* uploadImage(action) {
