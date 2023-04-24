@@ -5,15 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['api.closet-online.com', 'closet-online.s3.ap-northeast-2.amazonaws.com'],
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'api.closet-online.com',
-        port: '80',
-        pathname: '/**',
-      },
-    ],
+    domains: ['closet-online.s3.ap-northeast-2.amazonaws.com'],
   },
   webpack(config, { webpack }) {
     const prod = process.env.NODE_ENV === 'production';
