@@ -157,7 +157,7 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
 
   return (
     <>
-      {!uploadItemsDone ? (
+      {!uploadItemsDone || !uploadItemsError ? (
         <PageMainLayout title={title} subTitle={subTitle}>
           <TestContainer>
             <AddSection>

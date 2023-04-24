@@ -114,7 +114,6 @@ export default (state = initialState, action: AnyAction) => {
         break;
       }
       case t.LOGOUT_SUCCESE: {
-        document.cookie = 'connect.sid=; max-age=-1; path=/';
         draft.logOutLoading = false;
         draft.logOutDone = true;
         draft.logOutError = null;

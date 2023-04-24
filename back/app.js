@@ -65,7 +65,7 @@ app.use(
     resave: false,
     secret: process.env.COOKIE_SECRET,
     cookie: {
-      httpOnly: false,
+      httpOnly: true,
       secure: false,
       domain: process.env.NODE_ENV === "production" && ".closet-online.com",
     },
