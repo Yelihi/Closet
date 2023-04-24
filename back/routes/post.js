@@ -38,7 +38,7 @@ const upload = multer({
     bucket: "closet-online",
     key(req, file, cb) {
       const ext = path.extname(file.originalname).toLowerCase();
-      const basename = encodeURIComponent(path.basename(file.originalname, ext));
+      const basename = decodeURIComponent(path.basename(file.originalname, ext));
       cb(null, `original/${Date.now()}_${basename}.${ext}`);
     },
   }),
