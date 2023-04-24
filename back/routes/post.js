@@ -37,9 +37,9 @@ const upload = multer({
     s3: new AWS.S3(),
     bucket: "closet-online",
     key(req, file, cb) {
-      console.log(file.originalname);
+      console.log("upload file", file.originalname);
       const ext = path.extname(file.originalname).toLowerCase();
-      const basename = decodeURIComponent(path.basename(file.originalname, ext));
+      const basename = path.basename(file.originalname, ext);
       cb(null, `original/${Date.now()}_${basename}.${ext}`);
     },
   }),
