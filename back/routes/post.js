@@ -1,5 +1,7 @@
 const express = require("express");
 const multer = require("multer");
+const multerS3 = require("multer-s3");
+const AWS = require("aws-sdk");
 const path = require("path");
 const fs = require("fs");
 const db = require("../models");
@@ -24,20 +26,37 @@ try {
   fs.mkdirSync("uploads");
 }
 
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: "ap-northeast-2",
+});
+
 const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, "uploads");
-    },
-    filename(req, file, done) {
-      // 원래 파일에서 원익.jpg 로 오게 되면
-      const ext = path.extname(file.originalname);
-      const basename = path.basename(file.originalname, ext);
-      done(null, basename + "_" + new Date().getTime() + ext); // 원익23123.jpg
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: "closet-online",
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
     },
   }),
-  limits: { fileSize: 20 * 1024 * 1024 }, // 20mb
+  limits: { fileSize: 20 * 1024 * 1024 }, //20mb
 });
+
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     destination(req, file, done) {
+//       done(null, "uploads");
+//     },
+//     filename(req, file, done) {
+//       // 원래 파일에서 원익.jpg 로 오게 되면
+//       const ext = path.extname(file.originalname);
+//       const basename = path.basename(file.originalname, ext);
+//       done(null, basename + "_" + new Date().getTime() + ext); // 원익23123.jpg
+//     },
+//   }),
+//   limits: { fileSize: 20 * 1024 * 1024 }, // 20mb
+// });
 
 // `../uploads/${req.file.filename}`
 router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next) => {
