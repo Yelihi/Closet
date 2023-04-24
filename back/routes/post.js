@@ -62,7 +62,6 @@ const upload = multer({
 router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next) => {
   // POST /post/images 파일 한개씩 업로드
   console.log(req.file);
-  console.log("client", client);
   try {
     const filename = path.resolve(__dirname, "..", req.file.path);
     console.log("filename", filename);
