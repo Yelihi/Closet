@@ -65,11 +65,10 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
   try {
     const filename = req.file.location;
     console.log("filename", filename);
-    const request = {
-      image: { content: fs.readFileSync(filename) },
-    };
-    console.log("request", request);
-    const [result] = await client.objectLocalization(request);
+    // const request = {
+    //   image: { content: fs.readFileSync(filename) },
+    // };
+    const [result] = await client.objectLocalization(filename);
     console.log("result", result);
     const objects = result.localizedObjectAnnotations;
     const resArray = [];
