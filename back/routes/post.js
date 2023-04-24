@@ -38,7 +38,7 @@ const upload = multer({
     bucket: "closet-online",
     key(req, file, cb) {
       const ext = path.extname(file.originalname).toLowerCase();
-      const basename = URLEncoder.encode(path.basename(file.originalname, ext), Charsets.UTF_8);
+      const basename = encodeURIComponent(path.basename(file.originalname, ext));
       cb(null, `original/${Date.now()}_${basename}.${ext}`);
     },
   }),
@@ -65,12 +65,12 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
   // POST /post/images 파일 한개씩 업로드
   console.log(req.file);
   try {
-    const filename = req.file.location;
-    console.log("filename", filename);
+    const key = req.file.location;
+    console.log("filename", key);
     // const request = {
     //   image: { content: fs.readFileSync(filename) },
     // };
-    const [result] = await client.objectLocalization(filename);
+    const [result] = await client.objectLocalization(key);
     console.log("result", result);
     const objects = result.localizedObjectAnnotations;
     const resArray = [];
@@ -78,8 +78,9 @@ router.post("/images", isLoggedIn, upload.single("image"), async (req, res, next
       let obj = { name: object.name, confidence: object.score };
       resArray.push(obj);
     });
+    const filename = decodeURIComponent(key);
     const resultObject = {
-      src: req.file.location,
+      src: filename,
       visionSearch: resArray,
     };
     res.status(200).json(resultObject);
