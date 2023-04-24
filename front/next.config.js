@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['api.closet-online.com'],
+    domains: ['api.closet-online.com', 'closet-online.s3.ap-northeast-2.amazonaws.com'],
     remotePatterns: [
       {
         protocol: 'http',
