@@ -583,7 +583,6 @@ const logoutRequestAction = () => {
 
       case _type__WEBPACK_IMPORTED_MODULE_2__/* .LOGOUT_SUCCESE */ .pZ:
         {
-          document.cookie = 'connect.sid=; max-age=-1; path=/';
           draft.logOutLoading = false;
           draft.logOutDone = true;
           draft.logOutError = null;

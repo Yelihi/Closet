@@ -387,7 +387,7 @@ const ItemForm = ({
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-    children: [!uploadItemsDone ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+    children: [!uploadItemsDone && !uploadItemsError ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
       title: title,
       subTitle: subTitle,
       children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(TestContainer, {
