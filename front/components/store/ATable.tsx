@@ -125,7 +125,7 @@ const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: Tab
                   <Td key={headKey + index}>
                     {headKey === 'productName' && data.Images.length > 0 ? (
                       <ImageBox>
-                        <CImage src={`${backUrl}/${data.Images[0].src}`} alt={data[headKey]} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+                        <CImage src={`${data.Images[0].src}`} alt={data[headKey]} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
                         {data[headKey]}
                       </ImageBox>
                     ) : headKey === 'price' ? (

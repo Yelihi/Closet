@@ -2,7 +2,7 @@
   "../components/recycle/ItemForm.tsx -> ./VisionAICard": {
     "id": 30550,
     "files": [
-      "static/chunks/550.ad3123243739fd0f.js"
+      "static/chunks/550.1587d6d2764ce5e3.js"
     ]
   },
   "../node_modules/next/dist/client/index.js -> ../pages/_app": {

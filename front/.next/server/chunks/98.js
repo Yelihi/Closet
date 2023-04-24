@@ -507,7 +507,7 @@ const LastItem = ({
           children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Thumbnail, {
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Centered, {
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(CImage, {
-                src: `${_config_config__WEBPACK_IMPORTED_MODULE_5__/* .backUrl */ .TA}/${item.Images[0].src}`,
+                src: `${item.Images[0].src}`,
                 alt: item.productName,
                 width: 100,
                 height: 100,
@@ -658,7 +658,7 @@ const RecentlyItem = ({
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(Thumbnail, {
                 children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(Centered, {
                   children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(CImage, {
-                    src: `${_config_config__WEBPACK_IMPORTED_MODULE_5__/* .backUrl */ .TA}/${item.Images[0].src}`,
+                    src: `${item.Images[0].src}`,
                     alt: item.productName,
                     width: 100,
                     height: 100,

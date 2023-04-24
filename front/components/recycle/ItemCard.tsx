@@ -25,7 +25,7 @@ const ItemCard = ({ src, id, onSubmit }: CardProps) => {
     <ThumbnailWrapper>
       <Thumbnail>
         <Centered>
-          <CImage src={`${backUrl}/${src}`} alt={src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+          <CImage src={`${src}`} alt={src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
           <HoverTumnail>
             <IconBox>
               <BiDetail className='icon' onClick={moveToDetailsPage(id)} />

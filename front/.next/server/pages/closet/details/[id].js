@@ -159,7 +159,7 @@ const Slice = ({
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Thumbnail, {
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Centered, {
                 children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(CImage, {
-                  src: `${_config_config__WEBPACK_IMPORTED_MODULE_7__/* .backUrl */ .TA}/${v.src}`,
+                  src: `${v.src}`,
                   alt: v.src,
                   width: 600,
                   height: 600,
@@ -178,7 +178,7 @@ const Slice = ({
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Thumbnail, {
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Centered, {
                 children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(CImage, {
-                  src: `${_config_config__WEBPACK_IMPORTED_MODULE_7__/* .backUrl */ .TA}/${v.src}`,
+                  src: `${v.src}`,
                   alt: v.src,
                   width: 200,
                   height: 200,

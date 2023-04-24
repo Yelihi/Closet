@@ -51,7 +51,7 @@ const ItemCard = ({
     children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(Thumbnail, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(Centered, {
         children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx(CImage, {
-          src: `${_config_config__WEBPACK_IMPORTED_MODULE_6__/* .backUrl */ .TA}/${src}`,
+          src: `${src}`,
           alt: src,
           width: 600,
           height: 600,
@@ -408,7 +408,7 @@ const ATable = ({
             return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Td, {
               children: headKey === 'productName' && data.Images.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(ImageBox, {
                 children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(CImage, {
-                  src: `${_config_config__WEBPACK_IMPORTED_MODULE_5__/* .backUrl */ .TA}/${data.Images[0].src}`,
+                  src: `${data.Images[0].src}`,
                   alt: data[headKey],
                   width: 100,
                   height: 100,

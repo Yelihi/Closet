@@ -37,7 +37,7 @@ const VisionAICard = ({ imageUploadLoding, src, index, isClothes, isCategori, co
   return (
     <SkeletonImage isLoading={imageUploadLoding}>
       <PreviewContainer key={src} border={isClothes}>
-        <PreviewImage src={`${backUrl}/${src}`} alt='의류이미지' width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+        <PreviewImage src={`${src}`} alt='의류이미지' width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
         <PreviewTextContainer>
           <PreviewText>
             {[isClothes, isCategori, confidence].map((state, idx) => {
