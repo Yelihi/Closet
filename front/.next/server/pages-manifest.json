@@ -6,10 +6,10 @@
   "/closet/reports/price": "pages/closet/reports/price.html",
   "/closet/reports/sort": "pages/closet/reports/sort.html",
   "/closet/add": "pages/closet/add.js",
-  "/closet/overview": "pages/closet/overview.js",
-  "/api/hello": "pages/api/hello.js",
-  "/userlogin": "pages/userlogin.js",
   "/closet/details/[id]": "pages/closet/details/[id].js",
+  "/api/hello": "pages/api/hello.js",
+  "/closet/overview": "pages/closet/overview.js",
+  "/userlogin": "pages/userlogin.js",
   "/closet/store": "pages/closet/store.js",
   "/_error": "pages/_error.js",
   "/404": "pages/404.html"

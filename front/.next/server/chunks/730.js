@@ -156,7 +156,7 @@ const VisionAICard = ({
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(PreviewContainer, {
       border: isClothes,
       children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx(PreviewImage, {
-        src: `${src}`,
+        src: src,
         alt: "\uC758\uB958\uC774\uBBF8\uC9C0",
         width: 600,
         height: 600,

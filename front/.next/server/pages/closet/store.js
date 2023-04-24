@@ -408,7 +408,7 @@ const ATable = ({
             return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(Td, {
               children: headKey === 'productName' && data.Images.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(ImageBox, {
                 children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx(CImage, {
-                  src: `${data.Images[0].src}`,
+                  src: data.Images[0].src,
                   alt: data[headKey],
                   width: 100,
                   height: 100,

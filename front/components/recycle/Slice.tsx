@@ -50,7 +50,7 @@ const Slice = ({ src }: Props) => {
                 <ThumbnailWrapper>
                   <Thumbnail>
                     <Centered>
-                      <CImage src={`${v.src}`} alt={v.src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+                      <CImage src={v.src} alt={v.src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
                     </Centered>
                   </Thumbnail>
                 </ThumbnailWrapper>
@@ -66,7 +66,7 @@ const Slice = ({ src }: Props) => {
                 <ThumbnailWrapper>
                   <Thumbnail>
                     <Centered>
-                      <CImage src={`${v.src}`} alt={v.src} width={200} height={200} onClick={moveToSlide(i)} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+                      <CImage src={v.src} alt={v.src} width={200} height={200} onClick={moveToSlide(i)} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
                     </Centered>
                   </Thumbnail>
                 </ThumbnailWrapper>
