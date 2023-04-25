@@ -375,7 +375,8 @@ const IntroSection = () => {
         src: "/images/authvideo.mp4",
         autoPlay: true,
         loop: true,
-        muted: true
+        muted: true,
+        playsInline: true
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx(ShadowDiv, {})]
     })]
   });

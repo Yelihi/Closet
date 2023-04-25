@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/TxA2vtX_hBS1tj-zgcua_/_buildManifest.js",
-    "static/TxA2vtX_hBS1tj-zgcua_/_ssgManifest.js"
+    "static/rTj9hVjDxWQBYlACHbnRA/_buildManifest.js",
+    "static/rTj9hVjDxWQBYlACHbnRA/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -33,7 +33,7 @@
       "static/chunks/649-162c2372381cdc74.js",
       "static/chunks/181-62c5315e9b5c45ab.js",
       "static/chunks/518-51e500dbcf3353f5.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/634-0d3c720d880ddf33.js",
       "static/chunks/pages/closet/add-661bcdf28fbda56e.js"
     ],
@@ -44,7 +44,7 @@
       "static/chunks/d0c16330-c1f4e60cc2005796.js",
       "static/chunks/d64684d8-5a14ee5f1a832359.js",
       "static/chunks/463-d0d69cd42ba95856.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/administration-5682750c2209901b.js"
     ],
     "/closet/details/[id]": [
@@ -57,7 +57,7 @@
       "static/chunks/312-261185058762942f.js",
       "static/chunks/527-9d3112bf1313339d.js",
       "static/chunks/389-5005e42c53e2b927.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/css/f485ed8320354706.css",
       "static/chunks/pages/closet/details/[id]-c00c3ba184b527d5.js"
     ],
@@ -68,7 +68,7 @@
       "static/chunks/d0c16330-c1f4e60cc2005796.js",
       "static/chunks/d64684d8-5a14ee5f1a832359.js",
       "static/chunks/463-d0d69cd42ba95856.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/overview-e5847935e4dd440f.js"
     ],
     "/closet/reports/color": [
@@ -78,7 +78,7 @@
       "static/chunks/d0c16330-c1f4e60cc2005796.js",
       "static/chunks/d64684d8-5a14ee5f1a832359.js",
       "static/chunks/463-d0d69cd42ba95856.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/reports/color-79b2d10b218a7da2.js"
     ],
     "/closet/reports/price": [
@@ -88,7 +88,7 @@
       "static/chunks/d0c16330-c1f4e60cc2005796.js",
       "static/chunks/d64684d8-5a14ee5f1a832359.js",
       "static/chunks/463-d0d69cd42ba95856.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/reports/price-c9bd781a0c842694.js"
     ],
     "/closet/reports/sort": [
@@ -98,7 +98,7 @@
       "static/chunks/d0c16330-c1f4e60cc2005796.js",
       "static/chunks/d64684d8-5a14ee5f1a832359.js",
       "static/chunks/463-d0d69cd42ba95856.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/reports/sort-95b22c118117b3a3.js"
     ],
     "/closet/store": [
@@ -117,7 +117,7 @@
       "static/chunks/649-162c2372381cdc74.js",
       "static/chunks/527-9d3112bf1313339d.js",
       "static/chunks/641-01580540004ce1bb.js",
-      "static/chunks/684-79518c5416bfdbe5.js",
+      "static/chunks/684-1a0e40c89ee86f6b.js",
       "static/chunks/pages/closet/store-8763c53f0bca8a43.js"
     ],
     "/userlogin": [
