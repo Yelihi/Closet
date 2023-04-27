@@ -1,3 +1,3 @@
-const frontUrl = "http://closet-online.com";
+const frontUrl = "https://closet-online.com";
 
 module.exports = frontUrl;

@@ -1,3 +1,3 @@
-const backUrl = "http://api.closet-online.com";
+const backUrl = "https://api.closet-online.com";
 
 module.exports = backUrl;

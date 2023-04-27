@@ -29,9 +29,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(morgan("combined")); // 배포
   app.use(hpp());
   app.use(helmet());
+  app.set("trust proxy", 1);
   app.use(
     cors({
-      origin: "http://closet-online.com",
+      origin: "https://closet-online.com",
       credentials: true,
     })
   );
@@ -64,9 +65,10 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
+    proxy: true,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
       domain: process.env.NODE_ENV === "production" && ".closet-online.com",
     },
   })
@@ -84,6 +86,6 @@ app.get("/", (req, res) => {
   res.send("Hello Express");
 });
 
-app.listen(80, () => {
+app.listen(3065, () => {
   console.log("서버 실행 중!");
 });
