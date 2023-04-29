@@ -201,7 +201,7 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
                     <DropImageInput />
                   </InputPartial>
                   <PreviewSection>
-                    {imageUploadLoding ? <VisionAICard imageUploadLoding={true} src={'src'} index={1} isClothes={true} isCategori={true} confidence={true} /> : null};
+                    {imageUploadLoding ? <VisionAICard imageUploadLoding={true} src={'src'} index={1} isClothes={true} isCategori={true} confidence={true} /> : null}
                     {imagePath.length > 0 &&
                       imagePath.map((v, i) => {
                         let cate = watch('categori');

@@ -479,7 +479,7 @@ const ItemForm = ({
                   isClothes: true,
                   isCategori: true,
                   confidence: true
-                }) : null, ";", imagePath.length > 0 && imagePath.map((v, i) => {
+                }) : null, imagePath.length > 0 && imagePath.map((v, i) => {
                   let cate = watch('categori');
                   let isClothes = v.visionSearch.some(v => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .visionAI.includes */ .$n.includes(v.name));
                   let isCategori = v.visionSearch.map(v => v.name).some(item => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(item));
