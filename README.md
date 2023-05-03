@@ -55,15 +55,18 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="구현목표"> :floppy_disk: 구현 목표</h2>
+<h2 id="구현목표"> :floppy_disk: 구현 사항 요약</h2>
 
-- 메인 페이지 (Swiper slider 라이브러리를 이용한 이미지 슬라이더 구현 및 카테고리를 탭메뉴로 구현)
-- 숙소 필터링 기능 (가격, 숙소 유형, 편의시설 등 다양한 옵션을 체크함에 따라 실시간으로 옵션에 해당하는 숙소 개수 출력)
-- 소셜 로그인 (카카오 REST API)을 이용한 로그인 페이지
-- 구글지도 API를 활용하여 해당 페이지의 숙소목록을 지도마커로 가격이 표기되도록 구현
-- 숙소 상세 페이지 (datepicker를 활용한 캘린더에서 날짜 선택 후 예약 기능 구현)
-- 예약 목록 및 상세페이지 (fetch - delete 메소드를 활용하여 예약 취소 기능 구현
-- Nav (지역, 날짜, 게스트 추가에 따라 해당하는 숙소 목록이 보이도록 검색 기능 구현)
+- 웹과 어플리케이션의 사용성을 고려하여 반응형 레이아웃 구축 & 대시보드 레이아웃
+- 로컬 회원가입과 Google Auth 소셜 로그인 도입을 위한 passport 설정
+- 의류 입력값을 기입하여 서버에 데이터베이스에 저장하기 위한 Add 페이지 구현(React-hook-form)
+- 사진 업로드 시 의류 카테고리에 적합한 사진인지 분석하기 위한 Google Vision AI 도입
+- 수정 및 삭제가 가능한 의류 상세 페이지 구현(Swiper)
+- 디바이스에 따라 저장된 의류 목록 페이지내이션 구별(모바일 - infiniti scroll, 데스크탑 - Table)
+- 불필요한 중복 서버 요청을 막기 위해 SWR data cache 활용
+- SWR mutate 를 활용하여 Store 의류 데이터 삭제 시 cache 최신화
+- scroll 이벤트 구독 시 과도한 호출이 발생할 수 있어, Intersection Observer 를 통한 무한스크롤 구축
+- 데이터 로딩 시 사용자 경험 상승을 위한 Skeleton UI 구축
   <br />
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
