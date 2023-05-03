@@ -48,9 +48,9 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="시연 영상"> :cactus: 시연 영상</h2>
+<h2 id="주소"> :cactus: URL</h2>
 
-[위앤비 프로젝트 시연영상](https://www.youtube.com/watch?v=btDS154C5yg)
+[https://closet-online.com](https://closet-online.com)
 <br />
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
