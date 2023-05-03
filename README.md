@@ -1,6 +1,3 @@
-<div align="center">
-  <br/>
-
 <h1 align="center">CLOSET</h1>
 <h3 align="center"> 옷장 의류를 웹에서 관리해봅시다 </h3> 
 <br />
