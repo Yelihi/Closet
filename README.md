@@ -73,7 +73,7 @@
 
 <h2 id="담당하였던part"> :large_blue_diamond: ERD</h2>
 <br />
-<img src="/public/images/테이블.drawio.png" width="100%" />
+<img src="public/images/테이블.drawio.png" width="100%" />
 <br />
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
