@@ -71,26 +71,9 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="담당하였던part"> :large_blue_diamond: 담당하였던 Part</h2>
+<h2 id="담당하였던part"> :large_blue_diamond: ERD</h2>
 <br />
-
-<p align="justify">
-  상단 Nav 부분과, filter 기능을 담당하였습니다.
-</p>
-
-- Nav, 숙소 필터링 기능 담당
-- useNavigate 응용 필터 데이터 백엔드 API 로 전달
-- Date picker 활용 날짜예약 구현
-- material UI 활용 숙소의 가격, 종류 등 필터입력 구현
-- useEffect의 의존성 배열을 활용하여 실시간 필터링된 데이터 렌더링
-<br />
-
-  <p align="justify">
-  아래는 구현한 Nav 의 구조도입니다.
-</p>
-
-<img src="public/images/readme/구조도.png" width="100%" />
-<br />
+<img src="/public/images/테이블.drawio.png" width="100%" />
 <br />
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
