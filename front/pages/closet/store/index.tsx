@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
 import addHead from '../../../util/addHead';
 import dynamic from 'next/dynamic';
+import useOnScreen from '../../../hooks/useOnScreen';
 
 import Link from 'next/link';
 import Router from 'next/router';
@@ -47,7 +48,7 @@ interface StoreProps {
 
 const store = ({ device }: StoreProps) => {
   const dispatch = useDispatch();
-  const observerTargetElement = useRef<HTMLDivElement>(null);
+  const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector((state: rootReducerType) => state.post);
   const [hydrated, setHydrated] = useState(false);
   const [current, setCurrent] = useState(1);
@@ -81,29 +82,41 @@ const store = ({ device }: StoreProps) => {
     };
   }, []);
 
+  const option = useMemo(() => {
+    return { root: null, threshold: 0.3 };
+  }, []);
+
+  let isIntersecting = useOnScreen<HTMLDivElement>(observerTargetElement, option, windowWidth, isReachedEnd);
+
   useEffect(() => {
-    if (windowWidth === 'desktop') return;
-    if (!observerTargetElement.current || isReachedEnd) return;
+    if (isIntersecting) {
+      setSize(prev => prev + 1);
+    }
+  }, [isIntersecting]);
 
-    const option = {
-      root: null,
-      threshold: 0.3,
-    };
+  // useEffect(() => {
+  //   if (windowWidth === 'desktop') return;
+  //   if (!observerTargetElement.current || isReachedEnd) return;
 
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio <= 0) return;
-        if (entry.isIntersecting) {
-          setSize(prev => prev + 1);
-        }
-      });
-    }, option);
+  //   const option = {
+  //     root: null,
+  //     threshold: 0.3,
+  //   };
 
-    io.observe(observerTargetElement.current);
-    return () => {
-      io.disconnect();
-    };
-  }, [isReachedEnd, categoriName, windowWidth]);
+  //   const io = new IntersectionObserver((entries, observer) => {
+  //     entries.forEach(entry => {
+  //       if (entry.intersectionRatio <= 0) return;
+  //       if (entry.isIntersecting) {
+  //         setSize(prev => prev + 1);
+  //       }
+  //     });
+  //   }, option);
+
+  //   io.observe(observerTargetElement.current);
+  //   return () => {
+  //     io.disconnect();
+  //   };
+  // }, [isReachedEnd, categoriName, windowWidth]);
 
   let modifiedItems = [];
   let accumulationItems = [];
