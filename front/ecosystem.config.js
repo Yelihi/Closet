@@ -4,7 +4,9 @@ const packageJson = require('./package.json');
 module.exports = {
   apps: [
     {
-      instances: 'max',
+      name: 'npm',
+      instances: 0,
+      exec_mode: 'cluster',
     },
   ],
 };
