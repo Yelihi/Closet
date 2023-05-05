@@ -575,14 +575,14 @@ const CardBoard = ({
     });
   }
 
-  if (itemData?.length === 0) {
+  if (itemData && itemData?.length === 0) {
     return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(_ATable__WEBPACK_IMPORTED_MODULE_3__/* .EmptyDiv */ .u, {
       children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(antd__WEBPACK_IMPORTED_MODULE_4__.Empty, {})
     });
   }
 
   return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(CardSection, {
-    children: itemData?.map(item => {
+    children: itemData && itemData?.map(item => {
       return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(CardBox, {
         children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(_recycle_ItemCard__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
           src: item.Images[0].src,

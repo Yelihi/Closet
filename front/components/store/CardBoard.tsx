@@ -35,7 +35,7 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading }: Props) => 
     );
   }
 
-  if (itemData?.length === 0) {
+  if (itemData && itemData?.length === 0) {
     return (
       <EmptyDiv>
         <Empty />
@@ -45,13 +45,14 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading }: Props) => 
 
   return (
     <CardSection>
-      {itemData?.map(item => {
-        return (
-          <CardBox key={item.id}>
-            <ItemCard src={item.Images[0].src} id={item.id} onSubmit={onSubmit} />
-          </CardBox>
-        );
-      })}
+      {itemData &&
+        itemData?.map(item => {
+          return (
+            <CardBox key={item.id}>
+              <ItemCard src={item.Images[0].src} id={item.id} onSubmit={onSubmit} />
+            </CardBox>
+          );
+        })}
     </CardSection>
   );
 };
