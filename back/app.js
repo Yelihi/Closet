@@ -69,7 +69,7 @@ app.use(
     cookie: {
       httpOnly: true,
       secure: true,
-      domain: ".closet-online.com",
+      domain: process.env.NODE_ENV === "production" && ".closet-online.com",
     },
   })
 );
