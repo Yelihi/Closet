@@ -93,22 +93,22 @@
 
 > **Overview**
 
-<img src="front/public/images/오버뷰페이지.gif" alt="오버뷰페이지" width="100%" />
+<img src="front/public/images/오버뷰(low).gif" alt="오버뷰페이지" width="100%" />
 <br />
 
 > **Store**
 
-<img src="front/public/images/스토어페이지.gif" alt="스토어페이지" width="100%" />
+<img src="front/public/images/목록(low).gif" alt="스토어페이지" width="100%" />
 <br />
 
 > **Add**
 
-<img src="front/public/images/에드페이지.gif" alt="에드페이지" width="100%" />
+<img src="front/public/images/에드(low).gif" alt="에드페이지" width="100%" />
 <br />
 
 > **Details**
 
-<img src="front/public/images/아이템수정하기.gif" alt="아이템수정하기" width="100%" />
+<img src="front/public/images/디테일(low).gif" alt="아이템수정하기" width="100%" />
 <br />
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
