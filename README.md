@@ -55,6 +55,35 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<h2 id="주소"> :cactus: Getting Started</h2>
+
+> **Front**
+
+```
+// front 로 이동 후
+npm install
+and
+npm run dev
+or
+npm run build
+npm run start
+
+```
+
+<br />
+
+> **back**
+
+```
+// back 으로 이동 후
+npm install
+and
+npm run dev
+
+```
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 <h2 id="구현목표"> :floppy_disk: 구현 사항 요약</h2>
 
 - 웹과 어플리케이션의 사용성을 고려하여 반응형 레이아웃 구축 & 대시보드 레이아웃
