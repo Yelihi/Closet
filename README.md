@@ -81,15 +81,6 @@
 <h2 id="추가기능"> :large_blue_diamond: 프로젝트 이후 추가 구현사항</h2>
 <br />
 
-<p align="justify">
-  프로젝트를 진행할 당시 아쉬웠던 부분들이 있었는데, 이후 담당하였던 Nav, Filter part 내 추가하거나 변경하고 싶었던 사항들을 반영하였습니다. 
-</p>
-
-- Nav 작업 중 햇갈렸던 변수명에 대해서 좀 더 직관적으로 정리하려고 하였습니다.
-- Nav 구조도 상 하위 컴포넌트로 전달하려는 props 가 늘어날 수 밖에 없었는데, 이에 redux 를 도입하여 상태값을 전달하는 방식으로 변경하였습니다.
-- Nav 내 Search 부분을 따로 분리하여, 서버에 검색 데이터 전달 시 전송 성공 및 실패 분기 처리를 redux-saga 를 통해 처리하였습니다.
-  <br />
-
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2 align="center" id="Nav.js">Nav.js</h2>
