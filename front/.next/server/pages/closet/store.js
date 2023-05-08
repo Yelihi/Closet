@@ -557,13 +557,15 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_rec
 
 
 
+
 const loadingArray = Array(9).fill(0).map((v, i) => i);
 
 const CardBoard = ({
   itemData,
   onSubmit,
   isLoading,
-  isItemsLoading
+  isItemsLoading,
+  infinitiValidating
 }) => {
   if (isLoading || isItemsLoading) {
     return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(CardSection, {
@@ -581,8 +583,8 @@ const CardBoard = ({
     });
   }
 
-  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(CardSection, {
-    children: itemData && itemData?.map(item => {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(CardSection, {
+    children: [itemData && itemData?.map(item => {
       return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(CardBox, {
         children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(_recycle_ItemCard__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
           src: item.Images[0].src,
@@ -590,7 +592,9 @@ const CardBoard = ({
           onSubmit: onSubmit
         })
       }, item.id);
-    })
+    }), infinitiValidating ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(SpinContainer, {
+      children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx(antd__WEBPACK_IMPORTED_MODULE_4__.Spin, {})
+    }) : null]
   });
 };
 
@@ -606,7 +610,7 @@ const CardBox = styled_components__WEBPACK_IMPORTED_MODULE_1___default().div.wit
 const LoadingBox = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(CardBox).withConfig({
   displayName: "CardBoard__LoadingBox",
   componentId: "sc-lxexxh-2"
-})(["height:20vh;background-color:", ";", "{height:30vh;}"], ({
+})(["height:15vh;background-color:", ";", "{height:30vh;}"], ({
   theme
 }) => theme.colors.mainGrey, _styles_media__WEBPACK_IMPORTED_MODULE_5__/* .media.tablet */ .B.tablet);
 const Loading = styled_components__WEBPACK_IMPORTED_MODULE_1___default().div.withConfig({
@@ -615,6 +619,10 @@ const Loading = styled_components__WEBPACK_IMPORTED_MODULE_1___default().div.wit
 })(["width:100%;height:100%;background-color:", ";border-radius:10px;"], ({
   theme
 }) => theme.colors.hoverGrey);
+const SpinContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default().div.withConfig({
+  displayName: "CardBoard__SpinContainer",
+  componentId: "sc-lxexxh-4"
+})(["display:flex;justify-content:center;align-items:center;width:100%;height:auto;margin:20px 0;margin-bottom:20px;padding:30px 50px;text-align:center;border-radius:4px;"]);
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
 
@@ -737,7 +745,8 @@ const usePagination = (categoriName, windowWidth) => {
     size,
     setSize,
     isLoading: isItemsLoading,
-    mutate: infinitiMutate
+    mutate: infinitiMutate,
+    isValidating: infinitiValidating
   } = (0,swr_infinite__WEBPACK_IMPORTED_MODULE_0__["default"])(getKey, _config_config__WEBPACK_IMPORTED_MODULE_1__/* .mutateFetcher */ .Y$);
   const posts = items?.map(item => item.items); // 데이터가 없을 때 posts 가 [undefiend] 가 되기 때문에, 배열 안 undefined 를 없에기 위한 방법
 
@@ -755,7 +764,8 @@ const usePagination = (categoriName, windowWidth) => {
     loadingMore,
     isReachedEnd,
     isItemsLoading,
-    infinitiMutate
+    infinitiMutate,
+    infinitiValidating
   };
 };
 __webpack_async_result__();
@@ -909,7 +919,8 @@ const store = ({
     setSize,
     isReachedEnd,
     isItemsLoading,
-    infinitiMutate
+    infinitiMutate,
+    infinitiValidating
   } = (0,_hooks_usePagination__WEBPACK_IMPORTED_MODULE_26__/* .usePagination */ .h)(categoriName, windowWidth);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setHydrated(true);
@@ -939,27 +950,7 @@ const store = ({
     if (isIntersecting) {
       setSize(prev => prev + 1);
     }
-  }, [isIntersecting]); // useEffect(() => {
-  //   if (windowWidth === 'desktop') return;
-  //   if (!observerTargetElement.current || isReachedEnd) return;
-  //   const option = {
-  //     root: null,
-  //     threshold: 0.3,
-  //   };
-  //   const io = new IntersectionObserver((entries, observer) => {
-  //     entries.forEach(entry => {
-  //       if (entry.intersectionRatio <= 0) return;
-  //       if (entry.isIntersecting) {
-  //         setSize(prev => prev + 1);
-  //       }
-  //     });
-  //   }, option);
-  //   io.observe(observerTargetElement.current);
-  //   return () => {
-  //     io.disconnect();
-  //   };
-  // }, [isReachedEnd, categoriName, windowWidth]);
-
+  }, [isIntersecting]);
   let modifiedItems = [];
   let accumulationItems = [];
 
@@ -1192,7 +1183,8 @@ const store = ({
             itemData: accumulationItems,
             onSubmit: deleteItemAtTable,
             isLoading: isLoading,
-            isItemsLoading: isItemsLoading
+            isItemsLoading: isItemsLoading,
+            infinitiValidating: infinitiValidating
           }) : null, windowWidth === 'desktop' ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_28__.jsx("div", {
             children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_28__.jsx(antd__WEBPACK_IMPORTED_MODULE_13__.Pagination, {
               current: current,

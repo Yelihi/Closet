@@ -62,7 +62,7 @@ const store = ({ device }: StoreProps) => {
   let lastId = pageIndex >= 0 ? itemsIdArray[pageIndex].id : 0;
 
   const { data, error, isLoading, mutate } = useSWR(`${backUrl}/posts/clothes/store?lastId=${lastId}&categori=${categoriName}&deviceType=${windowWidth}`, mutateFetcher);
-  const { items, paginationPosts, setSize, isReachedEnd, isItemsLoading, infinitiMutate } = usePagination<ItemsArray>(categoriName, windowWidth);
+  const { items, paginationPosts, setSize, isReachedEnd, isItemsLoading, infinitiMutate, infinitiValidating } = usePagination<ItemsArray>(categoriName, windowWidth);
 
   useEffect(() => {
     setHydrated(true);
@@ -93,30 +93,6 @@ const store = ({ device }: StoreProps) => {
       setSize(prev => prev + 1);
     }
   }, [isIntersecting]);
-
-  // useEffect(() => {
-  //   if (windowWidth === 'desktop') return;
-  //   if (!observerTargetElement.current || isReachedEnd) return;
-
-  //   const option = {
-  //     root: null,
-  //     threshold: 0.3,
-  //   };
-
-  //   const io = new IntersectionObserver((entries, observer) => {
-  //     entries.forEach(entry => {
-  //       if (entry.intersectionRatio <= 0) return;
-  //       if (entry.isIntersecting) {
-  //         setSize(prev => prev + 1);
-  //       }
-  //     });
-  //   }, option);
-
-  //   io.observe(observerTargetElement.current);
-  //   return () => {
-  //     io.disconnect();
-  //   };
-  // }, [isReachedEnd, categoriName, windowWidth]);
 
   let modifiedItems = [];
   let accumulationItems = [];
@@ -284,7 +260,9 @@ const store = ({ device }: StoreProps) => {
           <ItemsStoreSection>
             {windowWidth === 'desktop' && segment === 'Table' ? <ATable headData={StoreHeader} itemsData={modifiedItems} isDelete={true} onSubmit={deleteItemAtTable} isLoading={isLoading} /> : null}
             {windowWidth === 'desktop' && segment === 'Kanban' ? <CardBoard itemData={modifiedItems} onSubmit={deleteItemAtTable} isLoading={isLoading} /> : null}
-            {windowWidth === 'phone' ? <CardBoard itemData={accumulationItems} onSubmit={deleteItemAtTable} isLoading={isLoading} isItemsLoading={isItemsLoading} /> : null}
+            {windowWidth === 'phone' ? (
+              <CardBoard itemData={accumulationItems} onSubmit={deleteItemAtTable} isLoading={isLoading} isItemsLoading={isItemsLoading} infinitiValidating={infinitiValidating} />
+            ) : null}
             {windowWidth === 'desktop' ? (
               <div>
                 <Pagination current={current} onChange={pageChange} total={itemsIdArray?.length} defaultPageSize={9} itemRender={itemRender} aria-label='페이지네이션 입니다' />

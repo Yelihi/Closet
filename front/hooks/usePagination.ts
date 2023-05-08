@@ -14,7 +14,15 @@ export const usePagination = <T>(categoriName: string, windowWidth: string) => {
     return `${backUrl}/posts/clothes/store?lastId=${previousPageData.nextCursor}&categori=${categoriName}&deviceType=${windowWidth}`;
   };
 
-  const { data: items, error: postsError, size, setSize, isLoading: isItemsLoading, mutate: infinitiMutate } = useSWRInfinite<SWRResult<T>, Error>(getKey, mutateFetcher);
+  const {
+    data: items,
+    error: postsError,
+    size,
+    setSize,
+    isLoading: isItemsLoading,
+    mutate: infinitiMutate,
+    isValidating: infinitiValidating,
+  } = useSWRInfinite<SWRResult<T>, Error>(getKey, mutateFetcher);
 
   const posts = items?.map(item => item.items);
   // 데이터가 없을 때 posts 가 [undefiend] 가 되기 때문에, 배열 안 undefined 를 없에기 위한 방법
@@ -34,5 +42,6 @@ export const usePagination = <T>(categoriName: string, windowWidth: string) => {
     isReachedEnd,
     isItemsLoading,
     infinitiMutate,
+    infinitiValidating,
   };
 };

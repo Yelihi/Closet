@@ -5,7 +5,7 @@ import ItemCard from '../recycle/ItemCard';
 
 import { ItemsArray } from './TableData';
 import { EmptyDiv } from './ATable';
-import { Empty } from 'antd';
+import { Empty, Spin } from 'antd';
 
 import { media } from '../../styles/media';
 
@@ -14,13 +14,14 @@ interface Props {
   onSubmit?: (id: number) => () => void;
   isLoading?: boolean;
   isItemsLoading?: boolean;
+  infinitiValidating?: boolean;
 }
 
 const loadingArray = Array(9)
   .fill(0)
   .map((v, i) => i);
 
-const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading }: Props) => {
+const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiValidating }: Props) => {
   if (isLoading || isItemsLoading) {
     return (
       <CardSection>
@@ -53,6 +54,11 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading }: Props) => 
             </CardBox>
           );
         })}
+      {infinitiValidating ? (
+        <SpinContainer>
+          <Spin />
+        </SpinContainer>
+      ) : null}
     </CardSection>
   );
 };
@@ -76,7 +82,7 @@ const CardBox = styled.div`
 `;
 
 const LoadingBox = styled(CardBox)`
-  height: 20vh;
+  height: 15vh;
   background-color: ${({ theme }) => theme.colors.mainGrey};
 
   ${media.tablet} {
@@ -89,4 +95,17 @@ const Loading = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.hoverGrey};
   border-radius: 10px;
+`;
+
+const SpinContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  text-align: center;
+  border-radius: 4px;
 `;

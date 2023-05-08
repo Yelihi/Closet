@@ -188,22 +188,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5641);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6022);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5152);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7189);
-/* harmony import */ var _add_ElementData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(251);
-/* harmony import */ var _layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4232);
-/* harmony import */ var _add_InputPartial__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(527);
-/* harmony import */ var _add_InputBackgroud__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7587);
-/* harmony import */ var _element_AInputElement__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4749);
-/* harmony import */ var _element_button_AButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(6445);
-/* harmony import */ var _add_Measure__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(5141);
-/* harmony import */ var _element_DropImageInput__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(9287);
-/* harmony import */ var _submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(7478);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([react_hook_form__WEBPACK_IMPORTED_MODULE_2__, _element_AInputElement__WEBPACK_IMPORTED_MODULE_10__, _add_Measure__WEBPACK_IMPORTED_MODULE_12__]);
-([react_hook_form__WEBPACK_IMPORTED_MODULE_2__, _element_AInputElement__WEBPACK_IMPORTED_MODULE_10__, _add_Measure__WEBPACK_IMPORTED_MODULE_12__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1635);
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4125);
+/* harmony import */ var dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5152);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _add_VisionAIData__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(7189);
+/* harmony import */ var _add_ElementData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(251);
+/* harmony import */ var _layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(4232);
+/* harmony import */ var _add_InputPartial__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(527);
+/* harmony import */ var _add_InputBackgroud__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(7587);
+/* harmony import */ var _element_AInputElement__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(4749);
+/* harmony import */ var _element_button_AButton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(6445);
+/* harmony import */ var _add_Measure__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(5141);
+/* harmony import */ var _element_DropImageInput__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(9287);
+/* harmony import */ var _submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(7478);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([react_hook_form__WEBPACK_IMPORTED_MODULE_2__, _element_AInputElement__WEBPACK_IMPORTED_MODULE_12__, _add_Measure__WEBPACK_IMPORTED_MODULE_14__]);
+([react_hook_form__WEBPACK_IMPORTED_MODULE_2__, _element_AInputElement__WEBPACK_IMPORTED_MODULE_12__, _add_Measure__WEBPACK_IMPORTED_MODULE_14__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
 const _excluded = ["Outer", "Shirt", "Top", "Pant", "Shoe", "Muffler"],
       _excluded2 = ["id", "createdAt", "updatedAt", "ClothId"],
       _excluded3 = ["categoriItem"];
@@ -238,19 +242,23 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-const VisionAICard = next_dynamic__WEBPACK_IMPORTED_MODULE_4___default()(() => __webpack_require__.e(/* import() */ 730).then(__webpack_require__.bind(__webpack_require__, 6730)), {
+
+
+const VisionAICard = next_dynamic__WEBPACK_IMPORTED_MODULE_6___default()(() => __webpack_require__.e(/* import() */ 730).then(__webpack_require__.bind(__webpack_require__, 6730)), {
   loadableGenerated: {
     modules: ["../components/recycle/ItemForm.tsx -> " + './VisionAICard']
   }
 });
+dayjs__WEBPACK_IMPORTED_MODULE_4___default().extend((dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_5___default()));
+const currentDate = dayjs__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM');
 const defaultValues = {
   productName: '',
   description: '',
   image: [],
   price: 0,
-  color: '',
+  color: '#000000',
   categori: '카테고리를 선택해주세요',
-  purchaseDay: '',
+  purchaseDay: currentDate,
   categoriItem: {
     shoulder: 0,
     arm: 0,
@@ -359,7 +367,7 @@ const ItemForm = ({
       return;
     }
 
-    let visionSearch = imagePath.map(v => v.visionSearch?.some(i => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .visionAI.includes */ .$n.includes(i.name)));
+    let visionSearch = imagePath.map(v => v.visionSearch?.some(i => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_7__/* .visionAI.includes */ .$n.includes(i.name)));
 
     if (visionSearch.every(bool => bool === true)) {
       setIsClothes(true);
@@ -386,23 +394,23 @@ const ItemForm = ({
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-    children: [!uploadItemsDone && !uploadItemsError ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.Fragment, {
+    children: [!uploadItemsDone && !uploadItemsError ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_layout_PageMainLayout__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
       title: title,
       subTitle: subTitle,
-      children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(TestContainer, {
-        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(AddSection, {
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(react_hook_form__WEBPACK_IMPORTED_MODULE_2__.FormProvider, _objectSpread(_objectSpread({}, methods), {}, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(AddForm, {
+      children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(TestContainer, {
+        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(AddSection, {
+          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(react_hook_form__WEBPACK_IMPORTED_MODULE_2__.FormProvider, _objectSpread(_objectSpread({}, methods), {}, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(AddForm, {
               onSubmit: handleSubmit(onSubmit),
-              children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+              children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
                 title: "SPECIFICATION",
                 subtitle: "\uC758\uB958 \uBA85\uCE6D, \uAC00\uACA9 \uB4F1 \uD2B9\uC131 \uC815\uBCF4\uB97C \uC800\uC7A5\uD574\uC8FC\uC138\uC694. \uD544\uC218 \uAE30\uC785\uC785\uB2C8\uB2E4.",
-                children: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .clothData.map */ .vb.map(v => {
-                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+                children: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .clothData.map */ .vb.map(v => {
+                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
                     title: v.name,
                     subTitle: v.subTitle,
-                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
                       control: control,
                       name: v.name,
                       errorMessage: v.errorMessage,
@@ -413,14 +421,14 @@ const ItemForm = ({
                     })
                   }, v.name);
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_add_InputPartial__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(_add_InputPartial__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
                 title: "SORT CLOTHES",
                 subtitle: "\uCE74\uD14C\uACE0\uB9AC\uB97C \uC120\uD0DD\uD574\uC8FC\uC2DC\uACE0, \uAC01 \uCE74\uD14C\uACE0\uB9AC\uC5D0 \uB9DE\uB294 \uCE21\uC815\uCE58\uC218\uB97C cm \uB2E8\uC704\uB85C \uAE30\uC785\uD574\uC8FC\uC138\uC694. \uCE74\uD14C\uACE0\uB9AC\uB97C \uAE30\uC785\uD558\uC154\uC57C \uC774\uBBF8\uC9C0\uCCB4\uD06C\uAC00 \uAC00\uB2A5\uD569\uB2C8\uB2E4",
-                children: [_add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .categori.map */ .zM.map(v => {
-                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+                children: [_add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .categori.map */ .zM.map(v => {
+                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
                     title: v.name,
                     subTitle: v.subTitle,
-                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
                       control: control,
                       name: v.name,
                       errorMessage: v.errorMessage,
@@ -431,48 +439,48 @@ const ItemForm = ({
                       }
                     })
                   }, v.name);
-                }), ['Outer', 'Shirt', 'Top'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+                }), ['Outer', 'Shirt', 'Top'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
                   control: control,
-                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .topMeasureName */ .tA,
-                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .topMeasureSub */ .op,
+                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .topMeasureName */ .tA,
+                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .topMeasureSub */ .op,
                   placeholder: "cm"
-                }) : null, ['Pant'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+                }) : null, ['Pant'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
                   control: control,
-                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .bottomMeasureName */ .wj,
-                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .bottomMeasureSub */ .DA,
+                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .bottomMeasureName */ .wj,
+                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .bottomMeasureSub */ .DA,
                   placeholder: "cm"
-                }) : null, ['Shoe'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+                }) : null, ['Shoe'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
                   control: control,
-                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .shoesMeasureName */ .VJ,
-                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .shoesMeasureSub */ .Pg,
+                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .shoesMeasureName */ .VJ,
+                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .shoesMeasureSub */ .Pg,
                   placeholder: "mm"
-                }) : null, ['Muffler'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
+                }) : null, ['Muffler'].includes(watch('categori')) ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_Measure__WEBPACK_IMPORTED_MODULE_14__/* ["default"] */ .Z, {
                   control: control,
-                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .mufflerMeasureName */ .Gz,
-                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .mufflerMeasureSub */ ._t,
+                  nameArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .mufflerMeasureName */ .Gz,
+                  subTitleArray: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .mufflerMeasureSub */ ._t,
                   placeholder: "cm"
                 }) : null]
-              }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+              }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
                 title: "ABOUT ITEM",
                 subtitle: "\uC758\uB958\uC5D0 \uB300\uD55C \uC124\uBA85\uC744 \uAE30\uC785\uD558\uC2E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uAD6C\uC785\uCC98\uB098 \uC18C\uC7AC, \uBCF4\uAD00\uBC29\uBC95 \uB4F1 \uAD6C\uCCB4\uC801\uC778 \uC0AC\uC548\uC744 \uC800\uC7A5\uD558\uC2E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.",
-                children: _add_ElementData__WEBPACK_IMPORTED_MODULE_6__/* .descriptionData.map */ .Fo.map(v => {
-                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+                children: _add_ElementData__WEBPACK_IMPORTED_MODULE_8__/* .descriptionData.map */ .Fo.map(v => {
+                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputBackgroud__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
                     title: v.name,
                     subTitle: v.subTitle,
                     textArea: true,
-                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
+                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_AInputElement__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {
                       control: control,
                       name: v.name,
                       placeholder: v.placeholder
                     })
                   }, v.name);
                 })
-              }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {
+              }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_add_InputPartial__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
                 title: "IMAGE UPLOAD",
                 subtitle: "\uC774\uBBF8\uC9C0\uB97C \uD558\uB098\uC529 \uC5C5\uB85C\uB4DC \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uD544\uC218 \uAE30\uC785\uC0AC\uD56D\uC785\uB2C8\uB2E4. \uC774\uBBF8\uC9C0\uB97C \uC5C5\uB85C\uB4DC \uD560 \uC2DC vision AI \uB97C \uD1B5\uD574 \uC774\uBBF8\uC9C0\uC758 \uC801\uD569\uC131\uC744 \uD310\uB2E8\uD558\uAC8C \uB429\uB2C8\uB2E4. \uD5C8\uB098 \uC774\uB294 \uCC38\uACE0\uC6A9\uC73C\uB85C\uC11C \uBD80\uC815\uD655\uD560 \uC218 \uC788\uC73C\uB2C8 \uC8FC\uC758\uBC14\uB78D\uB2C8\uB2E4.",
-                children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_DropImageInput__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {})
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(PreviewSection, {
-                children: [imageUploadLoding ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(VisionAICard, {
+                children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_DropImageInput__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z, {})
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(PreviewSection, {
+                children: [imageUploadLoding ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(VisionAICard, {
                   imageUploadLoding: true,
                   src: 'src',
                   index: 1,
@@ -481,11 +489,11 @@ const ItemForm = ({
                   confidence: true
                 }) : null, imagePath.length > 0 && imagePath.map((v, i) => {
                   let cate = watch('categori');
-                  let isClothes = v.visionSearch.some(v => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .visionAI.includes */ .$n.includes(v.name));
-                  let isCategori = v.visionSearch.map(v => v.name).some(item => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(item));
-                  let confidence = v.visionSearch.length > 0 && _add_VisionAIData__WEBPACK_IMPORTED_MODULE_5__/* .categoriToVisionAI */ .BU[cate]?.includes(v.visionSearch[0].name);
-                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(VisionAICard, {
+                  let isClothes = v.visionSearch.some(v => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_7__/* .visionAI.includes */ .$n.includes(v.name));
+                  let isCategori = v.visionSearch.map(v => v.name).some(item => _add_VisionAIData__WEBPACK_IMPORTED_MODULE_7__/* .categoriToVisionAI */ .BU[cate]?.includes(item));
+                  let confidence = v.visionSearch.length > 0 && _add_VisionAIData__WEBPACK_IMPORTED_MODULE_7__/* .categoriToVisionAI */ .BU[cate]?.includes(v.visionSearch[0].name);
+                  return /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.Fragment, {
+                    children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(VisionAICard, {
                       imageUploadLoding: imageUploadLoding,
                       src: v.src,
                       index: i,
@@ -495,16 +503,16 @@ const ItemForm = ({
                     })
                   });
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(Float, {
-                children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(SubmitButton, {
-                  children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_button_AButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(Float, {
+                children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(SubmitButton, {
+                  children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_button_AButton__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
                     type: "submit",
                     color: "black",
                     dest: type === 'add' ? '저장하기' : '수정하기',
                     disabled: !isClothes
                   })
-                }), type === 'details' && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(SubmitButton, {
-                  children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_element_button_AButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z, {
+                }), type === 'details' && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(SubmitButton, {
+                  children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_element_button_AButton__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {
                     color: "",
                     dest: "\uC774\uC804\uC73C\uB85C",
                     onClick: backDetailsPage,
@@ -516,11 +524,11 @@ const ItemForm = ({
           }))
         })
       })
-    }) : null, uploadItemsDone ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }) : null, uploadItemsDone ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_16__["default"], {
       sort: type,
       id: resultNumber,
       setConvertState: setState
-    }) : null, uploadItemsError ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx(_submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }) : null, uploadItemsError ? /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx(_submitSuccess_SortingResultComponent__WEBPACK_IMPORTED_MODULE_16__["default"], {
       sort: `${type}Failure`,
       id: resultNumber,
       setConvertState: setState

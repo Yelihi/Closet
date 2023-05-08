@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { FieldValues, useForm, FormProvider } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import dynamic from 'next/dynamic';
 
@@ -26,6 +28,9 @@ import type { ImagePathObject } from '../../reducers/types/post';
 import type { rootReducerType } from '../../reducers/types';
 
 const VisionAICard = dynamic(() => import('./VisionAICard'));
+
+dayjs.extend(customParseFormat);
+const currentDate = dayjs().format('YYYY-MM');
 
 export interface Measures {
   shoulder?: number;
@@ -55,9 +60,9 @@ const defaultValues = {
   description: '',
   image: [],
   price: 0,
-  color: '',
+  color: '#000000',
   categori: '카테고리를 선택해주세요',
-  purchaseDay: '',
+  purchaseDay: currentDate,
   categoriItem: {
     shoulder: 0,
     arm: 0,
