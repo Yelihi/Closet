@@ -153,7 +153,6 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
   const onSubmit = (data: AddInitialValue) => {
     data.image = imagePath;
     const Type = Submit();
-    console.log(data);
     dispatch({
       type: Type,
       data: { items: data, clothId: itemId },

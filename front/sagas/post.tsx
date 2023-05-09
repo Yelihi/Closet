@@ -22,7 +22,6 @@ function uploadImageAPI(data: Iterable<[PropertyKey, Object]>) {
 
 function* uploadImage(action: AnyAction) {
   try {
-    console.log('saga imageUpload');
     const result: AxiosResponse<Success> = yield call(uploadImageAPI, action.data);
     yield put({
       type: t.UPLOAD_IMAGES_SUCCESS,
@@ -43,7 +42,6 @@ function uploadItemsAPI(data: Iterable<[PropertyKey, Object]>) {
 
 function* uploadItems(action: AnyAction) {
   try {
-    console.log('saga imageUpload');
     const result: AxiosResponse<Success> = yield call(uploadItemsAPI, action.data);
     yield put({
       type: t.UPLOAD_ITEMS_SUCCESS,
@@ -68,8 +66,6 @@ function loadItemAPI(data: LoadItem) {
 
 function* loadItem(action: AnyAction) {
   try {
-    console.log('saga item');
-    console.log(action.data);
     const result: AxiosResponse<Success> = yield call(loadItemAPI, action.data);
     yield put({
       type: t.LOAD_ITEM_SUCCESS,
@@ -90,8 +86,6 @@ function loadItemsAPI() {
 
 function* loadItems(action: AnyAction) {
   try {
-    console.log('saga items load');
-    console.log(action.data);
     const result: AxiosResponse<Success> = yield call(loadItemsAPI);
     yield put({
       type: t.LOAD_ITEMS_SUCCESS,
@@ -117,8 +111,6 @@ function patchItemAPI(data: patchProps) {
 
 function* patchItem(action: AnyAction) {
   try {
-    console.log('saga patch');
-    console.log(action.data);
     const result: AxiosResponse<Success> = yield call(patchItemAPI, action.data);
     yield put({
       type: t.PATCH_ITEM_SUCCESS,
@@ -150,9 +142,7 @@ function deleteItemAPI(data: deleteProps) {
 
 function* deleteItem(action: AnyAction) {
   try {
-    console.log('saga delete');
     const result: AxiosResponse<Delete> = yield call(deleteItemAPI, action.data);
-    console.log(result.data);
     yield put({
       type: t.DELETE_ITEM_SUCCESS,
       data: result.data,

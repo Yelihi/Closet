@@ -15,7 +15,6 @@ function logInAPI(data: UserInfo) {
 
 function* logIn(action: AnyAction) {
   try {
-    console.log('saga logIn');
     const result: AxiosResponse<LoginSuccess> = yield call(logInAPI, action.data);
     yield put({
       type: t.LOGIN_SUCCESE,
@@ -36,7 +35,6 @@ function logOutAPI() {
 
 function* logOut(action: AnyAction) {
   try {
-    console.log('saga logOut');
     const result: AxiosResponse<LoginSuccess> = yield call(logOutAPI);
     yield put({
       type: t.LOGOUT_SUCCESE,
@@ -57,7 +55,6 @@ function signInAPI(data: UserInfo) {
 
 function* signIn(action: AnyAction) {
   try {
-    console.log('saga signIn');
     const result: AxiosResponse<LoginSuccess> = yield call(signInAPI, action.data);
     yield put({
       type: t.SIGNIN_SUCCESE,
@@ -78,7 +75,6 @@ function loadToMyInfoAPI() {
 
 function* loadToMyInfo(action: AnyAction) {
   try {
-    console.log('saga loadToMyInfo');
     const result: AxiosResponse<LoginSuccess> = yield call(loadToMyInfoAPI);
     yield put({
       type: t.LOAD_TO_MY_INFO_SUCCESE,
