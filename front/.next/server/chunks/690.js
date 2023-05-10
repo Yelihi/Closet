@@ -384,7 +384,6 @@ const ItemForm = ({
   const onSubmit = data => {
     data.image = imagePath;
     const Type = Submit();
-    console.log(data);
     dispatch({
       type: Type,
       data: {
@@ -1094,7 +1093,6 @@ function DropImageInput() {
     setDragActive(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      console.log('image', e.dataTransfer.files);
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
 
       [].forEach.call(e.dataTransfer.files, file => {
@@ -1111,7 +1109,6 @@ function DropImageInput() {
     e.preventDefault();
 
     if (e.target.files && e.target.files[0]) {
-      console.log('image', e.target.files);
       const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
 
       [].forEach.call(e.target.files, file => {

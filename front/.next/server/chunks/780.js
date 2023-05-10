@@ -55,7 +55,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_use
 const rootReducer = (state, action) => {
   switch (action.type) {
     case next_redux_wrapper__WEBPACK_IMPORTED_MODULE_0__.HYDRATE:
-      // console.log('HYDRATE', action);
       return action.payload;
 
     default:
@@ -692,7 +691,6 @@ function uploadImageAPI(data) {
 
 function* uploadImage(action) {
   try {
-    console.log('saga imageUpload');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(uploadImageAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .UPLOAD_IMAGES_SUCCESS */ .kv,
@@ -713,7 +711,6 @@ function uploadItemsAPI(data) {
 
 function* uploadItems(action) {
   try {
-    console.log('saga imageUpload');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(uploadItemsAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .UPLOAD_ITEMS_SUCCESS */ .TN,
@@ -734,8 +731,6 @@ function loadItemAPI(data) {
 
 function* loadItem(action) {
   try {
-    console.log('saga item');
-    console.log(action.data);
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(loadItemAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .LOAD_ITEM_SUCCESS */ .zg,
@@ -756,8 +751,6 @@ function loadItemsAPI() {
 
 function* loadItems(action) {
   try {
-    console.log('saga items load');
-    console.log(action.data);
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(loadItemsAPI);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .LOAD_ITEMS_SUCCESS */ .O$,
@@ -778,8 +771,6 @@ function patchItemAPI(data) {
 
 function* patchItem(action) {
   try {
-    console.log('saga patch');
-    console.log(action.data);
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(patchItemAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .PATCH_ITEM_SUCCESS */ .aU,
@@ -800,9 +791,7 @@ function deleteItemAPI(data) {
 
 function* deleteItem(action) {
   try {
-    console.log('saga delete');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(deleteItemAPI, action.data);
-    console.log(result.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .DELETE_ITEM_SUCCESS */ .pR,
       data: result.data
@@ -871,7 +860,6 @@ function logInAPI(data) {
 
 function* logIn(action) {
   try {
-    console.log('saga logIn');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(logInAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .LOGIN_SUCCESE */ .Km,
@@ -892,7 +880,6 @@ function logOutAPI() {
 
 function* logOut(action) {
   try {
-    console.log('saga logOut');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(logOutAPI);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .LOGOUT_SUCCESE */ .pZ,
@@ -913,7 +900,6 @@ function signInAPI(data) {
 
 function* signIn(action) {
   try {
-    console.log('saga signIn');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(signInAPI, action.data);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .SIGNIN_SUCCESE */ .Qo,
@@ -934,7 +920,6 @@ function loadToMyInfoAPI() {
 
 function* loadToMyInfo(action) {
   try {
-    console.log('saga loadToMyInfo');
     const result = yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.call)(loadToMyInfoAPI);
     yield (0,redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__.put)({
       type: _reducers_type__WEBPACK_IMPORTED_MODULE_2__/* .LOAD_TO_MY_INFO_SUCCESE */ .pM,
@@ -999,7 +984,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_red
 
 
 const configureStore = context => {
-  // console.log(context);
   const sagaMiddleware = (0,_redux_saga_core__WEBPACK_IMPORTED_MODULE_3__["default"])();
   const middlewares = [sagaMiddleware];
   const enhancer =  true ? (0,redux__WEBPACK_IMPORTED_MODULE_0__.compose)((0,redux__WEBPACK_IMPORTED_MODULE_0__.applyMiddleware)(...middlewares)) : 0;

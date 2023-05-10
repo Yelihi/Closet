@@ -13,13 +13,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_server__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_server__WEBPACK_IMPORTED_MODULE_0__);
 
 async function middleware(request, ev) {
-  // if (!request.cookies.has('connect.sid')) {
-  //   console.log('미들웨어 실행');
-  //   // const url = request.nextUrl.clone();
-  //   // url.pathname = '/userlogin';
-  //   // return NextResponse.redirect(url);
-  //   return NextResponse.redirect(new URL('/userlogin', request.url));
-  // }
   if (request.cookies.has('connect.sid')) {
     return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.next();
   }

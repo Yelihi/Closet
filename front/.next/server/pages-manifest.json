@@ -10,7 +10,7 @@
   "/closet/details/[id]": "pages/closet/details/[id].js",
   "/userlogin": "pages/userlogin.js",
   "/closet/store": "pages/closet/store.js",
-  "/_error": "pages/_error.js",
   "/api/hello": "pages/api/hello.js",
+  "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }
