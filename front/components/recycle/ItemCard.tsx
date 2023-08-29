@@ -29,7 +29,6 @@ const ItemCard = ({ src, id, onSubmit, windowWidth }: CardProps) => {
         <Thumbnail>
           <Centered>
             <CImage src={`${src}`} alt={src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} onClick={moveToDetailsPage(id)} />
-            <HoverTumnail className='phone-size'></HoverTumnail>
           </Centered>
         </Thumbnail>
       </ThumbnailWrapper>
