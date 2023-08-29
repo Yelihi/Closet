@@ -142,8 +142,7 @@ typings/
 node_modules
 closet.pem
 .env
-/front/.next/cache
-/front/.next/analyze
+/front/.next
 
 
 # APIKEY.json
