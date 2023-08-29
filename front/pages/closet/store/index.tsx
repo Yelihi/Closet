@@ -259,9 +259,16 @@ const store = ({ device }: StoreProps) => {
           </MenuSection>
           <ItemsStoreSection>
             {windowWidth === 'desktop' && segment === 'Table' ? <ATable headData={StoreHeader} itemsData={modifiedItems} isDelete={true} onSubmit={deleteItemAtTable} isLoading={isLoading} /> : null}
-            {windowWidth === 'desktop' && segment === 'Kanban' ? <CardBoard itemData={modifiedItems} onSubmit={deleteItemAtTable} isLoading={isLoading} /> : null}
+            {windowWidth === 'desktop' && segment === 'Kanban' ? <CardBoard itemData={modifiedItems} onSubmit={deleteItemAtTable} isLoading={isLoading} windowWidth={windowWidth} /> : null}
             {windowWidth === 'phone' ? (
-              <CardBoard itemData={accumulationItems} onSubmit={deleteItemAtTable} isLoading={isLoading} isItemsLoading={isItemsLoading} infinitiValidating={infinitiValidating} />
+              <CardBoard
+                itemData={accumulationItems}
+                onSubmit={deleteItemAtTable}
+                isLoading={isLoading}
+                isItemsLoading={isItemsLoading}
+                infinitiValidating={infinitiValidating}
+                windowWidth={windowWidth}
+              />
             ) : null}
             {windowWidth === 'desktop' ? (
               <div>
