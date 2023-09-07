@@ -59,6 +59,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   if (context.req && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
+  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   store.dispatch({
     // store에서 dispatch 하는 api
     type: t.LOAD_TO_MY_INFO_REQUEST,
