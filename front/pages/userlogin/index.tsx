@@ -33,7 +33,7 @@ const UserLogin = () => {
       <Section>
         {gotoAccount ? <Signup toggleGotoAccount={toggleGotoAccount} /> : <Login toggleGotoAccount={toggleGotoAccount} />}
         <ImageBox>
-          <Image alt='todo' src={authImage} width={500} height={500} priority={true} />
+          <Image alt='todo' src={authImage} width={500} height={500} />
         </ImageBox>
       </Section>
     </Container>
