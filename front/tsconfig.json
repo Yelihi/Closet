@@ -3,6 +3,7 @@
     // "outDir": "./dist/",
     "target": "es5",
     "lib": ["DOM", "DOM.iterable", "ESNEXT", "ES6", "ScriptHost", "ES2016.Array.Include"],
+    "types": ["node", "@testing-library/jest-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "downlevelIteration": true,
