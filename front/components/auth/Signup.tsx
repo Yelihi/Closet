@@ -81,8 +81,8 @@ const Signup = (props: SIprops) => {
           <div>{password && !isPasswordValid && `비밀번호가 올바르지 않습니다`}</div>
           <input type='password' value={passwordCheck} onChange={onChangePasswordCheck} placeholder='Password Check' />
           <div>{passwordCheck && !isCollect && `비밀번호가 일치하지 않습니다`}</div>
-          <AButton ref={divref} color='black' disabled={!(isEmailValid && isPasswordValid && isCollect)} onClick={onSubmit} dest='Create account' />
-          <AButton ref={divref} color='' disabled={false} onClick={toggleGotoAccount} dest='back' />
+          <AButton innerRef={divref} color='black' disabled={!(isEmailValid && isPasswordValid && isCollect)} onClick={onSubmit} dest='Create account' />
+          <AButton innerRef={divref} color='' disabled={false} onClick={toggleGotoAccount} dest='back' />
           <div></div>
           <div></div>
         </SignupForm>
