@@ -12,15 +12,29 @@ interface CardProps {
   src: string;
   id: number;
   onSubmit?: (id: number) => () => void;
+  windowWidth: 'phone' | 'desktop';
 }
 
-const ItemCard = ({ src, id, onSubmit }: CardProps) => {
+const ItemCard = ({ src, id, onSubmit, windowWidth }: CardProps) => {
   const moveToDetailsPage = useCallback(
     (id: number) => () => {
       Router.push(`/closet/details/${id}`);
     },
     []
   );
+
+  if (windowWidth === 'phone') {
+    return (
+      <ThumbnailWrapper>
+        <Thumbnail>
+          <Centered>
+            <CImage src={`${src}`} alt={src} width={600} height={600} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} onClick={moveToDetailsPage(id)} />
+          </Centered>
+        </Thumbnail>
+      </ThumbnailWrapper>
+    );
+  }
+
   return (
     <ThumbnailWrapper>
       <Thumbnail>
@@ -29,9 +43,9 @@ const ItemCard = ({ src, id, onSubmit }: CardProps) => {
           <HoverTumnail>
             <IconBox>
               <BiDetail className='icon' onClick={moveToDetailsPage(id)} />
-              <span>상세보기</span>
+              <span>상세</span>
               {onSubmit ? <FaTrashRestoreAlt className='icon' onClick={() => (window.confirm('삭제하시겠습니까?') ? onSubmit(id)() : () => console.log('취소했씁니다'))} /> : null}
-              {onSubmit ? <span>삭제하기</span> : null}
+              {onSubmit ? <span>삭제</span> : null}
             </IconBox>
           </HoverTumnail>
         </Centered>
@@ -93,6 +107,10 @@ const HoverTumnail = styled.div`
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .phone-size {
+    cursor: pointer;
   }
 `;
 

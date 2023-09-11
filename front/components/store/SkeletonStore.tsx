@@ -51,7 +51,7 @@ const SkeletonStore = ({ children, loadItemsLoading, deleteItemLoding, windowWid
             <MenuSection></MenuSection>
             <ItemsStoreSection>
               {windowWidth === 'desktop' ? <ATable headData={StoreHeader} itemsData={[]} isDelete={true} isLoading={true} /> : null}
-              {windowWidth === 'phone' ? <CardBoard itemData={[]} isLoading={true} isItemsLoading={true} /> : null}
+              {windowWidth === 'phone' ? <CardBoard itemData={[]} isLoading={true} isItemsLoading={true} windowWidth={windowWidth} /> : null}
             </ItemsStoreSection>
             <Space></Space>
             <div></div>

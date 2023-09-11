@@ -15,13 +15,14 @@ interface Props {
   isLoading?: boolean;
   isItemsLoading?: boolean;
   infinitiValidating?: boolean;
+  windowWidth: 'phone' | 'desktop';
 }
 
 const loadingArray = Array(9)
   .fill(0)
   .map((v, i) => i);
 
-const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiValidating }: Props) => {
+const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiValidating, windowWidth }: Props) => {
   if (isLoading || isItemsLoading) {
     return (
       <CardSection>
@@ -50,7 +51,7 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiVali
         itemData?.map(item => {
           return (
             <CardBox key={item.id}>
-              <ItemCard src={item.Images[0].src} id={item.id} onSubmit={onSubmit} />
+              <ItemCard src={item.Images[0].src} id={item.id} onSubmit={onSubmit} windowWidth={windowWidth} />
             </CardBox>
           );
         })}
