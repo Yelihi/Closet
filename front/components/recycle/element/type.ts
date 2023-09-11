@@ -39,5 +39,5 @@ export type PolymorphicRef<T extends React.ElementType> = React.ComponentPropsWi
 export type PolymorphicComponentProps<T extends React.ElementType, Props = {}> = AsProp<T> &
   React.ComponentPropsWithoutRef<T> &
   Props & {
-    ref?: PolymorphicRef<T>;
+    innerRef?: PolymorphicRef<T>;
   };
