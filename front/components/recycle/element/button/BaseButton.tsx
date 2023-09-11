@@ -8,10 +8,10 @@ export type BaseButtonProps<T extends React.ElementType> = PolymorphicComponentP
 
 type BaseButtonComponent = <T extends React.ElementType = 'button'>(props: BaseButtonProps<T>) => React.ReactElement | null;
 
-const BaseButton: BaseButtonComponent = React.forwardRef(<T extends React.ElementType = 'button'>({ As, ...props }: BaseButtonProps<T>, ref: PolymorphicRef<T>['ref']) => {
+const BaseButton: BaseButtonComponent = React.forwardRef(<T extends React.ElementType = 'button'>({ As, innerRef, ...props }: BaseButtonProps<T>, ref: PolymorphicRef<T>['ref']) => {
   const Element = As || 'button';
   return (
-    <Element ref={ref} {...props}>
+    <Element ref={innerRef} {...props}>
       {props.src && <Image src={props.src} alt={props.dest} priority={true} />}
       {props.dest}
     </Element>
