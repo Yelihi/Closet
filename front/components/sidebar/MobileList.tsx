@@ -24,11 +24,11 @@ const MobileList = () => {
 
   return (
     <ListContainer>
-      <ul>
+      <ul key='mobileSidebar'>
         {sidebarList.map((prop, i) => {
           return i === 2 ? (
-            <>
-              <ListBox key={i} direction={true} onClick={onClickDrop}>
+            <div key={i}>
+              <ListBox key={i} direction='true' onClick={onClickDrop}>
                 <div>
                   <div>
                     {prop.icon}
@@ -47,17 +47,17 @@ const MobileList = () => {
                   </Link>
                 );
               })}
-            </>
+            </div>
           ) : i == 5 ? (
             <Link href={prop.path} key={i}>
-              <ListBox direction={false} onClick={logout}>
+              <ListBox direction='false' onClick={logout}>
                 {prop.icon}
                 <li>{prop.name}</li>
               </ListBox>
             </Link>
           ) : (
             <Link href={prop.path} key={i}>
-              <ListBox direction={false}>
+              <ListBox direction='false'>
                 {prop.icon}
                 <li>{prop.name}</li>
               </ListBox>
@@ -80,7 +80,7 @@ const ListContainer = styled.div`
   }
 `;
 
-const ListBox = styled.div<{ direction: boolean }>`
+const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   width: 100%;
   height: auto;
   margin: 4px 0;
@@ -93,7 +93,7 @@ const ListBox = styled.div<{ direction: boolean }>`
   }
 
   ${props =>
-    props.direction
+    props.direction === 'true'
       ? css`
           display: flex;
           flex-direction: column;

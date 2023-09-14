@@ -46,7 +46,7 @@ interface StoreProps {
   device: 'phone' | 'desktop';
 }
 
-const store = ({ device }: StoreProps) => {
+const Store = ({ device }: StoreProps) => {
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector((state: rootReducerType) => state.post);
@@ -321,7 +321,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   };
 });
 
-export default addHead(store, 'closet', '이 페이지는 저장한 의류 전체를 보여주는 페이지입니다.');
+export default addHead(Store, 'closet', '이 페이지는 저장한 의류 전체를 보여주는 페이지입니다.');
 
 const HandleContainer = styled.section`
   display: flex;

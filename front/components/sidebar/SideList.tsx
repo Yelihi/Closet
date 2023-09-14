@@ -27,11 +27,11 @@ const SideList = () => {
 
   return (
     <ListContainer>
-      <ul>
+      <ul key='desktopSidebar'>
         {sidebarList.map((prop, i) => {
           return i === 2 ? (
-            <Column>
-              <ListBox direction={true} onClick={onClickDrop}>
+            <Column key={i}>
+              <ListBox direction='true' onClick={onClickDrop}>
                 <div>
                   <div>
                     {prop.icon}
@@ -55,14 +55,14 @@ const SideList = () => {
             </Column>
           ) : i == 5 ? (
             <Link href={prop.path} key={i}>
-              <ListBox direction={false} onClick={logout}>
+              <ListBox direction='false' onClick={logout}>
                 {prop.icon}
                 <li>{prop.name}</li>
               </ListBox>
             </Link>
           ) : (
             <Link href={prop.path} key={i}>
-              <ListBox direction={false}>
+              <ListBox direction='false'>
                 {prop.icon}
                 <li>{prop.name}</li>
               </ListBox>
@@ -97,7 +97,7 @@ const Column = styled.div`
   align-items: center;
 `;
 
-const ListBox = styled.div<{ direction: boolean }>`
+const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   width: 100%;
   height: auto;
   margin: 4px 0;
@@ -111,7 +111,7 @@ const ListBox = styled.div<{ direction: boolean }>`
   }
 
   ${props =>
-    props.direction
+    props.direction === 'true'
       ? css`
           display: flex;
           flex-direction: column;
