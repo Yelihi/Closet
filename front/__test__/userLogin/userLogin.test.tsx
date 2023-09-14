@@ -1,5 +1,6 @@
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { renderWithRedux } from '../../util/TestUtils/renderWithRedux';
+import { renderWithProvider } from '../../util/TestUtils/renderWithProvider';
 
 import UserLogin from '../../pages/userlogin';
 import Signup from '../../components/auth/Signup';
@@ -16,7 +17,7 @@ type LoginElements = { [key in keyof typeof defaultFillOutValueInLogin]: key }[k
 
 export const renderHandler = {
   userLogin: function () {
-    renderWithRedux(<UserLogin />);
+    renderWithProvider(<UserLogin />);
 
     const MoveToSignUpPage = screen.getByTestId(/loginToSignUp/i);
     const LoginWithGoogle = screen.getByTestId(/loginWithGoogle/i);
