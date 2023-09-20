@@ -69,10 +69,6 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   }, []);
 
   useEffect(() => {
-    dispatch({ type: t.LOAD_ITEMS_REQUEST });
-  }, []);
-
-  useEffect(() => {
     function updateWindowWidth() {
       if (window.innerWidth <= 786) {
         setWindowWidth('phone');
@@ -288,42 +284,42 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   );
 };
 
-// export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
-//   const cookie = context.req ? context.req.headers.cookie : '';
-//   axios.defaults.headers.Cookie = '';
-//   if (context.req && cookie) {
-//     axios.defaults.headers.Cookie = cookie;
-//   }
-//   const userAgent = context.req ? context.req.headers['user-agent'] : navigator.userAgent;
-//   let isMobile = false;
-//   if (userAgent) {
-//     isMobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPod|Opera Mini|IEMobile|WPDesktop/i));
-//   }
-//   store.dispatch({
-//     // store에서 dispatch 하는 api
-//     type: t.LOAD_TO_MY_INFO_REQUEST,
-//   });
+export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
+  const cookie = context.req ? context.req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (context.req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  const userAgent = context.req ? context.req.headers['user-agent'] : navigator.userAgent;
+  let isMobile = false;
+  if (userAgent) {
+    isMobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPod|Opera Mini|IEMobile|WPDesktop/i));
+  }
+  store.dispatch({
+    // store에서 dispatch 하는 api
+    type: t.LOAD_TO_MY_INFO_REQUEST,
+  });
 
-//   store.dispatch({
-//     type: t.LOAD_ITEMS_REQUEST,
-//   });
+  store.dispatch({
+    type: t.LOAD_ITEMS_REQUEST,
+  });
 
-//   store.dispatch(END);
-//   await (store as SagaStore).sagaTask?.toPromise();
-//   if (!store.getState().user.me) {
-//     return {
-//       redirect: {
-//         destination: '/userlogin',
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {
-//       device: isMobile ? 'phone' : 'desktop',
-//     },
-//   };
-// });
+  store.dispatch(END);
+  await (store as SagaStore).sagaTask?.toPromise();
+  if (!store.getState().user.me) {
+    return {
+      redirect: {
+        destination: '/userlogin',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {
+      device: isMobile ? 'phone' : 'desktop',
+    },
+  };
+});
 
 export default addHead(Store, 'closet', '이 페이지는 저장한 의류 전체를 보여주는 페이지입니다.');
 
