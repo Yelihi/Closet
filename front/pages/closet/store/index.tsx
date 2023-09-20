@@ -69,6 +69,10 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   }, []);
 
   useEffect(() => {
+    dispatch({ type: t.LOAD_ITEMS_REQUEST });
+  }, []);
+
+  useEffect(() => {
     function updateWindowWidth() {
       if (window.innerWidth <= 786) {
         setWindowWidth('phone');
