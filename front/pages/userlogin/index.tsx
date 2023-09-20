@@ -44,31 +44,31 @@ UserLogin.getLayout = function getLayout(page: ReactElement) {
   return <AuthLayout>{page}</AuthLayout>;
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
-  const cookie = context.req ? context.req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
-  if (context.req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
-  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-  store.dispatch({
-    type: t.LOAD_TO_MY_INFO_REQUEST,
-  });
+// export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
+//   const cookie = context.req ? context.req.headers.cookie : '';
+//   axios.defaults.headers.Cookie = '';
+//   if (context.req && cookie) {
+//     axios.defaults.headers.Cookie = cookie;
+//   }
+//   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
+//   store.dispatch({
+//     type: t.LOAD_TO_MY_INFO_REQUEST,
+//   });
 
-  store.dispatch(END);
-  await (store as SagaStore).sagaTask?.toPromise();
-  if (store.getState().user.me) {
-    return {
-      redirect: {
-        destination: '/closet/overview',
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {},
-  };
-});
+//   store.dispatch(END);
+//   await (store as SagaStore).sagaTask?.toPromise();
+//   if (store.getState().user.me) {
+//     return {
+//       redirect: {
+//         destination: '/closet/overview',
+//         permanent: false,
+//       },
+//     };
+//   }
+//   return {
+//     props: {},
+//   };
+// });
 
 export default UserLogin;
 
