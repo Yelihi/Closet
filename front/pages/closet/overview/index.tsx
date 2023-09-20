@@ -53,33 +53,33 @@ const Overview = () => {
   );
 };
 
-// export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
-//   const cookie = context.req ? context.req.headers.cookie : '';
-//   axios.defaults.headers.Cookie = '';
-//   if (context.req && cookie) {
-//     axios.defaults.headers.Cookie = cookie;
-//   }
-//   context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
-//   store.dispatch({
-//     // store에서 dispatch 하는 api
-//     type: t.LOAD_TO_MY_INFO_REQUEST,
-//   });
+export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
+  const cookie = context.req ? context.req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (context.req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
+  store.dispatch({
+    // store에서 dispatch 하는 api
+    type: t.LOAD_TO_MY_INFO_REQUEST,
+  });
 
-//   store.dispatch(END);
-//   await (store as SagaStore).sagaTask?.toPromise();
-//   if (!store.getState().user.me) {
-//     return {
-//       redirect: {
-//         destination: '/userlogin',
-//         permanent: false,
-//       },
-//     };
-//   }
+  store.dispatch(END);
+  await (store as SagaStore).sagaTask?.toPromise();
+  if (!store.getState().user.me) {
+    return {
+      redirect: {
+        destination: '/userlogin',
+        permanent: false,
+      },
+    };
+  }
 
-//   return {
-//     props: {},
-//   };
-// });
+  return {
+    props: {},
+  };
+});
 
 export default React.memo(addHead(Overview, 'closet', '이 페이지는 전체 데이터를 요약해주는 메인 페이지입니다'));
 
