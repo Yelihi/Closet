@@ -27,9 +27,9 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
 
-        # run: DIR="/home/ubuntu/Closet/back"
       - name: root directory
         run: |
+          DIR="/home/ubuntu/Closet/back"
           sudo su
           cd Closet/back
 
