@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import { useSelector } from 'react-redux';
+import { rootReducerType } from '../../reducers/types';
+
 import useLottieAnimation from '../../hooks/useLottieAnimation';
 
 import { useLottiePropsByState } from './Data';
@@ -9,7 +12,8 @@ type RenderBySearchStateProps = {
 };
 
 const RenderBySearchState = ({ state }: RenderBySearchStateProps) => {
-  const View = useLottieAnimation(useLottiePropsByState[state].options, useLottiePropsByState[state].style);
+  const { isSearchClick } = useSelector((state: rootReducerType) => state.screenEvent);
+  const View = useLottieAnimation(useLottiePropsByState[state].options, isSearchClick);
 
   return (
     <StateContainer>
