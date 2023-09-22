@@ -29,7 +29,8 @@ jobs:
             cd Closet/back
             git config --global --add safe.directory /home/ubuntu/Closet
             git pull
-            npm ci
+            npm install
+            npm start
             npx pm2 reload all
 
       #   run: |
