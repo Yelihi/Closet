@@ -27,10 +27,21 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
 
-        run: DIR="/home/ubuntu/Closet/back"
+        # run: DIR="/home/ubuntu/Closet/back"
+      - name: root directory
         run: sudo su && cd Closet/back
+
+      - name: checkout branch
         run: git checkout main
+
+      - name: reset git log
         run: git reset --hard
+
+      - name: pull repository
         run: git pull
+
+      - name: install package
         run: npm i
+
+      - name: reload server
         run: npx pm2 reload all
