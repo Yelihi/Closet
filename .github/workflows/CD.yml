@@ -31,7 +31,10 @@ jobs:
             sudo su &&
             cd Closet/back
             
-            git pull
+            git checkout main &&
+            git fetch --all &&
+            git reset --hard origin/main &&
+            git pull origin main
             npm i
             npx pm2 reload all
           '
