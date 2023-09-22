@@ -24,10 +24,10 @@ jobs:
           host: ${{ secrets.HOST_DNS  }}
           username: ${{ secrets.USER_NAME  }}
           script: |
+            sudo su
             cd Closet/back
             git config --global --add safe.directory /home/ubuntu/Closet
             git pull
-            sudo su
             npm ci
             npx pm2 reload all
 
