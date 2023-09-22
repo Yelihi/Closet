@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  SSH:
     # The type of runner that the job will run on..
     runs-on: ubuntu-latest
 
@@ -17,33 +17,40 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Deploy in EC2
-        env:
-          PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY  }}
-          HOSTNAME: ${{ secrets.HOST_DNS  }}
-          USER_NAME: ${{ secrets.USER_NAME  }}
+      - name: ssh to ec2
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.EC2_SSH_KEY  }}
+          host: ${{ secrets.HOST_DNS  }}
+          username: ${{ secrets.USER_NAME  }}
+          script: |
+            cd Closet/back
+            git pull
+            sudo su
+            npm ci
+            npx pm2 reload all
 
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
-          'DIR="/Closet/back"'
+      #   run: |
+      #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+      #     ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+      #     'DIR="/Closet/back"'
 
-      - name: root directory
-        run: |
-          sudo su
-          cd Closet/back
+      # - name: root directory
+      #   run: |
+      #     sudo su
+      #     cd Closet/back
 
-      - name: checkout branch
-        run: git checkout main
+      # - name: checkout branch
+      #   run: git checkout main
 
-      - name: reset git log
-        run: git reset --hard
+      # - name: reset git log
+      #   run: git reset --hard
 
-      - name: pull repository
-        run: git pull
+      # - name: pull repository
+      #   run: git pull
 
-      - name: install package
-        run: npm i
+      # - name: install package
+      #   run: npm i
 
-      - name: reload server
-        run: npx pm2 reload all
+      # - name: reload server
+      #   run: npx pm2 reload all
