@@ -29,7 +29,9 @@ jobs:
 
         # run: DIR="/home/ubuntu/Closet/back"
       - name: root directory
-        run: sudo su && cd Closet/back
+        run: |
+          sudo su
+          cd Closet/back
 
       - name: checkout branch
         run: git checkout main
