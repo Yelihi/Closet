@@ -32,7 +32,8 @@ jobs:
             cd Closet/back
             
             git checkout main &&
+            git fetch --all &&
+            git reset --hard origin/main &&
             git pull &&
-            npm start
             npx pm2 reload all
           '
