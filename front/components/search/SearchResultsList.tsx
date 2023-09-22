@@ -100,7 +100,7 @@ const ResultsList = styled.div`
   align-items: flex-start;
   gap: 0.5rem;
   width: 100%;
-  height: auto;
+  height: 500px;
   padding: 1rem 0;
   overflow: scroll;
   ::-webkit-scrollbar {
@@ -108,4 +108,8 @@ const ResultsList = styled.div`
   }
   -ms-overflow-style: none; /* 인터넷 익스플로러 */
   scrollbar-width: none; /* 파이어폭스 */
+
+  ${media.tablet} {
+    height: 230px;
+  }
 `;

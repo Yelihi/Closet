@@ -13,7 +13,12 @@ var __webpack_unused_export__;
 __webpack_unused_export__ = ({
     value: true
 });
-exports.Z = _interopRequireDefault;
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _interopRequireDefault;
+    }
+}));
 function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
         default: obj
@@ -24,7 +29,7 @@ function _interopRequireDefault(obj) {
 /***/ }),
 
 /***/ 9894:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((module, exports, __webpack_require__) => {
 
 
 
@@ -134,6 +139,14 @@ Error.displayName = 'ErrorPage';
 Error.getInitialProps = _getInitialProps;
 Error.origGetInitialProps = _getInitialProps;
 exports["default"] = Error;
+
+if ((typeof exports.default === 'function' || typeof exports.default === 'object' && exports.default !== null) && typeof exports.default.__esModule === 'undefined') {
+  Object.defineProperty(exports.default, '__esModule', {
+    value: true
+  });
+  Object.assign(exports.default, exports);
+  module.exports = exports.default;
+}
 
 /***/ }),
 

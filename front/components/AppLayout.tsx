@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 import { useSelector } from 'react-redux';
 import { media } from '../styles/media';
 import { Layout } from 'antd';
@@ -8,8 +9,9 @@ import Footer from './Footer';
 
 import SideList from './sidebar/SideList';
 import SideProfile from './sidebar/SideProfile';
-import SearchModal from './search/SearchModal';
-import Background from './recycle/Background';
+
+const SearchModal = dynamic(() => import('./search/SearchModal'));
+const Background = dynamic(() => import('./recycle/Background'));
 
 import { rootReducerType } from '../reducers/types';
 

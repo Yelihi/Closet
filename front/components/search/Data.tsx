@@ -26,52 +26,45 @@ export const serviceList = [
 //    [Key in keyof Type]: MakeReculsive<Type[Key]>;
 // };
 
+const defaultStyle = {
+  width: '50%',
+  height: '20rem',
+};
+
 export const useLottiePropsByState = {
   Loading: {
-    style: {
-      width: '50%',
-      height: '20rem',
-    },
     options: {
-      animationData: searchLoading,
-      loop: true,
+      src: searchLoading,
+      loop: false,
       autoplay: true,
+      style: defaultStyle,
     },
     Notify: '검색중입니다...',
   },
   Error: {
-    style: {
-      width: '50%',
-      height: '20rem',
-    },
     options: {
-      animationData: error,
-      loop: true,
+      src: error,
+      loop: false,
       autoplay: true,
+      style: defaultStyle,
     },
     Notify: '검색 과정에서 에러가 발생하였습니다.',
   },
   NoFound: {
-    style: {
-      width: '50%',
-      height: '20rem',
-    },
     options: {
-      animationData: noFoundData,
-      loop: true,
+      src: noFoundData,
+      loop: false,
       autoplay: true,
+      style: defaultStyle,
     },
     Notify: '찾으시는 의류가 존재하지 않아요!',
   },
   Initial: {
-    style: {
-      width: '50%',
-      height: '20rem',
-    },
     options: {
-      animationData: noFoundData,
-      loop: true,
+      src: noFoundData,
+      loop: false,
       autoplay: true,
+      style: defaultStyle,
     },
     Notify: '확인하고 싶은 의류명을 검색해주세요',
   },

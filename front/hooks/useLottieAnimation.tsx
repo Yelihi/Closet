@@ -1,32 +1,37 @@
-import React, { useEffect } from 'react';
-import { LottieOptions, useLottie } from 'lottie-react';
+import React, { useRef } from 'react';
+import { Player, Controls, IPlayerProps } from '@lottiefiles/react-lottie-player';
+import { AnimationItem } from 'lottie-web';
 import FinishAni from '../public/AnimaionJson/finish.json';
 
 type Style = { [Key in keyof React.CSSProperties]: React.CSSProperties[Key] };
 
-const deafultStyle = {
+const deafultStyle: Style = {
   width: '25rem',
   height: '25rem',
 };
 
-const defaultOptions: LottieOptions = {
-  animationData: FinishAni,
+const defaultProps: IPlayerProps = {
   loop: false,
+  src: FinishAni,
   autoplay: true,
+  style: deafultStyle,
 };
 
-const useLottieAnimation = (options: LottieOptions = defaultOptions, style: Style = deafultStyle, state?: boolean) => {
-  const { View, play, stop } = useLottie(options, style);
+const useLottieAnimation = (options: IPlayerProps = defaultProps, state?: boolean) => {
+  const player = new Player(defaultProps);
+  const playerRef = useRef<Player>(player);
+  const lottie = useRef<AnimationItem | null>(null);
 
-  useEffect(() => {
-    play();
+  // state 의 변화에 따라 실행(그렇기에 state 는 render 를 유발해야한다)
+  if (state && lottie.current) {
+    lottie.current.play();
+  }
 
-    return () => {
-      stop();
-    };
-  }, [state]);
-
-  return View;
+  return (
+    <Player lottieRef={data => (lottie.current = data)} ref={playerRef} {...options}>
+      <Controls visible={false} />
+    </Player>
+  );
 };
 
 export default useLottieAnimation;
