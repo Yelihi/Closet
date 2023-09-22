@@ -28,12 +28,13 @@ jobs:
 
             #Now we have got the access of EC2 and we will start the deploy .
             DIR="/home/ubuntu"
+            sudo su
             cd Closet/back
             
             git checkout main &&
             git fetch --all &&
             git reset --hard origin/main &&
             git pull
-            sudo su
+            npm i
             npx pm2 reload all
           '
