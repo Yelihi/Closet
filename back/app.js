@@ -20,7 +20,7 @@ const passportConfig = require("./passport");
 
 // const vision = require("@google-cloud/vision");
 
-// test222222
+// test2
 
 const app = express();
 

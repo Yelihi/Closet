@@ -28,13 +28,11 @@ jobs:
 
             #Now we have got the access of EC2 and we will start the deploy .
             DIR="/home/ubuntu"
-            pm2 delete all
-            cd /Closet/back
             sudo su
+            npx pm2 delete all
+            cd /Closet/back
             
             git checkout main &&
             git pull &&
             npm start
           '
-            
-
