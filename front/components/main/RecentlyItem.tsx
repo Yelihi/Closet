@@ -8,6 +8,33 @@ import { ItemsArray } from '../store/TableData';
 import { backUrl, base64URL } from '../../config/config';
 import EmptyData from '../recycle/EmptyData';
 
+type ListItemProps = {
+  item: ItemsArray;
+  func: (id: number) => () => void;
+};
+
+export const ListItems = ({ item, func }: ListItemProps) => {
+  return (
+    <ListContainer key={item.id} onClick={func(item.id)}>
+      <ImageContainer>
+        <ThumbnailWrapper>
+          <Thumbnail>
+            <Centered>
+              <CImage src={`${backUrl}/${item.Images[0].src}`} alt={item.productName} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+            </Centered>
+          </Thumbnail>
+        </ThumbnailWrapper>
+      </ImageContainer>
+      <NameContainer>
+        <span>{item.productName}</span>
+        <p>{item.categori}</p>
+      </NameContainer>
+      <PriceContainer>{item.price.toLocaleString('ko-KR')}</PriceContainer>
+      <DateContainer>{`${item.purchaseDay.substring(0, 7)}`}</DateContainer>
+    </ListContainer>
+  );
+};
+
 type RecentlyProps = {
   items: ItemsArray[];
 };
@@ -37,25 +64,7 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
         <DescriptionSpan>가장 최근에 저장하신 의류 중 5가지를 보여줍니다</DescriptionSpan>
         <DescriptionDiv>클릭하시면 상세페이지로 이동합니다</DescriptionDiv>
         {items.map(item => {
-          return (
-            <ListContainer key={item.id} onClick={moveToDetailsPage(item.id)}>
-              <ImageContainer>
-                <ThumbnailWrapper>
-                  <Thumbnail>
-                    <Centered>
-                      <CImage src={item.Images[0].src} alt={item.productName} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
-                    </Centered>
-                  </Thumbnail>
-                </ThumbnailWrapper>
-              </ImageContainer>
-              <NameContainer>
-                <span>{item.productName}</span>
-                <p>{item.categori}</p>
-              </NameContainer>
-              <PriceContainer>{item.price.toLocaleString('ko-KR')}</PriceContainer>
-              <DateContainer>{`${item.purchaseDay.substring(0, 7)}`}</DateContainer>
-            </ListContainer>
-          );
+          return <ListItems key={item.id} item={item} func={moveToDetailsPage} />;
         })}
       </ListSection>
     </OverviewCL>

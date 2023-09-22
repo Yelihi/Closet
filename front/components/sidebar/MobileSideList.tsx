@@ -50,7 +50,7 @@ const PhoneMenuContainer = styled.section<MenuProps>`
   width: 200px;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.brown};
-  z-index: 1;
+  z-index: 50;
   transition: left 0.25s ease-out;
 
   ${props =>

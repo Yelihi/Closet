@@ -1,10 +1,10 @@
 // screenEvent
 
+export const UNMOUNT_BACKGROUND = 'UNMOUNT_BACKGROUND' as const;
+
 export const PHONE_MENU_CLICK = 'PHONE_MENU_CLICK' as const;
 
-export const PHONE_SEARCH_CLICK = 'PHONE_SEARCH_CLICK' as const;
-
-export const RESET_MENU_CLICK = 'RESET_MENU_CLICK' as const;
+export const SEARCH_CLICK = 'SEARCH_CLICK' as const;
 
 export const RESET_UPLOAD_PAGE = 'RESET_UPLOAD_PAGE' as const;
 

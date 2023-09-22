@@ -10,7 +10,7 @@ const Background = () => {
 
   const isClickOnMenu = (e: React.MouseEvent<HTMLInputElement>) => {
     if (e.target === containerRef.current) {
-      dispatch({ type: t.RESET_MENU_CLICK });
+      dispatch({ type: t.UNMOUNT_BACKGROUND });
     }
   };
   return <BackgroundContainer ref={containerRef} onClick={isClickOnMenu}></BackgroundContainer>;
@@ -25,4 +25,5 @@ const BackgroundContainer = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
+  z-index: 40;
 `;

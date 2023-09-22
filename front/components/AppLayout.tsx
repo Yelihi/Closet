@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { media } from '../styles/media';
 import { Layout } from 'antd';
 
@@ -7,6 +8,10 @@ import Footer from './Footer';
 
 import SideList from './sidebar/SideList';
 import SideProfile from './sidebar/SideProfile';
+import SearchModal from './search/SearchModal';
+import Background from './recycle/Background';
+
+import { rootReducerType } from '../reducers/types';
 
 interface AppLayoutProps {
   // 레이아웃을 담당하는 Props 타입설정
@@ -14,9 +19,12 @@ interface AppLayoutProps {
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
+  const { isSearchClick } = useSelector((state: rootReducerType) => state.screenEvent);
   return (
     <>
       <AppLay>
+        <SearchModal />
+        {isSearchClick && <Background />}
         <MenuContainer>
           <SideBar>
             <StickyBox>

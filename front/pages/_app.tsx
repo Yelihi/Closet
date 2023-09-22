@@ -22,13 +22,13 @@ type AppPropsAddLayout = AppProps & {
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsAddLayout) => {
-  const { isPhoneMenuClick } = useSelector((state: rootReducerType) => state.screenEvent);
+  const { isPhoneMenuClick, isSearchClick } = useSelector((state: rootReducerType) => state.screenEvent);
   const getLayout = Component.getLayout || (page => <AppLayout>{page}</AppLayout>);
 
   return (
     <SWRConfig>
       <ThemeProvider theme={theme}>
-        <GlobalStyle isPhoneMenuClick={isPhoneMenuClick} />
+        <GlobalStyle isPhoneMenuClick={isPhoneMenuClick} isSearchClick={isSearchClick} />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </SWRConfig>
