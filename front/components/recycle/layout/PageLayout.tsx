@@ -19,7 +19,7 @@ const PageLayout = ({ children }: Props): JSX.Element => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: t.RESET_MENU_CLICK });
+    dispatch({ type: t.UNMOUNT_BACKGROUND });
   }, []);
 
   return (
