@@ -25,6 +25,7 @@ jobs:
           username: ${{ secrets.USER_NAME  }}
           script: |
             cd Closet/back
+            git config --global --add safe.directory /home/ubuntu/Closet
             git pull
             sudo su
             npm ci
