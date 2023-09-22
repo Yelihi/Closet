@@ -24,6 +24,7 @@ jobs:
           host: ${{ secrets.HOST_DNS  }}
           username: ${{ secrets.USER_NAME  }}
           script: |
+            sudo chown -R $USER:$USER .
             sudo su
             cd Closet/back
             git config --global --add safe.directory /home/ubuntu/Closet
