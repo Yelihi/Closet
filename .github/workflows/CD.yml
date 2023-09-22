@@ -29,7 +29,7 @@ jobs:
             #Now we have got the access of EC2 and we will start the deploy .
             DIR="/home/ubuntu"
             sudo su
-            cd /Closet/back
+            cd Closet/back
             
             git checkout main &&
             git pull &&
