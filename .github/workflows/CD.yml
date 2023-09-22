@@ -22,19 +22,15 @@ jobs:
           HOSTNAME: ${{ secrets.HOST_DNS  }}
           USER_NAME: ${{ secrets.USER_NAME  }}
 
-        run: |
+      - run:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
 
-            #Now we have got the access of EC2 and we will start the deploy .
-            DIR="/home/ubuntu/Closet/back"
-            sudo su &&
-            cd Closet/back
-            
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard &&
-            git pull
-            npm i
-            npx pm2 reload all
-          '
+          #Now we have got the access of EC2 and we will start the deploy .
+          # DIR="/home/ubuntu/Closet/back"
+      - run: sudo su && cd Closet/back
+      - run: git checkout main
+      - run: git reset --hard
+      - run: git pull
+      - run: npm i
+      - run: npx pm2 reload all
