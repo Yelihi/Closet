@@ -3,11 +3,22 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const db = require("../models");
+const qs = require("querystring");
 const { Op } = require("sequelize");
 
 const { isLoggedIn } = require("./middlewares");
 
-const { User, Cloth, Image, Muffler, Outer, Pant, Shirt, Shoe, Top } = require("../models");
+const {
+  User,
+  Cloth,
+  Image,
+  Muffler,
+  Outer,
+  Pant,
+  Shirt,
+  Shoe,
+  Top,
+} = require("../models");
 const { findAll } = require("../models/user");
 
 const router = express.Router();
@@ -118,7 +129,8 @@ router.get("/clothes/", isLoggedIn, async (req, res, next) => {
       price: CurrentPrice,
       lastPrice: lastClothes.length === 0 ? CurrentPrice : LastPrice,
       categori: filterObj,
-      lastCategori: Object.keys(lastFilterObj).length === 0 ? filterObj : lastFilterObj,
+      lastCategori:
+        Object.keys(lastFilterObj).length === 0 ? filterObj : lastFilterObj,
       standardDate: `${currentDate.getFullYear()}-${currentMonth + 1}`,
       idArray: clothes.map((v) => {
         return { id: v.id, categori: v.categori };
@@ -155,12 +167,19 @@ router.get("/overview", isLoggedIn, async (req, res, next) => {
       }
     });
     const copyAllData = [...allData];
-    copyAllData.sort((a, b) => b.dataValues.purchaseDay - a.dataValues.purchaseDay);
+    copyAllData.sort(
+      (a, b) => b.dataValues.purchaseDay - a.dataValues.purchaseDay
+    );
 
     const last5Data = allData.slice(0, 5); // 최신 저장한 5개의 데이터 [{item},{item},..]
     const totalData = allData.length; // 총 갯수
     const totalPrice = allData.reduce((acc, crr, idx) => acc + crr.price, 0); // 원래라면 defaultValue 를 거쳐야 하는데.. 일단 해보자
-    const currentYearPrice = allData.filter((item) => new Date(`${currentYear}-01-01`) <= item.dataValues.purchaseDay).reduce((acc, crr, idx) => acc + crr.price, 0);
+    const currentYearPrice = allData
+      .filter(
+        (item) =>
+          new Date(`${currentYear}-01-01`) <= item.dataValues.purchaseDay
+      )
+      .reduce((acc, crr, idx) => acc + crr.price, 0);
     const oldData = copyAllData.pop();
     const result = {
       lastDatas: last5Data,
@@ -169,6 +188,49 @@ router.get("/overview", isLoggedIn, async (req, res, next) => {
       currentYearPrice: currentYearPrice,
       theOldestData: oldData,
       categori: categoriObj,
+    };
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+// GET /posts/clothes/search?searchWord
+// test
+router.get("/clothes/search/", isLoggedIn, async (req, res, next) => {
+  try {
+    let searchWord = qs.unescape(req.query.searchWord);
+
+    const searchDatas = await Cloth.findAll({
+      where: {
+        UserId: req.user.id,
+        productName: {
+          [Op.like]: "%" + searchWord.toLowerCase() + "%",
+        },
+      },
+      order: [["createdAt", "DESC"]],
+      include: [
+        {
+          model: Image,
+          attributes: ["id", "ClothId", "src"],
+        },
+      ],
+    });
+    if (!searchDatas)
+      return res
+        .status(200)
+        .json({ matchedDatas: [], totalNumber: 0, totalPrice: 0 });
+    const copyAllData = [...searchDatas];
+    copyAllData.sort(
+      (a, b) => b.dataValues.purchaseDay - a.dataValues.purchaseDay
+    );
+
+    const totalData = searchDatas.length; // 총 갯수
+
+    const result = {
+      matchedDatas: copyAllData,
+      totalNumber: totalData,
     };
     res.status(200).json(result);
   } catch (error) {
