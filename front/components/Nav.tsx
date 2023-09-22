@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerType } from '../reducers/types';
-import { onPhoneMenuClick } from '../reducers/screenEvent';
+import { onPhoneMenuClick, onSearchClick } from '../reducers/screenEvent';
 
-import styled, { css } from 'styled-components';
-import useToggle from '../hooks/useToggle';
+import styled from 'styled-components';
 import { media } from '../styles/media';
-
-import { phoneSearch } from '../styles/animation';
 
 import MoblieSideList from './sidebar/MobileSideList';
 
@@ -16,33 +13,25 @@ import { HiOutlineMenuAlt2, HiOutlineSearch } from 'react-icons/hi';
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const { isPhoneMenuClick } = useSelector((state: rootReducerType) => state.screenEvent);
   const { me } = useSelector((state: rootReducerType) => state.user);
-  const [phoneSearchClick, onClickPhoneSearch] = useToggle(false);
 
-  const searchSubmit = () => {};
   return (
     <>
       <MoblieSideList />
       <NavContainer>
-        <MenuContainer search={phoneSearchClick}>
+        <MenuContainer>
           <div>
             <Menu onClick={() => dispatch(onPhoneMenuClick())} />
           </div>
           <div>
-            <Search onClick={onClickPhoneSearch} />
+            <Search onClick={() => dispatch(onSearchClick())} />
           </div>
-          {phoneSearchClick && <input />}
-          <InputBox>
-            <form onSubmit={searchSubmit}>
-              <input type='text' placeholder='Search' />
-            </form>
-            <div>
-              <InputSearch />
-            </div>
-          </InputBox>
         </MenuContainer>
         <InfoContainer>
+          <SearchButtonContainer onClick={() => dispatch(onSearchClick())}>
+            <InputSearch />
+            <p>Search</p>
+          </SearchButtonContainer>
           <HeadBox>
             <span>Closet Official</span>
             <p>{me?.nickname}</p>
@@ -75,20 +64,13 @@ const NavContainer = styled.div`
   }
 `;
 
-const MenuContainer = styled.div<{ search: boolean }>`
+const MenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
 
   > div {
-    &:first-child {
-      ${props =>
-        props.search &&
-        css`
-          animation: ${phoneSearch} 0.5s forwards;
-        `}
-    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,44 +106,11 @@ const Search = styled(HiOutlineSearch)`
 `;
 
 const InputSearch = styled(Search)`
+  width: 2rem;
+  height: 2rem;
+  color: ${({ theme }) => theme.colors.brown};
   ${media.tablet} {
     display: block;
-  }
-`;
-
-const InputBox = styled.section`
-  position: relative;
-  display: none;
-  color: ${({ theme }) => theme.colors.lightGrey};
-  border: 1px solid ${({ theme }) => theme.colors.lightGrey};
-  border-radius: 16px;
-  width: fit-content;
-  height: fit-content;
-
-  ${media.tablet} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 1;
-    width: 100%;
-
-    > form {
-      width: 100%;
-      > input {
-        width: 100%;
-        height: 36px;
-        padding: 7px 46px;
-        border-radius: 16px;
-      }
-    }
-
-    > div {
-      position: absolute;
-      top: 5px;
-      left: 15px;
-      width: fit-content;
-      height: fit-content;
-    }
   }
 `;
 
@@ -170,11 +119,35 @@ const InfoContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  gap: 16px;
+  gap: 1.5rem;
 
   ${media.tablet} {
     flex-shrink: 0;
     margin-left: 135px;
+  }
+`;
+
+const SearchButtonContainer = styled.div`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  border: 1px solid ${({ theme }) => theme.colors.mainGrey};
+  border-radius: 2.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.mainGrey};
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  ${media.tablet} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

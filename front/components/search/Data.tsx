@@ -1,5 +1,9 @@
 import { MdOutlineSaveAlt, MdNoteAdd, MdOutlineAdminPanelSettings } from 'react-icons/md';
 
+import searchLoading from '../../public/AnimaionJson/searchLoading.json';
+import noFoundData from '../../public/AnimaionJson/noFoundData.json';
+import error from '../../public/AnimaionJson/error.json';
+
 export const serviceList = [
   {
     service: '등록한 의류 목록 확인하기',
@@ -17,3 +21,58 @@ export const serviceList = [
     icon: <MdOutlineAdminPanelSettings className='logo' />,
   },
 ];
+
+// type MakeReculsive<Type> = {
+//    [Key in keyof Type]: MakeReculsive<Type[Key]>;
+// };
+
+export const useLottiePropsByState = {
+  Loading: {
+    style: {
+      width: '50%',
+      height: '20rem',
+    },
+    options: {
+      animationData: searchLoading,
+      loop: true,
+      autoplay: true,
+    },
+    Notify: '검색중입니다...',
+  },
+  Error: {
+    style: {
+      width: '50%',
+      height: '20rem',
+    },
+    options: {
+      animationData: error,
+      loop: true,
+      autoplay: true,
+    },
+    Notify: '검색 과정에서 에러가 발생하였습니다.',
+  },
+  NoFound: {
+    style: {
+      width: '50%',
+      height: '20rem',
+    },
+    options: {
+      animationData: noFoundData,
+      loop: true,
+      autoplay: true,
+    },
+    Notify: '찾으시는 의류가 존재하지 않아요!',
+  },
+  Initial: {
+    style: {
+      width: '50%',
+      height: '20rem',
+    },
+    options: {
+      animationData: noFoundData,
+      loop: true,
+      autoplay: true,
+    },
+    Notify: '확인하고 싶은 의류명을 검색해주세요',
+  },
+} as const;

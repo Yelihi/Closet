@@ -3,6 +3,7 @@ import normalize from 'styled-normalize';
 
 export interface GlobalProps {
   isPhoneMenuClick: boolean;
+  isSearchClick: boolean;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -24,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     height: 100%;
-    overflow: ${(props: GlobalProps) => (props.isPhoneMenuClick ? 'hidden' : 'auto')};
+    overflow: ${(props: GlobalProps) => (props.isPhoneMenuClick || props.isSearchClick ? 'hidden' : 'auto')};
   }
 
   *,
