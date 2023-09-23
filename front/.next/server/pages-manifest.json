@@ -1,16 +1,16 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
   "/closet/administration": "pages/closet/administration.html",
   "/closet/reports/color": "pages/closet/reports/color.html",
   "/closet/reports/price": "pages/closet/reports/price.html",
-  "/_error": "pages/_error.js",
-  "/api/hello": "pages/api/hello.js",
+  "/_document": "pages/_document.js",
   "/closet/reports/sort": "pages/closet/reports/sort.html",
   "/closet/add": "pages/closet/add.js",
   "/closet/overview": "pages/closet/overview.js",
+  "/closet/store": "pages/closet/store.js",
   "/closet/details/[id]": "pages/closet/details/[id].js",
   "/userlogin": "pages/userlogin.js",
-  "/closet/store": "pages/closet/store.js",
+  "/_error": "pages/_error.js",
+  "/api/hello": "pages/api/hello.js",
   "/404": "pages/404.html"
 }

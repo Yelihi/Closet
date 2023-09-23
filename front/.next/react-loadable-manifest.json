@@ -6,13 +6,12 @@
     ]
   },
   "../components/AppLayout.tsx -> ./search/SearchModal": {
-    "id": 95710,
+    "id": 9919,
     "files": [
       "static/chunks/d0c16330-ae7e7e269d37ea71.js",
       "static/chunks/d64684d8-bfa97553a82fcd67.js",
       "static/chunks/ae51ba48-3f087c728efa2822.js",
-      "static/chunks/2fbf9dd2.2eea0c6d909a88dd.js",
-      "static/chunks/710.80e02e543d7a44da.js"
+      "static/chunks/919.c3f3428906077e9e.js"
     ]
   },
   "../components/recycle/ItemForm.tsx -> ./VisionAICard": {
