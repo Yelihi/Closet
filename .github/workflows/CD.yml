@@ -27,11 +27,11 @@ jobs:
             sudo chown -R $USER:$USER .
             sudo su
             cd Closet/back
+            npx pm2 kill
             git config --global --add safe.directory /home/ubuntu/Closet
             git pull
             npm install
             npm start
-            npx pm2 reload all
 
       #   run: |
       #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
