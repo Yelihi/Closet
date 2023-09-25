@@ -5,7 +5,7 @@ import type { rootReducerType } from '../reducers/types';
 
 import type { AppProps } from 'next/app';
 import { NextPage } from 'next';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
@@ -24,6 +24,7 @@ type AppPropsAddLayout = AppProps & {
 };
 
 const MyApp = ({ Component, pageProps }: AppPropsAddLayout) => {
+  const router = useRouter();
   const [isTransitionLoading, setIsTransitionLoading] = useState<boolean>(false);
   const { isPhoneMenuClick, isSearchClick } = useSelector((state: rootReducerType) => state.screenEvent);
   const getLayout = Component.getLayout || (page => <AppLayout>{page}</AppLayout>);
@@ -36,16 +37,16 @@ const MyApp = ({ Component, pageProps }: AppPropsAddLayout) => {
       setIsTransitionLoading(false);
     };
 
-    Router.events.on('routeChangeStart', start);
-    Router.events.on('routeChangeComplete', end);
-    Router.events.on('routeChangeError', end);
+    router.events.on('routeChangeStart', start);
+    router.events.on('routeChangeComplete', end);
+    router.events.on('routeChangeError', end);
 
     return () => {
-      Router.events.off('routeChangeStart', start);
-      Router.events.off('routeChangeComplete', end);
-      Router.events.off('routeChangeError', end);
+      router.events.off('routeChangeStart', start);
+      router.events.off('routeChangeComplete', end);
+      router.events.off('routeChangeError', end);
     };
-  });
+  }, [router]);
 
   return (
     <SWRConfig>
