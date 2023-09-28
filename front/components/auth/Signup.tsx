@@ -1,51 +1,53 @@
-import React, { useState, useCallback, useReducer, useEffect, useRef } from 'react';
+import React, { useCallback, useReducer, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { signinRequestAction } from '../../reducers/user';
 
 import AButton from '../recycle/element/button/AButton';
-import useInput from '../../hooks/useInput';
+import TextField from '../recycle/auth/TextField';
 import { useSelector } from 'react-redux';
 
 import type { RootState } from '../../reducers/types';
+import {
+  SignUpInfoProps,
+  IsValiedSignUpInfoProps,
+  PartialSignUpInfoProps,
+  PartialIsValiedSignUpInfoProps,
+} from './Type';
+import { SignUpContext } from './MemberContext';
+import { isEmail, isEqual, maxLength } from '../../util/auth/validation';
 
 export interface SIprops {
   toggleGotoAccount: () => void;
 }
+
+export const signUpInfo: SignUpInfoProps = {
+  nickName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
+const isValiedSignUpInfo = Object.keys(signUpInfo).reduce((obj, key) => {
+  obj[key as keyof IsValiedSignUpInfoProps] = undefined;
+  return obj;
+}, {} as IsValiedSignUpInfoProps);
 
 const Signup = (props: SIprops) => {
   const dispatch = useDispatch();
   const divref = useRef<HTMLButtonElement>(null);
   const { signInDone } = useSelector((state: RootState) => state.user);
   const { toggleGotoAccount } = props;
-  const [isCollect, setIsCollect] = useState<boolean>(false);
-  const [name, setName, onChangeName] = useInput('');
-  const [email, setEmail, onChangeEmail] = useInput('');
-  const [password, setPassword] = useState<string>('');
-  const [passwordCheck, setPasswordCheck] = useState<string>('');
 
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const onChangePasswordCheck = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setPasswordCheck(e.target.value);
-      setIsCollect(e.target.value === password);
+  const [info, setInfo] = useReducer((prevState: SignUpInfoProps, partialState: PartialSignUpInfoProps) => {
+    return { ...prevState, ...partialState };
+  }, signUpInfo);
+  const [error, setError] = useReducer(
+    (prevState: IsValiedSignUpInfoProps, partialState: PartialIsValiedSignUpInfoProps) => {
+      return { ...prevState, ...partialState };
     },
-    [password]
-  );
-
-  const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (password !== passwordCheck) {
-        setIsCollect(false);
-      }
-      dispatch(signinRequestAction({ email: email, nickname: name, password: password, src: '' }));
-    },
-    [email, password, passwordCheck, name]
+    isValiedSignUpInfo
   );
 
   useEffect(() => {
@@ -54,40 +56,100 @@ const Signup = (props: SIprops) => {
     }
   }, [signInDone]);
 
-  const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/;
-  const passwordRegExp = /^.{8,}$/;
+  const onSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      dispatch(
+        signinRequestAction({
+          email: info.email,
+          nickname: info.nickName,
+          password: info.password,
+          src: '',
+        })
+      );
+    },
+    [info.email, info.password, info.confirmPassword, info.nickName]
+  );
 
-  const isEmailValid = emailRegExp.test(email);
-  const isPasswordValid = passwordRegExp.test(password);
+  const isDisabled = Object.values(error).some(e => e !== undefined);
 
   return (
-    <SignupBox>
-      <LeftTopBrand>
-        <span>Closet</span>
-      </LeftTopBrand>
-      <SignupSection>
-        <SignupForm data-testid='Signup Form' onSubmit={onSubmit}>
-          <h1>Create an account</h1>
-          <span>
-            이메일 양식에 적합하게 작성해주시고,
-            <br />
-            비밀번호는 8자리 이상 해주세요
-          </span>
-          <input type='text' value={name} onChange={onChangeName} placeholder='Name' required data-testid='signUpName' />
-          <div></div>
-          <input type='email' value={email} onChange={onChangeEmail} placeholder='Email' data-testid='signUpEmail' />
-          <div>{email && !isEmailValid && `이메일이 올바르지 않습니다`}</div>
-          <input type='password' value={password} onChange={onChangePassword} placeholder='Password' data-testid='signUpPassword' />
-          <div>{password && !isPasswordValid && `비밀번호가 올바르지 않습니다`}</div>
-          <input type='password' value={passwordCheck} onChange={onChangePasswordCheck} placeholder='Password Check' data-testid='signUpCheck' />
-          <div>{passwordCheck && !isCollect && `비밀번호가 일치하지 않습니다`}</div>
-          <AButton type='submit' innerRef={divref} color='black' disabled={!(isEmailValid && isPasswordValid && isCollect)} dest='Create account' data-testid='submitButton' />
-          <AButton type='button' innerRef={divref} color='' disabled={false} onClick={toggleGotoAccount} dest='back' data-testid='back' />
-          <div></div>
-          <div></div>
-        </SignupForm>
-      </SignupSection>
-    </SignupBox>
+    <SignUpContext.Provider
+      value={{
+        value: info,
+        setValue: setInfo,
+        error: error,
+        setError: setError,
+      }}
+    >
+      <SignupBox>
+        <LeftTopBrand>
+          <span>Closet</span>
+        </LeftTopBrand>
+        <SignupSection>
+          <SignupForm data-testid='Signup Form' onSubmit={onSubmit}>
+            <h1>Create an account</h1>
+            <span>
+              이메일 양식에 적합하게 작성해주시고,
+              <br />
+              비밀번호는 8자리 이상 해주세요
+            </span>
+            <TextField
+              type='text'
+              source='nickName'
+              placeholder='Name'
+              testId='signUpName'
+              validate={[maxLength(2)]}
+              context='SignUp'
+            />
+            <TextField
+              type='email'
+              source='email'
+              placeholder='Email'
+              testId='signUpEmail'
+              validate={[isEmail()]}
+              context='SignUp'
+            />
+            <TextField
+              type='password'
+              source='password'
+              placeholder='Password'
+              testId='signUpPassword'
+              validate={[maxLength(8)]}
+              context='SignUp'
+            />
+            <TextField
+              type='password'
+              source='confirmPassword'
+              placeholder='Password Check'
+              testId='signUpCheck'
+              validate={[isEqual()]}
+              connectType='password'
+              context='SignUp'
+            />
+            <AButton
+              type='submit'
+              innerRef={divref}
+              color='black'
+              disabled={isDisabled}
+              dest='Create account'
+              data-testid='submitButton'
+            />
+            <AButton
+              type='button'
+              innerRef={divref}
+              color=''
+              disabled={false}
+              onClick={toggleGotoAccount}
+              dest='back'
+              data-testid='back'
+            />
+            <div></div>
+            <div></div>
+          </SignupForm>
+        </SignupSection>
+      </SignupBox>
+    </SignUpContext.Provider>
   );
 };
 
@@ -141,26 +203,5 @@ const SignupForm = styled.form`
     font-size: 14px;
     font-weight: ${({ theme }) => theme.fontWeight.Light};
     margin-bottom: 40px;
-  }
-
-  > input {
-    width: 300px;
-    height: 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    margin-bottom: 10px;
-
-    :focus {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    }
-  }
-
-  > div {
-    width: 100%;
-    height: 20px;
-    margin-bottom: 5px;
-    font-family: ${({ theme }) => theme.font.Kfont};
-    font-weight: ${({ theme }) => theme.fontWeight.Light};
-    font-size: 12px;
-    color: red;
   }
 `;
