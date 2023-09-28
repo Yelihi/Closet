@@ -16,6 +16,11 @@ import { backUrl } from '../../config/config';
 
 import type { SIprops } from './Signup';
 
+export const memberInfo = {
+  email: '',
+  password: '',
+};
+
 const Login = (props: SIprops) => {
   const dispatch = useDispatch();
   const { toggleGotoAccount } = props;

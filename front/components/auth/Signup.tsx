@@ -14,6 +14,13 @@ export interface SIprops {
   toggleGotoAccount: () => void;
 }
 
+export const signUpInfo = {
+  nickName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
 const Signup = (props: SIprops) => {
   const dispatch = useDispatch();
   const divref = useRef<HTMLButtonElement>(null);
