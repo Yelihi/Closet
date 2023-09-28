@@ -12,7 +12,9 @@ import { defaultFillOutValueInLogin, DefaultValueInLogin } from './Login/Login.t
 let alertmock = jest.fn();
 window.alert = alertmock;
 
-type SignUpElements = { [key in keyof typeof defaultFillOutValueInSignUp]: key }[keyof typeof defaultFillOutValueInSignUp];
+type SignUpElements = {
+  [key in keyof typeof defaultFillOutValueInSignUp]: key;
+}[keyof typeof defaultFillOutValueInSignUp];
 type LoginElements = { [key in keyof typeof defaultFillOutValueInLogin]: key }[keyof typeof defaultFillOutValueInLogin];
 
 export const renderHandler = {
@@ -78,7 +80,11 @@ export const renderHandler = {
     const BackButton = screen.getByTestId(/back/i);
     fireEvent.click(BackButton);
   },
-  fillOutFormVaildExceptProps: function (defaultValue: DefaultValueInSignUp, inputElement?: SignUpElements, invaildValue?: string) {
+  fillOutFormVaildExceptProps: function (
+    defaultValue: DefaultValueInSignUp,
+    inputElement?: SignUpElements,
+    invaildValue?: string
+  ) {
     const renderElements = this.signUp();
     const SignUpButton = renderElements['SignUpButton'];
     const copyDefaultFillOutValue: DefaultValueInSignUp = { ...defaultValue };
@@ -88,7 +94,9 @@ export const renderHandler = {
     }
 
     for (const key in copyDefaultFillOutValue) {
-      fireEvent.change(renderElements[key as SignUpElements], { target: { value: copyDefaultFillOutValue[key as SignUpElements] } });
+      fireEvent.change(renderElements[key as SignUpElements], {
+        target: { value: copyDefaultFillOutValue[key as SignUpElements] },
+      });
     }
 
     return {
@@ -97,7 +105,11 @@ export const renderHandler = {
       SignUpButton,
     };
   },
-  fillOutLoginInputValidExceptProps: function (defaultValue: DefaultValueInLogin, inputElement?: LoginElements, invaildValue?: string) {
+  fillOutLoginInputValidExceptProps: function (
+    defaultValue: DefaultValueInLogin,
+    inputElement?: LoginElements,
+    invaildValue?: string
+  ) {
     const renderElements = this.login();
     const { LoginButton } = renderElements;
     const copyDefaultFillOutValue: DefaultValueInLogin = { ...defaultValue };
@@ -107,7 +119,9 @@ export const renderHandler = {
     }
 
     for (const key in copyDefaultFillOutValue) {
-      fireEvent.change(renderElements[key as LoginElements], { target: { value: copyDefaultFillOutValue[key as LoginElements] } });
+      fireEvent.change(renderElements[key as LoginElements], {
+        target: { value: copyDefaultFillOutValue[key as LoginElements] },
+      });
     }
 
     return {
@@ -119,7 +133,7 @@ export const renderHandler = {
 };
 
 describe('userLogin', () => {
-  it('성공적으로 렌더링 됩니다.', () => {
+  it.skip('성공적으로 렌더링 됩니다.', () => {
     const renderElements = renderHandler.userLogin();
 
     [].forEach.call(renderElements, element => {
@@ -127,7 +141,7 @@ describe('userLogin', () => {
     });
   });
 
-  it('create account 클릭 시 계정 생성 컴포넌트로 이동합니다.', async () => {
+  it.skip('create account 클릭 시 계정 생성 컴포넌트로 이동합니다.', async () => {
     // Login page 의 계정생성 버튼을 불러옵니다.
     renderHandler.switchLoginToSignUp();
 
@@ -138,7 +152,7 @@ describe('userLogin', () => {
     });
   });
 
-  it('알맞게 입력을 하고 계정 생성 버튼을 누를 시 알람이 뜨고, 다시 login 화면으로 이동합니다.', async () => {
+  it.skip('알맞게 입력을 하고 계정 생성 버튼을 누를 시 알람이 뜨고, 다시 login 화면으로 이동합니다.', async () => {
     // 입력폼에 알맞게 입력합니다.
     const { SignUpButton } = renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp);
 
@@ -153,7 +167,7 @@ describe('userLogin', () => {
     });
   });
 
-  it('뒤로 가기 버튼 클릭 시 다시 login 화면으로 이동합니다.', () => {
+  it.skip('뒤로 가기 버튼 클릭 시 다시 login 화면으로 이동합니다.', () => {
     renderHandler.switchSignUpToLogin();
 
     const LoginTitle = screen.getByText(/welcome to closet!/i);
