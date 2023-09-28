@@ -1,47 +1,62 @@
-import React, { useRef } from 'react';
+import React, { useRef, useReducer } from 'react';
 
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import 'antd/dist/reset.css';
 import { Divider } from 'antd';
 
-import BaseButton from '../recycle/element/button/BaseButton';
+import TextField from '../recycle/auth/TextField';
 import google from '../../public/images/google.webp';
 import AButton from '../recycle/element/button/AButton';
 
-import useInput from '../../hooks/useInput';
+import { isEmail, maxLength } from '../../util/auth/validation';
 
 import { loginRequestAction } from '../../reducers/user';
-import { backUrl } from '../../config/config';
 
 import type { SIprops } from './Signup';
+import { backUrl } from '../../config/config';
+import type { MemberInfoProps, IsValiedInfoProps, PartialMemberInfoProps, PartialIsValiedInfoProps } from './Type';
+
+import { LoginContext } from './MemberContext';
 
 export const memberInfo = {
   email: '',
   password: '',
 };
 
+const isValiedInfo = Object.keys(memberInfo).reduce((obj, key) => {
+  obj[key as keyof IsValiedInfoProps] = undefined;
+  return obj;
+}, {} as IsValiedInfoProps);
+
 const Login = (props: SIprops) => {
   const dispatch = useDispatch();
   const { toggleGotoAccount } = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
   const LinkRef = useRef<HTMLAnchorElement>(null);
-  const [email, setEmail, onChangeEmail] = useInput('');
-  const [password, setPassword, onChangePassword] = useInput('');
+  const [Info, setInfo] = useReducer((prevInfo: MemberInfoProps, partialInfo: PartialMemberInfoProps) => {
+    return { ...prevInfo, ...partialInfo };
+  }, memberInfo);
+  const [error, setError] = useReducer((prevError: IsValiedInfoProps, partialError: PartialIsValiedInfoProps) => {
+    return { ...prevError, ...partialError };
+  }, isValiedInfo);
 
-  const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/;
-  const passwordRegExp = /^.{8,}$/;
-
-  const isEmailValid = emailRegExp.test(email);
-  const isPasswordValid = passwordRegExp.test(password);
+  const disabled = Object.values(error).some(e => e !== undefined);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(loginRequestAction({ email: email, password: password }));
+    dispatch(loginRequestAction({ email: Info.email, password: Info.password }));
   };
 
   return (
-    <>
+    <LoginContext.Provider
+      value={{
+        value: Info,
+        setValue: setInfo,
+        error: error,
+        setError: setError,
+      }}
+    >
       <LoginBox>
         <LeftTopBrand>
           <span>Closet</span>
@@ -50,27 +65,27 @@ const Login = (props: SIprops) => {
           <LoginForm data-testid='login Form' onSubmit={onSubmit}>
             <h1>Welcome to Closet!</h1>
             <span>의류를 계획적으로 관리해 보세요.</span>
-            <input
+            <TextField
               type='email'
-              value={email}
-              onChange={onChangeEmail}
+              source='email'
               placeholder='Email'
-              data-testid='loginEmailInput'
+              validate={[isEmail()]}
+              testId='loginEmailInput'
+              context='Login'
             />
-            <div>{email && !isEmailValid && `이메일이 올바르지 않습니다`}</div>
-            <input
+            <TextField
               type='password'
-              value={password}
-              onChange={onChangePassword}
+              source='password'
               placeholder='Password'
-              data-testid='loginPasswordInput'
+              validate={[maxLength(8)]}
+              testId='loginPasswordInput'
+              context='Login'
             />
-            <div>{password && !isPasswordValid && `비밀번호가 올바르지 않습니다`}</div>
             <AButton
               type='submit'
               color='black'
               innerRef={buttonRef}
-              disabled={!(isEmailValid && isPasswordValid)}
+              disabled={disabled}
               dest='Sign in'
               data-testid='SignIn'
             />
@@ -97,7 +112,7 @@ const Login = (props: SIprops) => {
           </LoginForm>
         </LoginSection>
       </LoginBox>
-    </>
+    </LoginContext.Provider>
   );
 };
 
@@ -151,27 +166,6 @@ const LoginForm = styled.form`
     font-size: 14px;
     font-weight: ${({ theme }) => theme.fontWeight.Light};
     margin-bottom: 40px;
-  }
-
-  > input {
-    width: 300px;
-    height: 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    margin-bottom: 10px;
-
-    :focus {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    }
-  }
-
-  > div {
-    width: 100%;
-    height: 20px;
-    margin-bottom: 5px;
-    font-family: ${({ theme }) => theme.font.Kfont};
-    font-weight: ${({ theme }) => theme.fontWeight.Light};
-    font-size: 12px;
-    color: red;
   }
 `;
 
