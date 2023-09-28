@@ -45,14 +45,50 @@ const Login = (props: SIprops) => {
           <LoginForm data-testid='login Form' onSubmit={onSubmit}>
             <h1>Welcome to Closet!</h1>
             <span>의류를 계획적으로 관리해 보세요.</span>
-            <input type='email' value={email} onChange={onChangeEmail} placeholder='Email' data-testid='loginEmailInput' />
+            <input
+              type='email'
+              value={email}
+              onChange={onChangeEmail}
+              placeholder='Email'
+              data-testid='loginEmailInput'
+            />
             <div>{email && !isEmailValid && `이메일이 올바르지 않습니다`}</div>
-            <input type='password' value={password} onChange={onChangePassword} placeholder='Password' data-testid='loginPasswordInput' />
+            <input
+              type='password'
+              value={password}
+              onChange={onChangePassword}
+              placeholder='Password'
+              data-testid='loginPasswordInput'
+            />
             <div>{password && !isPasswordValid && `비밀번호가 올바르지 않습니다`}</div>
-            <AButton type='submit' color='black' innerRef={buttonRef} disabled={!(isEmailValid && isPasswordValid)} dest='Sign in' data-testid='SignIn' />
-            <AButton type='button' innerRef={buttonRef} color='' onClick={toggleGotoAccount} disabled={false} dest='Create account' data-testid='loginToSignUp' />
+            <AButton
+              type='submit'
+              color='black'
+              innerRef={buttonRef}
+              disabled={!(isEmailValid && isPasswordValid)}
+              dest='Sign in'
+              data-testid='SignIn'
+            />
+            <AButton
+              type='button'
+              innerRef={buttonRef}
+              color=''
+              onClick={toggleGotoAccount}
+              disabled={false}
+              dest='Create account'
+              data-testid='loginToSignUp'
+            />
             <LDivider plain>OR</LDivider>
-            <AButton As='a' innerRef={LinkRef} color='' disabled={false} dest='Sign in Google' src={google} href={`${backUrl}/auth/google`} data-testid='loginWithGoogle' />
+            <AButton
+              As='a'
+              innerRef={LinkRef}
+              color=''
+              disabled={false}
+              dest='Sign in Google'
+              src={google}
+              href={`${backUrl}/auth/google`}
+              data-testid='loginWithGoogle'
+            />
           </LoginForm>
         </LoginSection>
       </LoginBox>

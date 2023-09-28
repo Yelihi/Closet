@@ -73,16 +73,50 @@ const Signup = (props: SIprops) => {
             <br />
             비밀번호는 8자리 이상 해주세요
           </span>
-          <input type='text' value={name} onChange={onChangeName} placeholder='Name' required data-testid='signUpName' />
+          <input
+            type='text'
+            value={name}
+            onChange={onChangeName}
+            placeholder='Name'
+            required
+            data-testid='signUpName'
+          />
           <div></div>
           <input type='email' value={email} onChange={onChangeEmail} placeholder='Email' data-testid='signUpEmail' />
           <div>{email && !isEmailValid && `이메일이 올바르지 않습니다`}</div>
-          <input type='password' value={password} onChange={onChangePassword} placeholder='Password' data-testid='signUpPassword' />
+          <input
+            type='password'
+            value={password}
+            onChange={onChangePassword}
+            placeholder='Password'
+            data-testid='signUpPassword'
+          />
           <div>{password && !isPasswordValid && `비밀번호가 올바르지 않습니다`}</div>
-          <input type='password' value={passwordCheck} onChange={onChangePasswordCheck} placeholder='Password Check' data-testid='signUpCheck' />
+          <input
+            type='password'
+            value={passwordCheck}
+            onChange={onChangePasswordCheck}
+            placeholder='Password Check'
+            data-testid='signUpCheck'
+          />
           <div>{passwordCheck && !isCollect && `비밀번호가 일치하지 않습니다`}</div>
-          <AButton type='submit' innerRef={divref} color='black' disabled={!(isEmailValid && isPasswordValid && isCollect)} dest='Create account' data-testid='submitButton' />
-          <AButton type='button' innerRef={divref} color='' disabled={false} onClick={toggleGotoAccount} dest='back' data-testid='back' />
+          <AButton
+            type='submit'
+            innerRef={divref}
+            color='black'
+            disabled={!(isEmailValid && isPasswordValid && isCollect)}
+            dest='Create account'
+            data-testid='submitButton'
+          />
+          <AButton
+            type='button'
+            innerRef={divref}
+            color=''
+            disabled={false}
+            onClick={toggleGotoAccount}
+            dest='back'
+            data-testid='back'
+          />
           <div></div>
           <div></div>
         </SignupForm>
