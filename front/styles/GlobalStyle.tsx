@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
   a { text-decoration: none; outline: none}
   a:hover, a:active {text-decoration: none}
 
+  p {
+    margin: 0;
+  }
+
   input,
   input:active,
   input:focus{
