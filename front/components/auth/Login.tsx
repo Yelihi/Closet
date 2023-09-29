@@ -1,7 +1,7 @@
 import React, { useRef, useReducer } from 'react';
 
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/reset.css';
 import { Divider } from 'antd';
 
@@ -16,8 +16,10 @@ import { loginRequestAction } from '../../reducers/user';
 import type { SIprops } from './Signup';
 import { backUrl } from '../../config/config';
 import type { MemberInfoProps, IsValiedInfoProps, PartialMemberInfoProps, PartialIsValiedInfoProps } from './Type';
+import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
 
 import { LoginContext } from './MemberContext';
+import { rootReducerType } from '../../reducers/types';
 
 export const memberInfo = {
   email: '',
@@ -31,6 +33,7 @@ const isValiedInfo = Object.keys(memberInfo).reduce((obj, key) => {
 
 const Login = (props: SIprops) => {
   const dispatch = useDispatch();
+  const { logInLoading } = useSelector((state: rootReducerType) => state.user);
   const { toggleGotoAccount } = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
   const LinkRef = useRef<HTMLAnchorElement>(null);
@@ -88,6 +91,7 @@ const Login = (props: SIprops) => {
               disabled={disabled}
               dest='Sign in'
               data-testid='SignIn'
+              src={logInLoading ? buttonLoading : undefined}
             />
             <AButton
               type='button'
