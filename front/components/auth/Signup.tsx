@@ -1,12 +1,11 @@
 import React, { useCallback, useReducer, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { signinRequestAction } from '../../reducers/user';
 
 import AButton from '../recycle/element/button/AButton';
 import TextField from '../recycle/auth/TextField';
-import { useSelector } from 'react-redux';
 
 import type { RootState } from '../../reducers/types';
 import {
@@ -17,6 +16,7 @@ import {
 } from './Type';
 import { SignUpContext } from './MemberContext';
 import { isEmail, isEqual, maxLength } from '../../util/auth/validation';
+import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
 
 export interface SIprops {
   toggleGotoAccount: () => void;
@@ -37,7 +37,7 @@ const isValiedSignUpInfo = Object.keys(signUpInfo).reduce((obj, key) => {
 const Signup = (props: SIprops) => {
   const dispatch = useDispatch();
   const divref = useRef<HTMLButtonElement>(null);
-  const { signInDone } = useSelector((state: RootState) => state.user);
+  const { signInDone, signInLoading } = useSelector((state: RootState) => state.user);
   const { toggleGotoAccount } = props;
 
   const [info, setInfo] = useReducer((prevState: SignUpInfoProps, partialState: PartialSignUpInfoProps) => {
@@ -134,6 +134,7 @@ const Signup = (props: SIprops) => {
               disabled={isDisabled}
               dest='Create account'
               data-testid='submitButton'
+              src={signInLoading ? buttonLoading : undefined}
             />
             <AButton
               type='button'
