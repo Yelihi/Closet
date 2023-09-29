@@ -9,16 +9,19 @@ export const serviceList = [
     service: '등록한 의류 목록 확인하기',
     link: '/closet/store',
     icon: <MdOutlineSaveAlt className='logo' />,
+    testId: 'store',
   },
   {
     service: '의류 정보를 등록하기',
     link: '/closet/add',
     icon: <MdNoteAdd className='logo' />,
+    testId: 'add',
   },
   {
     service: '개인 정보 확인하기',
     link: '/closet/administration',
     icon: <MdOutlineAdminPanelSettings className='logo' />,
+    testId: 'administration',
   },
 ];
 
@@ -28,7 +31,7 @@ export const serviceList = [
 
 const defaultStyle = {
   width: '50%',
-  height: '20rem',
+  height: '26rem',
 };
 
 export const useLottiePropsByState = {

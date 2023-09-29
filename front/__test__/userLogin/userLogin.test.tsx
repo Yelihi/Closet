@@ -133,7 +133,7 @@ export const renderHandler = {
 };
 
 describe('userLogin', () => {
-  it.skip('성공적으로 렌더링 됩니다.', () => {
+  it('성공적으로 렌더링 됩니다.', () => {
     const renderElements = renderHandler.userLogin();
 
     [].forEach.call(renderElements, element => {
@@ -141,7 +141,7 @@ describe('userLogin', () => {
     });
   });
 
-  it.skip('create account 클릭 시 계정 생성 컴포넌트로 이동합니다.', async () => {
+  it('create account 클릭 시 계정 생성 컴포넌트로 이동합니다.', async () => {
     // Login page 의 계정생성 버튼을 불러옵니다.
     renderHandler.switchLoginToSignUp();
 
@@ -152,7 +152,7 @@ describe('userLogin', () => {
     });
   });
 
-  it.skip('알맞게 입력을 하고 계정 생성 버튼을 누를 시 알람이 뜨고, 다시 login 화면으로 이동합니다.', async () => {
+  it('알맞게 입력을 하고 계정 생성 버튼을 누를 시 알람이 뜨고, 다시 login 화면으로 이동합니다.', async () => {
     // 입력폼에 알맞게 입력합니다.
     const { SignUpButton } = renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp);
 
@@ -167,7 +167,7 @@ describe('userLogin', () => {
     });
   });
 
-  it.skip('뒤로 가기 버튼 클릭 시 다시 login 화면으로 이동합니다.', () => {
+  it('뒤로 가기 버튼 클릭 시 다시 login 화면으로 이동합니다.', () => {
     renderHandler.switchSignUpToLogin();
 
     const LoginTitle = screen.getByText(/welcome to closet!/i);
