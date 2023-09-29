@@ -23,7 +23,7 @@ const ShortCutNavigation = React.memo(() => {
   return (
     <ShortCutNaviContainer>
       <h4>서비스 바로 이용하기</h4>
-      {serviceList.map(({ service, link, icon }) => {
+      {serviceList.map(({ service, link, icon, testId }) => {
         return (
           <NavigationContainer
             key={link}
@@ -31,6 +31,7 @@ const ShortCutNavigation = React.memo(() => {
               dispatch(unmountSearchModal());
               router.push(link);
             }}
+            data-testid={testId}
           >
             <NavigationIconBox>{icon}</NavigationIconBox>
             <NavigationText>{service}</NavigationText>
@@ -66,10 +67,11 @@ const SearchModal = () => {
             placeholder='Search your Items..'
             value={searchValue}
             onChange={onChangeSearchValue}
+            data-testid='searchInput'
           />
           {searchValue && (
             <DeleteInputValueIconBox>
-              <DelelteValue onClick={() => setSearchValue('')} />
+              <DelelteValue onClick={() => setSearchValue('')} data-testid='deleteIcon' />
             </DeleteInputValueIconBox>
           )}
         </SearchInputContainer>
