@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { cache } from 'swr/_internal';
 import { server } from './__mocks__/server.js';
+import 'jest-canvas-mock';
 
 // 테스트를 하기 전 API mocking 을 생성한다
 beforeAll(() => server.listen());

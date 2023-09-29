@@ -1,13 +1,10 @@
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { renderWithRedux } from '../../util/TestUtils/renderWithRedux';
 import { renderWithProvider } from '../../util/TestUtils/renderWithProvider';
-import { useContext, createContext } from 'react';
 
 import UserLogin from '../../pages/userlogin';
 import Signup from '../../components/auth/Signup';
 import Login from '../../components/auth/Login';
-
-import { LoginContext, SignUpContext } from '../../components/auth/MemberContext';
 
 import { defaultFillOutValueInSignUp, DefaultValueInSignUp } from './SignUp/Signup.test';
 import { defaultFillOutValueInLogin, DefaultValueInLogin } from './Login/Login.test';
