@@ -1,16 +1,17 @@
 import { rest } from 'msw';
 import { backUrl } from '../../config/config';
+import { data } from './data';
 
-const postUserInfo = (isfalse?: boolean) => {
-  return rest.post(`${backUrl}/user/create`, async (req, res, ctx) => {
-    if (isfalse) {
-      return res(ctx.status(500));
+const getClothesWithSearch = (delayedValue: string = '') => {
+  return rest.post(`${backUrl}/posts/clothes/search?searchWord=${delayedValue}`, async (req, res, ctx) => {
+    if (delayedValue === '그') {
+      return res(ctx.status(200), ctx.json(data));
+    } else {
+      return res(ctx.status(200), ctx.json({ matchedDatas: [], totalNumber: 0 }));
     }
-
-    return res(ctx.status(200), ctx.text('가입해주셔서 감사합니다.'));
   });
 };
 
-const userLoginHandler = [postUserInfo()];
+const searchHandler = [getClothesWithSearch()];
 
-export default userLoginHandler;
+export default searchHandler;
