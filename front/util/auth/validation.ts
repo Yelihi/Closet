@@ -13,6 +13,6 @@ export function maxLength(length: number) {
 
 export function isEqual() {
   return (prevPassword: string, confirmPassword: string) => {
-    return prevPassword === confirmPassword ? undefined : `비밀번호가 일치하지 않습니다`;
+    return prevPassword && prevPassword === confirmPassword ? undefined : `비밀번호가 일치하지 않습니다`;
   };
 }
