@@ -28,7 +28,7 @@ export const serviceList = [
 
 const defaultStyle = {
   width: '50%',
-  height: '20rem',
+  height: '26rem',
 };
 
 export const useLottiePropsByState = {

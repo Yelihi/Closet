@@ -61,7 +61,12 @@ const SearchModal = () => {
           <SearchIconBox>
             <Search />
           </SearchIconBox>
-          <SearchInput type='text' placeholder='Search your Items..' value={searchValue} onChange={onChangeSearchValue} />
+          <SearchInput
+            type='text'
+            placeholder='Search your Items..'
+            value={searchValue}
+            onChange={onChangeSearchValue}
+          />
           {searchValue && (
             <DeleteInputValueIconBox>
               <DelelteValue onClick={() => setSearchValue('')} />
@@ -109,7 +114,7 @@ const ModalContainer = styled.section<{ isSearchClick: boolean }>`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60vw;
-    height: 60vh;
+    height: auto;
     border-radius: 2rem;
   }
 `;
