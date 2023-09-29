@@ -12,7 +12,7 @@ export const defaultFillOutValueInLogin: DefaultValueInLogin = {
 };
 
 describe('Login Component', () => {
-  it.skip('render correctly', () => {
+  it('render correctly', () => {
     const renderElements = renderHandler.login();
 
     for (const elem in renderElements) {
@@ -20,21 +20,21 @@ describe('Login Component', () => {
     }
   });
 
-  it.skip('이메일 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(이메일형식)', () => {
+  it('이메일 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(이메일형식)', () => {
     renderHandler.fillOutLoginInputValidExceptProps(defaultFillOutValueInLogin, 'LoginEmail', 'rock7246com');
 
     const ErrorMessage = screen.getByText(/이메일이 올바르지 않습니다/i);
 
     expect(ErrorMessage).toBeInTheDocument();
   });
-  it.skip('비밀벝호 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(8자 미만)', () => {
+  it('비밀벝호 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(8자 미만)', () => {
     renderHandler.fillOutLoginInputValidExceptProps(defaultFillOutValueInLogin, 'LoginPassword', '12345');
 
-    const ErrorMessage = screen.getByText(/비밀번호가 올바르지 않습니다/i);
+    const ErrorMessage = screen.getByText(/8자 이상 작성해주세요/i);
 
     expect(ErrorMessage).toBeInTheDocument();
   });
-  it.skip('유효성 검사에 하나라도 적합하지 않을 시 Sign in 비활성화', () => {
+  it('유효성 검사에 하나라도 적합하지 않을 시 Sign in 비활성화', () => {
     const { LoginButton } = renderHandler.fillOutLoginInputValidExceptProps(
       defaultFillOutValueInLogin,
       'LoginPassword',
@@ -43,7 +43,7 @@ describe('Login Component', () => {
 
     expect(LoginButton).toBeDisabled();
   });
-  it.skip('유효성 검사를 통과할 시 Sign in 활성화', () => {
+  it('유효성 검사를 통과할 시 Sign in 활성화', () => {
     const { LoginButton } = renderHandler.fillOutLoginInputValidExceptProps(defaultFillOutValueInLogin);
 
     expect(LoginButton).not.toBeDisabled();

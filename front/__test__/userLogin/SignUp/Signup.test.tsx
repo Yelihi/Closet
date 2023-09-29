@@ -17,7 +17,7 @@ export const defaultFillOutValueInSignUp: DefaultValueInSignUp = {
 };
 
 describe('SignUp Component', () => {
-  it.skip('render correctly', () => {
+  it('render correctly', () => {
     // Arrange
     const renderElements = renderHandler.signUp();
 
@@ -26,35 +26,43 @@ describe('SignUp Component', () => {
     }
   });
 
-  it.skip('이메일 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(이메일의 양식)', () => {
+  it('이름 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(2자 이상))', () => {
+    renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp, 'SignUpName', '봉');
+
+    const ErrorMessage = screen.getByText(/2자 이상 작성해주세요/i);
+
+    expect(ErrorMessage).toBeInTheDocument();
+  });
+
+  it('이메일 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(이메일의 양식)', () => {
     renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp, 'SignUpEmail', 'Rock5243com');
 
     const ErrorMessage = screen.getByText(/이메일이 올바르지 않습니다/i);
 
     expect(ErrorMessage).toBeInTheDocument();
   });
-  it.skip('비밀벝호 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(8자리 미만)', () => {
+  it('비밀벝호 유효성 검사에 적합하지 않을 시 에러 메시지 렌더링(8자리 미만)', () => {
     renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp, 'SignUpPassword', '1234');
 
-    const ErrorMessage = screen.getByText(/비밀번호가 올바르지 않습니다/i);
+    const ErrorMessage = screen.getByText(/8자 이상 작성해주세요/i);
 
     expect(ErrorMessage).toBeInTheDocument();
   });
-  it.skip('비밀번호 확인 시 입력 비밀번호와 일치하지 않을 시 에러 메시지 렌더링', () => {
+  it('비밀번호 확인 시 입력 비밀번호와 일치하지 않을 시 에러 메시지 렌더링', () => {
     renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp, 'SignUpCheck', '1234567');
 
     const ErrorMessage = screen.getByText(/비밀번호가 일치하지 않습니다/i);
 
     expect(ErrorMessage).toBeInTheDocument();
   });
-  it.skip('유효성 검사에 하나라도 적합하지 않을 시 SignUp 버튼 비활성화', () => {
+  it('유효성 검사에 하나라도 적합하지 않을 시 SignUp 버튼 비활성화', () => {
     renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp, 'SignUpEmail', 'Rock5243com');
 
     const SignUpButton = screen.getByTestId('submitButton');
 
     expect(SignUpButton).toBeDisabled();
   });
-  it.skip('유효성 검사를 통과할 시 Sign in 활성화', () => {
+  it('유효성 검사를 통과할 시 Sign in 활성화', () => {
     renderHandler.fillOutFormVaildExceptProps(defaultFillOutValueInSignUp);
 
     const SignUpButton = screen.getByTestId('submitButton');
