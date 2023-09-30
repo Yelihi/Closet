@@ -44,7 +44,7 @@ const SearchResultsList = ({ isDelayed, delayedValue }: SearchResultsProps) => {
       <Flex>
         <h4>클릭 시 상세페이지로 이동합니다</h4>
         <SummarySearchResults>
-          <p>
+          <p data-testid='searchResult'>
             <strong>{data.totalNumber}</strong> 건의 검색 결과가 있습니다
           </p>
         </SummarySearchResults>
