@@ -44,7 +44,9 @@ const ProcessingDataCard = ({ Icon, DataTitle, LastData = 0, CurrentData = 0, Ca
         </IconBox>
         <TitleBox>
           <Title>{DataTitle}</Title>
-          <Current>{Categori ? Categori : <CountUp end={CurrentData} duration={2} />}</Current>
+          <Current data-testid='ProcessIntergratedData'>
+            {Categori ? Categori : <CountUp end={CurrentData} duration={2} />}
+          </Current>
         </TitleBox>
       </DataBox>
       <PercentBox>

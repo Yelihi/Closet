@@ -2,18 +2,8 @@
   "compilerOptions": {
     // "outDir": "./dist/",
     "target": "es5",
-    "lib": [
-      "DOM",
-      "DOM.iterable",
-      "ESNEXT",
-      "ES6",
-      "ScriptHost",
-      "ES2016.Array.Include"
-    ],
-    "types": [
-      "node",
-      "@testing-library/jest-dom"
-    ],
+    "lib": ["DOM", "DOM.iterable", "ESNEXT", "ES6", "ScriptHost", "ES2016.Array.Include"],
+    "types": ["node", "@testing-library/jest-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "downlevelIteration": true,
@@ -36,13 +26,6 @@
     //   "@": ["src/*"]
     // }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
+  "exclude": ["node_modules"]
 }

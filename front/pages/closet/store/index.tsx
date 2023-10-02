@@ -49,7 +49,9 @@ interface StoreProps {
 const Store = ({ device = 'desktop' }: StoreProps) => {
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
-  const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector((state: rootReducerType) => state.post);
+  const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector(
+    (state: rootReducerType) => state.post
+  );
   const [hydrated, setHydrated] = useState(false);
   const [current, setCurrent] = useState(1);
   const [segment, setSegment] = useState<string | number>('Table');
@@ -61,8 +63,12 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   let pageIndex = (current - 1) * 9 - 1;
   let lastId = pageIndex >= 0 ? itemsIdArray[pageIndex].id : 0;
 
-  const { data, error, isLoading, mutate } = useSWR(`${backUrl}/posts/clothes/store?lastId=${lastId}&categori=${categoriName}&deviceType=${windowWidth}`, mutateFetcher);
-  const { items, paginationPosts, setSize, isReachedEnd, isItemsLoading, infinitiMutate, infinitiValidating } = usePagination<ItemsArray>(categoriName, windowWidth);
+  const { data, error, isLoading, mutate } = useSWR(
+    `${backUrl}/posts/clothes/store?lastId=${lastId}&categori=${categoriName}&deviceType=${windowWidth}`,
+    mutateFetcher
+  );
+  const { items, paginationPosts, setSize, isReachedEnd, isItemsLoading, infinitiMutate, infinitiValidating } =
+    usePagination<ItemsArray>(categoriName, windowWidth);
 
   useEffect(() => {
     setHydrated(true);
@@ -120,7 +126,11 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
     setCurrent(page);
   };
 
-  const itemRender = (page: number, type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next', originalElement: React.ReactNode) => {
+  const itemRender = (
+    page: number,
+    type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next',
+    originalElement: React.ReactNode
+  ) => {
     if (type === 'page') {
       return (
         <div aria-label={`${page} 페이지 입니다`} role='button'>
@@ -175,8 +185,16 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   if (
     !userItems ||
     userItems?.items.length === 0 ||
-    (!isLoading && windowWidth === 'desktop' && categoriName === '' && data.hasOwnProperty('items') && data.items.length === 0) ||
-    (!isItemsLoading && windowWidth === 'phone' && categoriName === '' && paginationPosts && paginationPosts?.length === 0)
+    (!isLoading &&
+      windowWidth === 'desktop' &&
+      categoriName === '' &&
+      data.hasOwnProperty('items') &&
+      data.items.length === 0) ||
+    (!isItemsLoading &&
+      windowWidth === 'phone' &&
+      categoriName === '' &&
+      paginationPosts &&
+      paginationPosts?.length === 0)
   ) {
     return (
       <PageLayout>
@@ -208,7 +226,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
             </CustomBread>
           </HandleContainer>
           <TitleSection>
-            <dl>
+            <dl data-testid='storeTitle'>
               <Title>CHECK YOUR ITEMS</Title>
               <SubTitle>
                 저장하신 전체 의류를 확인하실 수 있습니다.
@@ -220,29 +238,45 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
             </dl>
           </TitleSection>
           <CardSection>
-            <ProcessingDataCard Icon={<AiOutlineDatabase className='icon' />} DataTitle='Total Clothes' LastData={userItems?.lastTotal} CurrentData={userItems?.total} />
-            <ProcessingDataCard Icon={<GiPayMoney className='icon' />} DataTitle='Total Price' LastData={userItems?.lastPrice} CurrentData={userItems?.price} />
-            <ProcessingDataCard Icon={<CgRowFirst className='icon' />} DataTitle='Most Unit' LastData={lastMaxCategori} CurrentData={maxCategori} Categori={maxCategoriName} />
+            <ProcessingDataCard
+              Icon={<AiOutlineDatabase className='icon' />}
+              DataTitle='Total Clothes'
+              LastData={userItems?.lastTotal}
+              CurrentData={userItems?.total}
+            />
+            <ProcessingDataCard
+              Icon={<GiPayMoney className='icon' />}
+              DataTitle='Total Price'
+              LastData={userItems?.lastPrice}
+              CurrentData={userItems?.price}
+            />
+            <ProcessingDataCard
+              Icon={<CgRowFirst className='icon' />}
+              DataTitle='Most Unit'
+              LastData={lastMaxCategori}
+              CurrentData={maxCategori}
+              Categori={maxCategoriName}
+            />
           </CardSection>
           <AddSection>
             <DictionaryBox>
               <dt>CLOTHES TABLE</dt>
               <dd>현재까지 저장된 보관 의류표</dd>
             </DictionaryBox>
-            <AddButton onClick={moveToAddPage}>
+            <AddButton onClick={moveToAddPage} data-testid='addProductButton'>
               <AiOutlinePlus style={{ width: '20px', height: '20px' }} />
               <div>ADD PRODUCT</div>
             </AddButton>
           </AddSection>
           <MenuSection>
-            <DropdownBox>
+            <DropdownBox data-testid='categoriSelect'>
               <Dropdown menu={{ items: segmentItems, onClick: handleCategori }}>
                 <CButton>
                   <IoFilterCircleOutline className='icon' />
                   Categori
                 </CButton>
               </Dropdown>
-              <CategoriSpan>분류 : {categoriName}</CategoriSpan>
+              <CategoriSpan data-testid='categoriLabel'>분류 : {categoriName}</CategoriSpan>
             </DropdownBox>
             <div>
               {windowWidth === 'desktop' ? (
@@ -258,8 +292,23 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
             </div>
           </MenuSection>
           <ItemsStoreSection>
-            {windowWidth === 'desktop' && segment === 'Table' ? <ATable headData={StoreHeader} itemsData={modifiedItems} isDelete={true} onSubmit={deleteItemAtTable} isLoading={isLoading} /> : null}
-            {windowWidth === 'desktop' && segment === 'Kanban' ? <CardBoard itemData={modifiedItems} onSubmit={deleteItemAtTable} isLoading={isLoading} windowWidth={windowWidth} /> : null}
+            {windowWidth === 'desktop' && segment === 'Table' ? (
+              <ATable
+                headData={StoreHeader}
+                itemsData={modifiedItems}
+                isDelete={true}
+                onSubmit={deleteItemAtTable}
+                isLoading={isLoading}
+              />
+            ) : null}
+            {windowWidth === 'desktop' && segment === 'Kanban' ? (
+              <CardBoard
+                itemData={modifiedItems}
+                onSubmit={deleteItemAtTable}
+                isLoading={isLoading}
+                windowWidth={windowWidth}
+              />
+            ) : null}
             {windowWidth === 'phone' ? (
               <CardBoard
                 itemData={accumulationItems}
@@ -272,7 +321,14 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
             ) : null}
             {windowWidth === 'desktop' ? (
               <div>
-                <Pagination current={current} onChange={pageChange} total={itemsIdArray?.length} defaultPageSize={9} itemRender={itemRender} aria-label='페이지네이션 입니다' />
+                <Pagination
+                  current={current}
+                  onChange={pageChange}
+                  total={itemsIdArray?.length}
+                  defaultPageSize={9}
+                  itemRender={itemRender}
+                  aria-label='페이지네이션 입니다'
+                />
               </div>
             ) : null}
           </ItemsStoreSection>

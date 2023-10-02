@@ -119,13 +119,20 @@ const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: Tab
       <tbody>
         {itemsData.map((data, index) => {
           return (
-            <Tr key={index}>
+            <Tr key={index} data-testid='tableTr'>
               {headerKey.map(headKey => {
                 return (
                   <Td key={headKey + index}>
                     {headKey === 'productName' && data.Images.length > 0 ? (
                       <ImageBox>
-                        <CImage src={data.Images[0].src} alt={data[headKey]} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+                        <CImage
+                          src={data.Images[0].src}
+                          alt={data[headKey]}
+                          width={100}
+                          height={100}
+                          placeholder='blur'
+                          blurDataURL={`data:image/gif;base64,${base64URL}`}
+                        />
                         {data[headKey]}
                       </ImageBox>
                     ) : headKey === 'price' ? (
@@ -135,7 +142,13 @@ const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: Tab
                         <ETC onClick={moveToDetailsPage(data.id)}>
                           <BiDetail className='icon' /> 상세보기
                         </ETC>
-                        <ETC onClick={() => (window.confirm('삭제하시겠습니까?') ? onSubmit(data.id)() : () => console.log('취소했씁니다'))}>
+                        <ETC
+                          onClick={() =>
+                            window.confirm('삭제하시겠습니까?')
+                              ? onSubmit(data.id)()
+                              : () => console.log('취소했씁니다')
+                          }
+                        >
                           <FaTrashRestoreAlt className='icon' /> 삭제하기
                         </ETC>
                       </EtcBox>
