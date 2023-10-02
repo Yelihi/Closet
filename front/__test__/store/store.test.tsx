@@ -1,4 +1,5 @@
 import { screen, fireEvent } from '@testing-library/react';
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
 import Store from '../../pages/closet/store';
 import { renderWithProvider } from '../../util/TestUtils/renderWithProvider';
@@ -52,7 +53,8 @@ describe('Store', () => {
     expect(AddProductButton).toHaveTextContent(/ADD PRODUCT/i);
     expect(CategoriLabel).toBeInTheDocument();
   });
-  it.skip('phone 환경에서 성공적으로 렌더링된다', async () => {
+  it('phone 환경에서 성공적으로 렌더링된다', async () => {
+    mockAllIsIntersecting(true);
     const TestStore = await MakeStore([t.LOAD_ITEMS_REQUEST]);
 
     renderWithProvider(<Store device='phone' />, { store: TestStore });
