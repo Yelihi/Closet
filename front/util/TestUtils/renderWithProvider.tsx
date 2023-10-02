@@ -30,12 +30,15 @@ export function setupStore(preloadedState?: rootReducerType) {
   return store;
 }
 
-export const renderWithProvider = (ui: React.ReactElement, { preloadedState, store = setupStore(), ...renderOptions }: ExtendedRenderOptions = {}) => {
+export const renderWithProvider = (
+  ui: React.ReactElement,
+  { preloadedState, store = setupStore(), ...renderOptions }: ExtendedRenderOptions = {}
+) => {
   function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
     return (
       <SWRConfig value={{ provider: () => new Map(), dedupingInterval: 0 }}>
         <RenderWithTheme>
-          <Provider store={setupStore()}>{children}</Provider>
+          <Provider store={store || setupStore()}>{children}</Provider>
         </RenderWithTheme>
       </SWRConfig>
     );
