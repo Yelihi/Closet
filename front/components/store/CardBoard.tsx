@@ -50,7 +50,7 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiVali
       {itemData &&
         itemData?.map(item => {
           return (
-            <CardBox key={item.id}>
+            <CardBox key={item.id} data-testid='itemCard'>
               <ItemCard src={item.Images[0].src} id={item.id} onSubmit={onSubmit} windowWidth={windowWidth} />
             </CardBox>
           );

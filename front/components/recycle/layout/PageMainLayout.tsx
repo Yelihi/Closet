@@ -22,7 +22,7 @@ const PageMainLayout = ({ children, title, subTitle, istitle = true, hasEmpty, s
         </ComponentHead>
       )}
       {istitle && <Intersection />}
-      <ChildrenContainer hasEmpty={hasEmpty} skeleton={skeleton}>
+      <ChildrenContainer data-testid='mainLayout' hasEmpty={hasEmpty} skeleton={skeleton}>
         {children}
       </ChildrenContainer>
     </MainContainer>

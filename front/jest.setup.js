@@ -14,3 +14,36 @@ afterAll(() => {
   cache.clear();
   server.close();
 });
+
+export const mockIntersectionObserver = class {
+  constructor(callback, options) {
+    this.root = options.root === null ? window : options.root;
+    this.rootMargin = options.rootMargin;
+    this.thresholds = options.thresholds;
+    this.takeRecords = options.takeRecords;
+    this.viewPort = options.root === null ? window : options.root;
+    this.entries = [];
+    this.viewPort.addEventListener('scroll', () => {
+      this.entries.map(entry => {
+        entry.isIntersecting = this.isInViewPort(entry.target);
+      });
+      callback(this.entries, this);
+    });
+  }
+
+  isInViewPort(target) {
+    return window.scrollY >= 750;
+  }
+
+  observe(target) {
+    this.entries.push({ isIntersecting: false, target });
+  }
+
+  unobserve(target) {
+    this.entries = this.entries.filter(ob => ob.target !== target);
+  }
+
+  disconnect() {
+    this.entries = [];
+  }
+};

@@ -291,7 +291,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
               ) : null}
             </div>
           </MenuSection>
-          <ItemsStoreSection>
+          <ItemsStoreSection data-testid='ItemSection'>
             {windowWidth === 'desktop' && segment === 'Table' ? (
               <ATable
                 headData={StoreHeader}
