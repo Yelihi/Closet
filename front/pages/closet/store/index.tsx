@@ -38,6 +38,7 @@ import { StoreHeader, segmentItems, ItemsArray } from '../../../components/store
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 import { usePagination, SWRResult } from '../../../hooks/usePagination';
+import useDeviceWidth from '../../../hooks/useDeviceWidth';
 import EmptyData from '../../../components/recycle/EmptyData';
 
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
@@ -56,7 +57,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   const [current, setCurrent] = useState(1);
   const [segment, setSegment] = useState<string | number>('Table');
   const [categoriName, setCategoriName] = useState('');
-  const [windowWidth, setWindowWidth] = useState(device);
+  const { windowWidth } = useDeviceWidth(device);
 
   let itemsIdArray = indexArray;
   if (categoriName) itemsIdArray = indexArray.filter(item => item.categori === categoriName);
@@ -72,20 +73,6 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
 
   useEffect(() => {
     setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    function updateWindowWidth() {
-      if (window.innerWidth <= 786) {
-        setWindowWidth('phone');
-      } else {
-        setWindowWidth('desktop');
-      }
-    }
-    window.addEventListener('resize', updateWindowWidth);
-    return () => {
-      window.removeEventListener('resize', updateWindowWidth);
-    };
   }, []);
 
   const option = useMemo(() => {
