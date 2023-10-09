@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Router from 'next/router';
 import Image from 'next/image';
 
-import OverviewCL from '../recycle/element/overview/OverviewCL';
+import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import { ItemsArray } from '../store/TableData';
-import { backUrl, base64URL } from '../../config/config';
+import { base64URL } from '../../config/config';
 
 import { media } from '../../styles/media';
 import EmptyData from '../recycle/EmptyData';
@@ -21,20 +21,27 @@ const LastItem = ({ item }: LastItemProps) => {
 
   if (!item) {
     return (
-      <OverviewCL Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={true}>
+      <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
         <EmptyData height={40} />
-      </OverviewCL>
+      </LinkCardLayout>
     );
   }
 
   return (
-    <OverviewCL Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={true}>
+    <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
       <LastItemSection>
         <ImageDiv>
           <ThumbnailWrapper>
             <Thumbnail>
               <Centered>
-                <CImage src={`${item.Images[0].src}`} alt={item.productName} width={100} height={100} placeholder='blur' blurDataURL={`data:image/gif;base64,${base64URL}`} />
+                <CImage
+                  src={`${item.Images[0].src}`}
+                  alt={item.productName}
+                  width={100}
+                  height={100}
+                  placeholder='blur'
+                  blurDataURL={`data:image/gif;base64,${base64URL}`}
+                />
               </Centered>
             </Thumbnail>
           </ThumbnailWrapper>
@@ -45,7 +52,7 @@ const LastItem = ({ item }: LastItemProps) => {
           <Price>{`구매 가격 : ${item.price.toLocaleString('ko-KR')}`}</Price>
         </DetailDiv>
       </LastItemSection>
-    </OverviewCL>
+    </LinkCardLayout>
   );
 };
 

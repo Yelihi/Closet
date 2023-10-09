@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
 
-import OverviewCL from '../recycle/element/overview/OverviewCL';
+import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import TotalPriceBar from './chart/TotalPriceBar';
 import EmptyData from '../recycle/EmptyData';
 
@@ -20,19 +20,19 @@ const CurrentYearPrice = ({ totalPrice, currentPrice }: CurrentPriceProps) => {
 
   if (!totalPrice || !currentPrice) {
     return (
-      <OverviewCL Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={true}>
+      <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>
         <EmptyData height={40} />
-      </OverviewCL>
+      </LinkCardLayout>
     );
   }
 
   return (
-    <OverviewCL Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={true}>
+    <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>
       <TestContainer>
         <Description>{`Current : ${currentYear}년을 기준으로 측정된 가격`}</Description>
         <TotalPriceBar currentPrice={currentPrice} totalPrice={totalPrice} />
       </TestContainer>
-    </OverviewCL>
+    </LinkCardLayout>
   );
 };
 
