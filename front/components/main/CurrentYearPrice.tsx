@@ -20,14 +20,14 @@ const CurrentYearPrice = ({ totalPrice, currentPrice }: CurrentPriceProps) => {
 
   if (!totalPrice || !currentPrice) {
     return (
-      <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={true}>
+      <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>
         <EmptyData height={40} />
       </LinkCardLayout>
     );
   }
 
   return (
-    <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={true}>
+    <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>
       <TestContainer>
         <Description>{`Current : ${currentYear}년을 기준으로 측정된 가격`}</Description>
         <TotalPriceBar currentPrice={currentPrice} totalPrice={totalPrice} />

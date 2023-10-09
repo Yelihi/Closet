@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 import { TbTransferIn } from 'react-icons/tb';
 
-interface OverviewCLProps {
+interface LinkCardLayoutProps {
   children: React.ReactNode;
   Subject: string;
   Address: string;
   onMove: () => void;
-  divided: boolean;
+  divided?: number;
 }
 
-const LinkCardLayout = ({ children, Subject, Address, onMove, divided = false }: OverviewCLProps) => {
+const LinkCardLayout = ({ children, Subject, Address, onMove, divided = 0 }: LinkCardLayoutProps) => {
   const iconStyle = useMemo(() => {
     return {
       width: '12px',
@@ -53,13 +53,13 @@ const MainContainer = styled.section`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 `;
 
-const Container = styled.div<{ divide: boolean }>`
+const Container = styled.div<{ divide: number }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: ${props => (props.divide ? '140px' : '340px')};
+  height: ${props => (props.divide === 2 ? '140px' : props.divide === 1 ? '340px' : '100%')};
 `;
 
 const HeadSection = styled.section`

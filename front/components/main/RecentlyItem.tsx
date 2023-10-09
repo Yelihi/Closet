@@ -24,14 +24,14 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
 
   if (items.length === 0) {
     return (
-      <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
+      <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={1}>
         <EmptyData height={80} />
       </LinkCardLayout>
     );
   }
 
   return (
-    <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
+    <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={1}>
       <ListSection>
         <DescriptionSpan>가장 최근에 저장하신 의류 중 5가지를 보여줍니다</DescriptionSpan>
         <DescriptionDiv>클릭하시면 상세페이지로 이동합니다</DescriptionDiv>

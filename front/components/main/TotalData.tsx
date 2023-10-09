@@ -21,14 +21,14 @@ const TotalData = ({ data, total }: Props) => {
 
   if (Object.keys(data).length === 0) {
     return (
-      <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
+      <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={1}>
         <EmptyData height={80} />
       </LinkCardLayout>
     );
   }
 
   return (
-    <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
+    <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={1}>
       <TotalDiv>
         <span>{total}</span>
         <p>벌</p>

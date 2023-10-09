@@ -21,14 +21,14 @@ const LastItem = ({ item }: LastItemProps) => {
 
   if (!item) {
     return (
-      <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={true}>
+      <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
         <EmptyData height={40} />
       </LinkCardLayout>
     );
   }
 
   return (
-    <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={true}>
+    <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
       <LastItemSection>
         <ImageDiv>
           <ThumbnailWrapper>
