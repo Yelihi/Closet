@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
 
-import OverviewCL from '../recycle/element/overview/OverviewCL';
+import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import { ItemsArray } from '../store/TableData';
 import ListItem from '../recycle/ListItem';
 import EmptyData from '../recycle/EmptyData';
@@ -24,14 +24,14 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
 
   if (items.length === 0) {
     return (
-      <OverviewCL Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
+      <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
         <EmptyData height={80} />
-      </OverviewCL>
+      </LinkCardLayout>
     );
   }
 
   return (
-    <OverviewCL Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
+    <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={false}>
       <ListSection>
         <DescriptionSpan>가장 최근에 저장하신 의류 중 5가지를 보여줍니다</DescriptionSpan>
         <DescriptionDiv>클릭하시면 상세페이지로 이동합니다</DescriptionDiv>
@@ -39,7 +39,7 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
           return <ListItem key={item.id} item={item} func={moveToDetailsPage} />;
         })}
       </ListSection>
-    </OverviewCL>
+    </LinkCardLayout>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 import TotalPie from './chart/TotalPie';
-import OverviewCL from '../recycle/element/overview/OverviewCL';
+import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 
 import { categoriObject } from '../store/TableData';
 
@@ -21,14 +21,14 @@ const TotalData = ({ data, total }: Props) => {
 
   if (Object.keys(data).length === 0) {
     return (
-      <OverviewCL Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
+      <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
         <EmptyData height={80} />
-      </OverviewCL>
+      </LinkCardLayout>
     );
   }
 
   return (
-    <OverviewCL Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
+    <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={false}>
       <TotalDiv>
         <span>{total}</span>
         <p>벌</p>
@@ -37,12 +37,11 @@ const TotalData = ({ data, total }: Props) => {
         <p>현재까지 저장된 모든 의류 및 신발의 수량입니다</p>
       </DestDiv>
       <TotalPie item={data} />
-    </OverviewCL>
+    </LinkCardLayout>
   );
 };
 
 export default TotalData;
-
 
 const TotalDiv = styled.div`
   display: flex;

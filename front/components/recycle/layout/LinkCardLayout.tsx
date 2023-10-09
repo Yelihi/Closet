@@ -11,7 +11,7 @@ interface OverviewCLProps {
   divided: boolean;
 }
 
-const OverviewCL = ({ children, Subject, Address, onMove, divided = false }: OverviewCLProps): JSX.Element => {
+const LinkCardLayout = ({ children, Subject, Address, onMove, divided = false }: OverviewCLProps) => {
   const iconStyle = useMemo(() => {
     return {
       width: '12px',
@@ -35,7 +35,7 @@ const OverviewCL = ({ children, Subject, Address, onMove, divided = false }: Ove
   );
 };
 
-export default OverviewCL;
+export default LinkCardLayout;
 
 const MainContainer = styled.section`
   position: relative;
