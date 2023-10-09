@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
 import { media } from '../../styles/media';
-import { ListItems } from '../main/RecentlyItem';
+import ListItem from '../recycle/ListItem';
 import { backUrl, mutateFetcher } from '../../config/config';
 import RenderBySearchState from './RenderBySearchState';
 
@@ -51,7 +51,7 @@ const SearchResultsList = ({ isDelayed, delayedValue }: SearchResultsProps) => {
       </Flex>
       <ResultsList>
         {data?.matchedDatas.map((item: ItemsArray) => {
-          return <ListItems key={item.id} item={item} func={moveToDetailPage} />;
+          return <ListItem key={item.id} item={item} func={moveToDetailPage} />;
         })}
       </ResultsList>
     </ResultsListContainer>
