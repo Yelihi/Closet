@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import * as t from '../../../reducers/type';
 
 import axios from 'axios';
-import { fetcher, backUrl, mutateFetcher } from '../../../config/config';
+import { backUrl, mutateFetcher } from '../../../config/config';
 import { END } from 'redux-saga';
 
 import { GetServerSidePropsContext } from 'next';
@@ -19,7 +19,7 @@ import type { SagaStore } from '../../../store/configureStore';
 
 import wrapper from '../../../store/configureStore';
 
-import { Breadcrumb, Pagination, PaginationProps, Segmented, Dropdown, Button, MenuProps, Spin } from 'antd';
+import { Pagination, PaginationProps, Segmented, Dropdown, Button, MenuProps } from 'antd';
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons';
 
 import { AiOutlineDatabase, AiOutlinePlus } from 'react-icons/ai';
@@ -32,12 +32,13 @@ import PageMainLayout from '../../../components/recycle/layout/PageMainLayout';
 import ProcessingDataCard from '../../../components/recycle/ProcessingDataCard';
 import ATable from '../../../components/store/ATable';
 import CardBoard from '../../../components/store/CardBoard';
+import CustomBread from '../../../components/recycle/CustomBread';
 
 import { media } from '../../../styles/media';
 import { StoreHeader, segmentItems, ItemsArray } from '../../../components/store/TableData';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
-import { usePagination, SWRResult } from '../../../hooks/usePagination';
+import { usePagination } from '../../../hooks/usePagination';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
 import EmptyData from '../../../components/recycle/EmptyData';
 
@@ -186,14 +187,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
     return (
       <PageLayout>
         <PageMainLayout istitle={false} hasEmpty={true}>
-          <HandleContainer>
-            <CustomBread separator='>'>
-              <Breadcrumb.Item>
-                <Link href='/closet/overview'>Home</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>Store</Breadcrumb.Item>
-            </CustomBread>
-          </HandleContainer>
+          <CustomBread nextPage='Store' />
           <EmptyData height={130} />
         </PageMainLayout>
       </PageLayout>
@@ -204,14 +198,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
     <SkeletonStore loadItemsLoading={loadItemsLoding} deleteItemLoding={deleteItemLoding} windowWidth={device}>
       <PageLayout>
         <PageMainLayout istitle={false}>
-          <HandleContainer>
-            <CustomBread separator='>'>
-              <Breadcrumb.Item>
-                <Link href='/closet/overview'>Home</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>Store</Breadcrumb.Item>
-            </CustomBread>
-          </HandleContainer>
+          <CustomBread nextPage='Store' />
           <TitleSection>
             <dl data-testid='storeTitle'>
               <Title>CHECK YOUR ITEMS</Title>
@@ -365,28 +352,6 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
 });
 
 export default addHead(Store, 'closet', '이 페이지는 저장한 의류 전체를 보여주는 페이지입니다.');
-
-const HandleContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  padding: 15px 0;
-`;
-
-const CustomBread = styled(Breadcrumb)`
-  margin-bottom: 30px;
-  .ant-breadcrumb-link {
-    font-family: ${({ theme }) => theme.font.Efont};
-    font-weight: ${({ theme }) => theme.fontWeight.Medium};
-
-    > a {
-      font-family: ${({ theme }) => theme.font.Efont};
-      font-weight: ${({ theme }) => theme.fontWeight.Light};
-    }
-  }
-`;
 
 const TitleSection = styled.section`
   display: flex;
