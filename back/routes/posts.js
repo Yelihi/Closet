@@ -239,4 +239,41 @@ router.get("/clothes/search/", isLoggedIn, async (req, res, next) => {
   }
 });
 
+// GET /posts/chart?year=
+router.get("/chart", isLoggedIn, async (req, res, next) => {
+  try {
+    const year = req.query.year ? parseInt(req.query.year, 10) : currentYear;
+    const where = {
+      UserId: req.user.id,
+      purchaseDay: {
+        [Op.between]: [new Date(`${year}`), new Date(`${year}-12`)],
+      },
+    };
+
+    const clothes = await Cloth.findAll({
+      where,
+      order: [["purchaseDay", "DESC"]],
+      include: [
+        {
+          model: Image,
+          attributes: ["id", "ClothId", "src"],
+        },
+      ],
+    });
+    if (!clothes) return res.status(200).json({ items: null, totalAmount: 0 });
+    const totalAmount = clothes.reduce(
+      (acc, crr) => (acc = acc + crr.price),
+      0
+    );
+    const results = {
+      items: clothes,
+      totalAmount: totalAmount,
+    };
+    res.status(200).json(results);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 module.exports = router;
