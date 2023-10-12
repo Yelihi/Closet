@@ -1,56 +1,44 @@
 {
   "../components/AppLayout.tsx -> ./recycle/Background": {
-    "id": 95551,
+    "id": 63563,
     "files": [
-      "static/chunks/551.4e1f28fdba6feedb.js"
+      "static/chunks/563.a5967ab680cae3ac.js"
     ]
   },
   "../components/AppLayout.tsx -> ./search/SearchModal": {
-    "id": 9919,
+    "id": 82663,
     "files": [
       "static/chunks/d64684d8-bfa97553a82fcd67.js",
       "static/chunks/ae51ba48-3f087c728efa2822.js",
-      "static/chunks/919.3250a5a5fb483962.js"
+      "static/chunks/663.178f1f86c79d9a28.js"
     ]
   },
   "../components/recycle/ItemForm.tsx -> ./VisionAICard": {
-    "id": 30550,
+    "id": 84444,
     "files": [
-      "static/chunks/550.a58dc9bd867c74d9.js"
-    ]
-  },
-  "../node_modules/next/dist/client/index.js -> ../pages/_app": {
-    "id": 91203,
-    "files": [
-      "static/chunks/403.f7b8f416574c277a.js"
-    ]
-  },
-  "../node_modules/next/dist/client/index.js -> ../pages/_error": {
-    "id": 89894,
-    "files": [
-      "static/chunks/894.660dfc1aa8ffe475.js"
+      "static/chunks/444.14494b020bb92d98.js"
     ]
   },
   "closet/details/[id]/index.tsx -> ../../../../components/recycle/ItemForm": {
-    "id": 24634,
+    "id": 92325,
     "files": [
       "static/chunks/667-012d0abeb5fb66e3.js",
       "static/chunks/73-015a8107568fc4d0.js",
-      "static/chunks/642-d52d93ba863f2f3a.js",
-      "static/chunks/634-ca9dd432e81badc2.js"
+      "static/chunks/642-59a60f1c4f325e5a.js",
+      "static/chunks/325-f1d6a4ab2fb4fbd3.js"
     ]
   },
   "closet/details/[id]/index.tsx -> ../../../../components/recycle/submitSuccess/SortingResultComponent": {
-    "id": 37478,
+    "id": 30913,
     "files": [
       "static/chunks/73-015a8107568fc4d0.js",
-      "static/chunks/394.7b3f64890caf7379.js"
+      "static/chunks/85.9c11ffa01e3c231e.js"
     ]
   },
   "closet/store/index.tsx -> ../../../components/store/SkeletonStore": {
-    "id": 83954,
+    "id": 42101,
     "files": [
-      "static/chunks/954.75b8790d05ef9510.js"
+      "static/chunks/101.d344cb8608c040a4.js"
     ]
   }
 }
