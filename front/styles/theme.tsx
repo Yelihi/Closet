@@ -31,15 +31,44 @@ const colors = {
   milk: '#f7f6ee',
 };
 
+export type DirectionType = 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+export interface AnimationProps {
+  name: string;
+  duration?: string;
+}
+export interface FadeAnimationProps extends AnimationProps {
+  direction?: DirectionType;
+  count?: string;
+}
+
+const animation = {
+  fade: ({ name, duration = '2s', direction = 'alternate' }: FadeAnimationProps) => css`
+    @keyframes Fade${name} {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    animation: ${'Fade' + name} ${duration} 1s infinite linear ${direction};
+  `,
+};
+
 export type FontTypes = typeof font;
 export type FontWeight = typeof fontWeight;
 export type Colors = typeof colors;
+export type Animation = typeof animation;
 
 const theme: DefaultTheme = {
   breakPoint: '796px',
   font,
   fontWeight,
   colors,
+  animation,
 };
 
 export default theme;
