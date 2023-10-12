@@ -9,6 +9,10 @@ type ListItemProps = {
   func: (id: number) => () => void;
 };
 
+export const SkeletonListItem = () => {
+  return <SkeletonListDiv />;
+};
+
 const ListItem = ({ item, func }: ListItemProps) => {
   return (
     <ListContainer key={item.id} onClick={func(item.id)} data-testid='listItem'>
@@ -55,6 +59,17 @@ const ListContainer = styled.div`
   &:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
+`;
+
+const SkeletonListDiv = styled.div`
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.hoverGrey};
+  ${({ theme }) => theme.animation.fade({ name: 'ListItem' })}
 `;
 
 const ImageContainer = styled.div`
