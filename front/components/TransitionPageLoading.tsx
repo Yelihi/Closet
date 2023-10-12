@@ -24,7 +24,7 @@ export default function TransitionPageLoading() {
   );
 }
 
-const BackgroundContainer = styled.div`
+export const BackgroundContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -35,7 +35,7 @@ const BackgroundContainer = styled.div`
   z-index: 40;
 `;
 
-const Center = styled.div`
+export const Center = styled.div`
   position: fixed;
   top: 0;
   left: 0;
