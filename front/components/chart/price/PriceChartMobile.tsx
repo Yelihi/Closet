@@ -1,6 +1,8 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
+import useSWR from 'swr';
+import { backUrl, mutateFetcher } from '../../../config/config';
 
 import { dummyPriceData } from '../__mocks__/PriceData';
 
@@ -9,6 +11,10 @@ type PriceChartMobileProps = {
 };
 
 const PriceChartMobile = ({ fallback }: PriceChartMobileProps) => {
+  const year = 2023;
+  const { data, error } = useSWR(`${backUrl}/posts/chart?year=${year}`, mutateFetcher);
+  console.log('PriceChartMobile', data);
+
   if (fallback) {
     return (
       <PriceChartSection>
