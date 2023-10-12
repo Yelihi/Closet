@@ -999,7 +999,7 @@ module.exports = require("next-redux-wrapper");
 
 /***/ }),
 
-/***/ 4957:
+/***/ 5429:
 /***/ ((module) => {
 
 "use strict";
