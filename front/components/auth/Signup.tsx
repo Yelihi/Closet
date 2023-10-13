@@ -15,7 +15,7 @@ import {
   PartialIsValiedSignUpInfoProps,
 } from './Type';
 import { SignUpContext } from './MemberContext';
-import { isEmail, isEqual, maxLength } from '../../util/auth/validation';
+import { isEmail, isEqual, maxLength } from '../../util/Auth/validation';
 import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
 
 export interface SIprops {

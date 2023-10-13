@@ -10,7 +10,7 @@ import Router from 'next/router';
 import EmptyData from '../recycle/EmptyData';
 
 type Props = {
-  data: categoriObject;
+  data: categoriObject | {};
   total: number;
 };
 
