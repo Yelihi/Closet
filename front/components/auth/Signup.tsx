@@ -15,8 +15,8 @@ import {
   PartialIsValiedSignUpInfoProps,
 } from './Type';
 import { SignUpContext } from './MemberContext';
-import { isEmail, isEqual, maxLength } from '../../util/Auth/validation';
 import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
+import { isEmail, isEqual, maxLength } from '../../util/Auth/validation';
 
 export interface SIprops {
   toggleGotoAccount: () => void;
