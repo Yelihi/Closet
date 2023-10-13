@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import useSWR from 'swr';
+import { useSelector } from 'react-redux';
+import { rootReducerType } from '../../../../reducers/types';
 import { mutateFetcher, backUrl } from '../../../../config/config';
 import addHead from '../../../../util/addHead';
 import useDeviceWidth from '../../../../hooks/useDeviceWidth';
@@ -33,8 +35,8 @@ type PriceProps = {
 
 const Price = ({ device }: PriceProps) => {
   const { windowWidth } = useDeviceWidth(device);
-  const year = 2023;
-  const { data, isLoading, error } = useSWR(`${backUrl}/posts/chart?year=${year}`, mutateFetcher);
+  const { selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
+  const { data, isLoading, error } = useSWR(`${backUrl}/posts/chart?year=${selectedYearInPrice}`, mutateFetcher);
   console.log('SWR', data);
 
   return (

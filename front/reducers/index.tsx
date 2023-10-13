@@ -4,6 +4,7 @@ import { AnyAction, combineReducers } from 'redux';
 import user from './user';
 import post from './post';
 import screenEvent from './screenEvent';
+import chart from './chart';
 
 import { rootReducerType } from './types';
 
@@ -16,6 +17,7 @@ const rootReducer = (state: rootReducerType | undefined, action: AnyAction) => {
         user,
         post,
         screenEvent,
+        chart,
       });
       return combineReducer(state, action);
     }
