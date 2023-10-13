@@ -9,7 +9,7 @@ import TextField from '../recycle/auth/TextField';
 import google from '../../public/images/google.webp';
 import AButton from '../recycle/element/button/AButton';
 
-import { isEmail, maxLength } from '../../util/auth/validation';
+import { isEmail, maxLength } from '../../util/Auth/validation';
 
 import { loginRequestAction } from '../../reducers/user';
 
