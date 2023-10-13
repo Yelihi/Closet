@@ -30,7 +30,8 @@ const Overview = () => {
   const { data, error, isLoading } = SWR.getSummuryInUserItems();
 
   if (isLoading) return null;
-  if (!data || data.theOldestData === undefined) return <RenderPageInEmptyData />;
+  if (error) return <RenderPageInEmptyData state='Error' />;
+  if (!data || data.theOldestData === undefined) return <RenderPageInEmptyData state='Empty' />;
 
   return (
     <Container>

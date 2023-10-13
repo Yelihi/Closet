@@ -10,11 +10,12 @@ import Intersection from '../recycle/element/Intersection';
 import { NavRow } from '../../pages/closet/overview';
 import { useLottiePropsByStateInOverview } from './data/Data';
 
-const RenderPageInEmptyData = () => {
-  const View = useLottieAnimation(useLottiePropsByStateInOverview['Empty'].options);
-  const moveToAddPage = () => {
-    Router.push('/closet/add');
-  };
+type RenderPageInEmptyDataProps = {
+  state: 'Empty' | 'Error';
+};
+
+const RenderPageInEmptyData = ({ state }: RenderPageInEmptyDataProps) => {
+  const View = useLottieAnimation(useLottiePropsByStateInOverview[state].options);
 
   return (
     <IsEmptyStateContainer>
@@ -25,12 +26,12 @@ const RenderPageInEmptyData = () => {
       <Container>
         <IconContainer>
           {View}
-          <NotifiedSentence>{useLottiePropsByStateInOverview['Empty'].Notify}</NotifiedSentence>
+          <NotifiedSentence>{useLottiePropsByStateInOverview[state].Notify}</NotifiedSentence>
           <AButton
             color='black'
             disabled={false}
-            dest='저장 페이지로'
-            onClick={moveToAddPage}
+            dest={useLottiePropsByStateInOverview[state].Button}
+            onClick={useLottiePropsByStateInOverview[state].Router}
             style={{ maxWidth: '35rem' }}
           />
         </IconContainer>
