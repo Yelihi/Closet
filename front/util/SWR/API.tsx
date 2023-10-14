@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { backUrl, mutateFetcher } from '../../config/config';
 
-import { Overview } from '../Types/response';
+import { Overview, MatchedDataArray } from '../Types/response';
 
 export default class SWRInDataFetch {
   fetcher: any;
@@ -11,6 +11,14 @@ export default class SWRInDataFetch {
 
   getSummuryInUserItems() {
     const { data, isLoading, error } = useSWR<Overview>(`${backUrl}/posts/overview`, this.fetcher);
+    return { data, isLoading, error };
+  }
+
+  getItemsInSearchValue(searchValue: string | undefined) {
+    const { data, isLoading, error } = useSWR<MatchedDataArray>(
+      () => (searchValue ? `${backUrl}/posts/clothes/search?searchWord=${searchValue}` : null),
+      this.fetcher
+    );
     return { data, isLoading, error };
   }
 }

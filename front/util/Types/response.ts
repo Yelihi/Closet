@@ -39,3 +39,14 @@ export interface Overview {
 }
 
 // GET posts/search?searchValue
+
+export interface MatchedDataArray {
+  matchedDatas: ItemsArray[];
+  totalNumber: number;
+}
+
+// GET posts/clothes/store
+
+export interface FetchingDataInDesktop {
+  items: ItemsArray[];
+}
