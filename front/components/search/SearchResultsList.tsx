@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import { media } from '../../styles/media';
 import ListItem from '../recycle/ListItem';
-import { backUrl, mutateFetcher } from '../../config/config';
+import SWRInDataFetch from '../../util/SWR/API';
 import RenderBySearchState from './RenderBySearchState';
 
 import type { ItemsArray } from '../store/TableData';
@@ -15,16 +15,10 @@ type SearchResultsProps = {
   delayedValue: string | undefined;
 };
 
-type MatchedDataArray = {
-  matchedDatas: ItemsArray[];
-  totalNumber: number;
-};
+const SWR = new SWRInDataFetch();
 
 const SearchResultsList = ({ isDelayed, delayedValue }: SearchResultsProps) => {
-  const { data, error, isLoading } = useSWR<MatchedDataArray>(
-    () => (delayedValue ? `${backUrl}/posts/clothes/search?searchWord=${delayedValue}` : null),
-    mutateFetcher
-  );
+  const { data, isLoading, error } = SWR.getItemsInSearchValue(delayedValue);
   const router = useRouter();
 
   const moveToDetailPage: (id: number) => () => void = useCallback(
