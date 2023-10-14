@@ -50,3 +50,10 @@ export interface MatchedDataArray {
 export interface FetchingDataInDesktop {
   items: ItemsArray[];
 }
+
+// GET posts/chart?year
+
+export interface FetchingDataPerYear {
+  items: ItemsArray[] | null;
+  totalAmount: number;
+}
