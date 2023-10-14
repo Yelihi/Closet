@@ -25,14 +25,13 @@ jobs:
           username: ${{ secrets.USER_NAME  }}
           script: |
             sudo chown -R $USER:$USER .
-            sudo su
             cd Closet/back
-            npx pm2 kill
-            git config --global --add safe.directory /home/ubuntu/Closet
-            git stash && git pull origin main && git stash pop
-            npm install
-            npm start
-            npx pm2 reload all
+            sudo npx pm2 kill
+            sudo git config --global --add safe.directory /home/ubuntu/Closet
+            sudo git stash && sudo git pull origin main && sudo git stash pop
+            sudo npm install
+            sudo npm start
+            sudo npx pm2 reload all
 
       #   run: |
       #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
