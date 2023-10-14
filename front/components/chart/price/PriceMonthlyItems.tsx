@@ -1,11 +1,14 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
+import { useSelector } from 'react-redux';
 
 import { media } from '../../../styles/media';
 import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
 import { SkeletonListItem } from '../../recycle/ListItem';
+import { SWR } from '../../../util/SWR/API';
 import { ItemsArray } from '../../store/TableData';
+import { rootReducerType } from '../../../reducers/types';
 
 type PriceMonthlyItemsProps = {
   fallback?: boolean;
@@ -28,6 +31,9 @@ const ListItems = ({ fallback, children }: ListItemsProps) => {
 };
 
 const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
+  const { selectedMonthInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
+  const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
+
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
   }, []);
