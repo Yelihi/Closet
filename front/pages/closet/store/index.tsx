@@ -32,20 +32,19 @@ import CardBoard from '../../../components/store/CardBoard';
 import CustomBread from '../../../components/recycle/CustomBread';
 
 import { media } from '../../../styles/media';
-import { StoreHeader, segmentItems, ItemsArray } from '../../../components/store/TableData';
+import { StoreHeader, segmentItems } from '../../../components/store/TableData';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
 import EmptyData from '../../../components/recycle/EmptyData';
-import SWRInDataFetch from '../../../util/SWR/API';
+
+import { SWR } from '../../../util/SWR/API';
 
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
 
 interface StoreProps {
   device: 'phone' | 'desktop';
 }
-
-const SWR = new SWRInDataFetch();
 
 const Store = ({ device = 'desktop' }: StoreProps) => {
   const dispatch = useDispatch();
