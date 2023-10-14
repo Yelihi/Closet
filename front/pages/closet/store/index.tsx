@@ -1,17 +1,14 @@
 import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import styled from 'styled-components';
-import useSWR from 'swr';
 import addHead from '../../../util/addHead';
 import dynamic from 'next/dynamic';
 import useOnScreen from '../../../hooks/useOnScreen';
 
-import Link from 'next/link';
 import Router from 'next/router';
 import { useDispatch } from 'react-redux';
 import * as t from '../../../reducers/type';
 
 import axios from 'axios';
-import { backUrl, mutateFetcher } from '../../../config/config';
 import { END } from 'redux-saga';
 
 import { GetServerSidePropsContext } from 'next';
@@ -38,9 +35,9 @@ import { media } from '../../../styles/media';
 import { StoreHeader, segmentItems, ItemsArray } from '../../../components/store/TableData';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
-import { usePagination } from '../../../hooks/usePagination';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
 import EmptyData from '../../../components/recycle/EmptyData';
+import SWRInDataFetch from '../../../util/SWR/API';
 
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
 
@@ -48,13 +45,14 @@ interface StoreProps {
   device: 'phone' | 'desktop';
 }
 
+const SWR = new SWRInDataFetch();
+
 const Store = ({ device = 'desktop' }: StoreProps) => {
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector(
     (state: rootReducerType) => state.post
   );
-  const [hydrated, setHydrated] = useState(false);
   const [current, setCurrent] = useState(1);
   const [segment, setSegment] = useState<string | number>('Table');
   const [categoriName, setCategoriName] = useState('');
@@ -65,16 +63,20 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
   let pageIndex = (current - 1) * 9 - 1;
   let lastId = pageIndex >= 0 ? itemsIdArray[pageIndex].id : 0;
 
-  const { data, error, isLoading, mutate } = useSWR(
-    `${backUrl}/posts/clothes/store?lastId=${lastId}&categori=${categoriName}&deviceType=${windowWidth}`,
-    mutateFetcher
-  );
-  const { items, paginationPosts, setSize, isReachedEnd, isItemsLoading, infinitiMutate, infinitiValidating } =
-    usePagination<ItemsArray>(categoriName, windowWidth);
+  const FetchInDesktop = SWR.getItemsPerPagenation(lastId, categoriName, windowWidth);
+  const FetchInMobile = SWR.getInfiniteItems(categoriName, windowWidth);
 
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
+  const { itemsInDesk, itemsArrayInDesk, errorInDesk, isLoadingDesk, mutateInDesk } = FetchInDesktop;
+  const {
+    itemsInMobile,
+    itemsArrayInMobile,
+    setSize,
+    isReachedEnd,
+    isLoadingMobile,
+    infinitiMutate,
+    infinitiValidating,
+    errorInMobile,
+  } = FetchInMobile;
 
   const option = useMemo(() => {
     return { root: null, threshold: 0.3 };
@@ -90,13 +92,13 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
 
   let modifiedItems = [];
   let accumulationItems = [];
-  if (windowWidth === 'desktop' && Array.isArray(data)) {
-    for (let cloth of data) {
+  if (windowWidth === 'desktop' && itemsArrayInDesk) {
+    for (let cloth of itemsArrayInDesk) {
       modifiedItems.push({ ...cloth, purchaseDay: cloth.purchaseDay.substring(0, 7) });
     }
   }
-  if (windowWidth === 'phone' && paginationPosts) {
-    for (let cloth of paginationPosts) {
+  if (windowWidth === 'phone' && itemsArrayInMobile) {
+    for (let cloth of itemsArrayInMobile) {
       accumulationItems.push({ ...cloth, purchaseDay: cloth.purchaseDay.substring(0, 7) });
     }
   }
@@ -145,44 +147,32 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
         type: t.DELETE_ITEM_REQUEST,
         data: { clothId: id },
       });
-      if (Array.isArray(data)) {
-        let newData = [];
-        for (let item of data) {
-          if (item.id !== id) newData.push(item);
-        }
-        mutate([...newData], { revalidate: false });
+      if (Array.isArray(itemsArrayInDesk)) {
+        const newData = itemsArrayInDesk.filter(item => item.id !== id);
+        mutateInDesk({ ...itemsInDesk, items: newData }, { revalidate: false });
       }
-      if (Array.isArray(items)) {
-        let newPostitems = [];
-        for (let set of items) {
-          let newItems = { ...set };
-          let newPostData = set.items?.filter(item => item.id !== id);
-          newItems = { ...newItems, items: newPostData };
-          newPostitems.push(newItems);
-        }
-        infinitiMutate([...newPostitems], { revalidate: false });
+      if (Array.isArray(itemsInMobile)) {
+        const newPostItems = itemsInMobile.map(set => ({ ...set, items: set.items.filter(item => item.id !== id) }));
+        infinitiMutate([...newPostItems], { revalidate: false });
       }
     },
-    [data, items, paginationPosts, windowWidth]
+    [itemsInDesk, itemsArrayInDesk, itemsInMobile, itemsArrayInMobile, windowWidth]
   );
 
-  if (!hydrated) {
-    return null;
-  }
-
+  if (errorInDesk || errorInMobile) return <div>에러입니다</div>;
   if (
     !userItems ||
     userItems?.items.length === 0 ||
-    (!isLoading &&
+    (!isLoadingDesk &&
       windowWidth === 'desktop' &&
-      categoriName === '' &&
-      data.hasOwnProperty('items') &&
-      data.items.length === 0) ||
-    (!isItemsLoading &&
+      !categoriName &&
+      itemsArrayInDesk &&
+      itemsArrayInDesk.length == 0) ||
+    (!isLoadingMobile &&
       windowWidth === 'phone' &&
-      categoriName === '' &&
-      paginationPosts &&
-      paginationPosts?.length === 0)
+      !categoriName &&
+      itemsArrayInMobile &&
+      itemsArrayInMobile.length == 0)
   ) {
     return (
       <PageLayout>
@@ -272,14 +262,14 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
                 itemsData={modifiedItems}
                 isDelete={true}
                 onSubmit={deleteItemAtTable}
-                isLoading={isLoading}
+                isLoading={isLoadingDesk}
               />
             ) : null}
             {windowWidth === 'desktop' && segment === 'Kanban' ? (
               <CardBoard
                 itemData={modifiedItems}
                 onSubmit={deleteItemAtTable}
-                isLoading={isLoading}
+                isLoading={isLoadingDesk}
                 windowWidth={windowWidth}
               />
             ) : null}
@@ -287,8 +277,8 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
               <CardBoard
                 itemData={accumulationItems}
                 onSubmit={deleteItemAtTable}
-                isLoading={isLoading}
-                isItemsLoading={isItemsLoading}
+                isLoading={isLoadingDesk}
+                isItemsLoading={isLoadingMobile}
                 infinitiValidating={infinitiValidating}
                 windowWidth={windowWidth}
               />
