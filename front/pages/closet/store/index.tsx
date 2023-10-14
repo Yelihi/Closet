@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react';
 import styled from 'styled-components';
-
 import addHead from '../../../util/addHead';
 import dynamic from 'next/dynamic';
 import useOnScreen from '../../../hooks/useOnScreen';
