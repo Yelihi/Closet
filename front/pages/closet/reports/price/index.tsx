@@ -23,6 +23,7 @@ import PriceSummuryInCategori from '../../../../components/chart/price/PriceSumm
 import PriceMonthlyItems from '../../../../components/chart/price/PriceMonthlyItems';
 import Intersection from '../../../../components/recycle/element/Intersection';
 import ChartTitle from '../../../../components/chart/ChartTitle';
+import { SWR } from '../../../../util/SWR/API';
 
 const PriceChartAtDesktop = dynamic(() => import('../../../../components/chart/price/PriceChartDesktop'), {
   ssr: false,
@@ -36,8 +37,8 @@ type PriceProps = {
 const Price = ({ device }: PriceProps) => {
   const { windowWidth } = useDeviceWidth(device);
   const { selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
-  const { data, isLoading, error } = useSWR(`${backUrl}/posts/chart?year=${selectedYearInPrice}`, mutateFetcher);
-  console.log('SWR', data);
+  const { itemsPerYear, isLoading, error } = SWR.getItemsPerYear(selectedYearInPrice);
+  console.log('SWR', itemsPerYear);
 
   return (
     <PageLayout>

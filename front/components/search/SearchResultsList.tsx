@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
 import { media } from '../../styles/media';
 import ListItem from '../recycle/ListItem';
-import SWRInDataFetch from '../../util/SWR/API';
+import { SWR } from '../../util/SWR/API';
 import RenderBySearchState from './RenderBySearchState';
 
 import type { ItemsArray } from '../store/TableData';
@@ -14,8 +13,6 @@ type SearchResultsProps = {
   isDelayed: boolean;
   delayedValue: string | undefined;
 };
-
-const SWR = new SWRInDataFetch();
 
 const SearchResultsList = ({ isDelayed, delayedValue }: SearchResultsProps) => {
   const { data, isLoading, error } = SWR.getItemsInSearchValue(delayedValue);

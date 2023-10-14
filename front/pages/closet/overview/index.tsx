@@ -21,10 +21,7 @@ import LastItem from '../../../components/main/LastItem';
 import Nav from '../../../components/Nav';
 import RenderPageInEmptyData from '../../../components/main/RenderPageInEmptyData';
 import Intersection from '../../../components/recycle/element/Intersection';
-
-import SWRInDataFetch from '../../../util/SWR/API';
-
-const SWR = new SWRInDataFetch();
+import { SWR } from '../../../util/SWR/API';
 
 const Overview = () => {
   const { data, error, isLoading } = SWR.getSummuryInUserItems();

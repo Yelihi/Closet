@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import { backUrl, mutateFetcher } from '../../config/config';
 import { usePagination } from '../../hooks/usePagination';
 
-import { Overview, MatchedDataArray, ItemsArray, FetchingDataInDesktop } from '../Types/response';
+import { Overview, MatchedDataArray, ItemsArray, FetchingDataInDesktop, FetchingDataPerYear } from '../Types/response';
 
 export default class SWRInDataFetch {
   fetcher: any;
@@ -59,4 +59,13 @@ export default class SWRInDataFetch {
       errorInMobile,
     };
   }
+
+  getItemsPerYear(selectedYear: number) {
+    const FetchPerYear = useSWR<FetchingDataPerYear>(`${backUrl}/posts/chart?year=${selectedYear}`, this.fetcher);
+    const { data: itemsPerYear, isLoading, error } = FetchPerYear;
+
+    return { itemsPerYear, isLoading, error };
+  }
 }
+
+export const SWR = new SWRInDataFetch();
