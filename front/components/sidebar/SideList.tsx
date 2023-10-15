@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
+import Router from 'next/router';
 
 import { useDispatch } from 'react-redux';
 import { logoutRequestAction } from '../../reducers/user';
@@ -21,8 +21,9 @@ const SideList = () => {
     setClickDrop(prev => !prev);
   }, []);
 
-  const logout = () => {
+  const logout = (path: string) => {
     dispatch(logoutRequestAction());
+    Router.push(path);
   };
 
   return (
@@ -43,30 +44,24 @@ const SideList = () => {
               <DropListContainer clickDrop={clickDrop}>
                 {dropList.map((prop, j) => {
                   return (
-                    <Link href={prop.path} key={j}>
-                      <DropListBox>
-                        <div>{prop.icon}</div>
-                        <li>{prop.name}</li>
-                      </DropListBox>
-                    </Link>
+                    <DropListBox key={j} onClick={() => Router.push(prop.path)}>
+                      <div>{prop.icon}</div>
+                      <li>{prop.name}</li>
+                    </DropListBox>
                   );
                 })}
               </DropListContainer>
             </Column>
           ) : i == 5 ? (
-            <Link href={prop.path} key={i}>
-              <ListBox direction='false' onClick={logout}>
-                {prop.icon}
-                <li>{prop.name}</li>
-              </ListBox>
-            </Link>
+            <ListBox key={i} direction='false' onClick={() => logout(prop.path)}>
+              {prop.icon}
+              <li>{prop.name}</li>
+            </ListBox>
           ) : (
-            <Link href={prop.path} key={i}>
-              <ListBox direction='false'>
-                {prop.icon}
-                <li>{prop.name}</li>
-              </ListBox>
-            </Link>
+            <ListBox key={i} direction='false' onClick={() => Router.push(prop.path)}>
+              {prop.icon}
+              <li>{prop.name}</li>
+            </ListBox>
           );
         })}
       </ul>
@@ -105,6 +100,7 @@ const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.Regular};
   overflow: hidden;
+  cursor: pointer;
 
   li {
     display: none;
