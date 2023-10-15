@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import useSWR from 'swr';
-import { fetcher } from '../../../config/config';
 import { ResponsivePie } from '@nivo/pie';
 
-import { data } from './data/TotalPieData';
 import { categoriObject } from '../../store/TableData';
 
 import { media } from '../../../styles/media';
@@ -15,7 +12,14 @@ type Props = {
 
 const TotalPie = ({ item }: Props) => {
   const Key = Object.entries(item);
-  const Color = ['hsl(309, 70%, 50%)', 'hsl(309, 70%, 50%)', 'hsl(180, 70%, 50%)', 'hsl(327, 70%, 50%)', 'hsl(168, 70%, 50%)', 'hsl(150, 70%, 50%)'];
+  const Color = [
+    'hsl(309, 70%, 50%)',
+    'hsl(309, 70%, 50%)',
+    'hsl(180, 70%, 50%)',
+    'hsl(327, 70%, 50%)',
+    'hsl(168, 70%, 50%)',
+    'hsl(150, 70%, 50%)',
+  ];
   const Data = Key.map((cate, idx) => {
     return {
       id: cate[0],

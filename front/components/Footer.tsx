@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import Image from 'rc-image';
+import Router from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -17,9 +16,9 @@ const Footer = () => {
           .filter((v, i) => i < 5)
           .map((elem, j) => {
             return (
-              <Link href={elem.path} key={j}>
+              <div key={j} onClick={() => Router.push(elem.path)}>
                 {elem.name}
-              </Link>
+              </div>
             );
           })}
       </FooterListBox>
@@ -69,7 +68,7 @@ const FooterListBox = styled.div`
   align-items: center;
   gap: 10px;
   margin-bottom: 60px;
-  > a {
+  > div {
     color: ${({ theme }) => theme.colors.black};
     font-family: ${({ theme }) => theme.font.Logo};
     font-weight: ${({ theme }) => theme.fontWeight.Light};
