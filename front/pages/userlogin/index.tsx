@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import React, { ReactElement, useState } from 'react';
 import axios from 'axios';
 import { END } from 'redux-saga';
