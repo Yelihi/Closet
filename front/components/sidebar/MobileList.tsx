@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
+import Router from 'next/router';
 
 import { useDispatch } from 'react-redux';
 import { logoutRequestAction } from '../../reducers/user';
@@ -18,8 +18,9 @@ const MobileList = () => {
     setClickDrop(prev => !prev);
   }, []);
 
-  const logout = () => {
+  const logout = (path: string) => {
     dispatch(logoutRequestAction());
+    Router.push(path);
   };
 
   return (
@@ -39,29 +40,23 @@ const MobileList = () => {
               </ListBox>
               {dropList.map((prop, j) => {
                 return (
-                  <Link href={prop.path} key={j}>
-                    <DropListBox clickDrop={clickDrop}>
-                      <div>{prop.icon}</div>
-                      <li>{prop.name}</li>
-                    </DropListBox>
-                  </Link>
+                  <DropListBox key={j} clickDrop={clickDrop} onClick={() => Router.push(prop.path)}>
+                    <div>{prop.icon}</div>
+                    <li>{prop.name}</li>
+                  </DropListBox>
                 );
               })}
             </div>
           ) : i == 5 ? (
-            <Link href={prop.path} key={i}>
-              <ListBox direction='false' onClick={logout}>
-                {prop.icon}
-                <li>{prop.name}</li>
-              </ListBox>
-            </Link>
+            <ListBox key={i} direction='false' onClick={() => logout(prop.path)}>
+              {prop.icon}
+              <li>{prop.name}</li>
+            </ListBox>
           ) : (
-            <Link href={prop.path} key={i}>
-              <ListBox direction='false'>
-                {prop.icon}
-                <li>{prop.name}</li>
-              </ListBox>
-            </Link>
+            <ListBox key={i} direction='false' onClick={() => Router.push(prop.path)}>
+              {prop.icon}
+              <li>{prop.name}</li>
+            </ListBox>
           );
         })}
       </ul>
@@ -87,6 +82,7 @@ const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   padding: 9px 30px 9px 30px;
   font-size: 14px;
   font-weight: ${({ theme }) => theme.fontWeight.Regular};
+  cursor: pointer;
 
   li {
     display: block;
