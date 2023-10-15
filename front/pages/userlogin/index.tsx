@@ -31,7 +31,11 @@ const UserLogin = () => {
         <meta name='description' content='이 페이지는 로그인 페이지입니다' />
       </Head>
       <Section>
-        {gotoAccount ? <Signup toggleGotoAccount={toggleGotoAccount} /> : <Login toggleGotoAccount={toggleGotoAccount} />}
+        {gotoAccount ? (
+          <Signup toggleGotoAccount={toggleGotoAccount} />
+        ) : (
+          <Login toggleGotoAccount={toggleGotoAccount} />
+        )}
         <ImageBox>
           <Image alt='todo' src={authImage} width={500} height={500} />
         </ImageBox>
