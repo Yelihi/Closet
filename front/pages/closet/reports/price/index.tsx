@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import useSWR from 'swr';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../../reducers/types';
-import { mutateFetcher, backUrl } from '../../../../config/config';
 import addHead from '../../../../util/addHead';
 import useDeviceWidth from '../../../../hooks/useDeviceWidth';
 import dynamic from 'next/dynamic';
@@ -38,7 +36,8 @@ const Price = ({ device }: PriceProps) => {
   const { windowWidth } = useDeviceWidth(device);
   const { selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, isLoading, error } = SWR.getItemsPerYear(selectedYearInPrice);
-  console.log('SWR', itemsPerYear);
+
+  if (error) return <div>에러입니다</div>;
 
   return (
     <PageLayout>
@@ -49,7 +48,7 @@ const Price = ({ device }: PriceProps) => {
             <Title>total price per year</Title>
             {windowWidth == 'desktop' && <SelectYearPicker />}
           </HeadSection>
-          <ChartTitle title={undefined} fallback={isLoading} />
+          <ChartTitle title={itemsPerYear?.totalAmount} fallback={isLoading} />
           {windowWidth == 'phone' && <SelectYearPicker />}
         </TitleSection>
         {windowWidth === 'desktop' ? (

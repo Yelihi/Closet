@@ -14,11 +14,12 @@ export interface CategoriObj {
   Shoe: number;
   Muffler: number;
 }
+export type Categories = keyof CategoriObj;
 
 export interface ItemsArray {
   Images: ImagesPros[];
   UserId: number;
-  categori: string;
+  categori: Categories;
   color: string;
   createdAt: string;
   description: string;
@@ -54,6 +55,6 @@ export interface FetchingDataInDesktop {
 // GET posts/chart?year
 
 export interface FetchingDataPerYear {
-  items: ItemsArray[] | null;
+  items: ItemsArray[];
   totalAmount: number;
 }
