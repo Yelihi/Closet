@@ -3,6 +3,7 @@ import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { SWR } from '../../../util/SWR/API';
+import { convertDataToDesktopChart, lineColors } from '../../../util/Chart/Price/convertData';
 
 import { dummyPriceData } from '../__mocks__/PriceData';
 import { rootReducerType } from '../../../reducers/types';
@@ -12,9 +13,13 @@ type PriceChartDesktopProps = {
 };
 
 const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
-  const { selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
+  const { selectedYearInPrice, selectedCategoriesInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
-  console.log('PriceChartDesktop', itemsPerYear);
+  const { Data, doesExistData } = convertDataToDesktopChart(
+    itemsPerYear?.items,
+    selectedYearInPrice,
+    selectedCategoriesInPrice
+  );
 
   if (fallback) {
     return (
@@ -26,18 +31,18 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
     return (
       <PriceChartSection>
         <ResponsiveLine
-          data={dummyPriceData}
+          data={Data}
           margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
           xScale={{ type: 'point' }}
           yScale={{
             type: 'linear',
             min: 'auto',
-            max: 'auto',
+            max: doesExistData ? 1000 : 'auto',
             stacked: true,
             reverse: false,
           }}
           yFormat=' >-.2f'
-          curve='cardinal'
+          curve='step'
           axisTop={null}
           axisRight={null}
           axisBottom={{
@@ -57,7 +62,7 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
             legendPosition: 'middle',
           }}
           enableGridX={false}
-          colors={{ scheme: 'dark2' }}
+          colors={lineColors}
           lineWidth={1}
           pointSize={4}
           pointColor={{ theme: 'labels.text.fill' }}
