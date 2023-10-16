@@ -11,7 +11,7 @@ export const convertDataToDesktopChart = (swrData: ItemsArray[] | undefined, yea
   const sortedDataByCategories = SortedDataByCategories(swrData, year, categori);
   const doesExistData = sortedTotalData.data.every(item => item.y === 0);
   Data.push(sortedTotalData);
-  Data.push(sortedDataByCategories);
+  categori.length > 0 && Data.push(sortedDataByCategories);
 
   return { Data, doesExistData };
 };

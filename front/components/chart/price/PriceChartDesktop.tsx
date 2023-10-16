@@ -38,7 +38,7 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
             type: 'linear',
             min: 'auto',
             max: doesExistData ? 1000 : 'auto',
-            stacked: true,
+            stacked: false,
             reverse: false,
           }}
           yFormat=' >-.2f'

@@ -1,17 +1,19 @@
 {
   "/_app": "pages/_app.js",
-  "/_document": "pages/_document.js",
   "/500": "pages/500.html",
+  "/_document": "pages/_document.js",
+  "/api/health": "pages/api/health.js",
   "/closet/administration": "pages/closet/administration.html",
   "/closet/reports/color": "pages/closet/reports/color.html",
   "/closet/reports/sort": "pages/closet/reports/sort.html",
+  "/_error": "pages/_error.js",
   "/closet/add": "pages/closet/add.js",
   "/closet/overview": "pages/closet/overview.js",
-  "/closet/reports/price": "pages/closet/reports/price.js",
   "/closet/details/[id]": "pages/closet/details/[id].js",
+  "/closet/reports/price": "pages/closet/reports/price.js",
+  "/health": "pages/health.js",
   "/userlogin": "pages/userlogin.js",
   "/closet/store": "pages/closet/store.js",
   "/api/hello": "pages/api/hello.js",
-  "/_error": "pages/_error.js",
   "/404": "pages/404.html"
 }
