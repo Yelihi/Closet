@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 
 import { media } from '../../../styles/media';
 import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
-import { SkeletonListItem } from '../../recycle/ListItem';
+import ListItem, { SkeletonListItem } from '../../recycle/ListItem';
 import { SWR } from '../../../util/SWR/API';
 import { ItemsArray } from '../../store/TableData';
+import { SortedTotalData } from '../../../util/Chart/Price/convertData';
 import { rootReducerType } from '../../../reducers/types';
 
 type PriceMonthlyItemsProps = {
@@ -33,21 +34,34 @@ const ListItems = ({ fallback, children }: ListItemsProps) => {
 const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
   const { selectedMonthIndexInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
+  const { items } = SortedTotalData(itemsPerYear?.items, selectedYearInPrice);
+
+  const ListsPerMonth = items[selectedMonthIndexInPrice];
 
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
   }, []);
 
+  const moveToDetailsPage = useCallback(
+    (id: number) => () => {
+      Router.push(`/closet/details/${id}`);
+    },
+    []
+  );
+
   return (
     <LinkCardLayout Subject='Monthly Itmes' Address='Store' onMove={moveToStore}>
       <ResultsListContainer>
         <Flex>
-          <h4>월별 저장 의류: {fallback ? '--' : 2} 벌 </h4>
+          <h4>
+            <Strong>{selectedMonthIndexInPrice + 1}</Strong> 월 저장 의류:{' '}
+            <Strong>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
+          </h4>
         </Flex>
         <ListItems fallback={fallback}>
-          {/* {data?.matchedDatas.map((item: ItemsArray) => {
-          return <ListItem key={item.id} item={item} func={moveToDetailPage} />;
-        })} */}
+          {ListsPerMonth?.map((item: ItemsArray) => {
+            return <ListItem key={item.id} item={item} func={moveToDetailsPage} exceptPrice={true} />;
+          })}
         </ListItems>
       </ResultsListContainer>
     </LinkCardLayout>
@@ -66,8 +80,13 @@ const ResultsListContainer = styled.section`
 
   h4 {
     display: block;
-    color: ${({ theme }) => theme.colors.symbol};
+    color: ${({ theme }) => theme.colors.lightBlack};
   }
+`;
+
+const Strong = styled.strong`
+  color: ${({ theme }) => theme.colors.orange};
+  font-family: ${({ theme }) => theme.font.Efont};
 `;
 
 const Flex = styled.div`
@@ -81,17 +100,6 @@ const Flex = styled.div`
   ${media.tablet} {
     flex-direction: row;
     align-items: center;
-  }
-`;
-
-const SummarySearchResults = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
-
-  strong {
-    color: ${({ theme }) => theme.colors.symbol};
   }
 `;
 
