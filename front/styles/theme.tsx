@@ -29,6 +29,9 @@ const colors = {
   success: '#68C260',
   warnning: '#F4A100',
   milk: '#f7f6ee',
+  orange: 'hsl(23, 100%, 50%)',
+  lightBlack: 'hsl(0, 0%, 27%)',
+  lightBlue: '#4096ff',
 };
 
 export type DirectionType = 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
