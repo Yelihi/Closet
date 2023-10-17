@@ -3,9 +3,9 @@ import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { SWR } from '../../../util/SWR/API';
-import { convertDataToDesktopChart, lineColors } from '../../../util/Chart/Price/convertData';
+import { convertDataToDesktopChart } from '../../../util/Chart/Price/convertData';
 
-import { dummyPriceData } from '../__mocks__/PriceData';
+import PriceCustomToolTip from './PriceCustomToolTip';
 import { rootReducerType } from '../../../reducers/types';
 
 type PriceChartDesktopProps = {
@@ -20,6 +20,7 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
     selectedYearInPrice,
     selectedCategoriesInPrice
   );
+  const length = Data[1] ? Data[1].id.length : 0;
 
   if (fallback) {
     return (
@@ -62,7 +63,9 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
             legendPosition: 'middle',
           }}
           enableGridX={false}
-          colors={lineColors}
+          colors={({ color }) => {
+            return color;
+          }}
           lineWidth={1}
           pointSize={4}
           pointColor={{ theme: 'labels.text.fill' }}
@@ -82,8 +85,8 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
               justify: false,
               translateX: 0,
               translateY: 0,
-              itemsSpacing: 0,
-              itemDirection: 'left-to-right',
+              itemsSpacing: length,
+              itemDirection: 'bottom-to-top',
               itemWidth: 80,
               itemHeight: 20,
               itemOpacity: 0.75,
@@ -103,6 +106,7 @@ const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
           ]}
           animate={false}
           motionConfig='wobbly'
+          sliceTooltip={PriceCustomToolTip}
         />
       </PriceChartSection>
     );
