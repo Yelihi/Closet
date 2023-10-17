@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import { DatePicker } from 'antd';
 import { DatePickerProps } from 'antd/es/date-picker';
 import { media } from '../../styles/media';
+import { selectYearAction } from '../../reducers/chart';
 
 const SelectYearPicker = () => {
+  const dispatch = useDispatch();
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(dateString);
+    dispatch(selectYearAction(Number(dateString)));
   };
 
   return (
