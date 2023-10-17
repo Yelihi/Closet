@@ -31,7 +31,7 @@ const ListItems = ({ fallback, children }: ListItemsProps) => {
 };
 
 const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
-  const { selectedMonthInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
+  const { selectedMonthIndexInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
 
   const moveToStore = useCallback(() => {

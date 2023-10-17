@@ -53,3 +53,11 @@ export const PATCH_ITEM_FAILURE = 'PATCH_ITEM_FAILURE' as const;
 export const DELETE_ITEM_REQUEST = 'DELETE_ITEM_REQUEST' as const;
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS' as const;
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE' as const;
+
+// chart
+
+export const SELECT_YEAR = 'SELECT_YEAR' as const;
+
+export const SELECT_CATEGORIES = 'SELECT_CATEGORIES' as const;
+
+export const GET_CHART_ID = 'GET_CHART_ID' as const;
