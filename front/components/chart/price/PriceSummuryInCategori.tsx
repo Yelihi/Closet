@@ -1,9 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { SWR } from '../../../util/SWR/API';
 import Router from 'next/router';
 import { Progress, Tag } from 'antd';
 
 import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
+import { rootReducerType } from '../../../reducers/types';
+import { selectCategoriesAction } from '../../../reducers/chart';
+import { SortedDataByCategories, summedTotalPriceWithCategories } from '../../../util/Chart/Price/convertData';
+import { calcPercentage } from '../../../util/PrimitiveUtils/number';
+import { convertNumberToKRWCurrency } from '../../../util/PrimitiveUtils/string';
 
 type PriceSummuryInCategoriProps = {
   fallback?: boolean;
@@ -25,14 +32,22 @@ const SkeletonPriceSummury = () => {
   );
 };
 
-const conicColors = { '0%': '#87d068', '50%': '#ffe58f', '100%': '#ffccc7' };
+const conicColors = { '0%': 'hsl(0, 0%, 27%)', '50%': 'hsl(23, 100%, 50%)', '100%': '#ffe58f' };
 
 const PriceSummuryInCategori = ({ fallback }: PriceSummuryInCategoriProps) => {
-  const [tags, setTags] = useState(['Outer', 'Shirt']); // 이게 나중에 reducer state 와 연동
+  const dispatch = useDispatch();
+  const { selectedCategoriesInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
+  const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
+  const { items } = SortedDataByCategories(itemsPerYear?.items, selectedYearInPrice, selectedCategoriesInPrice);
+
+  // items 를 flat 하여 summury 와 percentage 를 계산
+  const summaryPrice = summedTotalPriceWithCategories(items) * 1000;
+  const denominator = itemsPerYear ? itemsPerYear.totalAmount : 1;
+  const percentage = calcPercentage(summaryPrice, denominator);
 
   const handleClose = (removeTag: string) => {
-    const newTags = tags.filter(tag => tag !== removeTag);
-    setTags(newTags);
+    const newTags = selectedCategoriesInPrice.filter(tag => tag !== removeTag);
+    dispatch(selectCategoriesAction(newTags));
   };
 
   const moveToStore = useCallback(() => {
@@ -51,15 +66,15 @@ const PriceSummuryInCategori = ({ fallback }: PriceSummuryInCategoriProps) => {
         <ProgressContainer>
           <ProgressSubject>선택하신 카테고리 내 총합입니다</ProgressSubject>
           <ProgressTags>
-            {tags.map((tag, index) => (
+            {selectedCategoriesInPrice.map((tag, index) => (
               <Tag key={tag} closable={true} onClose={() => handleClose(tag)} color='magenta'>
                 {tag}
               </Tag>
             ))}
           </ProgressTags>
-          <ProgressPriceText>500000</ProgressPriceText>
+          <ProgressPriceText>{convertNumberToKRWCurrency(summaryPrice)}</ProgressPriceText>
 
-          <StyledProgress percent={70} status='active' strokeColor={conicColors} size={['100%', 20]} />
+          <StyledProgress percent={percentage} status='active' strokeColor={conicColors} size={['100%', 20]} />
           <InfoContainer>
             <p>위 가격은 선택된 카테고리 합산 가격입니다</p>
             <p>비율 = (선택된 카테고리에 해당하는 총액) / (해당 년도 내 총액)</p>

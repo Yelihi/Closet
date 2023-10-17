@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/theme';
+import { ConfigProvider } from 'antd';
 
 import wrapper from '../store/configureStore';
 import AppLayout from '../components/AppLayout';
@@ -50,11 +51,13 @@ const MyApp = ({ Component, pageProps }: AppPropsAddLayout) => {
 
   return (
     <SWRConfig>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle isPhoneMenuClick={isPhoneMenuClick} isSearchClick={isSearchClick} />
-        {isTransitionLoading && <TransitionPageLoading />}
-        {getLayout(<Component {...pageProps} />)}
-      </ThemeProvider>
+      <ConfigProvider theme={{ token: { colorPrimary: 'hsl(23, 100%, 50%)' } }}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle isPhoneMenuClick={isPhoneMenuClick} isSearchClick={isSearchClick} />
+          {isTransitionLoading && <TransitionPageLoading />}
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </ConfigProvider>
     </SWRConfig>
   );
 };

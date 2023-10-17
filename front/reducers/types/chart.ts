@@ -1,6 +1,7 @@
 import { Categories } from '../../util/Types/response';
+
 export interface ChartinitialState {
   selectedYearInPrice: number;
-  selectedMonthInPrice: string | null;
+  selectedMonthIndexInPrice: number;
   selectedCategoriesInPrice: Categories[];
 }

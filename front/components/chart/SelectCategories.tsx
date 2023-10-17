@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { Tag } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { media } from '../../styles/media';
+import { rootReducerType } from '../../reducers/types';
+import { selectCategoriesAction } from '../../reducers/chart';
+import { Categories } from '../../util/Types/response';
 
 const { CheckableTag } = Tag;
-const tagsData = ['Outer', 'Shirt', 'Pant', 'Top', 'Shoe', 'Muffler'];
+const tagsData: Categories[] = ['Outer', 'Shirt', 'Pant', 'Top', 'Shoe', 'Muffler'];
 
 const SelectCategories = () => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const dispatch = useDispatch();
+  const { selectedCategoriesInPrice } = useSelector((state: rootReducerType) => state.chart);
 
-  const handleChange = (tag: string, checked: boolean) => {
-    const nextSelectedTags = checked ? [...selectedTags, tag] : selectedTags.filter(t => t !== tag);
-    setSelectedTags(nextSelectedTags);
+  const handleChange = (tag: Categories, checked: boolean) => {
+    const nextSelectedTags = checked
+      ? [...selectedCategoriesInPrice, tag]
+      : selectedCategoriesInPrice.filter(t => t !== tag);
+    dispatch(selectCategoriesAction(nextSelectedTags));
   };
 
   return (
@@ -26,7 +33,7 @@ const SelectCategories = () => {
           {tagsData.map(tag => (
             <CheckableTag
               key={tag}
-              checked={selectedTags.includes(tag)}
+              checked={selectedCategoriesInPrice.includes(tag)}
               onChange={checked => handleChange(tag, checked)}
             >
               {tag}
