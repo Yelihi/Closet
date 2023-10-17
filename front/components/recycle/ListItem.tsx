@@ -7,36 +7,39 @@ import { base64URL } from '../../config/config';
 type ListItemProps = {
   item: ItemsArray;
   func: (id: number) => () => void;
+  exceptPrice?: boolean;
 };
 
 export const SkeletonListItem = () => {
   return <SkeletonListDiv />;
 };
 
-const ListItem = ({ item, func }: ListItemProps) => {
+const ListItem = ({ item, func, exceptPrice }: ListItemProps) => {
   return (
     <ListContainer key={item.id} onClick={func(item.id)} data-testid='listItem'>
-      <ImageContainer>
-        <ThumbnailWrapper>
-          <Thumbnail>
-            <Centered>
-              <CImage
-                src={`${item.Images[0].src}`}
-                alt={item.productName}
-                width={100}
-                height={100}
-                placeholder='blur'
-                blurDataURL={`data:image/gif;base64,${base64URL}`}
-              />
-            </Centered>
-          </Thumbnail>
-        </ThumbnailWrapper>
-      </ImageContainer>
-      <NameContainer>
-        <span>{item.productName}</span>
-        <p>{item.categori}</p>
-      </NameContainer>
-      <PriceContainer>{item.price.toLocaleString('ko-KR')}</PriceContainer>
+      <Flex>
+        <ImageContainer>
+          <ThumbnailWrapper>
+            <Thumbnail>
+              <Centered>
+                <CImage
+                  src={`${item.Images[0].src}`}
+                  alt={item.productName}
+                  width={100}
+                  height={100}
+                  placeholder='blur'
+                  blurDataURL={`data:image/gif;base64,${base64URL}`}
+                />
+              </Centered>
+            </Thumbnail>
+          </ThumbnailWrapper>
+        </ImageContainer>
+        <NameContainer>
+          <span>{item.productName}</span>
+          <p>{item.categori}</p>
+        </NameContainer>
+      </Flex>
+      {exceptPrice ? null : <PriceContainer>{item.price.toLocaleString('ko-KR')}</PriceContainer>}
       <DateContainer>{`${item.purchaseDay.substring(0, 7)}`}</DateContainer>
     </ListContainer>
   );
@@ -51,7 +54,6 @@ const ListContainer = styled.div`
   width: 100%;
   height: auto;
   padding: 5px 5px;
-  /* border: 0.5px solid ${({ theme }) => theme.colors.mainGrey}; */
   border-radius: 10px;
   transition: box-shadow 0.1s ease-out;
   cursor: pointer;
@@ -59,6 +61,14 @@ const ListContainer = styled.div`
   &:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   }
+`;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
 `;
 
 const SkeletonListDiv = styled.div`
@@ -83,7 +93,7 @@ const NameContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 35%;
+  width: 60%;
   height: auto;
 
   > span {
