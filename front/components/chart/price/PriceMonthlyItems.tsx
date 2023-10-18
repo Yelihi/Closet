@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { media } from '../../../styles/media';
 import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
 import ListItem, { SkeletonListItem } from '../../recycle/ListItem';
+import PriceEmptyMonthlyItmes from './PriceEmptyMonthlyItems';
 import { SWR } from '../../../util/SWR/API';
 import { ItemsArray } from '../../store/TableData';
 import { SortedTotalData } from '../../../util/Chart/Price/convertData';
@@ -37,6 +38,7 @@ const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
   const { items } = SortedTotalData(itemsPerYear?.items, selectedYearInPrice);
 
   const ListsPerMonth = items[selectedMonthIndexInPrice];
+  const Length = ListsPerMonth.length;
 
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
@@ -58,11 +60,14 @@ const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
             <Strong>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
           </h4>
         </Flex>
-        <ListItems fallback={fallback}>
-          {ListsPerMonth?.map((item: ItemsArray) => {
-            return <ListItem key={item.id} item={item} func={moveToDetailsPage} exceptPrice={true} />;
-          })}
-        </ListItems>
+        {Length == 0 && <PriceEmptyMonthlyItmes />}
+        {Length !== 0 && (
+          <ListItems fallback={fallback}>
+            {ListsPerMonth?.map((item: ItemsArray) => {
+              return <ListItem key={item.id} item={item} func={moveToDetailsPage} exceptPrice={true} />;
+            })}
+          </ListItems>
+        )}
       </ResultsListContainer>
     </LinkCardLayout>
   );
