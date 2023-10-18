@@ -4,16 +4,20 @@ export const lineColors = ['hsl(0, 0%, 27%)', 'hsl(23, 100%, 50%)'];
 
 export const emptyChartData = { id: 'empty', color: '#454545', data: [] };
 export const emptyChartMonthlyItems: ItemsArray[][] = [];
+type Device = 'desktop' | 'phone';
 
-export const convertDataToDesktopChart = (swrData: ItemsArray[] | undefined, year: number, categori: Categories[]) => {
+export const convertDataToChart = (
+  swrData: ItemsArray[] | undefined,
+  year: number,
+  categori: Categories[],
+  device: Device
+) => {
   const Data = [];
-  // 전달받은 데이터 중 뽑아야 하는 데이터는,
-  const { lineData: sortedTotalData } = SortedTotalData(swrData, year);
-  const { lineData: sortedDataByCategories, items: sortedCategoriesMonthlyItems } = SortedDataByCategories(
-    swrData,
-    year,
-    categori
-  );
+
+  const { lineData: sortedTotalData } = SortExtractedData[device].Total(swrData, year);
+  const { lineData: sortedDataByCategories, items: sortedCategoriesMonthlyItems } = SortExtractedData[
+    device
+  ].FilteredCategory(swrData, year, categori);
   const doesExistData = sortedTotalData.data.every(item => item.y === 0);
   Data.push(sortedTotalData);
   categori.length > 0 && Data.push(sortedDataByCategories);
@@ -21,23 +25,57 @@ export const convertDataToDesktopChart = (swrData: ItemsArray[] | undefined, yea
   return { Data, doesExistData, sortedCategoriesMonthlyItems };
 };
 
-export const SortedTotalData = (swrDate: ItemsArray[] | undefined, year: number) => {
-  if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
-  const { monthlyPriceArray, monthlyItemsArray } = extractMonthlyData(swrDate, year);
-  const totalLineData = formatingChartData('TotalItems', 'hsl(0, 0%, 27%)', monthlyPriceArray);
-  return { lineData: totalLineData, items: monthlyItemsArray };
-};
-
-export const SortedDataByCategories = (swrDate: ItemsArray[] | undefined, year: number, categori: Categories[]) => {
-  if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
-  const sortedItemsArray = swrDate.filter(item => categori.includes(item.categori));
-  const { monthlyPriceArray, monthlyItemsArray } = extractMonthlyData(sortedItemsArray, year);
-  const matchedLineDataByCategories = formatingChartData(
-    createChartId(categori),
-    'hsl(23, 100%, 50%)',
-    monthlyPriceArray
-  );
-  return { lineData: matchedLineDataByCategories, items: monthlyItemsArray };
+export const SortExtractedData = {
+  desktop: {
+    Total: (swrDate: ItemsArray[] | undefined, year: number) => {
+      if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
+      // 12개월 기준
+      const { monthlyPriceArray, monthlyItemsArray } = extractMonthlyData(swrDate, year);
+      // 차트형식으로 데이터 조절
+      const totalLineData = formatingChartData('TotalItems', 'hsl(0, 0%, 27%)', monthlyPriceArray);
+      return { lineData: totalLineData, items: monthlyItemsArray };
+    },
+    FilteredCategory: (swrDate: ItemsArray[] | undefined, year: number, categori: Categories[]) => {
+      if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
+      // 카테고리 filter
+      const sortedItemsArray = swrDate.filter(item => categori.includes(item.categori));
+      // 12개월 기준
+      const { monthlyPriceArray, monthlyItemsArray } = extractMonthlyData(sortedItemsArray, year);
+      // 차트형식으로 데이터 조절
+      const matchedLineDataByCategories = formatingChartData(
+        createChartId(categori),
+        'hsl(23, 100%, 50%)',
+        monthlyPriceArray
+      );
+      return { lineData: matchedLineDataByCategories, items: monthlyItemsArray };
+    },
+  },
+  phone: {
+    Total: (swrDate: ItemsArray[] | undefined, year: number) => {
+      if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
+      // 12개월 기준 -> 6개월 기준
+      const { monthlyItemsArray } = extractMonthlyData(swrDate, year);
+      const { concatMonthlyItems, evenMonthlyPriceArray } = convert6Month(monthlyItemsArray, year);
+      // 차트형식으로 데이터 조절
+      const totalLineData = formatingChartData('TotalItems', 'hsl(0, 0%, 27%)', evenMonthlyPriceArray);
+      return { lineData: totalLineData, items: concatMonthlyItems };
+    },
+    FilteredCategory: (swrDate: ItemsArray[] | undefined, year: number, categori: Categories[]) => {
+      if (!swrDate) return { lineData: emptyChartData, items: emptyChartMonthlyItems };
+      // 카테고리 filter
+      const sortedItemsArray = swrDate.filter(item => categori.includes(item.categori));
+      // 12개월 기준 -> 6개월 기준
+      const { monthlyItemsArray } = extractMonthlyData(sortedItemsArray, year);
+      const { concatMonthlyItems, evenMonthlyPriceArray } = convert6Month(monthlyItemsArray, year);
+      // 차트형식으로 데이터 조절
+      const matchedLineDataByCategories = formatingChartData(
+        createChartId(categori),
+        'hsl(23, 100%, 50%)',
+        evenMonthlyPriceArray
+      );
+      return { lineData: matchedLineDataByCategories, items: concatMonthlyItems };
+    },
+  },
 };
 
 export const extractMonthlyData = (swrData: ItemsArray[] | undefined, year: number) => {
@@ -97,4 +135,21 @@ export const createDummyData = (year: number) => {
     monthlyPriceArray.push({ x: Date, y: 0 });
   }
   return { monthlyItemsArray, monthlyPriceArray };
+};
+
+export const convert6Month = (monthlyItemsArray: ItemsArray[][], year: number) => {
+  const concatMonthlyItems: ItemsArray[][] = [];
+  const evenMonthlyPriceArray: { x: string; y: number }[] = [];
+  for (let i = 0; i < monthlyItemsArray.length; i = i + 2) {
+    const array = monthlyItemsArray[i].concat(monthlyItemsArray[i + 1]);
+    concatMonthlyItems.push(array);
+  }
+  for (let i = 2; i <= 12; i = i + 2) {
+    const Month = i < 10 ? `0${i}` : `${i}`;
+    const Date = year + '-' + Month;
+    const Price = summedPrice(concatMonthlyItems[i / 2 - 1]);
+    evenMonthlyPriceArray.push({ x: Date, y: Price });
+  }
+
+  return { concatMonthlyItems, evenMonthlyPriceArray };
 };

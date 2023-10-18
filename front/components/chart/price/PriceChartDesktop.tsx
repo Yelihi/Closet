@@ -3,22 +3,24 @@ import { ResponsiveLine } from '@nivo/line';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { SWR } from '../../../util/SWR/API';
-import { convertDataToDesktopChart } from '../../../util/Chart/Price/convertData';
+import { convertDataToChart } from '../../../util/Chart/Price/convertData';
 
 import PriceCustomToolTip from './PriceCustomToolTip';
 import { rootReducerType } from '../../../reducers/types';
 
 type PriceChartDesktopProps = {
   fallback?: boolean;
+  device: 'desktop' | 'phone';
 };
 
-const PriceChartDesktop = ({ fallback }: PriceChartDesktopProps) => {
+const PriceChartDesktop = ({ fallback, device }: PriceChartDesktopProps) => {
   const { selectedYearInPrice, selectedCategoriesInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
-  const { Data, doesExistData } = convertDataToDesktopChart(
+  const { Data, doesExistData } = convertDataToChart(
     itemsPerYear?.items,
     selectedYearInPrice,
-    selectedCategoriesInPrice
+    selectedCategoriesInPrice,
+    device
   );
   const length = Data[1] ? Data[1].id.length : 0;
 

@@ -53,15 +53,15 @@ const Price = ({ device }: PriceProps) => {
           {windowWidth == 'phone' && <SelectYearPicker />}
         </TitleSection>
         {windowWidth === 'desktop' ? (
-          <PriceChartAtDesktop fallback={isLoading} />
+          <PriceChartAtDesktop fallback={isLoading} device={windowWidth} />
         ) : (
-          <PriceChartAtPhone fallback={isLoading} />
+          <PriceChartAtPhone fallback={isLoading} device={windowWidth} />
         )}
         <SelectCategories />
         <Intersection marginBottom={1.5} />
         <CardSection>
-          <PriceSummuryInCategori fallback={isLoading} />
-          <PriceMonthlyItems fallback={isLoading} />
+          <PriceSummuryInCategori fallback={isLoading} device={windowWidth} />
+          <PriceMonthlyItems fallback={isLoading} device={windowWidth} />
         </CardSection>
       </PageMainLayout>
     </PageLayout>
