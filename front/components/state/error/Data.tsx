@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import error from '../../public/AnimaionJson/error.json';
+import error from '../../../public/AnimaionJson/error.json';
 
 const defaultStyle = {
   width: '80%',

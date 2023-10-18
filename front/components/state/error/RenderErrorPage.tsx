@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import useLottieAnimation from '../../hooks/useLottieAnimation';
+import useLottieAnimation from '../../../hooks/useLottieAnimation';
 
-import { media } from '../../styles/media';
-import AButton from '../recycle/element/button/AButton';
-import Nav from '../Nav';
-import Intersection from '../recycle/element/Intersection';
-import { NavRow } from '../../pages/closet/overview';
+import { media } from '../../../styles/media';
+import AButton from '../../recycle/element/button/AButton';
+import Nav from '../../Nav';
+import Intersection from '../../recycle/element/Intersection';
+import { NavRow } from '../../../pages/closet/overview';
 import { useLottiePropsByError, PropsByError } from './Data';
 
 const RenderErrorPage = ({ state }: PropsByError) => {
