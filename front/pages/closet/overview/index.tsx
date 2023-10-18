@@ -19,7 +19,8 @@ import RecentlyItem from '../../../components/main/RecentlyItem';
 import CurrentYearPrice from '../../../components/main/CurrentYearPrice';
 import LastItem from '../../../components/main/LastItem';
 import Nav from '../../../components/Nav';
-import RenderPageInEmptyData from '../../../components/main/RenderPageInEmptyData';
+import RenderEmptyPage from '../../../components/state/empty/RenderEmptyPage';
+import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
 import Intersection from '../../../components/recycle/element/Intersection';
 import { SWR } from '../../../util/SWR/API';
 
@@ -27,8 +28,8 @@ const Overview = () => {
   const { data, error, isLoading } = SWR.getSummuryInUserItems();
 
   if (isLoading) return null;
-  if (error) return <RenderPageInEmptyData state='Error' />;
-  if (!data || data.theOldestData === undefined) return <RenderPageInEmptyData state='Empty' />;
+  if (error) return <RenderErrorPage state='OverView' />;
+  if (!data || data.theOldestData === undefined) return <RenderEmptyPage state='OverView' />;
 
   return (
     <Container>

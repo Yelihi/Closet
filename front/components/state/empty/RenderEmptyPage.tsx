@@ -9,7 +9,7 @@ import Intersection from '../../recycle/element/Intersection';
 import { NavRow } from '../../../pages/closet/overview';
 import { useLottiePropsByEmpty, PropsByEmpty } from './Data';
 
-const RenderErrorPage = ({ state }: PropsByEmpty) => {
+const RenderEmptyPage = ({ state }: PropsByEmpty) => {
   const View = useLottieAnimation(useLottiePropsByEmpty[state].options);
 
   return (
@@ -35,7 +35,7 @@ const RenderErrorPage = ({ state }: PropsByEmpty) => {
   );
 };
 
-export default RenderErrorPage;
+export default RenderEmptyPage;
 
 const IsErrorStateContainer = styled.section`
   display: flex;
