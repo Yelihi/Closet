@@ -30,13 +30,14 @@ import ProcessingDataCard from '../../../components/recycle/ProcessingDataCard';
 import ATable from '../../../components/store/ATable';
 import CardBoard from '../../../components/store/CardBoard';
 import CustomBread from '../../../components/recycle/CustomBread';
+import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
+import RenderEmptyPage from '../../../components/state/empty/RenderEmptyPage';
 
 import { media } from '../../../styles/media';
 import { StoreHeader, segmentItems } from '../../../components/store/TableData';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
-import EmptyData from '../../../components/recycle/EmptyData';
 
 import { SWR } from '../../../util/SWR/API';
 
@@ -158,7 +159,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
     [itemsInDesk, itemsArrayInDesk, itemsInMobile, itemsArrayInMobile, windowWidth]
   );
 
-  if (errorInDesk || errorInMobile) return <div>에러입니다</div>;
+  if (errorInDesk || errorInMobile) return <RenderErrorPage state='Store' />;
   if (
     !userItems ||
     userItems?.items.length === 0 ||
@@ -173,14 +174,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
       itemsArrayInMobile &&
       itemsArrayInMobile.length == 0)
   ) {
-    return (
-      <PageLayout>
-        <PageMainLayout istitle={false} hasEmpty={true}>
-          <CustomBread nextPage='Store' />
-          <EmptyData height={130} />
-        </PageMainLayout>
-      </PageLayout>
-    );
+    return <RenderEmptyPage state='Store' />;
   }
 
   return (

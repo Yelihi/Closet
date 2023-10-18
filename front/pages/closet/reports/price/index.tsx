@@ -21,6 +21,7 @@ import PriceSummuryInCategori from '../../../../components/chart/price/PriceSumm
 import PriceMonthlyItems from '../../../../components/chart/price/PriceMonthlyItems';
 import Intersection from '../../../../components/recycle/element/Intersection';
 import ChartTitle from '../../../../components/chart/ChartTitle';
+import RenderErrorPage from '../../../../components/state/error/RenderErrorPage';
 import { SWR } from '../../../../util/SWR/API';
 
 const PriceChartAtDesktop = dynamic(() => import('../../../../components/chart/price/PriceChartDesktop'), {
@@ -37,7 +38,7 @@ const Price = ({ device }: PriceProps) => {
   const { selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, isLoading, error } = SWR.getItemsPerYear(selectedYearInPrice);
 
-  if (error) return <div>에러입니다</div>;
+  if (error) return <RenderErrorPage state='PriceChart' />;
 
   return (
     <PageLayout>
