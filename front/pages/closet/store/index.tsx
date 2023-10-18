@@ -30,6 +30,7 @@ import ProcessingDataCard from '../../../components/recycle/ProcessingDataCard';
 import ATable from '../../../components/store/ATable';
 import CardBoard from '../../../components/store/CardBoard';
 import CustomBread from '../../../components/recycle/CustomBread';
+import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
 
 import { media } from '../../../styles/media';
 import { StoreHeader, segmentItems } from '../../../components/store/TableData';
@@ -158,7 +159,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
     [itemsInDesk, itemsArrayInDesk, itemsInMobile, itemsArrayInMobile, windowWidth]
   );
 
-  if (errorInDesk || errorInMobile) return <div>에러입니다</div>;
+  if (errorInDesk || errorInMobile) return <RenderErrorPage state='Store' />;
   if (
     !userItems ||
     userItems?.items.length === 0 ||
