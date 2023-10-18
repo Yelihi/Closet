@@ -37,7 +37,7 @@ const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
   const { items } = SortedTotalData(itemsPerYear?.items, selectedYearInPrice);
 
-  const ListsPerMonth = items[selectedMonthIndexInPrice];
+  const ListsPerMonth = items.length === 0 ? [] : items[selectedMonthIndexInPrice];
   const Length = ListsPerMonth.length;
 
   const moveToStore = useCallback(() => {
