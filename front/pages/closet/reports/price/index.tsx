@@ -148,4 +148,9 @@ export const CardSection = styled.section`
     flex-direction: row;
     align-items: flex-start;
   }
+
+  @media screen and (max-width: 940px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
