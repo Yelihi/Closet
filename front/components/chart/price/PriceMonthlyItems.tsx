@@ -9,11 +9,12 @@ import ListItem, { SkeletonListItem } from '../../recycle/ListItem';
 import PriceEmptyMonthlyItmes from './PriceEmptyMonthlyItems';
 import { SWR } from '../../../util/SWR/API';
 import { ItemsArray } from '../../store/TableData';
-import { SortedTotalData } from '../../../util/Chart/Price/convertData';
+import { SortExtractedData } from '../../../util/Chart/Price/convertData';
 import { rootReducerType } from '../../../reducers/types';
 
 type PriceMonthlyItemsProps = {
   fallback?: boolean;
+  device: 'desktop' | 'phone';
 };
 type ListItemsProps = Pick<PriceMonthlyItemsProps, 'fallback'> & { children: React.ReactNode };
 
@@ -32,13 +33,14 @@ const ListItems = ({ fallback, children }: ListItemsProps) => {
   }
 };
 
-const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
+const PriceMonthlyItems = ({ fallback, device }: PriceMonthlyItemsProps) => {
   const { selectedMonthIndexInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
-  const { items } = SortedTotalData(itemsPerYear?.items, selectedYearInPrice);
+  const { items } = SortExtractedData[device].Total(itemsPerYear?.items, selectedYearInPrice);
 
   const ListsPerMonth = items.length === 0 ? [] : items[selectedMonthIndexInPrice];
-  const Length = ListsPerMonth.length;
+  const Length = ListsPerMonth?.length;
+  let Month = device === 'phone' ? (selectedMonthIndexInPrice + 1) * 2 : selectedMonthIndexInPrice + 1;
 
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
@@ -56,8 +58,7 @@ const PriceMonthlyItems = ({ fallback }: PriceMonthlyItemsProps) => {
       <ResultsListContainer>
         <Flex>
           <h4>
-            <Strong>{selectedMonthIndexInPrice + 1}</Strong> 월 저장 의류:{' '}
-            <Strong>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
+            <Strong>{Month}</Strong> 월 저장 의류: <Strong>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
           </h4>
         </Flex>
         {Length == 0 && <PriceEmptyMonthlyItmes />}

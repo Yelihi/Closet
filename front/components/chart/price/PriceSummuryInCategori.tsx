@@ -8,12 +8,13 @@ import { Progress, Tag } from 'antd';
 import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
 import { rootReducerType } from '../../../reducers/types';
 import { selectCategoriesAction } from '../../../reducers/chart';
-import { SortedDataByCategories, summedTotalPriceWithCategories } from '../../../util/Chart/Price/convertData';
+import { SortExtractedData, summedTotalPriceWithCategories } from '../../../util/Chart/Price/convertData';
 import { calcPercentage } from '../../../util/PrimitiveUtils/number';
 import { convertNumberToKRWCurrency } from '../../../util/PrimitiveUtils/string';
 
 type PriceSummuryInCategoriProps = {
   fallback?: boolean;
+  device: 'desktop' | 'phone';
 };
 
 const SkeletonPriceSummury = () => {
@@ -34,11 +35,15 @@ const SkeletonPriceSummury = () => {
 
 const conicColors = { '0%': 'hsl(0, 0%, 27%)', '50%': 'hsl(23, 100%, 50%)', '100%': '#ffe58f' };
 
-const PriceSummuryInCategori = ({ fallback }: PriceSummuryInCategoriProps) => {
+const PriceSummuryInCategori = ({ fallback, device }: PriceSummuryInCategoriProps) => {
   const dispatch = useDispatch();
   const { selectedCategoriesInPrice, selectedYearInPrice } = useSelector((state: rootReducerType) => state.chart);
   const { itemsPerYear, error } = SWR.getItemsPerYear(selectedYearInPrice);
-  const { items } = SortedDataByCategories(itemsPerYear?.items, selectedYearInPrice, selectedCategoriesInPrice);
+  const { items } = SortExtractedData[device].FilteredCategory(
+    itemsPerYear?.items,
+    selectedYearInPrice,
+    selectedCategoriesInPrice
+  );
 
   // items 를 flat 하여 summury 와 percentage 를 계산
   const summaryPrice = summedTotalPriceWithCategories(items) * 1000;
