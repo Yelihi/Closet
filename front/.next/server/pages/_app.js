@@ -777,11 +777,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _styles_GlobalStyle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5535);
 /* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4542);
-/* harmony import */ var _store_configureStore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4601);
-/* harmony import */ var _components_AppLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7956);
-/* harmony import */ var _components_TransitionPageLoading__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(7074);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([swr__WEBPACK_IMPORTED_MODULE_3__, _store_configureStore__WEBPACK_IMPORTED_MODULE_8__, _components_AppLayout__WEBPACK_IMPORTED_MODULE_9__]);
-([swr__WEBPACK_IMPORTED_MODULE_3__, _store_configureStore__WEBPACK_IMPORTED_MODULE_8__, _components_AppLayout__WEBPACK_IMPORTED_MODULE_9__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5725);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _store_configureStore__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(4601);
+/* harmony import */ var _components_AppLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(7956);
+/* harmony import */ var _components_TransitionPageLoading__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(7074);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([swr__WEBPACK_IMPORTED_MODULE_3__, _store_configureStore__WEBPACK_IMPORTED_MODULE_9__, _components_AppLayout__WEBPACK_IMPORTED_MODULE_10__]);
+([swr__WEBPACK_IMPORTED_MODULE_3__, _store_configureStore__WEBPACK_IMPORTED_MODULE_9__, _components_AppLayout__WEBPACK_IMPORTED_MODULE_10__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -797,7 +800,7 @@ const MyApp = ({ Component , pageProps  })=>{
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_4__.useRouter)();
     const [isTransitionLoading, setIsTransitionLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const { isPhoneMenuClick , isSearchClick  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)((state)=>state.screenEvent);
-    const getLayout = Component.getLayout || ((page)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AppLayout__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
+    const getLayout = Component.getLayout || ((page)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AppLayout__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .Z, {
             children: page
         }));
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
@@ -819,22 +822,29 @@ const MyApp = ({ Component , pageProps  })=>{
         router
     ]);
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(swr__WEBPACK_IMPORTED_MODULE_3__.SWRConfig, {
-        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(styled_components__WEBPACK_IMPORTED_MODULE_5__.ThemeProvider, {
-            theme: _styles_theme__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z,
-            children: [
-                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_styles_GlobalStyle__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
-                    isPhoneMenuClick: isPhoneMenuClick,
-                    isSearchClick: isSearchClick
-                }),
-                isTransitionLoading && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_TransitionPageLoading__WEBPACK_IMPORTED_MODULE_10__/* ["default"] */ .ZP, {}),
-                getLayout(/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
-                    ...pageProps
-                }))
-            ]
+        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(antd__WEBPACK_IMPORTED_MODULE_8__.ConfigProvider, {
+            theme: {
+                token: {
+                    colorPrimary: "hsl(23, 100%, 50%)"
+                }
+            },
+            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(styled_components__WEBPACK_IMPORTED_MODULE_5__.ThemeProvider, {
+                theme: _styles_theme__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z,
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_styles_GlobalStyle__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                        isPhoneMenuClick: isPhoneMenuClick,
+                        isSearchClick: isSearchClick
+                    }),
+                    isTransitionLoading && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_TransitionPageLoading__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .ZP, {}),
+                    getLayout(/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
+                        ...pageProps
+                    }))
+                ]
+            })
         })
     });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_store_configureStore__WEBPACK_IMPORTED_MODULE_8__/* ["default"].withRedux */ .Z.withRedux(MyApp));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_store_configureStore__WEBPACK_IMPORTED_MODULE_9__/* ["default"].withRedux */ .Z.withRedux(MyApp));
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
@@ -970,7 +980,10 @@ const colors = {
     red: "#EE4B2B",
     success: "#68C260",
     warnning: "#F4A100",
-    milk: "#f7f6ee"
+    milk: "#f7f6ee",
+    orange: "hsl(23, 100%, 50%)",
+    lightBlack: "hsl(0, 0%, 27%)",
+    lightBlue: "#4096ff"
 };
 const animation = {
     fade: ({ name , duration ="2s" , direction ="alternate"  })=>styled_components__WEBPACK_IMPORTED_MODULE_0__.css`
