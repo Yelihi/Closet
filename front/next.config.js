@@ -26,19 +26,19 @@ const nextConfig = {
       displayName: true,
     },
   },
-  headers: async () => {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, s-maxage=1800, stale-while-revalidate=86400',
-          },
-        ],
-      },
-    ];
-  },
+  // headers: async () => {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, s-maxage=1800, stale-while-revalidate=86400',
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   async redirects() {
     return [
       {
