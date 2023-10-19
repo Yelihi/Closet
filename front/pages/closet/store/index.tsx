@@ -304,6 +304,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   if (context.req && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
+
   const userAgent = context.req ? context.req.headers['user-agent']! : '';
   const isMobile = detectMobileDevice(userAgent);
   store.dispatch({
