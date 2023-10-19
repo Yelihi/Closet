@@ -40,6 +40,7 @@ import { rootReducerType } from '../../../reducers/types';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
 
 import { SWR } from '../../../util/SWR/API';
+import { getSelectorsByUserAgent } from 'react-device-detect';
 
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
 
@@ -303,11 +304,8 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   if (context.req && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
-  const userAgent = context.req ? context.req.headers['user-agent'] : navigator.userAgent;
-  let isMobile = false;
-  if (userAgent) {
-    isMobile = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPod|Opera Mini|IEMobile|WPDesktop/i));
-  }
+  const userAgent = context.req ? context.req.headers['user-agent']! : '';
+  const { isMobile } = getSelectorsByUserAgent(userAgent);
   store.dispatch({
     // store에서 dispatch 하는 api
     type: t.LOAD_TO_MY_INFO_REQUEST,
