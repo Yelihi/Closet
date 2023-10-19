@@ -11,7 +11,7 @@ type ChartTitleProps = {
 const ChartTitle = ({ title = 120000, fallback }: ChartTitleProps) => {
   const { data } = SWR.getSummuryInUserItems();
   const convertAmount = convertNumberToKRWCurrency(title);
-  const totalPrice = data ? data.totalPrice : 1;
+  const totalPrice = data?.totalPrice ? data.totalPrice : 1;
   const yearPricePercentOfTotal = Math.ceil((title / totalPrice) * 100);
 
   if (fallback) {
