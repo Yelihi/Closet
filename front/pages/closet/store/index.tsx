@@ -40,17 +40,15 @@ import { rootReducerType } from '../../../reducers/types';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';
 
 import { SWR } from '../../../util/SWR/API';
-import { getSelectorsByUserAgent } from 'react-device-detect';
+import { detectMobileDevice } from '../../../util/PrimitiveUtils/string';
 
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
 
 interface StoreProps {
   device: 'phone' | 'desktop';
-  userAgent: string;
 }
 
-const Store = ({ device = 'desktop', userAgent }: StoreProps) => {
-  console.log('userAgent..', userAgent);
+const Store = ({ device = 'desktop' }: StoreProps) => {
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector(
@@ -307,7 +305,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
     axios.defaults.headers.Cookie = cookie;
   }
   const userAgent = context.req ? context.req.headers['user-agent']! : '';
-  const { isMobile } = getSelectorsByUserAgent(userAgent);
+  const isMobile = detectMobileDevice(userAgent);
   store.dispatch({
     // store에서 dispatch 하는 api
     type: t.LOAD_TO_MY_INFO_REQUEST,
@@ -330,7 +328,6 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   return {
     props: {
       device: isMobile ? 'phone' : 'desktop',
-      userAgent: userAgent,
     },
   };
 });
