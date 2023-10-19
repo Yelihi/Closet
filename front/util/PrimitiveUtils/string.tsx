@@ -8,9 +8,5 @@ export const convertNumberToKRWCurrency = (number: number) => {
 
 export const detectMobileDevice = (userAgent: string | undefined) => {
   if (!userAgent) return false;
-  return Boolean(
-    userAgent.match(
-      /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/i
-    )
-  );
+  return Boolean(userAgent.match(/Mobi|iP(hone|od|ad)|Android|BlackBerry/));
 };
