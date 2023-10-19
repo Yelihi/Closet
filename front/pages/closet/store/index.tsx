@@ -46,9 +46,11 @@ const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonSt
 
 interface StoreProps {
   device: 'phone' | 'desktop';
+  userAgent: string;
 }
 
-const Store = ({ device = 'desktop' }: StoreProps) => {
+const Store = ({ device = 'desktop', userAgent }: StoreProps) => {
+  console.log('userAgent..', userAgent);
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector(
@@ -328,6 +330,7 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   return {
     props: {
       device: isMobile ? 'phone' : 'desktop',
+      userAgent: userAgent,
     },
   };
 });
