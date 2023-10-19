@@ -15,5 +15,10 @@ export default Health;
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   context.res.setHeader('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
   context.res.end('pong');
+  Login(context);
+  Overview(context);
+  Store(context);
+  Add(context);
+  Price(context);
   return { props: {} };
 }
