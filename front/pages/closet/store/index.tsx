@@ -300,7 +300,7 @@ const Store = ({ device = 'desktop', userAgent }: StoreProps) => {
 };
 
 export const config = {
-  runtime: 'edge',
+  runtime: 'experimental-edge',
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
