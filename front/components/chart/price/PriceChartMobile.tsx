@@ -48,22 +48,8 @@ const PriceChartMobile = ({ fallback, device }: PriceChartMobileProps) => {
           curve='step'
           axisTop={null}
           axisRight={null}
-          axisBottom={{
-            tickSize: 0,
-            tickPadding: 13,
-            tickRotation: 0,
-            legend: 'year',
-            legendOffset: 40,
-            legendPosition: 'middle',
-          }}
-          axisLeft={{
-            tickSize: 0,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'price(만 원)',
-            legendOffset: -40,
-            legendPosition: 'middle',
-          }}
+          axisBottom={null}
+          axisLeft={null}
           enableGridX={false}
           colors={({ color }) => {
             return color;
