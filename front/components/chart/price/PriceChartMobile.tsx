@@ -35,7 +35,7 @@ const PriceChartMobile = ({ fallback, device }: PriceChartMobileProps) => {
       <PriceChartSection>
         <ResponsiveLine
           data={Data}
-          margin={{ top: 20, right: 20, bottom: 50, left: 60 }}
+          margin={{ top: 20, right: 10, bottom: 30, left: 10 }}
           xScale={{ type: 'point' }}
           yScale={{
             type: 'linear',
