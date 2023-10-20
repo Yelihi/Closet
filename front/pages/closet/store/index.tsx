@@ -42,10 +42,6 @@ import useDeviceWidth from '../../../hooks/useDeviceWidth';
 import { SWR } from '../../../util/SWR/API';
 import { detectMobileDevice } from '../../../util/PrimitiveUtils/string';
 
-export const config = {
-  runtime: 'experimental-edge',
-};
-
 const SkeletonStore = dynamic(() => import('../../../components/store/SkeletonStore'));
 
 interface StoreProps {
