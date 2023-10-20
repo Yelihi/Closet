@@ -28,6 +28,10 @@ import { media } from '../../../../styles/media';
 import { addPageLayoutProps } from '../../../../components/details/ElementData';
 import useConfirm from '../../../../hooks/useComfirm';
 
+export const config = {
+  runtime: 'experimental-edge',
+};
+
 const ItemForm = dynamic(() => import('../../../../components/recycle/ItemForm'));
 const SortingResultComponent = dynamic(
   () => import('../../../../components/recycle/submitSuccess/SortingResultComponent')
@@ -184,10 +188,6 @@ const Details = () => {
       ) : null}
     </PageLayout>
   );
-};
-
-export const config = {
-  runtime: 'edge',
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
