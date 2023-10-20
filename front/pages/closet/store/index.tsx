@@ -50,7 +50,6 @@ interface StoreProps {
 }
 
 const Store = ({ device = 'desktop', userAgent }: StoreProps) => {
-  console.log('userAgent..', userAgent);
   const dispatch = useDispatch();
   const observerTargetElement: any = useRef<HTMLDivElement>(null);
   const { userItems, indexArray, deleteItemDone, loadItemsLoding, deleteItemLoding } = useSelector(
@@ -298,6 +297,10 @@ const Store = ({ device = 'desktop', userAgent }: StoreProps) => {
       </PageLayout>
     </SkeletonStore>
   );
+};
+
+export const config = {
+  runtime: 'edge',
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {

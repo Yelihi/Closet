@@ -4,9 +4,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    runtime: 'experimental-edge',
-  },
   images: {
     domains: ['closet-online.s3.ap-northeast-2.amazonaws.com'],
   },
