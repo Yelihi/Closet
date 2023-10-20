@@ -16,7 +16,7 @@ const SelectYearPicker = () => {
   return (
     <Section>
       <Subject>Selected Year</Subject>
-      <DatePicker onChange={onChange} picker='year' />
+      <DatePicker onChange={onChange} picker='year' inputReadOnly />
     </Section>
   );
 };
