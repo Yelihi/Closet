@@ -1,7 +1,3 @@
-export const config = {
-  runtime: 'edge',
-};
-
 import { useEffect, useState, ReactElement, ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { SWRConfig } from 'swr';
