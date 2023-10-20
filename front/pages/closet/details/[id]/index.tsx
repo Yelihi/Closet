@@ -29,7 +29,9 @@ import { addPageLayoutProps } from '../../../../components/details/ElementData';
 import useConfirm from '../../../../hooks/useComfirm';
 
 const ItemForm = dynamic(() => import('../../../../components/recycle/ItemForm'));
-const SortingResultComponent = dynamic(() => import('../../../../components/recycle/submitSuccess/SortingResultComponent'));
+const SortingResultComponent = dynamic(
+  () => import('../../../../components/recycle/submitSuccess/SortingResultComponent')
+);
 
 const Details = () => {
   const router = useRouter();
@@ -170,10 +172,22 @@ const Details = () => {
         </PageMainLayout>
       ) : null}
       {!deleteItemDone && !deleteItemError && isModifyMode ? (
-        <ItemForm title={title} subTitle={subTitle} type='details' itemId={Number(id)} resultNumber={Number(id)} Submit={transferTypes} setState={setIsModifyMode} />
+        <ItemForm
+          title={title}
+          subTitle={subTitle}
+          type='details'
+          itemId={Number(id)}
+          resultNumber={Number(id)}
+          Submit={transferTypes}
+          setState={setIsModifyMode}
+        />
       ) : null}
     </PageLayout>
   );
+};
+
+export const config = {
+  runtime: 'experimental-edge',
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
