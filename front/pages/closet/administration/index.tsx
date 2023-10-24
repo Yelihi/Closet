@@ -9,7 +9,7 @@ const Administration = () => {
   return (
     <PageLayout>
       <TestContainer>
-        <KeepWorking height={100} />
+        <KeepWorking height={90} />
       </TestContainer>
     </PageLayout>
   );
