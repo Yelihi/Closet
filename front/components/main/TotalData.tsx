@@ -7,7 +7,6 @@ import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import { categoriObject } from '../store/TableData';
 
 import Router from 'next/router';
-import EmptyData from '../recycle/EmptyData';
 
 type Props = {
   data: categoriObject | {};
@@ -18,14 +17,6 @@ const TotalData = ({ data, total }: Props) => {
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
   }, []);
-
-  if (Object.keys(data).length === 0) {
-    return (
-      <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={1}>
-        <EmptyData height={80} />
-      </LinkCardLayout>
-    );
-  }
 
   return (
     <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={1}>

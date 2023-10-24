@@ -1,10 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
 
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import TotalPriceBar from './chart/TotalPriceBar';
-import EmptyData from '../recycle/EmptyData';
 
 type CurrentPriceProps = {
   totalPrice: number;
@@ -17,14 +16,6 @@ const CurrentYearPrice = ({ totalPrice, currentPrice }: CurrentPriceProps) => {
   const moveToStore = useCallback(() => {
     Router.push('/closet/store');
   }, []);
-
-  if (!totalPrice || !currentPrice) {
-    return (
-      <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>
-        <EmptyData height={40} />
-      </LinkCardLayout>
-    );
-  }
 
   return (
     <LinkCardLayout Subject='TotalPrice' Address='Store' onMove={moveToStore} divided={2}>

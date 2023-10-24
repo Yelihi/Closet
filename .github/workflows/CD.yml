@@ -3,6 +3,8 @@ name: CD
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "front/**"
 
   # Allows you to run this workflow manually from the Actions tab
   #Now we have got the access of EC2 and we will start the deploy .
@@ -27,7 +29,6 @@ jobs:
             sudo chown -R $USER:$USER .
             cd Closet/back
             sudo npx pm2 kill
-            sudo git gc --aggressive --prune=now 
             sudo git stash && sudo git pull origin main && sudo git stash pop
             sudo npm install -g npm@latest
             sudo npm start
