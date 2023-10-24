@@ -18,7 +18,7 @@ const CenteredPositionImage = ({ shape, width, height, src, alt }: CenteredPosit
         <Thumbnail width={width} shape={shape}>
           <Centered>
             <CImage
-              src={`${backUrl}/${src}`}
+              src={`${src}`}
               alt={alt}
               width={100}
               height={100}
