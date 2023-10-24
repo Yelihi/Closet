@@ -3,6 +3,8 @@ name: CD
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "front/**"
 
   # Allows you to run this workflow manually from the Actions tab
   #Now we have got the access of EC2 and we will start the deploy .
