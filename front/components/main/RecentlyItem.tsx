@@ -5,7 +5,6 @@ import Router from 'next/router';
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import { ItemsArray } from '../store/TableData';
 import ListItem from '../recycle/ListItem';
-import EmptyData from '../recycle/EmptyData';
 
 type RecentlyProps = {
   items: ItemsArray[];
@@ -21,14 +20,6 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
     },
     []
   );
-
-  if (items.length === 0) {
-    return (
-      <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={1}>
-        <EmptyData height={80} />
-      </LinkCardLayout>
-    );
-  }
 
   return (
     <LinkCardLayout Subject='Recently Eroll' Address='Store' onMove={moveToStore} divided={1}>
