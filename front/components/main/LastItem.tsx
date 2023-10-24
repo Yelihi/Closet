@@ -1,14 +1,12 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Router from 'next/router';
-import Image from 'next/image';
 
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
+import CenteredPositionImage from '../recycle/CenteredPositionImage';
 import { ItemsArray } from '../store/TableData';
-import { base64URL } from '../../config/config';
 
 import { media } from '../../styles/media';
-import EmptyData from '../recycle/EmptyData';
 
 type LastItemProps = {
   item: ItemsArray;
@@ -19,33 +17,17 @@ const LastItem = ({ item }: LastItemProps) => {
     Router.push(`/closet/details/${item.id}`);
   }, []);
 
-  if (!item) {
-    return (
-      <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
-        <EmptyData height={40} />
-      </LinkCardLayout>
-    );
-  }
-
   return (
     <LinkCardLayout Subject='Last Item' Address='Detail' onMove={moveToDetail} divided={2}>
       <LastItemSection>
-        <ImageDiv>
-          <ThumbnailWrapper>
-            <Thumbnail>
-              <Centered>
-                <CImage
-                  src={`${item.Images[0].src}`}
-                  alt={item.productName}
-                  width={100}
-                  height={100}
-                  placeholder='blur'
-                  blurDataURL={`data:image/gif;base64,${base64URL}`}
-                />
-              </Centered>
-            </Thumbnail>
-          </ThumbnailWrapper>
-        </ImageDiv>
+        <CenteredPositionImage
+          shape='radius'
+          radius={20}
+          width={95}
+          height={95}
+          src={item.Images[0].src}
+          alt={item.productName}
+        />
         <DetailDiv>
           <ItemName>{`${item.productName}`}</ItemName>
           <Purchase>{`구매 날짜 : ${item.purchaseDay.substring(0, 7)}`}</Purchase>
@@ -64,11 +46,6 @@ const LastItemSection = styled.section`
   align-items: center;
   width: 100%;
   height: auto;
-`;
-
-const ImageDiv = styled.div`
-  width: 95px;
-  height: 95px;
 `;
 
 const DetailDiv = styled.div`
@@ -100,37 +77,3 @@ const Purchase = styled.p`
 `;
 
 const Price = styled(Purchase)``;
-
-const ThumbnailWrapper = styled.div`
-  width: 100%;
-`;
-
-const Thumbnail = styled.div`
-  position: relative;
-  padding-top: 100%;
-  overflow: hidden;
-  border-radius: 20px;
-`;
-
-const Centered = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transform: translate(50%, 50%);
-  -ms-transform: translate(50%, 50%);
-  transform: translate(50%, 50%);
-`;
-
-const CImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-`;

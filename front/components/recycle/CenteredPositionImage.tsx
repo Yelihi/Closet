@@ -5,17 +5,18 @@ import { backUrl, base64URL } from '../../config/config';
 
 type CenteredPositionImageProps = {
   shape: 'radius' | 'none';
+  radius?: number;
   width: number;
   height: number;
   src: string;
   alt: string;
 };
 
-const CenteredPositionImage = ({ shape, width, height, src, alt }: CenteredPositionImageProps) => {
+const CenteredPositionImage = ({ shape, width, height, src, alt, radius }: CenteredPositionImageProps) => {
   return (
     <ImageContainer width={width} height={height}>
       <ThumbnailWrapper>
-        <Thumbnail width={width} shape={shape}>
+        <Thumbnail width={radius ? radius * 2 : width} shape={shape}>
           <Centered>
             <CImage
               src={`${src}`}
