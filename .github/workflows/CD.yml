@@ -27,6 +27,7 @@ jobs:
             sudo chown -R $USER:$USER .
             cd Closet/back
             sudo npx pm2 kill
+            sudo git gc
             sudo git stash && sudo git pull origin main && sudo git stash pop
             sudo npm install -g npm@latest
             sudo npm start
