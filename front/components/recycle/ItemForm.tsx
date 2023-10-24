@@ -20,7 +20,7 @@ import AInputElement from './element/AInputElement';
 import AButton from './element/button/AButton';
 import Measure from './add/Measure';
 
-import DropImageInput from './element/DropImageInput';
+import DropImageInput from '../add/DropImageInput';
 
 import SortingResultComponent from './submitSuccess/SortingResultComponent';
 
@@ -90,7 +90,9 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
   const dispatch = useDispatch();
   const [isClothes, setIsClothes] = useState(false);
   const isDataChange = useRef(false);
-  const { imagePath, uploadItemsDone, uploadItemsError, imageUploadLoding, lastAddDataIndex, singleItem } = useSelector((state: rootReducerType) => state.post);
+  const { imagePath, uploadItemsDone, uploadItemsError, imageUploadLoding, lastAddDataIndex, singleItem } = useSelector(
+    (state: rootReducerType) => state.post
+  );
   const methods = useForm<AddInitialValue>({
     mode: 'onSubmit',
     defaultValues: defaultValues,
@@ -167,29 +169,79 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
             <AddSection>
               <FormProvider {...methods}>
                 <AddForm onSubmit={handleSubmit(onSubmit)}>
-                  <InputPartial title='SPECIFICATION' subtitle='의류 명칭, 가격 등 특성 정보를 저장해주세요. 필수 기입입니다.'>
+                  <InputPartial
+                    title='SPECIFICATION'
+                    subtitle='의류 명칭, 가격 등 특성 정보를 저장해주세요. 필수 기입입니다.'
+                  >
                     {clothData.map(v => {
                       return (
                         <InputBackground key={v.name} title={v.name} subTitle={v.subTitle}>
-                          <AInputElement control={control} name={v.name} errorMessage={v.errorMessage} placeholder={v.placeholder} rules={{ required: true }} />
+                          <AInputElement
+                            control={control}
+                            name={v.name}
+                            errorMessage={v.errorMessage}
+                            placeholder={v.placeholder}
+                            rules={{ required: true }}
+                          />
                         </InputBackground>
                       );
                     })}
                   </InputPartial>
-                  <InputPartial title='SORT CLOTHES' subtitle='카테고리를 선택해주시고, 각 카테고리에 맞는 측정치수를 cm 단위로 기입해주세요. 카테고리를 기입하셔야 이미지체크가 가능합니다'>
+                  <InputPartial
+                    title='SORT CLOTHES'
+                    subtitle='카테고리를 선택해주시고, 각 카테고리에 맞는 측정치수를 cm 단위로 기입해주세요. 카테고리를 기입하셔야 이미지체크가 가능합니다'
+                  >
                     {categori.map(v => {
                       return (
                         <InputBackground key={v.name} title={v.name} subTitle={v.subTitle}>
-                          <AInputElement control={control} name={v.name} errorMessage={v.errorMessage} options={v.options} defaultValue={v.defaultValue} rules={{ required: true }} />
+                          <AInputElement
+                            control={control}
+                            name={v.name}
+                            errorMessage={v.errorMessage}
+                            options={v.options}
+                            defaultValue={v.defaultValue}
+                            rules={{ required: true }}
+                          />
                         </InputBackground>
                       );
                     })}
-                    {['Outer', 'Shirt', 'Top'].includes(watch('categori')) ? <Measure control={control} nameArray={topMeasureName} subTitleArray={topMeasureSub} placeholder='cm' /> : null}
-                    {['Pant'].includes(watch('categori')) ? <Measure control={control} nameArray={bottomMeasureName} subTitleArray={bottomMeasureSub} placeholder='cm' /> : null}
-                    {['Shoe'].includes(watch('categori')) ? <Measure control={control} nameArray={shoesMeasureName} subTitleArray={shoesMeasureSub} placeholder='mm' /> : null}
-                    {['Muffler'].includes(watch('categori')) ? <Measure control={control} nameArray={mufflerMeasureName} subTitleArray={mufflerMeasureSub} placeholder='cm' /> : null}
+                    {['Outer', 'Shirt', 'Top'].includes(watch('categori')) ? (
+                      <Measure
+                        control={control}
+                        nameArray={topMeasureName}
+                        subTitleArray={topMeasureSub}
+                        placeholder='cm'
+                      />
+                    ) : null}
+                    {['Pant'].includes(watch('categori')) ? (
+                      <Measure
+                        control={control}
+                        nameArray={bottomMeasureName}
+                        subTitleArray={bottomMeasureSub}
+                        placeholder='cm'
+                      />
+                    ) : null}
+                    {['Shoe'].includes(watch('categori')) ? (
+                      <Measure
+                        control={control}
+                        nameArray={shoesMeasureName}
+                        subTitleArray={shoesMeasureSub}
+                        placeholder='mm'
+                      />
+                    ) : null}
+                    {['Muffler'].includes(watch('categori')) ? (
+                      <Measure
+                        control={control}
+                        nameArray={mufflerMeasureName}
+                        subTitleArray={mufflerMeasureSub}
+                        placeholder='cm'
+                      />
+                    ) : null}
                   </InputPartial>
-                  <InputPartial title='ABOUT ITEM' subtitle='의류에 대한 설명을 기입하실 수 있습니다. 구입처나 소재, 보관방법 등 구체적인 사안을 저장하실 수 있습니다.'>
+                  <InputPartial
+                    title='ABOUT ITEM'
+                    subtitle='의류에 대한 설명을 기입하실 수 있습니다. 구입처나 소재, 보관방법 등 구체적인 사안을 저장하실 수 있습니다.'
+                  >
                     {descriptionData.map(v => {
                       return (
                         <InputBackground key={v.name} title={v.name} subTitle={v.subTitle} textArea={true}>
@@ -205,23 +257,47 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
                     <DropImageInput />
                   </InputPartial>
                   <PreviewSection>
-                    {imageUploadLoding ? <VisionAICard imageUploadLoding={true} src={'src'} index={1} isClothes={true} isCategori={true} confidence={true} /> : null}
+                    {imageUploadLoding ? (
+                      <VisionAICard
+                        imageUploadLoding={true}
+                        src={'src'}
+                        index={1}
+                        isClothes={true}
+                        isCategori={true}
+                        confidence={true}
+                      />
+                    ) : null}
                     {imagePath.length > 0 &&
                       imagePath.map((v, i) => {
                         let cate = watch('categori');
                         let isClothes = v.visionSearch.some(v => visionAI.includes(v.name));
-                        let isCategori = v.visionSearch.map(v => v.name).some(item => categoriToVisionAI[cate]?.includes(item));
-                        let confidence = v.visionSearch.length > 0 && categoriToVisionAI[cate]?.includes(v.visionSearch[0].name);
+                        let isCategori = v.visionSearch
+                          .map(v => v.name)
+                          .some(item => categoriToVisionAI[cate]?.includes(item));
+                        let confidence =
+                          v.visionSearch.length > 0 && categoriToVisionAI[cate]?.includes(v.visionSearch[0].name);
                         return (
                           <>
-                            <VisionAICard imageUploadLoding={imageUploadLoding} src={v.src} index={i} isClothes={isClothes} isCategori={isCategori} confidence={confidence} />
+                            <VisionAICard
+                              imageUploadLoding={imageUploadLoding}
+                              src={v.src}
+                              index={i}
+                              isClothes={isClothes}
+                              isCategori={isCategori}
+                              confidence={confidence}
+                            />
                           </>
                         );
                       })}
                   </PreviewSection>
                   <Float>
                     <SubmitButton>
-                      <AButton type='submit' color='black' dest={type === 'add' ? '저장하기' : '수정하기'} disabled={!isClothes} />
+                      <AButton
+                        type='submit'
+                        color='black'
+                        dest={type === 'add' ? '저장하기' : '수정하기'}
+                        disabled={!isClothes}
+                      />
                     </SubmitButton>
                     {type === 'details' && (
                       <SubmitButton>
@@ -236,7 +312,9 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
         </PageMainLayout>
       ) : null}
       {uploadItemsDone ? <SortingResultComponent sort={type} id={resultNumber} setConvertState={setState} /> : null}
-      {uploadItemsError ? <SortingResultComponent sort={`${type}Failure`} id={resultNumber} setConvertState={setState} /> : null}
+      {uploadItemsError ? (
+        <SortingResultComponent sort={`${type}Failure`} id={resultNumber} setConvertState={setState} />
+      ) : null}
     </>
   );
 };

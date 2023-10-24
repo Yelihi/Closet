@@ -1,65 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { FileImageOutlined } from '@ant-design/icons';
 
-import * as t from '../../../reducers/type';
-import AButton from './button/AButton';
+import * as t from '../../reducers/type';
+import AButton from '../recycle/element/button/AButton';
 
 import { useDispatch } from 'react-redux';
+import useHandleDrag from '../../hooks/useHandleDrag';
 
 function DropImageInput() {
   const dispatch = useDispatch();
-  const [dragActive, setDragActive] = useState<boolean>(false);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleDrag = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === 'dragenter' || e.type === 'dragover') {
-      setDragActive(true);
-    } else if (e.type === 'dragleave') {
-      setDragActive(false);
-    }
+  const postImagesData = (list: FormData) => {
+    return dispatch({
+      type: t.UPLOAD_IMAGES_REQUEST,
+      data: list,
+    });
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
-      [].forEach.call(e.dataTransfer.files, file => {
-        imageFormData.append('image', file);
-      });
-      dispatch({
-        type: t.UPLOAD_IMAGES_REQUEST,
-        data: imageFormData,
-      });
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    if (e.target.files && e.target.files[0]) {
-      const imageFormData = new FormData(); // 멀티파트 형식으로 데이터 보내기
-      [].forEach.call(e.target.files, file => {
-        imageFormData.append('image', file);
-      });
-      dispatch({
-        type: t.UPLOAD_IMAGES_REQUEST,
-        data: imageFormData,
-      });
-    }
-  };
-
-  const onButtonClick = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (inputRef.current) {
-      // inputRef.current 가 null 일 수 있으니, 조건문으로 확인해주기
-      inputRef.current.click();
-    }
-  };
+  const { dragActive, inputRef, handleDrag, handleDrop, handleChange, onButtonClick } = useHandleDrag(postImagesData);
 
   return (
     <>
@@ -75,7 +34,14 @@ function DropImageInput() {
             <DragSubText>10MB max file size</DragSubText>
           </InnerContainer>
         </LabelFileUpload>
-        {dragActive && <DragFileElement onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></DragFileElement>}
+        {dragActive && (
+          <DragFileElement
+            onDragEnter={handleDrag}
+            onDragLeave={handleDrag}
+            onDragOver={handleDrag}
+            onDrop={handleDrop}
+          ></DragFileElement>
+        )}
       </ImageUploadContainer>
 
       {/* {error && <span>에러</span>} */}
