@@ -27,9 +27,8 @@ jobs:
             sudo chown -R $USER:$USER .
             cd Closet/back
             sudo npx pm2 kill
-            sudo git config --global --add safe.directory /home/ubuntu/Closet
             sudo git stash && sudo git pull origin main && sudo git stash pop
-            sudo npm install
+            sudo npm install -g npm@latest
             sudo npm start
             sudo npx pm2 reload all
 
