@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 import { ItemsArray } from '../store/TableData';
-import { base64URL } from '../../config/config';
+
+import CenteredPositionImage from './CenteredPositionImage';
 
 type ListItemProps = {
   item: ItemsArray;
@@ -18,22 +18,15 @@ const ListItem = ({ item, func, exceptPrice }: ListItemProps) => {
   return (
     <ListContainer key={item.id} onClick={func(item.id)} data-testid='listItem'>
       <Flex>
-        <ImageContainer>
-          <ThumbnailWrapper>
-            <Thumbnail>
-              <Centered>
-                <CImage
-                  src={`${item.Images[0].src}`}
-                  alt={item.productName}
-                  width={100}
-                  height={100}
-                  placeholder='blur'
-                  blurDataURL={`data:image/gif;base64,${base64URL}`}
-                />
-              </Centered>
-            </Thumbnail>
-          </ThumbnailWrapper>
-        </ImageContainer>
+        <div>
+          <CenteredPositionImage
+            shape='radius'
+            width={40}
+            height={40}
+            src={item.Images[0].src}
+            alt={item.productName}
+          />
+        </div>
         <NameContainer>
           <span>{item.productName}</span>
           <p>{item.categori}</p>
@@ -69,6 +62,10 @@ const Flex = styled.div`
   align-items: center;
   width: 100%;
   height: auto;
+
+  > div {
+    margin-right: 20px;
+  }
 `;
 
 const SkeletonListDiv = styled.div`
@@ -80,12 +77,6 @@ const SkeletonListDiv = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.hoverGrey};
   ${({ theme }) => theme.animation.fade({ name: 'ListItem' })}
-`;
-
-const ImageContainer = styled.div`
-  width: 40px;
-  height: 40px;
-  margin-right: 20px;
 `;
 
 const NameContainer = styled.div`
@@ -119,37 +110,3 @@ const PriceContainer = styled.div`
 `;
 
 const DateContainer = styled(PriceContainer)``;
-
-const ThumbnailWrapper = styled.div`
-  width: 100%;
-`;
-
-const Thumbnail = styled.div`
-  position: relative;
-  padding-top: 100%;
-  overflow: hidden;
-  border-radius: 20px;
-`;
-
-const Centered = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transform: translate(50%, 50%);
-  -ms-transform: translate(50%, 50%);
-  transform: translate(50%, 50%);
-`;
-
-const CImage = styled(Image)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-`;
