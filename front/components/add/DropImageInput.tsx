@@ -2,11 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { FileImageOutlined } from '@ant-design/icons';
 
-import * as t from '../../../reducers/type';
-import AButton from './button/AButton';
+import * as t from '../../reducers/type';
+import AButton from '../recycle/element/button/AButton';
 
 import { useDispatch } from 'react-redux';
-import useHandleDrag from '../../../hooks/useHandleDrag';
+import useHandleDrag from '../../hooks/useHandleDrag';
 
 function DropImageInput() {
   const dispatch = useDispatch();
