@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1);
   app.use(
     cors({
-      origin: "https://www.closet-online.com",
+      origin: "https://closet-online.com",
       credentials: true,
     })
   );
