@@ -28,6 +28,36 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// PATCH /user
+
+router.patch("/", isLoggedIn, async (req, res, next) => {
+  try {
+    await User.update(
+      {
+        nickname: req.body.info.nickname,
+        src: req.body.info.src,
+      },
+      {
+        where: { id: req.user.id },
+      }
+    );
+
+    const fullUserWithoutPassword = await User.findOne({
+      where: { id: req.user.id },
+      attributes: {
+        exclude: ["password"],
+      },
+    });
+    if (!fullUserWithoutPassword) {
+      return res.status(403).send("유저가 존재하지 않습니다.");
+    }
+    res.status(200).json(fullUserWithoutPassword);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
 // login
 
 router.post("/login", isNotLoggedIn, (req, res, next) => {
