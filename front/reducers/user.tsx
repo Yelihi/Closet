@@ -104,7 +104,6 @@ export default (state = initialState, action: AnyAction) => {
         draft.loadToMyInfoDone = true;
         draft.loadToMyInfoError = null;
         draft.me = action.data;
-        draft.userProfileImages = action.data.src;
         break;
       }
       case t.LOAD_TO_MY_INFO_FAILURE: {
