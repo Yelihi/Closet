@@ -86,7 +86,7 @@ export default (state = initialState, action: AnyAction) => {
         draft.uploadPreviewImageLoading = false;
         draft.uploadPreviewImageDone = true;
         draft.uploadPreviewImageError = null;
-        draft.userProfileImages = action.data;
+        draft.userProfileImages = action.data.src;
         break;
       }
       case t.UPLOAD_PREVIEW_IMAGE_FAILURE: {
