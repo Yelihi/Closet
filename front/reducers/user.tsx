@@ -6,32 +6,14 @@ import Router from 'next/router';
 
 import { UserInitialState, UserInfo, UserSignUp } from './types/user';
 
-const dumyUser = () => ({
-  id: 1,
-  NickName: '원익',
-  Cloths: [
-    {
-      id: 1,
-      productName: '자바나스 화이트코트',
-      description: '실험중',
-      price: 230000,
-      color: '#ffffff',
-      categori: 'outer',
-      purchaseDay: '2019-02-10',
-      Outers: [
-        {
-          id: 1,
-          shoulder: 20,
-          arm: 10,
-          totalLength: 110,
-          chest: 60,
-        },
-      ],
-    },
-  ],
-});
-
 export const initialState: UserInitialState = {
+  updateUserInfoLoading: false,
+  updateUserInfoDone: false,
+  updateUserInfoError: null,
+  deletePreviewImageDone: false,
+  uploadPreviewImageLoading: false,
+  uploadPreviewImageDone: false,
+  uploadPreviewImageError: null,
   loadToMyInfoDone: false,
   loadToMyInfoError: null,
   logInLoading: false,
@@ -44,6 +26,7 @@ export const initialState: UserInitialState = {
   signInDone: false,
   signInError: null,
   me: null,
+  userProfileImages: '',
 };
 
 export const loginRequestAction = (data: UserInfo) => {
@@ -69,6 +52,49 @@ export const logoutRequestAction = () => {
 export default (state = initialState, action: AnyAction) => {
   return produce(state, draft => {
     switch (action.type) {
+      case t.DELETE_PREVIEW_IMAGE: {
+        draft.deletePreviewImageDone = true;
+        draft.userProfileImages = '';
+        break;
+      }
+      case t.PATCH_USER_INFO_REQUEST: {
+        draft.updateUserInfoLoading = true;
+        draft.updateUserInfoError = null;
+        break;
+      }
+      case t.PATCH_USER_INFO_SUCCESS: {
+        draft.updateUserInfoLoading = false;
+        draft.updateUserInfoDone = true;
+        draft.updateUserInfoError = null;
+        draft.me = action.data;
+        alert('성공적으로 수정하셨습니다!');
+        break;
+      }
+      case t.PATCH_USER_INFO_FAILURE: {
+        draft.updateUserInfoLoading = false;
+        draft.updateUserInfoDone = false;
+        draft.updateUserInfoError = action.error;
+        alert('수정에 실패했습니다..');
+        break;
+      }
+      case t.UPLOAD_PREVIEW_IMAGE_REQUEST: {
+        draft.uploadPreviewImageLoading = true;
+        draft.uploadPreviewImageError = null;
+        break;
+      }
+      case t.UPLOAD_PREVIEW_IMAGE_SUCCESS: {
+        draft.uploadPreviewImageLoading = false;
+        draft.uploadPreviewImageDone = true;
+        draft.uploadPreviewImageError = null;
+        draft.userProfileImages = action.data;
+        break;
+      }
+      case t.UPLOAD_PREVIEW_IMAGE_FAILURE: {
+        draft.uploadPreviewImageLoading = false;
+        draft.uploadPreviewImageDone = false;
+        draft.uploadPreviewImageError = action.error;
+        break;
+      }
       case t.LOAD_TO_MY_INFO_REQUEST: {
         draft.loadToMyInfoDone = false;
         draft.loadToMyInfoError = null;
