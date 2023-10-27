@@ -45,7 +45,6 @@ const ProfileForm = React.forwardRef<RefObjType>((_, ref) => {
 
   const onSubmit = (data: DefaultValueInAdmin) => {
     data.src = userProfileImages ? userProfileImages : '';
-    console.log(data);
     dispatch({
       type: t.PATCH_USER_INFO_REQUEST,
       data: { info: data },
