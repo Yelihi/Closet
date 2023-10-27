@@ -38,7 +38,11 @@ const Nav = () => {
             <p>{me?.nickname}</p>
           </HeadBox>
           <IconBox>
-            {me ? <CenteredPositionImage shape='radius' width={28} height={28} src={me?.src} alt='profile' /> : <div />}
+            {me?.src ? (
+              <CenteredPositionImage shape='radius' width={28} height={28} src={me?.src} alt='profile' />
+            ) : (
+              <div />
+            )}
           </IconBox>
         </InfoContainer>
       </NavContainer>
