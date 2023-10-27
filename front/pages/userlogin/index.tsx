@@ -54,7 +54,6 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   if (context.req && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
-  context.res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
   store.dispatch({
     type: t.LOAD_TO_MY_INFO_REQUEST,
   });
