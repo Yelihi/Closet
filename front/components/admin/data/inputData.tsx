@@ -1,38 +1,63 @@
-import { Input } from 'antd';
 import { FieldValues } from 'react-hook-form';
-
-const { TextArea } = Input;
+import { LibsElementsProps } from '../../../hooks/types/libsElementsProps';
 
 const defaultStyle = {
   height: '35px',
 };
 
-type InputFieldArray = {
+type InputFieldArray<T extends keyof LibsElementsProps> = {
+  elementType: T;
   fieldName: string;
   information: string;
-  node: React.ReactElement;
+  name: string;
+  elementProps: LibsElementsProps[T];
 };
 
-export const InputFieldArray: InputFieldArray[] = [
+export const InputFieldArray: InputFieldArray<keyof LibsElementsProps>[] = [
   {
+    elementType: 'Input',
     fieldName: 'Username',
+    name: 'nickname',
     information: '',
-    node: <Input placeholder='nickname' style={defaultStyle} />,
+    elementProps: {
+      placeholder: 'nickname',
+      style: defaultStyle,
+    },
   },
   {
+    elementType: 'Input',
     fieldName: 'Contact email',
+    name: 'contactemail',
     information: '',
-    node: <Input placeholder='email' style={defaultStyle} />,
+    elementProps: {
+      placeholder: 'email',
+      style: defaultStyle,
+      disabled: true,
+    },
   },
   {
+    elementType: 'Input',
     fieldName: 'Contact number',
+    name: 'contactnumber',
     information: '- 를 생략하고 작성해주세요',
-    node: <Input placeholder='phone' style={defaultStyle} />,
+    elementProps: {
+      placeholder: 'phone',
+      style: defaultStyle,
+      disabled: true,
+    },
   },
   {
+    elementType: 'TextArea',
     fieldName: 'Your bio',
+    name: 'bio',
     information: '간단하게 자기소개를 작성해주세요',
-    node: <TextArea showCount maxLength={200} placeholder='add a short bio..' style={{ height: 120 }} />,
+    elementProps: {
+      maxLength: 200,
+      showCount: true,
+      style: { height: 120 },
+      placeholder: 'add a short bio..',
+      disabled: true,
+    },
   },
 ];
 
