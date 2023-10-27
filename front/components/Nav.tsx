@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { media } from '../styles/media';
 
 import MoblieSideList from './sidebar/MobileSideList';
+import CenteredPositionImage from './recycle/CenteredPositionImage';
 
 import { HiOutlineMenuAlt2, HiOutlineSearch } from 'react-icons/hi';
 
@@ -37,7 +38,7 @@ const Nav = () => {
             <p>{me?.nickname}</p>
           </HeadBox>
           <IconBox>
-            <div></div>
+            {me ? <CenteredPositionImage shape='radius' width={28} height={28} src={me?.src} alt='profile' /> : <div />}
           </IconBox>
         </InfoContainer>
       </NavContainer>
