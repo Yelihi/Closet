@@ -32,6 +32,7 @@ const PageMainLayout = ({ children, title, subTitle, istitle = true, hasEmpty, s
 export default PageMainLayout;
 
 const MainContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
