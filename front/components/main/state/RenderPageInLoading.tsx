@@ -10,7 +10,7 @@ import SkeletonRecentlyItem from './SkeletonRecentlyItem';
 import SkeletonTotalData from './SkeletonTotalData';
 import SkeletonYearPrice from './SkeletonYearPrice';
 
-const OverviewInLoading = () => {
+const RenderPageInLoading = () => {
   return (
     <Container>
       <NavRow>
@@ -36,7 +36,7 @@ const OverviewInLoading = () => {
   );
 };
 
-export default OverviewInLoading;
+export default RenderPageInLoading;
 
 export const Container = styled.div`
   display: flex;
