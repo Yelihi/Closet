@@ -7,13 +7,13 @@ import AButton from '../../recycle/element/button/AButton';
 import Nav from '../../Nav';
 import Intersection from '../../recycle/element/Intersection';
 import { NavRow } from '../../main/state/RenderPageInLoading';
-import { useLottiePropsByError, PropsByError } from './Data';
+import { useLottiePropsByDeveloping, PropsByEmpty } from './Data';
 
-const RenderErrorPage = ({ state }: PropsByError) => {
-  const View = useLottieAnimation(useLottiePropsByError[state].options);
+const RenderDevelopingPage = ({ state }: PropsByEmpty) => {
+  const View = useLottieAnimation(useLottiePropsByDeveloping[state].options);
 
   return (
-    <IsErrorStateContainer>
+    <IsDevelopStateContainer>
       <NavRow>
         <Nav />
       </NavRow>
@@ -21,23 +21,23 @@ const RenderErrorPage = ({ state }: PropsByError) => {
       <Container>
         <IconContainer>
           {View}
-          <NotifiedSentence>{useLottiePropsByError[state].Notify}</NotifiedSentence>
+          <NotifiedSentence>{useLottiePropsByDeveloping[state].Notify}</NotifiedSentence>
           <AButton
             color='black'
             disabled={false}
-            dest={useLottiePropsByError[state].Button}
-            onClick={useLottiePropsByError[state].Router}
+            dest={useLottiePropsByDeveloping[state].Button}
+            onClick={useLottiePropsByDeveloping[state].Router}
             style={{ maxWidth: '35rem' }}
           />
         </IconContainer>
       </Container>
-    </IsErrorStateContainer>
+    </IsDevelopStateContainer>
   );
 };
 
-export default RenderErrorPage;
+export default RenderDevelopingPage;
 
-export const IsErrorStateContainer = styled.section`
+const IsDevelopStateContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +60,7 @@ export const IsErrorStateContainer = styled.section`
   }
 `;
 
-export const Container = styled.section`
+const Container = styled.section`
   grid-area: empty;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ export const Container = styled.section`
   height: 80rem;
 `;
 
-export const IconContainer = styled.div`
+const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,7 @@ export const IconContainer = styled.div`
   gap: 2rem;
 `;
 
-export const NotifiedSentence = styled.h3`
+const NotifiedSentence = styled.h3`
   font-size: clamp(1.6rem, 2.3vw, 2.4rem);
   font-family: ${({ theme }) => theme.font.Kfont};
   font-weight: ${({ theme }) => theme.fontWeight.Medium};

@@ -10,9 +10,8 @@
     "files": [
       "static/chunks/d64684d8-e6d2d0c9d74a1580.js",
       "static/chunks/ae51ba48-9d77968c3e380625.js",
-      "static/chunks/8997-e9535eaf1a0d78bc.js",
-      "static/chunks/2569-7c67d07ed7221693.js",
-      "static/chunks/6417.c80255d618a2d78a.js"
+      "static/chunks/2282-6a2bb9d2763f1950.js",
+      "static/chunks/6417.9bb4ff95a8358351.js"
     ]
   },
   "../components/recycle/ItemForm.tsx -> ./VisionAICard": {
