@@ -53,4 +53,16 @@ export const useLottiePropsByError = {
   },
 } as const;
 
+export const useLottiePropsByNextError = {
+  Next: {
+    options: {
+      src: error,
+      loop: true,
+      autoplay: true,
+      style: defaultStyle,
+    },
+  },
+} as const;
+
 export type PropsByError = { state: keyof typeof useLottiePropsByError };
+export type PropsByNextError = { state: keyof typeof useLottiePropsByNextError };

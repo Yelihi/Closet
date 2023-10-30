@@ -37,7 +37,7 @@ const RenderErrorPage = ({ state }: PropsByError) => {
 
 export default RenderErrorPage;
 
-const IsErrorStateContainer = styled.section`
+export const IsErrorStateContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +60,7 @@ const IsErrorStateContainer = styled.section`
   }
 `;
 
-const Container = styled.section`
+export const Container = styled.section`
   grid-area: empty;
   display: flex;
   justify-content: center;
@@ -69,7 +69,7 @@ const Container = styled.section`
   height: 80rem;
 `;
 
-const IconContainer = styled.div`
+export const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,7 @@ const IconContainer = styled.div`
   gap: 2rem;
 `;
 
-const NotifiedSentence = styled.h3`
+export const NotifiedSentence = styled.h3`
   font-size: clamp(1.6rem, 2.3vw, 2.4rem);
   font-family: ${({ theme }) => theme.font.Kfont};
   font-weight: ${({ theme }) => theme.fontWeight.Medium};
