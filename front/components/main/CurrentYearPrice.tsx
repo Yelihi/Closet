@@ -29,7 +29,7 @@ const CurrentYearPrice = ({ totalPrice, currentPrice }: CurrentPriceProps) => {
 
 export default CurrentYearPrice;
 
-const TestContainer = styled.div`
+export const TestContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,7 +38,7 @@ const TestContainer = styled.div`
   height: auto;
 `;
 
-const Description = styled.span`
+export const Description = styled.span`
   font-size: 12px;
   font-family: ${({ theme }) => theme.font.Efont};
   font-weight: ${({ theme }) => theme.fontWeight.Medium};

@@ -33,7 +33,7 @@ function* logIn(action: AnyAction) {
     console.error(err);
     yield put({
       type: t.LOGIN_FAILURE,
-      error: axios.isAxiosError(err) ? err.response?.data : err.response.data,
+      error: err.response.data,
     });
   }
 }
@@ -53,7 +53,7 @@ function* logOut(action: AnyAction) {
     console.error(err);
     yield put({
       type: t.LOGOUT_FAILURE,
-      error: axios.isAxiosError(err) ? err.response?.data : err.response.data,
+      error: err.response.data,
     });
   }
 }
@@ -73,7 +73,7 @@ function* signIn(action: AnyAction) {
     console.error(err);
     yield put({
       type: t.SIGNIN_FAILURE,
-      error: axios.isAxiosError(err) ? err.response?.data : err.response.data,
+      error: err.response.data,
     });
   }
 }
@@ -93,7 +93,7 @@ function* loadToMyInfo(action: AnyAction) {
     console.error(err);
     yield put({
       type: t.LOAD_TO_MY_INFO_FAILURE,
-      error: axios.isAxiosError(err) ? err.response?.data : err.response.data,
+      error: err.response.data,
     });
   }
 }

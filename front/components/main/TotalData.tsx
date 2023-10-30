@@ -34,7 +34,7 @@ const TotalData = ({ data, total }: Props) => {
 
 export default TotalData;
 
-const TotalDiv = styled.div`
+export const TotalDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -58,7 +58,7 @@ const TotalDiv = styled.div`
   }
 `;
 
-const DestDiv = styled.div`
+export const DestDiv = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
