@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import useLottieAnimation from '../../hooks/useLottieAnimation';
-import Router from 'next/router';
+import useLottieAnimation from '../../../hooks/useLottieAnimation';
 
-import { media } from '../../styles/media';
-import AButton from '../recycle/element/button/AButton';
-import Nav from '../Nav';
-import Intersection from '../recycle/element/Intersection';
-import { NavRow } from '../../pages/closet/overview';
-import { useLottiePropsByStateInOverview } from './data/Data';
+import { media } from '../../../styles/media';
+import AButton from '../../recycle/element/button/AButton';
+import Nav from '../../Nav';
+import Intersection from '../../recycle/element/Intersection';
+import { NavRow } from './RenderPageInLoading';
+import { useLottiePropsByStateInOverview } from '../data/Data';
 
 type RenderPageInEmptyDataProps = {
   state: 'Empty' | 'Error';

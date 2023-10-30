@@ -36,7 +36,7 @@ const RecentlyItem = ({ items }: RecentlyProps) => {
 
 export default RecentlyItem;
 
-const ListSection = styled.section`
+export const ListSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -45,14 +45,14 @@ const ListSection = styled.section`
   height: auto;
 `;
 
-const DescriptionSpan = styled.span`
+export const DescriptionSpan = styled.span`
   font-size: 12px;
   font-family: ${({ theme }) => theme.font.Efont};
   font-weight: ${({ theme }) => theme.fontWeight.Medium};
   margin-top: 5px;
 `;
 
-const DescriptionDiv = styled(DescriptionSpan)`
+export const DescriptionDiv = styled(DescriptionSpan)`
   color: ${({ theme }) => theme.colors.middleGrey};
   margin-bottom: 5px;
 `;

@@ -6,7 +6,7 @@ import { media } from '../../../styles/media';
 import AButton from '../../recycle/element/button/AButton';
 import Nav from '../../Nav';
 import Intersection from '../../recycle/element/Intersection';
-import { NavRow } from '../../../pages/closet/overview';
+import { NavRow } from '../../main/state/RenderPageInLoading';
 import { useLottiePropsByEmpty, PropsByEmpty } from './Data';
 
 const RenderEmptyPage = ({ state }: PropsByEmpty) => {
