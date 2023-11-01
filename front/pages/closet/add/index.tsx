@@ -11,12 +11,12 @@ import type { SagaStore } from '../../../store/configureStore';
 import wrapper from '../../../store/configureStore';
 
 import PageLayout from '../../../components/recycle/layout/PageLayout';
-import ItemForm from '../../../components/recycle/ItemForm';
+import ItemForm from '../../../components/recycle/formElements/ItemForm';
 
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 
-import { addPageLayoutProps } from '../../../components/add/ElementData';
+import { addPageLayoutProps } from '../../../components/add/data/InputDataInAdd';
 
 const add = () => {
   const { lastAddDataIndex } = useSelector((state: rootReducerType) => state.post);
@@ -27,7 +27,13 @@ const add = () => {
 
   return (
     <PageLayout>
-      <ItemForm title={addPageLayoutProps.title} subTitle={addPageLayoutProps.subTitle} type='add' resultNumber={lastAddDataIndex} Submit={transferTypes} />
+      <ItemForm
+        title={addPageLayoutProps.title}
+        subTitle={addPageLayoutProps.subTitle}
+        type='add'
+        resultNumber={lastAddDataIndex}
+        Submit={transferTypes}
+      />
     </PageLayout>
   );
 };

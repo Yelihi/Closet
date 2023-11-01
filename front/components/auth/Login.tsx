@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'antd/dist/reset.css';
 import { Divider } from 'antd';
 
-import TextField from '../recycle/auth/TextField';
+import TextField from '../recycle/inputElements/TextField';
 import google from '../../public/images/google.webp';
-import AButton from '../recycle/element/button/AButton';
+import AButton from '../recycle/buttonElements/AButton';
 
 import { loginRequestAction } from '../../reducers/user';
 import { isEmail, maxLength } from '../../util/Auth/validation';

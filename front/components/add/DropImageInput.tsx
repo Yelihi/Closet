@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { FileImageOutlined } from '@ant-design/icons';
 
 import * as t from '../../reducers/type';
-import AButton from '../recycle/element/button/AButton';
+import AButton from '../recycle/buttonElements/AButton';
 
 import { useDispatch } from 'react-redux';
 import useHandleDrag from '../../hooks/useHandleDrag';

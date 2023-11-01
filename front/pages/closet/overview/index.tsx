@@ -19,7 +19,7 @@ import LastItem from '../../../components/main/LastItem';
 import Nav from '../../../components/Nav';
 import RenderEmptyPage from '../../../components/state/empty/RenderEmptyPage';
 import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
-import Intersection from '../../../components/recycle/element/Intersection';
+import Intersection from '../../../components/recycle/Intersection';
 import RenderPageInLoading from '../../../components/main/state/RenderPageInLoading';
 
 import {

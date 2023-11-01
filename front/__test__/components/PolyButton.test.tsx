@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, render } from '@testing-library/react';
 import RenderWithTheme from '../../util/TestUtils/renderWithTheme';
 
-import AButton from '../../components/recycle/element/button/AButton';
+import AButton from '../../components/recycle/buttonElements/AButton';
 import { StaticImageData } from 'next/image';
 
 type Prop = {

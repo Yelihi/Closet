@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AButton from '../recycle/element/button/AButton';
+import AButton from '../recycle/buttonElements/AButton';
 import { ProfilePatchButtons } from './type/ProfilePatchButtons';
 
 const ProfilePatchButtons = ({ refObj }: ProfilePatchButtons) => {

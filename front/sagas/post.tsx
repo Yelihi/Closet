@@ -5,7 +5,7 @@ import * as t from '../reducers/type';
 
 // reducers
 import { UserInfo } from '../reducers/types/user';
-import { AddInitialValue } from '../components/recycle/ItemForm';
+import { AddInitialValue } from '../components/recycle/types/recycleElementsTypes';
 
 interface Success {
   data: Object;
@@ -181,5 +181,12 @@ function* watchItemDelete() {
 }
 
 export default function* postSaga() {
-  yield all([fork(watchImageUpload), fork(watchItemsUpload), fork(watchItemLoad), fork(watchItemPatch), fork(watchItemDelete), fork(watchItemsLoad)]);
+  yield all([
+    fork(watchImageUpload),
+    fork(watchItemsUpload),
+    fork(watchItemLoad),
+    fork(watchItemPatch),
+    fork(watchItemDelete),
+    fork(watchItemsLoad),
+  ]);
 }

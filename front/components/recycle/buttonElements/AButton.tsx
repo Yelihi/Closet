@@ -1,13 +1,19 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import type { ButtonProp } from '../type';
-import { PolymorphicComponentProps } from '../type';
+import type { ButtonProp } from '../types/recycleElementsTypes';
+import { PolymorphicComponentProps } from '../types/recycleElementsTypes';
 
 import BaseButton from './BaseButton';
 
 type AButtonProps<T extends React.ElementType> = PolymorphicComponentProps<T, ButtonProp>;
 
-const AButton = <T extends React.ElementType = 'button'>({ As, color, disabled, onClick, ...props }: AButtonProps<T>) => {
+const AButton = <T extends React.ElementType = 'button'>({
+  As,
+  color,
+  disabled,
+  onClick,
+  ...props
+}: AButtonProps<T>) => {
   return <ButtonContainer As={As} color={color} disabled={disabled} onClick={onClick} {...props} />;
 };
 

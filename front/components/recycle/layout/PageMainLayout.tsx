@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
-import Intersection from '../element/Intersection';
+import Intersection from '../Intersection';
 
 type myComponent = {
   children: ReactNode;

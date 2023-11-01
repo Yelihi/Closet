@@ -2,10 +2,10 @@ import React from 'react';
 import { FieldValues, useController } from 'react-hook-form';
 import { SpecificationElementProps } from './data/InputDataInAdd';
 
-import InputBackground from '../recycle/add/InputBackgroud';
+import InputBackground from '../recycle/inputElements/InputBackgroud';
 import useControlLibsElements from '../../hooks/useControlLibsElements';
 import { ErrorMessage } from './ItemSpecsInput';
-import { TControl } from '../recycle/element/type';
+import { TControl } from '../recycle/types/recycleElementsTypes';
 import { LibsElementsProps } from '../../hooks/types/libsElementsProps';
 
 type SizeDetailsInputProps<T extends FieldValues, K extends keyof LibsElementsProps> = SpecificationElementProps<K> &
