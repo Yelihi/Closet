@@ -7,7 +7,7 @@ import AButton from '../../recycle/buttonElements/AButton';
 import Nav from '../../Nav';
 import Intersection from '../../recycle/Intersection';
 import { NavRow } from '../../main/state/RenderPageInLoading';
-import { useLottiePropsByDeveloping, PropsByEmpty } from './Data';
+import { useLottiePropsByDeveloping, PropsByEmpty } from './data/Data';
 
 const RenderDevelopingPage = ({ state }: PropsByEmpty) => {
   const View = useLottieAnimation(useLottiePropsByDeveloping[state].options);

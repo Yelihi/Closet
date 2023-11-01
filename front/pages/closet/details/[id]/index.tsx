@@ -25,7 +25,7 @@ import AButton from '../../../../components/recycle/buttonElements/AButton';
 import TapChildren from '../../../../components/details/TapChidren';
 
 import { media } from '../../../../styles/media';
-import { addPageLayoutProps } from '../../../../components/details/ElementData';
+import { addPageLayoutProps } from '../../../../components/details/data/ElementData';
 import useConfirm from '../../../../hooks/useComfirm';
 
 const ItemForm = dynamic(() => import('../../../../components/recycle/formElements/ItemForm'));

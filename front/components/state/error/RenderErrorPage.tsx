@@ -7,7 +7,7 @@ import AButton from '../../recycle/buttonElements/AButton';
 import Nav from '../../Nav';
 import Intersection from '../../recycle/Intersection';
 import { NavRow } from '../../main/state/RenderPageInLoading';
-import { useLottiePropsByError, PropsByError } from './Data';
+import { useLottiePropsByError, PropsByError } from './data/Data';
 
 const RenderErrorPage = ({ state }: PropsByError) => {
   const View = useLottieAnimation(useLottiePropsByError[state].options);

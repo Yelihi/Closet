@@ -1,8 +1,8 @@
 import { MdOutlineSaveAlt, MdNoteAdd, MdOutlineAdminPanelSettings } from 'react-icons/md';
 
-import searchLoading from '../../public/AnimaionJson/searchLoading.json';
-import noFoundData from '../../public/AnimaionJson/noFoundData.json';
-import error from '../../public/AnimaionJson/error.json';
+import searchLoading from '../../../public/AnimaionJson/searchLoading.json';
+import noFoundData from '../../../public/AnimaionJson/noFoundData.json';
+import error from '../../../public/AnimaionJson/error.json';
 
 export const serviceList = [
   {

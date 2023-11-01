@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ItemsArray } from '../store/TableData';
+import { ItemsArray } from '../store/data/TableData';
 
 import CenteredPositionImage from './CenteredPositionImage';
 

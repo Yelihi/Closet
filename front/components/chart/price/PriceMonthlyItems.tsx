@@ -8,7 +8,7 @@ import LinkCardLayout from '../../recycle/layout/LinkCardLayout';
 import ListItem, { SkeletonListItem } from '../../recycle/ListItem';
 import PriceEmptyMonthlyItmes from './PriceEmptyMonthlyItems';
 import { SWR } from '../../../util/SWR/API';
-import { ItemsArray } from '../../store/TableData';
+import { ItemsArray } from '../../store/data/TableData';
 import { SortExtractedData } from '../../../util/Chart/Price/convertData';
 import { rootReducerType } from '../../../reducers/types';
 

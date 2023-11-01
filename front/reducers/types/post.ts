@@ -1,4 +1,4 @@
-import { UserItemsData } from '../../components/store/TableData';
+import { UserItemsData } from '../../components/store/data/TableData';
 
 export interface VisionSearch {
   name: string;

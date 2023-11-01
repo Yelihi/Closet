@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import keepBuilding from '../../../public/AnimaionJson/keepBuilding.json';
+import keepBuilding from '../../../../public/AnimaionJson/keepBuilding.json';
 
 const defaultStyle = {
   width: '80%',

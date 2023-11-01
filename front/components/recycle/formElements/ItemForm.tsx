@@ -4,7 +4,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
 import dynamic from 'next/dynamic';
-import { defaultValues } from './data';
+import { defaultValues } from './data/data';
 import { AddInitialValue } from '../types/recycleElementsTypes';
 import { visionAI } from '../../add/data/VisionAIData';
 import { revertFetchDataToFormData } from '../../../util/Add/modifyFormData';

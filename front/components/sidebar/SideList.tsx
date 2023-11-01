@@ -10,7 +10,7 @@ import useBreakpoints from '../../hooks/useBreakpoints';
 
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
-import { sidebarList, dropList } from './ListName';
+import { sidebarList, dropList } from './data/ListName';
 
 const SideList = () => {
   const [clickDrop, setClickDrop] = useState<boolean>(false);

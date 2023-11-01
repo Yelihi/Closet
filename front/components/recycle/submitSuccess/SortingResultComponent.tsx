@@ -3,7 +3,7 @@ import Router from 'next/router';
 import * as t from '../../../reducers/type';
 
 import BaseResultComponent from './BaseResultComponent';
-import { Data, ResultDataKey } from './data';
+import { Data, ResultDataKey } from './data/data';
 import { useDispatch } from 'react-redux';
 
 type Props = {

@@ -5,7 +5,7 @@ import { rootReducerType } from '../../reducers/types';
 
 import useLottieAnimation from '../../hooks/useLottieAnimation';
 
-import { useLottiePropsByState } from './Data';
+import { useLottiePropsByState } from './data/Data';
 
 type RenderBySearchStateProps = {
   state: keyof typeof useLottiePropsByState;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { MemberInfoProps, SignUpInfoProps, Merge } from '../../auth/Type';
+import { MemberInfoProps, SignUpInfoProps, Merge } from '../../auth/type/Type';
 import { HTMLInputTypeAttribute } from 'react';
 import useContextSwitch from '../../../hooks/useContextSwitch';
 
