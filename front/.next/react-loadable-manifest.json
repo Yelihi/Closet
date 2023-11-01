@@ -14,22 +14,22 @@
       "static/chunks/6417.27ef74f97418cd34.js"
     ]
   },
-  "../components/recycle/formElements/ItemForm.tsx -> ./VisionAICard": {
-    "id": 39604,
+  "../components/recycle/formElements/ItemForm.tsx -> ./PreviewImageSection": {
+    "id": 31447,
     "files": [
-      "static/chunks/9604.4cd75dc9133b462b.js"
+      "static/chunks/1447.09c47b0fc4fac891.js"
     ]
   },
   "closet/details/[id]/index.tsx -> ../../../../components/recycle/formElements/ItemForm": {
-    "id": 39552,
+    "id": 75495,
     "files": [
       "static/chunks/8663-25d586567e219815.js",
       "static/chunks/4321-3a21ac5abaf783f5.js",
       "static/chunks/4749-b5709ac7f04f8486.js",
-      "static/chunks/1467-f05e4da9e0fe0779.js",
+      "static/chunks/1467-c7684263c3595d1f.js",
       "static/chunks/3818-9f55b6cbfab65492.js",
       "static/chunks/2074-aac62c9bb074fef5.js",
-      "static/chunks/9552-a8b25ebc1303bd6a.js"
+      "static/chunks/5495-6649a27837882c3d.js"
     ]
   },
   "closet/details/[id]/index.tsx -> ../../../../components/recycle/submitSuccess/SortingResultComponent": {

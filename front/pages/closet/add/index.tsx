@@ -16,7 +16,7 @@ import ItemForm from '../../../components/recycle/formElements/ItemForm';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 
-import { addPageLayoutProps } from '../../../components/add/ElementData';
+import { addPageLayoutProps } from '../../../components/add/data/InputDataInAdd';
 
 const add = () => {
   const { lastAddDataIndex } = useSelector((state: rootReducerType) => state.post);
