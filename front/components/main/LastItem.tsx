@@ -4,7 +4,7 @@ import Router from 'next/router';
 
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 import CenteredPositionImage from '../recycle/CenteredPositionImage';
-import { ItemsArray } from '../store/TableData';
+import { ItemsArray } from '../store/data/TableData';
 
 import { media } from '../../styles/media';
 

@@ -1,6 +1,6 @@
 import Router from 'next/router';
-import empty from '../../../public/AnimaionJson/emptyDataPerson.json';
-import emptyStore from '../../../public/AnimaionJson/emptyDataStore.json';
+import empty from '../../../../public/AnimaionJson/emptyDataPerson.json';
+import emptyStore from '../../../../public/AnimaionJson/emptyDataStore.json';
 
 const defaultStyle = {
   width: '80%',

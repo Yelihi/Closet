@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import ItemCard from '../recycle/ItemCard';
 
-import { ItemsArray } from './TableData';
+import { ItemsArray } from './data/TableData';
 import { EmptyDiv } from './ATable';
 import { Empty, Spin } from 'antd';
 

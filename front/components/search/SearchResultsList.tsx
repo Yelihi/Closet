@@ -7,7 +7,7 @@ import ListItem from '../recycle/ListItem';
 import { SWR } from '../../util/SWR/API';
 import RenderBySearchState from './RenderBySearchState';
 
-import type { ItemsArray } from '../store/TableData';
+import type { ItemsArray } from '../store/data/TableData';
 
 type SearchResultsProps = {
   isDelayed: boolean;

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { MemberInfoProps, SignUpInfoProps, Merge } from '../components/auth/Type';
+import { MemberInfoProps, SignUpInfoProps, Merge } from '../components/auth/type/Type';
 import { LoginContext, SignUpContext } from '../components/auth/MemberContext';
 import { memberInfo } from '../components/auth/Login';
 import { signUpInfo } from '../components/auth/Signup';

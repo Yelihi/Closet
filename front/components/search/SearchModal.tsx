@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { onSearchClick, unmountSearchModal } from '../../reducers/screenEvent';
 import { media } from '../../styles/media';
 import { rootReducerType } from '../../reducers/types';
-import { serviceList } from './Data';
+import { serviceList } from './data/Data';
 import useDebounce from '../../hooks/useDebounce';
 
 import Intersection from '../recycle/Intersection';

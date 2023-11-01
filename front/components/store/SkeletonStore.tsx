@@ -10,7 +10,7 @@ import ProcessingDataCard from '../recycle/ProcessingDataCard';
 import ATable from './ATable';
 import CardBoard from './CardBoard';
 
-import { StoreHeader } from './TableData';
+import { StoreHeader } from './data/TableData';
 
 interface SKeletonProps {
   children: React.ReactElement;
@@ -50,8 +50,12 @@ const SkeletonStore = ({ children, loadItemsLoading, deleteItemLoding, windowWid
             </AddSection>
             <MenuSection></MenuSection>
             <ItemsStoreSection>
-              {windowWidth === 'desktop' ? <ATable headData={StoreHeader} itemsData={[]} isDelete={true} isLoading={true} /> : null}
-              {windowWidth === 'phone' ? <CardBoard itemData={[]} isLoading={true} isItemsLoading={true} windowWidth={windowWidth} /> : null}
+              {windowWidth === 'desktop' ? (
+                <ATable headData={StoreHeader} itemsData={[]} isDelete={true} isLoading={true} />
+              ) : null}
+              {windowWidth === 'phone' ? (
+                <CardBoard itemData={[]} isLoading={true} isItemsLoading={true} windowWidth={windowWidth} />
+              ) : null}
             </ItemsStoreSection>
             <Space></Space>
             <div></div>

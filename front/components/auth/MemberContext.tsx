@@ -9,7 +9,7 @@ import type {
   IsValiedSignUpInfoProps,
   PartialSignUpInfoProps,
   PartialIsValiedSignUpInfoProps,
-} from './Type';
+} from './type/Type';
 
 export type LoginContextType = {
   value: MemberInfoProps;

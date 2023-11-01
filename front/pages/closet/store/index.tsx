@@ -34,7 +34,7 @@ import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
 import RenderEmptyPage from '../../../components/state/empty/RenderEmptyPage';
 
 import { media } from '../../../styles/media';
-import { StoreHeader, segmentItems } from '../../../components/store/TableData';
+import { StoreHeader, segmentItems } from '../../../components/store/data/TableData';
 import { useSelector } from 'react-redux';
 import { rootReducerType } from '../../../reducers/types';
 import useDeviceWidth from '../../../hooks/useDeviceWidth';

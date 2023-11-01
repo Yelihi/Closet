@@ -13,7 +13,7 @@ import {
   IsValiedSignUpInfoProps,
   PartialSignUpInfoProps,
   PartialIsValiedSignUpInfoProps,
-} from './Type';
+} from './type/Type';
 import { SignUpContext } from './MemberContext';
 import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
 import { isEmail, isEqual, maxLength } from '../../util/Auth/validation';

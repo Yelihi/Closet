@@ -14,7 +14,7 @@ import { isEmail, maxLength } from '../../util/Auth/validation';
 
 import type { SIprops } from './Signup';
 import { backUrl } from '../../config/config';
-import type { MemberInfoProps, IsValiedInfoProps, PartialMemberInfoProps, PartialIsValiedInfoProps } from './Type';
+import type { MemberInfoProps, IsValiedInfoProps, PartialMemberInfoProps, PartialIsValiedInfoProps } from './type/Type';
 import buttonLoading from '../../public/AnimaionJson/buttonLoading.gif';
 
 import { LoginContext } from './MemberContext';

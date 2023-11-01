@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useLottieAnimation from '../../../hooks/useLottieAnimation';
-import { useLottiePropsByNextError, PropsByNextError } from './Data';
+import { useLottiePropsByNextError, PropsByNextError } from './data/Data';
 
 import { Container, IconContainer, NotifiedSentence } from './RenderErrorPage';
 

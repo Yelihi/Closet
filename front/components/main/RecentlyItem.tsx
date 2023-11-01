@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Router from 'next/router';
 
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
-import { ItemsArray } from '../store/TableData';
+import { ItemsArray } from '../store/data/TableData';
 import ListItem from '../recycle/ListItem';
 
 type RecentlyProps = {

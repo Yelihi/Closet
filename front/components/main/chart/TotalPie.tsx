@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ResponsivePie } from '@nivo/pie';
 
-import { categoriObject } from '../../store/TableData';
+import { categoriObject } from '../../store/data/TableData';
 
 import { media } from '../../../styles/media';
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TotalPie from './chart/TotalPie';
 import LinkCardLayout from '../recycle/layout/LinkCardLayout';
 
-import { categoriObject } from '../store/TableData';
+import { categoriObject } from '../store/data/TableData';
 
 import Router from 'next/router';
 
