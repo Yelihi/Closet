@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button, Result } from 'antd';
 import { ResultStatusType } from 'antd/es/result';
 
-import AButton from '../element/button/AButton';
+import AButton from '../buttonElements/AButton';
 
 type Props = {
   title: string;
@@ -15,7 +15,15 @@ type Props = {
   buttonName: string;
 };
 
-const BaseResultComponent = ({ title, subTitle, status, onClickPrimary, onClick, buttonNamePrimary, buttonName }: Props) => {
+const BaseResultComponent = ({
+  title,
+  subTitle,
+  status,
+  onClickPrimary,
+  onClick,
+  buttonNamePrimary,
+  buttonName,
+}: Props) => {
   return (
     <Container>
       <CustomResult
@@ -23,7 +31,13 @@ const BaseResultComponent = ({ title, subTitle, status, onClickPrimary, onClick,
         title={title}
         subTitle={subTitle}
         extra={[
-          <AButton color='black' key={buttonNamePrimary} onClick={onClickPrimary} dest={buttonNamePrimary} disabled={false} />,
+          <AButton
+            color='black'
+            key={buttonNamePrimary}
+            onClick={onClickPrimary}
+            dest={buttonNamePrimary}
+            disabled={false}
+          />,
           <AButton color='' key={buttonName} onClick={onClick} dest={buttonName} disabled={false} />,
         ]}
       />

@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { ImagePathObject } from '../../../reducers/types/post';
 import { Control, FieldPath, FieldValues, RegisterOptions, ControllerRenderProps } from 'react-hook-form';
 
 export interface TControl<T extends FieldValues> {
@@ -41,3 +42,31 @@ export type PolymorphicComponentProps<T extends React.ElementType, Props = {}> =
   Props & {
     innerRef?: PolymorphicRef<T>;
   };
+
+/**
+ *
+ * ItemForm Types
+ */
+
+export interface Measures {
+  shoulder?: number | null;
+  arm?: number | null;
+  totalLength?: number | null;
+  chest?: number | null;
+  rise?: number | null;
+  hem?: number | null;
+  waist?: number | null;
+  thigh?: number | null;
+  size?: number | null;
+}
+
+export interface AddInitialValue extends FieldValues {
+  productName: string;
+  description: string;
+  image: ImagePathObject[];
+  price: number | null;
+  color: string;
+  categori: string;
+  purchaseDay: string;
+  categoriItem: Measures;
+}

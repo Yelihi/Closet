@@ -9,7 +9,7 @@ import { rootReducerType } from '../../reducers/types';
 import { serviceList } from './Data';
 import useDebounce from '../../hooks/useDebounce';
 
-import Intersection from '../recycle/element/Intersection';
+import Intersection from '../recycle/Intersection';
 import SearchResultsList from './SearchResultsList';
 
 import { HiOutlineSearch } from 'react-icons/hi';

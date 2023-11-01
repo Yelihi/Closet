@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import * as t from '../../../reducers/type';
 
 import Nav from '../../Nav';
-import Intersection from '../element/Intersection';
+import Intersection from '../Intersection';
 
 import { media } from '../../../styles/media';
 import { NavRow } from '../../main/state/RenderPageInLoading';

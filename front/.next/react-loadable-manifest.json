@@ -11,17 +11,17 @@
       "static/chunks/d64684d8-e6d2d0c9d74a1580.js",
       "static/chunks/ae51ba48-9d77968c3e380625.js",
       "static/chunks/2282-6a2bb9d2763f1950.js",
-      "static/chunks/6417.9bb4ff95a8358351.js"
+      "static/chunks/6417.27ef74f97418cd34.js"
     ]
   },
-  "../components/recycle/ItemForm.tsx -> ./VisionAICard": {
-    "id": 22501,
+  "../components/recycle/formElements/ItemForm.tsx -> ./VisionAICard": {
+    "id": 39604,
     "files": [
-      "static/chunks/2501.90d3ce9088ce2575.js"
+      "static/chunks/9604.4cd75dc9133b462b.js"
     ]
   },
-  "closet/details/[id]/index.tsx -> ../../../../components/recycle/ItemForm": {
-    "id": 123,
+  "closet/details/[id]/index.tsx -> ../../../../components/recycle/formElements/ItemForm": {
+    "id": 39552,
     "files": [
       "static/chunks/8663-25d586567e219815.js",
       "static/chunks/4321-3a21ac5abaf783f5.js",
@@ -29,14 +29,14 @@
       "static/chunks/1467-f05e4da9e0fe0779.js",
       "static/chunks/3818-9f55b6cbfab65492.js",
       "static/chunks/2074-aac62c9bb074fef5.js",
-      "static/chunks/123-1bff8b2fa52097a4.js"
+      "static/chunks/9552-a8b25ebc1303bd6a.js"
     ]
   },
   "closet/details/[id]/index.tsx -> ../../../../components/recycle/submitSuccess/SortingResultComponent": {
     "id": 53126,
     "files": [
       "static/chunks/3818-9f55b6cbfab65492.js",
-      "static/chunks/3244.46e50a3aac8b38fc.js"
+      "static/chunks/3244.91d93a995a89c2c5.js"
     ]
   },
   "closet/reports/price/index.tsx -> ../../../../components/chart/price/PriceChartDesktop": {

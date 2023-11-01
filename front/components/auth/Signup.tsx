@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 import { signinRequestAction } from '../../reducers/user';
 
-import AButton from '../recycle/element/button/AButton';
-import TextField from '../recycle/auth/TextField';
+import AButton from '../recycle/buttonElements/AButton';
+import TextField from '../recycle/inputElements/TextField';
 
 import type { RootState } from '../../reducers/types';
 import {

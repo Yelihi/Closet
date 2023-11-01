@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Router from 'next/router';
 
 import { Empty } from 'antd';
-import AButton from './element/button/AButton';
+import AButton from './buttonElements/AButton';
 
 type EmptyProps = {
   height: number;
@@ -15,7 +15,11 @@ const EmptyData = ({ height }: EmptyProps) => {
   }, []);
   return (
     <EmptySection>
-      <Empty image='/images/closet.png' imageStyle={{ height: height }} description={<EmptySpan>저장된 의류가 없어요..!</EmptySpan>}>
+      <Empty
+        image='/images/closet.png'
+        imageStyle={{ height: height }}
+        description={<EmptySpan>저장된 의류가 없어요..!</EmptySpan>}
+      >
         {height > 40 && <AButton color='black' disabled={false} dest='저장 페이지로' onClick={moveToAddPage} />}
       </Empty>
       <Copyright href='https://www.flaticon.com/free-icons/closet' title='closet icons'>

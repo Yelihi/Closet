@@ -1,5 +1,5 @@
 import { LibsElementsProps } from '../../../hooks/types/libsElementsProps';
-import { TControl } from '../../recycle/element/type';
+import { TControl } from '../../recycle/types/recycleElementsTypes';
 import { FieldValues } from 'react-hook-form';
 
 export type RestProps<T> = {

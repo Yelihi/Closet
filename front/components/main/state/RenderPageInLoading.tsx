@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { media } from '../../../styles/media';
 
 import Nav from '../../Nav';
-import Intersection from '../../recycle/element/Intersection';
+import Intersection from '../../recycle/Intersection';
 import IntroSection from '../IntroSection';
 import SkeletonLastItem from './SkeletonLastItem';
 import SkeletonRecentlyItem from './SkeletonRecentlyItem';

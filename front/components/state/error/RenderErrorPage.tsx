@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import useLottieAnimation from '../../../hooks/useLottieAnimation';
 
 import { media } from '../../../styles/media';
-import AButton from '../../recycle/element/button/AButton';
+import AButton from '../../recycle/buttonElements/AButton';
 import Nav from '../../Nav';
-import Intersection from '../../recycle/element/Intersection';
+import Intersection from '../../recycle/Intersection';
 import { NavRow } from '../../main/state/RenderPageInLoading';
 import { useLottiePropsByError, PropsByError } from './Data';
 

@@ -21,14 +21,14 @@ import { rootReducerType } from '../../../../reducers/types';
 import PageLayout from '../../../../components/recycle/layout/PageLayout';
 import PageMainLayout from '../../../../components/recycle/layout/PageMainLayout';
 import Slice from '../../../../components/recycle/Slice';
-import AButton from '../../../../components/recycle/element/button/AButton';
+import AButton from '../../../../components/recycle/buttonElements/AButton';
 import TapChildren from '../../../../components/details/TapChidren';
 
 import { media } from '../../../../styles/media';
 import { addPageLayoutProps } from '../../../../components/details/ElementData';
 import useConfirm from '../../../../hooks/useComfirm';
 
-const ItemForm = dynamic(() => import('../../../../components/recycle/ItemForm'));
+const ItemForm = dynamic(() => import('../../../../components/recycle/formElements/ItemForm'));
 const SortingResultComponent = dynamic(
   () => import('../../../../components/recycle/submitSuccess/SortingResultComponent')
 );

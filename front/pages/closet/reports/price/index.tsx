@@ -19,7 +19,7 @@ import SelectYearPicker from '../../../../components/chart/SelectYearPicker';
 import SelectCategories from '../../../../components/chart/SelectCategories';
 import PriceSummuryInCategori from '../../../../components/chart/price/PriceSummuryInCategori';
 import PriceMonthlyItems from '../../../../components/chart/price/PriceMonthlyItems';
-import Intersection from '../../../../components/recycle/element/Intersection';
+import Intersection from '../../../../components/recycle/Intersection';
 import ChartTitle from '../../../../components/chart/ChartTitle';
 import RenderErrorPage from '../../../../components/state/error/RenderErrorPage';
 import { SWR } from '../../../../util/SWR/API';

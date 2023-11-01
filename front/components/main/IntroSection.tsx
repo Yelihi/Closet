@@ -2,7 +2,7 @@ import Router from 'next/router';
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
-import AButton from '../recycle/element/button/AButton';
+import AButton from '../recycle/buttonElements/AButton';
 
 const IntroSection = () => {
   const moveToAddPage = useCallback(() => {
@@ -19,7 +19,8 @@ const IntroSection = () => {
             <ItalicParagraph>"저번에 비슷한 옷을 샀던것 같은데..?"</ItalicParagraph>
             <br />
             <SubParagraph>
-              현명한 쇼핑을 시도하다 보면 종종 이전에 구매했던 옷들의 정보가 필요할 때가 있습니다. 이제 CLOSET 에 간략한 정보들을 등록함으로서 한눈에 소유중인 의류의 정보를 확인하세요!
+              현명한 쇼핑을 시도하다 보면 종종 이전에 구매했던 옷들의 정보가 필요할 때가 있습니다. 이제 CLOSET 에 간략한
+              정보들을 등록함으로서 한눈에 소유중인 의류의 정보를 확인하세요!
             </SubParagraph>
           </div>
         </Description>

@@ -7,25 +7,25 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import dynamic from 'next/dynamic';
 
-import { visionAI, categoriToVisionAI } from '../add/VisionAIData';
-import { clothData, categori, descriptionData } from '../add/ElementData';
-import { topMeasureName, bottomMeasureName, shoesMeasureName, mufflerMeasureName } from '../add/ElementData';
-import { topMeasureSub, bottomMeasureSub, shoesMeasureSub, mufflerMeasureSub } from '../add/ElementData';
+import { visionAI, categoriToVisionAI } from '../../add/VisionAIData';
+import { clothData, categori, descriptionData } from '../../add/ElementData';
+import { topMeasureName, bottomMeasureName, shoesMeasureName, mufflerMeasureName } from '../../add/ElementData';
+import { topMeasureSub, bottomMeasureSub, shoesMeasureSub, mufflerMeasureSub } from '../../add/ElementData';
 
-import PageMainLayout from './layout/PageMainLayout';
+import PageMainLayout from '../layout/PageMainLayout';
 
-import InputPartial from './add/InputPartial';
-import InputBackground from './add/InputBackgroud';
-import AInputElement from './element/AInputElement';
-import AButton from './element/button/AButton';
-import Measure from './add/Measure';
+import InputPartial from '../inputElements/InputPartial';
+import InputBackground from '../inputElements/InputBackgroud';
+import AInputElement from '../element/AInputElement';
+import AButton from '../buttonElements/AButton';
+import Measure from '../add/Measure';
 
-import DropImageInput from '../add/DropImageInput';
+import DropImageInput from '../../add/DropImageInput';
 
-import SortingResultComponent from './submitSuccess/SortingResultComponent';
+import SortingResultComponent from '../submitSuccess/SortingResultComponent';
 
-import type { ImagePathObject } from '../../reducers/types/post';
-import type { rootReducerType } from '../../reducers/types';
+import type { ImagePathObject } from '../../../reducers/types/post';
+import type { rootReducerType } from '../../../reducers/types';
 
 const VisionAICard = dynamic(() => import('./VisionAICard'));
 

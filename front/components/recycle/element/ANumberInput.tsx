@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldValues, useController } from 'react-hook-form';
 import { InputNumber, Space } from 'antd';
 
-import { TControl } from './type';
+import { TControl } from '../types/recycleElementsTypes';
 
 export type CustomSelectProps<T> = {
   placeholder: string;
@@ -18,7 +18,15 @@ function ANumberInput<T extends FieldValues>({ name, rules, control, ...props }:
   } = useController({ name, rules, control });
   return (
     <>
-      <InputNumber value={value} id={name} min={1} onChange={onChange} {...props} style={{ height: '30px', width: '100%' }} placeholder={placeholder} />
+      <InputNumber
+        value={value}
+        id={name}
+        min={1}
+        onChange={onChange}
+        {...props}
+        style={{ height: '30px', width: '100%' }}
+        placeholder={placeholder}
+      />
       {/* {error && <span>에러</span>} */}
     </>
   );

@@ -6,7 +6,7 @@ import { CirclePicker } from 'react-color';
 import { FieldValues, useController } from 'react-hook-form';
 import { InputNumber, Select, Input, DatePicker, Rate } from 'antd';
 
-import { TControl } from './type';
+import { TControl } from '../types/recycleElementsTypes';
 import { media } from '../../../styles/media';
 import { colors } from '../../add/ElementData';
 
@@ -39,15 +39,66 @@ function AInputElement<T extends FieldValues>(props: TPorps<T>) {
   } = useController({ name, rules, control });
   return (
     <>
-      {name == 'productName' ? <Input value={value} id={name} onChange={onChange} {...props} style={{ height: '30px', width: '100%' }} autoComplete='off' allowClear /> : null}
-      {name == 'color' ? <CirclePicker color={value} colors={colors} onChange={(color, event) => onChange(color.hex)} {...props} circleSize={25} width='100%' /> : null}
-      {name == 'price' ? <InputNumber value={value} id={name} min={1} onChange={onChange} style={{ height: '30px', width: '100%' }} placeholder={placeholder} /> : null}
+      {name == 'productName' ? (
+        <Input
+          value={value}
+          id={name}
+          onChange={onChange}
+          {...props}
+          style={{ height: '30px', width: '100%' }}
+          autoComplete='off'
+          allowClear
+        />
+      ) : null}
+      {name == 'color' ? (
+        <CirclePicker
+          color={value}
+          colors={colors}
+          onChange={(color, event) => onChange(color.hex)}
+          {...props}
+          circleSize={25}
+          width='100%'
+        />
+      ) : null}
+      {name == 'price' ? (
+        <InputNumber
+          value={value}
+          id={name}
+          min={1}
+          onChange={onChange}
+          style={{ height: '30px', width: '100%' }}
+          placeholder={placeholder}
+        />
+      ) : null}
       {name == 'preference' ? <Rate value={value} onChange={onChange} /> : null}
       {name == 'purchaseDay' ? (
-        <DatePicker defaultValue={dayjs(value || currentDate, dateFormat)} onChange={(date, dateString) => onChange(dateString)} picker='month' style={{ width: '100%', height: '30px' }} />
+        <DatePicker
+          defaultValue={dayjs(value || currentDate, dateFormat)}
+          onChange={(date, dateString) => onChange(dateString)}
+          picker='month'
+          style={{ width: '100%', height: '30px' }}
+        />
       ) : null}
-      {name == 'description' ? <TextArea value={value} id={name} onChange={onChange} placeholder={placeholder} rows={5} style={{ width: '100%' }} /> : null}
-      {name == 'categori' ? <Select defaultValue={defaultValue} value={value} id={name} options={options} onChange={onChange} style={{ height: '30px', width: '100%' }} /> : null}
+      {name == 'description' ? (
+        <TextArea
+          value={value}
+          id={name}
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={5}
+          style={{ width: '100%' }}
+        />
+      ) : null}
+      {name == 'categori' ? (
+        <Select
+          defaultValue={defaultValue}
+          value={value}
+          id={name}
+          options={options}
+          onChange={onChange}
+          style={{ height: '30px', width: '100%' }}
+        />
+      ) : null}
       <ErrorMessage>{error && errorMessage}</ErrorMessage>
     </>
   );

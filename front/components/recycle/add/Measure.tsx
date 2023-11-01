@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { FieldValues, useFormContext } from 'react-hook-form';
 
-import { TControl, TControlArray } from '../element/type';
-import { AddInitialValue } from '../ItemForm';
+import { TControl, TControlArray } from '../types/recycleElementsTypes';
+import { AddInitialValue } from '../formElements/ItemForm';
 
-import InputBackground from './InputBackgroud';
+import InputBackground from '../inputElements/InputBackgroud';
 import ANumberInput from '../element/ANumberInput';
 
 import { media } from '../../../styles/media';

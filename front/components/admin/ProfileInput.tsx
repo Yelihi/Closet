@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FieldValues, useController } from 'react-hook-form';
 
-import Intersection from '../recycle/element/Intersection';
+import Intersection from '../recycle/Intersection';
 import { ProfileInputProps } from './type/ProfileInputType';
 import { media } from '../../styles/media';
 import useControlLibsElements from '../../hooks/useControlLibsElements';
