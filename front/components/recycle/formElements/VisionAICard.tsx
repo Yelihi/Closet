@@ -7,7 +7,7 @@ import Image from 'next/image';
 import SkeletonImage from '../../add/SkeletonImage';
 import AButton from '../buttonElements/AButton';
 
-import { visionAICardData } from '../../add/VisionAIData';
+import { visionAICardData } from '../../add/data/VisionAIData';
 import { media } from '../../../styles/media';
 import { backUrl, base64URL } from '../../../config/config';
 import { CheckCircleTwoTone } from '@ant-design/icons';

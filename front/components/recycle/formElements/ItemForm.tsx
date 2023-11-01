@@ -7,7 +7,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import dynamic from 'next/dynamic';
 
-import { visionAI, categoriToVisionAI } from '../../add/VisionAIData';
+import { visionAI, categoriToVisionAI } from '../../add/data/VisionAIData';
 import { clothData, categori, descriptionData } from '../../add/ElementData';
 import { topMeasureName, bottomMeasureName, shoesMeasureName, mufflerMeasureName } from '../../add/ElementData';
 import { topMeasureSub, bottomMeasureSub, shoesMeasureSub, mufflerMeasureSub } from '../../add/ElementData';
