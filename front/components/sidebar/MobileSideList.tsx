@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { onPhoneMenuClick } from '../../reducers/screenEvent';
@@ -46,18 +46,12 @@ interface MenuProps {
 const PhoneMenuContainer = styled.section<MenuProps>`
   position: absolute;
   top: 0;
-  left: -200px;
+  left: ${props => (props.isPhoneMenuClick ? '0px' : '-200px')};
   width: 200px;
   height: 100vh;
   background-color: ${({ theme }) => theme.colors.brown};
   z-index: 50;
-  transition: left 0.25s ease-out;
-
-  ${props =>
-    props.isPhoneMenuClick &&
-    css`
-      left: 0px;
-    `}
+  transition: left 0.15s ease-out;
 
   ${media.tablet} {
     display: none;
