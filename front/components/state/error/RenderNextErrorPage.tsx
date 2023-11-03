@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useLottieAnimation from '../../../hooks/useLottieAnimation';
+import useUnmountMenu from '../../../hooks/useUnmountMenu';
 import { useLottiePropsByNextError, PropsByNextError } from './data/Data';
 
 import { Container, IconContainer, NotifiedSentence } from './RenderErrorPage';
@@ -10,6 +11,7 @@ type RenderNextErrorProps = PropsByNextError & {
 };
 
 const RenderNextErrorPage = ({ state, statusCode }: RenderNextErrorProps) => {
+  useUnmountMenu();
   const View = useLottieAnimation(useLottiePropsByNextError[state].options);
 
   return (
