@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import styled, { css } from 'styled-components';
-import Router from 'next/router';
+import styled from 'styled-components';
 import Link from 'next/link';
 
 import { useDispatch } from 'react-redux';
@@ -8,9 +7,7 @@ import { logoutRequestAction } from '../../reducers/user';
 
 import { media } from '../../styles/media';
 import useBreakpoints from '../../hooks/useBreakpoints';
-
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-
 import { sidebarList, dropList } from './data/ListName';
 
 const SideList = () => {
@@ -38,7 +35,7 @@ const SideList = () => {
                     {prop.icon}
                     <li>{prop.name}</li>
                   </div>
-                  {desktop && <MdOutlineKeyboardArrowDown className='logo' />}
+                  {desktop && <ArrowIcon className='logo' clickDrop={clickDrop} />}
                 </div>
               </ListBox>
               <DropListContainer clickDrop={clickDrop}>
@@ -99,6 +96,10 @@ const Column = styled.div`
 `;
 
 const ListBox = styled.div<{ direction: 'true' | 'false' }>`
+  display: flex;
+  flex-direction: ${props => (props.direction === 'true' ? 'column' : 'row')};
+  justify-content: ${props => (props.direction === 'true' ? 'center' : 'flex-start')};
+  align-items: ${props => (props.direction === 'true' ? 'flex-start' : 'center')};
   width: 100%;
   height: auto;
   margin: 4px 0;
@@ -112,32 +113,18 @@ const ListBox = styled.div<{ direction: 'true' | 'false' }>`
     display: none;
   }
 
-  ${props =>
-    props.direction === 'true'
-      ? css`
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 
-          > div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-
-            > div {
-              display: flex;
-              justify-content: flex-start;
-              align-items: center;
-            }
-          }
-        `
-      : css`
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-        `}
+    > div {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
 
   .logo {
     width: 30px;
@@ -163,29 +150,25 @@ const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   }
 `;
 
+const ArrowIcon = styled(MdOutlineKeyboardArrowDown)<{ clickDrop: boolean }>`
+  transform: ${props => (props.clickDrop ? 'rotate(180deg)' : 'rotate(0)')};
+  transition: transform 0.15s ease-in-out;
+`;
+
 const DropListContainer = styled.div<{ clickDrop: boolean }>`
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 0;
-  transition: height 0.25s ease-out;
+  max-height: ${props => (props.clickDrop ? '400px' : '0')};
+  opacity: ${props => (props.clickDrop ? 0.999 : 0)};
+  overflow: hidden;
+  transition: all 0.15s ease-in-out;
 
   > a {
     width: 100%;
   }
-
-  ${props =>
-    props.clickDrop
-      ? css`
-          display: flex;
-          height: 100%;
-        `
-      : css`
-          display: none;
-          height: 0;
-        `}
 `;
 
 const DropListBox = styled.div`
@@ -199,11 +182,7 @@ const DropListBox = styled.div`
   padding-bottom: 9px;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  transition: all 0.25s ease-out;
-
-  > div {
-    opacity: 0.99;
-  }
+  cursor: pointer;
 
   > li {
     opacity: 0;
