@@ -22,13 +22,19 @@ import PriceMonthlyItems from '../../../../components/chart/price/PriceMonthlyIt
 import Intersection from '../../../../components/recycle/Intersection';
 import ChartTitle from '../../../../components/chart/ChartTitle';
 import RenderErrorPage from '../../../../components/state/error/RenderErrorPage';
+import PriceChartDeskInLoading from '../../../../components/chart/price/PriceChartDeskInLoading';
+import PriceChartMobileInLoading from '../../../../components/chart/price/PriceChartMobileInLoading';
 import { SWR } from '../../../../util/SWR/API';
 import { detectMobileDevice } from '../../../../util/PrimitiveUtils/string';
 
 const PriceChartAtDesktop = dynamic(() => import('../../../../components/chart/price/PriceChartDesktop'), {
   ssr: false,
+  loading: () => <PriceChartDeskInLoading />,
 });
-const PriceChartAtPhone = dynamic(() => import('../../../../components/chart/price/PriceChartMobile'), { ssr: false });
+const PriceChartAtPhone = dynamic(() => import('../../../../components/chart/price/PriceChartMobile'), {
+  ssr: false,
+  loading: () => <PriceChartMobileInLoading />,
+});
 
 type PriceProps = {
   device: 'desktop' | 'phone';
