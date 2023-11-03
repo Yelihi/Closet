@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
+import Link from 'next/link';
 import Router from 'next/router';
 
 import { useDispatch } from 'react-redux';
@@ -18,9 +19,8 @@ const MobileList = () => {
     setClickDrop(prev => !prev);
   }, []);
 
-  const logout = (path: string) => {
+  const logout = () => {
     dispatch(logoutRequestAction());
-    Router.push(path);
   };
 
   return (
@@ -40,23 +40,29 @@ const MobileList = () => {
               </ListBox>
               {dropList.map((prop, j) => {
                 return (
-                  <DropListBox key={j} clickDrop={clickDrop} onClick={() => Router.push(prop.path)}>
-                    <div>{prop.icon}</div>
-                    <li>{prop.name}</li>
-                  </DropListBox>
+                  <Link key={j} href={prop.path}>
+                    <DropListBox clickDrop={clickDrop}>
+                      <div>{prop.icon}</div>
+                      <li>{prop.name}</li>
+                    </DropListBox>
+                  </Link>
                 );
               })}
             </div>
           ) : i == 5 ? (
-            <ListBox key={i} direction='false' onClick={() => logout(prop.path)}>
-              {prop.icon}
-              <li>{prop.name}</li>
-            </ListBox>
+            <Link key={i} href={prop.path} onClick={() => logout()}>
+              <ListBox direction='false'>
+                {prop.icon}
+                <li>{prop.name}</li>
+              </ListBox>
+            </Link>
           ) : (
-            <ListBox key={i} direction='false' onClick={() => Router.push(prop.path)}>
-              {prop.icon}
-              <li>{prop.name}</li>
-            </ListBox>
+            <Link key={i} href={prop.path}>
+              <ListBox direction='false'>
+                {prop.icon}
+                <li>{prop.name}</li>
+              </ListBox>
+            </Link>
           );
         })}
       </ul>
