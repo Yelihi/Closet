@@ -6,30 +6,32 @@ import { SliceTooltipProps } from '@nivo/line';
 import { getChartPointId } from '../../../reducers/chart';
 import useDelayCall from '../../../hooks/useDelayCall';
 
-export default function PriceCustomToolTip(props: SliceTooltipProps) {
-  const dispatch = useDispatch();
-  const reversePoints = props.slice.points.flat().reverse();
-  let Index = reversePoints[0].index;
+export default function PriceCustomToolTip(device: 'desktop' | 'phone') {
+  return function (props: SliceTooltipProps) {
+    const dispatch = useDispatch();
+    const reversePoints = props.slice.points.flat().reverse();
+    let Index = reversePoints[0].index;
 
-  const dispatchIndex = useCallback(() => {
-    dispatch(getChartPointId(Index));
-  }, [Index]);
+    const dispatchIndex = useCallback(() => {
+      dispatch(getChartPointId(Index));
+    }, [Index]);
 
-  useDelayCall(dispatchIndex, Index);
+    useDelayCall(dispatchIndex, Index);
 
-  return (
-    <ToolTipContainer>
-      <ToolTipTitle>월 별 총합(만원단위)</ToolTipTitle>
-      {reversePoints.map(item => {
-        return (
-          <ToolTipItem>
-            <span>{item.serieId}</span>
-            <span>{item.data.yFormatted}</span>
-          </ToolTipItem>
-        );
-      })}
-    </ToolTipContainer>
-  );
+    return (
+      <ToolTipContainer>
+        <ToolTipTitle>{device == 'desktop' ? Index + 1 : (Index + 1) * 2}월 별 총합(만원단위)</ToolTipTitle>
+        {reversePoints.map(item => {
+          return (
+            <ToolTipItem>
+              <span>{item.serieId}</span>
+              <span>{item.data.yFormatted}</span>
+            </ToolTipItem>
+          );
+        })}
+      </ToolTipContainer>
+    );
+  };
 }
 
 const ToolTipContainer = styled.div`

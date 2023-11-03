@@ -94,7 +94,7 @@ const PriceChartMobile = ({ fallback, device }: PriceChartMobileProps) => {
           ]}
           animate={false}
           motionConfig='wobbly'
-          sliceTooltip={PriceCustomToolTip}
+          sliceTooltip={PriceCustomToolTip(device)}
         />
       </PriceChartSection>
     );

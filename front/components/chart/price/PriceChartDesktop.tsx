@@ -108,7 +108,7 @@ const PriceChartDesktop = ({ fallback, device }: PriceChartDesktopProps) => {
           ]}
           animate={false}
           motionConfig='wobbly'
-          sliceTooltip={PriceCustomToolTip}
+          sliceTooltip={PriceCustomToolTip(device)}
         />
       </PriceChartSection>
     );
