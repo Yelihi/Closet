@@ -146,7 +146,7 @@ const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: Tab
                           onClick={() =>
                             window.confirm('삭제하시겠습니까?')
                               ? onSubmit(data.id)()
-                              : () => console.log('취소했씁니다')
+                              : () => console.log('취소했습니다')
                           }
                         >
                           <FaTrashRestoreAlt className='icon' /> 삭제하기

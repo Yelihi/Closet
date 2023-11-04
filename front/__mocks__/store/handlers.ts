@@ -26,7 +26,7 @@ export const getClothes = (error?: boolean) => {
         return res(ctx.status(200), ctx.json(nextDesktopStoreDataIn23));
       }
       if (categori === 'Outer' && lastId === '0') {
-        const sortedData = initialDesktopStoreData.filter(item => item.categori === 'Outer');
+        const sortedData = initialDesktopStoreData.items.filter(item => item.categori === 'Outer');
         return res(ctx.status(200), ctx.json(sortedData));
       }
       if (categori === 'Top' && lastId === '0') {

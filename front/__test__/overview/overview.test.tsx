@@ -33,8 +33,8 @@ describe('overview', () => {
 
     renderWithProvider(<Overview device='desktop' />);
 
-    const messageEmptyState = await screen.findAllByText(/저장된 의류가 없어요/i);
-    expect(messageEmptyState).toHaveLength(4);
+    const messageEmptyState = await screen.findByText(/이런! 저장된 의류가 없네요!/i);
+    expect(messageEmptyState).toBeInTheDocument();
   });
 
   it.skip('매인 화면에서 왼쪽 상단 비디오가 정상적으로 autoplay 가 된다', () => {});
