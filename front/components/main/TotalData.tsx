@@ -21,7 +21,7 @@ const TotalData = ({ data, total }: Props) => {
   return (
     <LinkCardLayout Subject='total quantity' Address='Store' onMove={moveToStore} divided={1}>
       <TotalDiv>
-        <span>{total}</span>
+        <span data-testid='TotalQuantity'>{total}</span>
         <p>벌</p>
       </TotalDiv>
       <DestDiv>

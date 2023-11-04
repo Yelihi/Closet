@@ -37,8 +37,16 @@ describe('overview', () => {
     expect(messageEmptyState).toBeInTheDocument();
   });
 
-  it.skip('매인 화면에서 왼쪽 상단 비디오가 정상적으로 autoplay 가 된다', () => {});
-  it.skip('Total Quantity 에서 총 저장 수량이 렌더링', () => {});
-  it.skip('Last Item 에서 Item 의 이름과 날짜, 가격이 렌더링', () => {});
-  it.skip('Total Price 에서 총 금액과 Current 금액이 제대로 막대그래프로 랜더링된다', () => {});
+  it('Recently Enroll 내 5가지 의류가 렌더링', async () => {
+    renderWithProvider(<Overview device='desktop' />);
+
+    const RecentlyItems = await screen.findAllByTestId(/listitem/i);
+    expect(RecentlyItems).toHaveLength(5);
+  });
+  it('Total Quantity 에서 총 저장 수량이 렌더링', async () => {
+    renderWithProvider(<Overview device='desktop' />);
+
+    const TotalQuantity = await screen.findByTestId(/TotalQuantity/i);
+    expect(TotalQuantity).toHaveTextContent('8');
+  });
 });
