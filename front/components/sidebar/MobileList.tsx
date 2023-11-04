@@ -31,14 +31,14 @@ const MobileList = () => {
                     {prop.icon}
                     <li>{prop.name}</li>
                   </div>
-                  <ArrowIcon className='logo' clickDrop={clickDrop} />
+                  <ArrowIcon className='logo' clickdrop={clickDrop.toString()} />
                 </div>
               </ListBox>
-              <DropListContainer clickDrop={clickDrop}>
+              <DropListContainer clickdrop={clickDrop.toString()}>
                 {dropList.map((prop, j) => {
                   return (
                     <Link key={j} href={prop.path}>
-                      <DropListBox clickDrop={clickDrop}>
+                      <DropListBox clickdrop={clickDrop.toString()}>
                         <div>{prop.icon}</div>
                         <li>{prop.name}</li>
                       </DropListBox>
@@ -121,19 +121,19 @@ const ListBox = styled.div<{ direction: 'true' | 'false' }>`
   }
 `;
 
-const ArrowIcon = styled(MdOutlineKeyboardArrowDown)<{ clickDrop: boolean }>`
-  transform: ${props => (props.clickDrop ? 'rotate(180deg)' : 'rotate(0)')};
+const ArrowIcon = styled(MdOutlineKeyboardArrowDown)<{ clickdrop: string }>`
+  transform: ${props => (props.clickdrop === 'true' ? 'rotate(180deg)' : 'rotate(0)')};
   transition: transform 0.15s ease-in-out;
 `;
 
-const DropListContainer = styled.div<{ clickDrop: boolean }>`
+const DropListContainer = styled.div<{ clickdrop: string }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  max-height: ${props => (props.clickDrop ? '400px' : '0')};
-  opacity: ${props => (props.clickDrop ? 0.999 : 0)};
+  max-height: ${props => (props.clickdrop === 'true' ? '400px' : '0')};
+  opacity: ${props => (props.clickdrop === 'true' ? 0.999 : 0)};
   overflow: hidden;
   transition: all 0.15s ease-in-out;
 
@@ -142,7 +142,7 @@ const DropListContainer = styled.div<{ clickDrop: boolean }>`
   }
 `;
 
-const DropListBox = styled.div<{ clickDrop: boolean }>`
+const DropListBox = styled.div<{ clickdrop: string }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;

@@ -1,4 +1,4 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { mockIntersectionObserver } from '../../jest.setup';
 import axios from 'axios';
 
@@ -8,6 +8,8 @@ import { renderWithProvider } from '../../util/TestUtils/renderWithProvider';
 import * as t from '../../reducers/type';
 
 import { MakeStore } from './MakeStore';
+
+jest.useFakeTimers();
 
 // antd 의 pagination 내에서 아마도 aria 속성을 추가하였기 때문에 아래처럼 mock 처리 해주어야 한다
 beforeAll(() => {
@@ -41,13 +43,15 @@ describe('Store', () => {
     const CategoriLabel = await screen.findByTestId(/categoriLabel/i);
 
     // countup 패키지 때문에 화면에 숫자가 좀 딜레이 되서 완성된다
-    setTimeout(
-      () =>
-        ['10', '1,125,000', 'Outer'].forEach((item, idx) => {
-          expect(IntergratedData[idx]).toHaveTextContent(item);
-        }),
-      3000
-    );
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    await waitFor(() => {
+      ['10', '1,125,000', 'Outer'].forEach((item, idx) => {
+        expect(IntergratedData[idx]).toHaveTextContent(item);
+      });
+    });
 
     expect(Title).toHaveTextContent(/CHECK YOUR ITEMS/i);
     expect(CategoriButton).toHaveTextContent(/Categori/i);
@@ -68,13 +72,15 @@ describe('Store', () => {
     const ItemCards = await screen.findAllByTestId(/itemcard/i);
 
     // countup 패키지 때문에 화면에 숫자가 좀 딜레이 되서 완성된다
-    setTimeout(
-      () =>
-        ['10', '1,125,000', 'Outer'].forEach((item, idx) => {
-          expect(IntergratedData[idx]).toHaveTextContent(item);
-        }),
-      3000
-    );
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    await waitFor(() => {
+      ['10', '1,125,000', 'Outer'].forEach((item, idx) => {
+        expect(IntergratedData[idx]).toHaveTextContent(item);
+      });
+    });
 
     expect(Title).toHaveTextContent(/CHECK YOUR ITEMS/i);
     expect(CategoriButton).toHaveTextContent(/Categori/i);

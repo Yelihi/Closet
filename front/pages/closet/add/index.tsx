@@ -18,7 +18,7 @@ import { rootReducerType } from '../../../reducers/types';
 
 import { addPageLayoutProps } from '../../../components/add/data/InputDataInAdd';
 
-const add = () => {
+const Add = () => {
   const { lastAddDataIndex } = useSelector((state: rootReducerType) => state.post);
 
   const transferTypes = useCallback(() => {
@@ -69,4 +69,4 @@ export const getServerSideProps = wrapper.getServerSideProps(store => async (con
   };
 });
 
-export default React.memo(addHead(add, 'closet', '이 페이지는 의류를 저장하는 페이지입니다'));
+export default React.memo(addHead(Add, 'closet', '이 페이지는 의류를 저장하는 페이지입니다'));
