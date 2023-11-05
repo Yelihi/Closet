@@ -2,6 +2,46 @@
 export const OverviewResponseData = {
   lastDatas: [
     {
+      id: 38,
+      productName: '[실험] 그레이 머플러',
+      description: '실험용 그레이 머플러 입니다',
+      price: 100000,
+      color: '#959187',
+      categori: 'Muffler',
+      purchaseDay: '2022-05-01T00:00:00.000Z',
+      preference: 4,
+      createdAt: '2023-11-01T16:36:43.000Z',
+      updatedAt: '2023-11-01T16:37:05.000Z',
+      UserId: 5,
+      Images: [
+        {
+          id: 33,
+          ClothId: 38,
+          src: 'https://closet-online.s3.ap-northeast-2.amazonaws.com/original/1698856541736_scarf_test..jpeg',
+        },
+      ],
+    },
+    {
+      id: 30,
+      productName: '블랙 첼시부츠',
+      description: '블랙 첼시부츠',
+      price: 150000,
+      color: '#000000',
+      categori: 'Shoe',
+      purchaseDay: '2023-10-01T00:00:00.000Z',
+      preference: 4,
+      createdAt: '2023-10-02T04:39:46.000Z',
+      updatedAt: '2023-10-02T04:39:46.000Z',
+      UserId: 5,
+      Images: [
+        {
+          id: 25,
+          ClothId: 30,
+          src: 'https://closet-online.s3.ap-northeast-2.amazonaws.com/original/1696221579486_블랙워커..jpg',
+        },
+      ],
+    },
+    {
       id: 29,
       productName: '브라운 코트',
       description: '브라운코트',
@@ -61,50 +101,10 @@ export const OverviewResponseData = {
         },
       ],
     },
-    {
-      id: 26,
-      productName: '그레이 조거팬츠',
-      description: '그레이 조거 팬츠',
-      price: 120000,
-      color: '#959187',
-      categori: 'Pant',
-      purchaseDay: '2022-02-01T00:00:00.000Z',
-      preference: 4,
-      createdAt: '2023-05-24T09:56:08.000Z',
-      updatedAt: '2023-05-24T09:56:08.000Z',
-      UserId: 5,
-      Images: [
-        {
-          id: 21,
-          ClothId: 26,
-          src: 'https://closet-online.s3.ap-northeast-2.amazonaws.com/original/1684922161948_16849221421278668907821194021250..jpg',
-        },
-      ],
-    },
-    {
-      id: 25,
-      productName: '연청바지/Instant',
-      description: '연청바지',
-      price: 80000,
-      color: '#97d0f2',
-      categori: 'Pant',
-      purchaseDay: '2021-01-01T00:00:00.000Z',
-      preference: 4,
-      createdAt: '2023-05-24T09:52:05.000Z',
-      updatedAt: '2023-05-24T09:52:05.000Z',
-      UserId: 5,
-      Images: [
-        {
-          id: 20,
-          ClothId: 25,
-          src: 'https://closet-online.s3.ap-northeast-2.amazonaws.com/original/1684921915675_16849218927735954666801618881197..jpg',
-        },
-      ],
-    },
   ],
   totalNumber: 8,
-  totalPrice: 900000,
-  currentYearPrice: 650000,
+  totalPrice: 950000,
+  currentYearPrice: 600000,
   theOldestData: {
     id: 27,
     productName: '블랙스포츠반바지',
@@ -126,9 +126,10 @@ export const OverviewResponseData = {
     ],
   },
   categori: {
-    Outer: 4,
-    Pant: 3,
     Muffler: 1,
+    Shoe: 1,
+    Outer: 3,
+    Pant: 3,
   },
 };
 

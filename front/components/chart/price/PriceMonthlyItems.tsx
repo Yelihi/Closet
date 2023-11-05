@@ -58,7 +58,8 @@ const PriceMonthlyItems = ({ fallback, device }: PriceMonthlyItemsProps) => {
       <ResultsListContainer>
         <Flex>
           <h4>
-            <Strong>{Month}</Strong> 월 저장 의류: <Strong>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
+            <Strong>{Month}</Strong> 월 저장 의류:{' '}
+            <Strong data-testid='price-itemNumber'>{fallback ? '--' : ListsPerMonth?.length}</Strong> 벌{' '}
           </h4>
         </Flex>
         {Length == 0 && <PriceEmptyMonthlyItmes />}

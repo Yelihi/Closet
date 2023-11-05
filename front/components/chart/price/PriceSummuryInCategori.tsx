@@ -72,12 +72,14 @@ const PriceSummuryInCategori = ({ fallback, device }: PriceSummuryInCategoriProp
           <ProgressSubject>선택하신 카테고리 내 총합입니다</ProgressSubject>
           <ProgressTags>
             {selectedCategoriesInPrice.map((tag, index) => (
-              <Tag key={tag} closable={true} onClose={() => handleClose(tag)} color='magenta'>
+              <Tag key={tag} closable={true} onClose={() => handleClose(tag)} color='magenta' data-testid='price-tag'>
                 {tag}
               </Tag>
             ))}
           </ProgressTags>
-          <ProgressPriceText>{convertNumberToKRWCurrency(summaryPrice)}</ProgressPriceText>
+          <ProgressPriceText data-testid='price-catogorisum'>
+            {convertNumberToKRWCurrency(summaryPrice)}
+          </ProgressPriceText>
 
           <StyledProgress percent={percentage} status='active' strokeColor={conicColors} size={['100%', 20]} />
           <InfoContainer>
