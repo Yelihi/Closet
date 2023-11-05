@@ -35,6 +35,7 @@ const SelectCategories = () => {
               key={tag}
               checked={selectedCategoriesInPrice.includes(tag)}
               onChange={checked => handleChange(tag, checked)}
+              data-testid='chart-categori'
             >
               {tag}
             </CheckableTag>

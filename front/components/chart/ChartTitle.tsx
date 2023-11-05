@@ -19,8 +19,8 @@ const ChartTitle = ({ title = 120000, fallback }: ChartTitleProps) => {
   } else {
     return (
       <Flex>
-        <Title>{convertAmount}</Title>
-        <Percent>{`(${yearPricePercentOfTotal}%)`}</Percent>
+        <Title data-testid='price-title'>{convertAmount}</Title>
+        <Percent data-testid='price-percent'>{`(${yearPricePercentOfTotal}%)`}</Percent>
       </Flex>
     );
   }

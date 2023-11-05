@@ -29,9 +29,9 @@ const LastItem = ({ item }: LastItemProps) => {
           alt={item.productName}
         />
         <DetailDiv>
-          <ItemName>{`${item.productName}`}</ItemName>
-          <Purchase>{`구매 날짜 : ${item.purchaseDay.substring(0, 7)}`}</Purchase>
-          <Price>{`구매 가격 : ${item.price.toLocaleString('ko-KR')}`}</Price>
+          <ItemName data-testid='ListItemTitle'>{`${item.productName}`}</ItemName>
+          <Purchase data-testid='ListItemDate'>{`구매 날짜 : ${item.purchaseDay.substring(0, 7)}`}</Purchase>
+          <Price data-testid='ListItemPrice'>{`구매 가격 : ${item.price.toLocaleString('ko-KR')}`}</Price>
         </DetailDiv>
       </LastItemSection>
     </LinkCardLayout>
