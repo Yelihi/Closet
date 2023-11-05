@@ -40,7 +40,7 @@ describe('overview', () => {
   it('Recently Enroll 내 5가지 의류가 렌더링', async () => {
     renderWithProvider(<Overview device='desktop' />);
 
-    const RecentlyItems = await screen.findAllByTestId(/listitem/i);
+    const RecentlyItems = await screen.findAllByTestId('listItem');
     expect(RecentlyItems).toHaveLength(5);
   });
   it('Total Quantity 에서 총 저장 수량이 렌더링', async () => {
