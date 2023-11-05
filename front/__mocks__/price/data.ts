@@ -1,3 +1,5 @@
+export const PriceDataInEmpty = { items: [], totalAmount: 0 };
+
 export const PriceDataIn2021 = {
   items: [
     {
