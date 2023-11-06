@@ -19,9 +19,11 @@ type StoreMenuSectionProps = {
 const StoreMenuSection = ({ windowWidth, segment, setSegment }: StoreMenuSectionProps) => {
   const dispatch = useDispatch();
   const { storeCategori } = useSelector((state: rootReducerType) => state.post);
-
+  // 카테고리를 변경할 때마다 무한스크롤 내 cursor 값을 초기로 돌리기 위해 setSize 를 불러와야 한다.
+  // 고유 key 에 대한 state 공유 목적 (실제 server request 는 이루어지지 않는다)
   const { setSize } = SWR.getInfiniteItems(storeCategori, windowWidth);
 
+  // 변경된 카테고리를 action 으로 전달하면서, size 를 초기화해준다.
   const handleCategori: MenuProps['onClick'] = e => {
     dispatch(selectStoreCategori(e.key));
     setSize(1);

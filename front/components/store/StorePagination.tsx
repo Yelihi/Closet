@@ -10,10 +10,12 @@ const StorePagination = () => {
   const { indexArray, storeCurrentPage, storeCategori } = useSelector((state: rootReducerType) => state.post);
   const { itemsIdArray } = modifyIndexArray(indexArray, storeCategori, storeCurrentPage);
 
+  // 변경된 페이지 번호를 전역 state 에 저장
   const pageChange: PaginationProps['onChange'] = page => {
     dispatch(changeStorePageNumber(page));
   };
 
+  // 페이지네이션 번호마다 aria-label 을 설정해주는 함수
   const itemRender = (
     page: number,
     type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next',
