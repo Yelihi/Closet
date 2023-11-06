@@ -27,11 +27,35 @@ export const initialState: PostInitialState = {
   singleItem: null,
   indexArray: [],
   userItems: null,
+  storeCategori: '',
+  storeCurrentPage: 1,
+};
+
+export const changeStorePageNumber = (data: number) => {
+  return {
+    type: t.CHANGE_STORE_PAGE,
+    data,
+  };
+};
+
+export const selectStoreCategori = (data: string) => {
+  return {
+    type: t.SELECT_STORE_CATEGORI,
+    data,
+  };
 };
 
 export default (state = initialState, action: AnyAction) => {
   return produce(state, draft => {
     switch (action.type) {
+      case t.SELECT_STORE_CATEGORI: {
+        draft.storeCategori = action.data;
+        break;
+      }
+      case t.CHANGE_STORE_PAGE: {
+        draft.storeCurrentPage = action.data;
+        break;
+      }
       case t.SHOW_UPLOAD_DRAWER: {
         draft.showDrawer = !draft.showDrawer;
         break;
@@ -59,15 +83,18 @@ export default (state = initialState, action: AnyAction) => {
             draft.userItems.total -= 1;
             draft.indexArray = draft.indexArray.filter(item => item.id !== Number(action.data.clothId));
             draft.userItems.price -= action.data.clothData.price;
-            draft.userItems.categori[action.data.clothData.categori] && draft.userItems.categori[action.data.clothData.categori]--;
+            draft.userItems.categori[action.data.clothData.categori] &&
+              draft.userItems.categori[action.data.clothData.categori]--;
           } else {
             draft.indexArray = draft.indexArray.filter(item => item.id !== Number(action.data.clothId));
             draft.userItems.total -= 1;
             draft.userItems.lastTotal -= 1;
             draft.userItems.price -= action.data.clothData.price;
             draft.userItems.lastPrice -= action.data.clothData.price;
-            draft.userItems.categori[action.data.clothData.categori] && draft.userItems.categori[action.data.clothData.categori]--;
-            draft.userItems.lastCategori[action.data.clothData.categori] && draft.userItems.lastCategori[action.data.clothData.categori]--;
+            draft.userItems.categori[action.data.clothData.categori] &&
+              draft.userItems.categori[action.data.clothData.categori]--;
+            draft.userItems.lastCategori[action.data.clothData.categori] &&
+              draft.userItems.lastCategori[action.data.clothData.categori]--;
           }
         }
         break;

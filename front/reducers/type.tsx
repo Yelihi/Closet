@@ -36,6 +36,9 @@ export const SIGNIN_SUCCESE = 'SIGNIN_SUCCESE' as const;
 export const SIGNIN_FAILURE = 'SIGNIN_FAILURE' as const;
 
 //post
+export const CHANGE_STORE_PAGE = 'CHANGE_STORE_PAGE' as const;
+export const SELECT_STORE_CATEGORI = 'SELECT_STORE_CATEGORI' as const;
+
 export const SHOW_UPLOAD_DRAWER = 'SHOW_UPLOAD_DRAWER' as const;
 
 export const REMOVE_IMAGE = 'REMOVE_IMAGE' as const;
