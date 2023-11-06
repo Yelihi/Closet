@@ -19,12 +19,15 @@ type StoreItemsSectionInDeskProps = {
 const StoreItemsSectionInDesk = ({ windowWidth }: StoreItemsSectionInDeskProps) => {
   const dispatch = useDispatch();
   const [segment, setSegment] = useState<string | number>('Table');
+  // 카테고리와 현 페이지 정보는 고유 key 를 통한 state 를 공유해야 하는 페이지 및 컴포넌트에 동시 필요하기에 전역 상태로 관리하였다.
   const { storeCategori, storeCurrentPage, indexArray } = useSelector((state: rootReducerType) => state.post);
   const { lastId } = modifyIndexArray(indexArray, storeCategori, storeCurrentPage);
 
+  // 계산된 lastId 를 기점으로 DB 에서 9개의 데이터를 요청
   const FetchInDesktop = SWR.getItemsPerPagenation(lastId, storeCategori, windowWidth);
   const { itemsInDesk, itemsArrayInDesk, isLoadingDesk, mutateInDesk } = FetchInDesktop;
 
+  // 테이블 날짜 양식에 맞게 itemsArray를 수정
   const modifiedItems = modifyItmesPurchaseDate(itemsArrayInDesk);
 
   const deleteItemAtTable = useCallback(
@@ -35,6 +38,7 @@ const StoreItemsSectionInDesk = ({ windowWidth }: StoreItemsSectionInDeskProps) 
       });
       if (Array.isArray(itemsArrayInDesk)) {
         const newData = itemsArrayInDesk.filter(item => item.id !== id);
+        // mutate 를 통해 현 캐시데이터를 변경하여 즉각 화면에 반영한 뒤, revalidate 를 통해 실 데이터와의 재검증에 들어간다.
         mutateInDesk({ ...itemsInDesk, items: newData }, { revalidate: false });
       }
     },

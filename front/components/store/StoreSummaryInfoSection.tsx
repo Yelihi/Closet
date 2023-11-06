@@ -12,6 +12,7 @@ import { rootReducerType } from '../../reducers/types';
 
 const StoreSummaryInfoSection = () => {
   const { userItems } = useSelector((state: rootReducerType) => state.post);
+  // 유저의 전체 의류 데이터를 통하여 우세 카테고리, 수량, 지난 달 최대 카테고리 수량을 계산한다
   const { maxCategori, maxCategoriName, lastMaxCategori } = modifyUserItemCategoriData(userItems);
 
   return (
