@@ -22,7 +22,7 @@ const loadingArray = Array(9)
   .fill(0)
   .map((v, i) => i);
 
-const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiValidating, windowWidth }: Props) => {
+const StoreCardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiValidating, windowWidth }: Props) => {
   if (isLoading || isItemsLoading) {
     return (
       <CardSection>
@@ -64,7 +64,7 @@ const CardBoard = ({ itemData, onSubmit, isLoading, isItemsLoading, infinitiVali
   );
 };
 
-export default CardBoard;
+export default StoreCardBoard;
 
 const CardSection = styled.section`
   display: flex;
