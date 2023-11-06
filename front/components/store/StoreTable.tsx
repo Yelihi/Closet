@@ -22,7 +22,7 @@ const SkeletonArray = Array(9)
   .fill(0)
   .map((_, idx) => idx);
 
-const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: TableProps) => {
+const StoreTable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: TableProps) => {
   const headerKey = headData.map(v => v.value);
   const moveToDetailsPage = useCallback(
     (id: number) => () => {
@@ -166,7 +166,7 @@ const ATable = ({ headData, itemsData = [], isDelete, onSubmit, isLoading }: Tab
   );
 };
 
-export default ATable;
+export default StoreTable;
 
 const Table = styled.table`
   width: 100%;

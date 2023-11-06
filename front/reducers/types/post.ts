@@ -109,4 +109,6 @@ export interface PostInitialState {
   singleItem: (User & SingleItem) | null;
   indexArray: IndexArray[];
   userItems: UserItemsData | null;
+  storeCategori: string;
+  storeCurrentPage: number;
 }
