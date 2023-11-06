@@ -29,14 +29,14 @@ const StoreMenuSection = ({ windowWidth, segment, setSegment }: StoreMenuSection
 
   return (
     <MenuSection>
-      <DropdownBox>
+      <DropdownBox data-testid='categoriSelect'>
         <Dropdown menu={{ items: segmentItems, onClick: handleCategori }}>
           <CButton>
             <IoFilterCircleOutline className='icon' />
             Categori
           </CButton>
         </Dropdown>
-        <CategoriSpan>분류 : {storeCategori}</CategoriSpan>
+        <CategoriSpan data-testid='categoriLabel'>분류 : {storeCategori}</CategoriSpan>
       </DropdownBox>
       <div>
         {windowWidth === 'desktop' ? (

@@ -16,7 +16,7 @@ const StoreAddSection = () => {
         <dt>CLOTHES TABLE</dt>
         <dd>현재까지 저장된 보관 의류표</dd>
       </DictionaryBox>
-      <AddButton onClick={moveToAddPage}>
+      <AddButton onClick={moveToAddPage} data-testid='addProductButton'>
         <AiOutlinePlus style={{ width: '20px', height: '20px' }} />
         <div>ADD PRODUCT</div>
       </AddButton>

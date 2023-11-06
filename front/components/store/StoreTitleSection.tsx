@@ -5,7 +5,7 @@ const StoreTitleSection = () => {
   return (
     <TitleSection>
       <dl>
-        <Title>CHECK YOUR ITEMS</Title>
+        <Title data-testid='storeTitle'>CHECK YOUR ITEMS</Title>
         <SubTitle>
           저장하신 전체 의류를 확인하실 수 있습니다.
           <br />
