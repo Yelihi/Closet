@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ItemCard from '../recycle/ItemCard';
 
 import { ItemsArray } from './data/TableData';
-import { EmptyDiv } from './ATable';
+import { EmptyDiv } from './StoreTable';
 import { Empty, Spin } from 'antd';
 
 import { media } from '../../styles/media';

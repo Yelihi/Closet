@@ -27,8 +27,8 @@ import { IoFilterCircleOutline } from 'react-icons/io5';
 import PageLayout from '../../../components/recycle/layout/PageLayout';
 import PageMainLayout from '../../../components/recycle/layout/PageMainLayout';
 import ProcessingDataCard from '../../../components/recycle/ProcessingDataCard';
-import ATable from '../../../components/store/ATable';
-import CardBoard from '../../../components/store/CardBoard';
+import StoreTable from '../../../components/store/StoreTable';
+import StoreCardBoard from '../../../components/store/StoreCardBoard';
 import CustomBread from '../../../components/recycle/CustomBread';
 import RenderErrorPage from '../../../components/state/error/RenderErrorPage';
 import RenderEmptyPage from '../../../components/state/empty/RenderEmptyPage';
@@ -251,7 +251,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
           </MenuSection>
           <ItemsStoreSection data-testid='ItemSection'>
             {windowWidth === 'desktop' && segment === 'Table' ? (
-              <ATable
+              <StoreTable
                 headData={StoreHeader}
                 itemsData={modifiedItems}
                 isDelete={true}
@@ -260,7 +260,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
               />
             ) : null}
             {windowWidth === 'desktop' && segment === 'Kanban' ? (
-              <CardBoard
+              <StoreCardBoard
                 itemData={modifiedItems}
                 onSubmit={deleteItemAtTable}
                 isLoading={isLoadingDesk}
@@ -268,7 +268,7 @@ const Store = ({ device = 'desktop' }: StoreProps) => {
               />
             ) : null}
             {windowWidth === 'phone' ? (
-              <CardBoard
+              <StoreCardBoard
                 itemData={accumulationItems}
                 onSubmit={deleteItemAtTable}
                 isLoading={isLoadingDesk}

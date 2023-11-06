@@ -7,8 +7,8 @@ import { AiOutlineDatabase } from 'react-icons/ai';
 import PageLayout from '../recycle/layout/PageLayout';
 import PageMainLayout from '../recycle/layout/PageMainLayout';
 import ProcessingDataCard from '../recycle/ProcessingDataCard';
-import ATable from './ATable';
-import CardBoard from './CardBoard';
+import ATable from './StoreTable';
+import CardBoard from './StoreCardBoard';
 
 import { StoreHeader } from './data/TableData';
 
