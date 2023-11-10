@@ -20,7 +20,7 @@ const DetailsMain = () => {
         <Categori>{singleItem && singleItem.categori}</Categori>
         <ProductName>{singleItem && singleItem.productName}</ProductName>
         <RateBox>
-          <CRate disabled defaultValue={singleItem ? singleItem.preference : 1} />
+          <CRate disabled value={singleItem ? singleItem.preference : 1} />
           <span>{singleItem ? singleItem.preference : 1}</span>
         </RateBox>
         <Descriptions>{singleItem && singleItem.description}</Descriptions>
