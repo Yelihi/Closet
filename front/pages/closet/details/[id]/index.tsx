@@ -1,32 +1,27 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import * as t from '../../../../reducers/type';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { rootReducerType } from '../../../../reducers/types';
 import dynamic from 'next/dynamic';
 import addHead from '../../../../util/addHead';
 
 import axios from 'axios';
 import { END } from 'redux-saga';
+import wrapper from '../../../../store/configureStore';
 
 import { GetServerSidePropsContext } from 'next';
 import type { SagaStore } from '../../../../store/configureStore';
 
-import wrapper from '../../../../store/configureStore';
-
-import { Breadcrumb, ConfigProvider, Rate, Tabs } from 'antd';
-import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
-import { rootReducerType } from '../../../../reducers/types';
-
 import PageLayout from '../../../../components/recycle/layout/PageLayout';
 import PageMainLayout from '../../../../components/recycle/layout/PageMainLayout';
-import Slice from '../../../../components/recycle/Slice';
-import AButton from '../../../../components/recycle/buttonElements/AButton';
-import TapChildren from '../../../../components/details/TapChidren';
+import DetailsModifyButtons from '../../../../components/details/DetailsModifyButtons';
+import DetailsMain from '../../../../components/details/DetailsMain';
+import CustomBread from '../../../../components/recycle/CustomBread';
 
-import { media } from '../../../../styles/media';
+import { BreadcrumbItems } from '../../../../components/details/data/ElementData';
 import { addPageLayoutProps } from '../../../../components/details/data/ElementData';
-import useConfirm from '../../../../hooks/useComfirm';
 
 const ItemForm = dynamic(() => import('../../../../components/recycle/formElements/ItemForm'));
 const SortingResultComponent = dynamic(
@@ -35,18 +30,14 @@ const SortingResultComponent = dynamic(
 
 const Details = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const { singleItem, deleteItemDone, deleteItemError } = useSelector((state: rootReducerType) => state.post);
+  const { deleteItemDone, deleteItemError } = useSelector((state: rootReducerType) => state.post);
   const { id } = router.query;
   const [isModifyMode, setIsModifyMode] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
 
   const { title, subTitle } = addPageLayoutProps;
 
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
-
+  // ItemsForm 컴포넌트는 Add, Details 페이지에서 재사용되기에 같은 Submit 이라도 작동해야하는 action 에서 차이가 있다
+  // 이에 dispatch 의 type을 props 로 전달하여 상황에 맞는 dispatch 를 가능하게 하도록 해주는 transferTypes 함수를 전달한다.
   const transferTypes = useCallback(() => {
     return t.PATCH_ITEM_REQUEST;
   }, []);
@@ -55,37 +46,6 @@ const Details = () => {
     setIsModifyMode(true);
   }, []);
 
-  const deleteItem = () => {
-    dispatch({
-      type: t.DELETE_ITEM_REQUEST,
-      data: { clothId: id },
-    });
-  };
-
-  const cencelDelete = () => {
-    console.log('취소하였습니다.');
-  };
-
-  const deleteConfirm = useConfirm('정말 의류를 삭제하시겠습니까?', deleteItem, cencelDelete);
-
-  let measureObject = null;
-  let measureValue: [string, number][] = [['name', 1]];
-
-  if (singleItem !== null) {
-    const { Outer, Top, Pant, Shirt, Shoe, Muffler } = singleItem;
-    measureObject = { Outer, Top, Pant, Shirt, Shoe, Muffler };
-    Object.values(measureObject).forEach(value => {
-      if (value) {
-        const { id, createdAt, updatedAt, ClothId, ...data2 } = value;
-        measureValue = Object.entries(data2);
-      }
-    });
-  }
-
-  if (!hydrated) {
-    return null;
-  }
-
   return (
     <PageLayout>
       {deleteItemDone ? <SortingResultComponent sort='deleteItem' id={Number(id)} /> : null}
@@ -93,82 +53,11 @@ const Details = () => {
       {!deleteItemDone && !deleteItemError && !isModifyMode ? (
         <PageMainLayout istitle={false}>
           <HandleContainer>
-            <CustomBread separator='>'>
-              <Breadcrumb.Item>
-                <Link href='/closet/overview'>Home</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <Link href='/closet/store'>Store</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>Details</Breadcrumb.Item>
-            </CustomBread>
-            <ButtonContainer>
-              <AButton color='black' disabled={false} onClick={startModify} dest='수정' />
-              <AButton color='' disabled={false} dest='삭제' onClick={deleteConfirm} />
-            </ButtonContainer>
+            <CustomBread items={BreadcrumbItems} />
+            <DetailsModifyButtons id={id} startModifyFunc={startModify} position='up' />
           </HandleContainer>
-
-          <SliceContainer>
-            <SliceBox>
-              <Slice src={singleItem && singleItem.Images} />
-            </SliceBox>
-            <DataContainer>
-              <Categori>{singleItem && singleItem.categori}</Categori>
-              <ProductName>{singleItem && singleItem.productName}</ProductName>
-              <RateBox>
-                <CRate disabled defaultValue={singleItem ? singleItem.preference : 1} />
-                <span>{singleItem ? singleItem.preference : 1}</span>
-              </RateBox>
-              <Descriptions>{singleItem && singleItem.description}</Descriptions>
-              <TapContainer>
-                <ConfigProvider theme={{ token: { colorPrimary: '#46647a' } }}>
-                  <Tabs
-                    defaultActiveKey='1'
-                    items={[
-                      {
-                        label: 'About Item',
-                        key: '1',
-                        children: (
-                          <>
-                            <TapChildren name='Color' unit='색상'>
-                              <ColorCircle data={singleItem && singleItem.color}></ColorCircle>
-                            </TapChildren>
-                            <TapChildren name='Price' unit='₩'>
-                              <span>{singleItem && singleItem.price.toLocaleString('ko-KR')}</span>
-                            </TapChildren>
-
-                            <TapChildren name='Purchase Day' unit='월'>
-                              <span>{singleItem && `${singleItem.purchaseDay.substring(0, 7)}`}</span>
-                            </TapChildren>
-                          </>
-                        ),
-                      },
-                      {
-                        label: 'Measure Value',
-                        key: '2',
-                        children: (
-                          <>
-                            {measureValue &&
-                              measureValue.map(v => {
-                                return (
-                                  <TapChildren name={v[0].toUpperCase()} unit='cm'>
-                                    <span>{v[1]}</span>
-                                  </TapChildren>
-                                );
-                              })}
-                          </>
-                        ),
-                      },
-                    ]}
-                  />
-                </ConfigProvider>
-              </TapContainer>
-            </DataContainer>
-          </SliceContainer>
-          <ButtonBottomContainer>
-            <AButton color='black' disabled={false} onClick={startModify} dest='수정' />
-            <AButton color='' disabled={false} dest='삭제' onClick={deleteConfirm} />
-          </ButtonBottomContainer>
+          <DetailsMain />
+          <DetailsModifyButtons id={id} startModifyFunc={startModify} position='down' />
         </PageMainLayout>
       ) : null}
       {!deleteItemDone && !deleteItemError && isModifyMode ? (
@@ -226,135 +115,4 @@ const HandleContainer = styled.div`
   width: 100%;
   height: auto;
   padding: 15px 0;
-`;
-
-const CustomBread = styled(Breadcrumb)`
-  margin-bottom: 30px;
-  .ant-breadcrumb-link {
-    font-family: ${({ theme }) => theme.font.Efont};
-    font-weight: ${({ theme }) => theme.fontWeight.Medium};
-
-    > a {
-      font-family: ${({ theme }) => theme.font.Efont};
-      font-weight: ${({ theme }) => theme.fontWeight.Light};
-    }
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 200px;
-
-  ${media.tablet} {
-    display: flex;
-  }
-`;
-
-const ButtonBottomContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 200px;
-  float: right;
-  margin-top: 20px;
-
-  ${media.tablet} {
-    display: none;
-  }
-`;
-
-const SliceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  height: auto;
-  min-height: 600px;
-  gap: 50px;
-
-  ${media.tablet} {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
-const SliceBox = styled.div`
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-
-  ${media.tablet} {
-    max-width: 50%;
-  }
-`;
-
-const DataContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  height: 100%;
-`;
-
-const Categori = styled.p`
-  font-family: ${({ theme }) => theme.font.Efont};
-  font-size: 15px;
-  font-weight: ${({ theme }) => theme.fontWeight.Medium};
-  color: ${({ theme }) => theme.colors.brown};
-  margin-bottom: 15px;
-`;
-
-const ProductName = styled.h1`
-  font-family: ${({ theme }) => theme.font.Efont};
-  font-size: clamp(20px, 35px, 50px);
-  font-weight: ${({ theme }) => theme.fontWeight.Medium};
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 15px;
-  width: 100%;
-`;
-
-const RateBox = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 40px;
-`;
-
-const CRate = styled(Rate)`
-  .ant-rate-star-second {
-    svg {
-      font-size: 15px;
-    }
-  }
-`;
-
-const Descriptions = styled.p`
-  display: inline-block;
-  font-family: ${({ theme }) => theme.font.Kfont};
-  font-size: clamp(10px, 16px, 20px);
-  font-weight: ${({ theme }) => theme.fontWeight.Light};
-  color: ${({ theme }) => theme.colors.middleGrey};
-  margin-bottom: 20px;
-`;
-
-const TapContainer = styled.div`
-  width: 100%;
-  height: auto;
-`;
-
-const CTaps = styled(Tabs)``;
-
-const ColorCircle = styled.div<{ data: string | number | null }>`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${({ data }) => data};
 `;
