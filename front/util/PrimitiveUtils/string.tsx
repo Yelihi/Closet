@@ -10,3 +10,7 @@ export const detectMobileDevice = (userAgent: string | undefined) => {
   if (!userAgent) return false;
   return Boolean(userAgent.match(/Mobi|iP(hone|od|ad)|Android|BlackBerry/));
 };
+
+export const capitalizeFirstWord = (word: string) => {
+  return word.replace(/\b[a-z]/g, letter => letter.toUpperCase());
+};
