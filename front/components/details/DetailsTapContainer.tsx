@@ -44,7 +44,7 @@ const DetailsTapContainer = () => {
                   {measureValue &&
                     measureValue.map(v => {
                       return (
-                        <TapChildren name={capitalizeFirstWord(v[0])} unit='cm'>
+                        <TapChildren name={capitalizeFirstWord(v[0])} unit={v[0] == 'size' ? 'mm' : 'cm'}>
                           <span>{v[1]}</span>
                         </TapChildren>
                       );
