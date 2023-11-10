@@ -1,5 +1,7 @@
 // GET posts/overview
 
+import { SingleItem, User } from '../../reducers/types/post';
+
 export interface ImagesPros {
   id: number;
   ClothId: number;
@@ -58,3 +60,7 @@ export interface FetchingDataPerYear {
   items: ItemsArray[];
   totalAmount: number;
 }
+
+// GET post/clothes/:clothId
+
+export type FetchingSingleItem = (User & SingleItem) | null;

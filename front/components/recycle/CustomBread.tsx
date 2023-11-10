@@ -5,13 +5,17 @@ import Link from 'next/link';
 import { Breadcrumb } from 'antd';
 
 type CustomBreadProps = {
-  nextPage: string;
+  nextPage?: string;
+  items?: { title: any }[];
 };
 
-const CustomBread = ({ nextPage }: CustomBreadProps) => {
+const CustomBread = ({ nextPage, items }: CustomBreadProps) => {
   return (
     <HandleContainer>
-      <Bread separator='>' items={[{ title: <Link href='/closet/overview'>Home</Link> }, { title: nextPage }]} />
+      <Bread
+        separator='>'
+        items={items ? items : [{ title: <Link href='/closet/overview'>Home</Link> }, { title: nextPage }]}
+      />
     </HandleContainer>
   );
 };
