@@ -25,6 +25,7 @@ export const memberInfo = {
   password: '',
 };
 
+// 현 input Element 의 종류만큼 자동으로 vaild object 생성
 const isValiedInfo = Object.keys(memberInfo).reduce((obj, key) => {
   obj[key as keyof IsValiedInfoProps] = undefined;
   return obj;
@@ -34,11 +35,14 @@ const Login = (props: SIprops) => {
   const dispatch = useDispatch();
   const { logInLoading } = useSelector((state: rootReducerType) => state.user);
   const { toggleGotoAccount } = props;
+  // Polymolphic Element의 type 을 지정해주기 위한 ref
   const buttonRef = useRef<HTMLButtonElement>(null);
   const LinkRef = useRef<HTMLAnchorElement>(null);
+  // input value 를 reducer 로 관리한다.
   const [Info, setInfo] = useReducer((prevInfo: MemberInfoProps, partialInfo: PartialMemberInfoProps) => {
     return { ...prevInfo, ...partialInfo };
   }, memberInfo);
+  // 각 input value 기입에 따른 validation 판단 & error 메시지
   const [error, setError] = useReducer((prevError: IsValiedInfoProps, partialError: PartialIsValiedInfoProps) => {
     return { ...prevError, ...partialError };
   }, isValiedInfo);

@@ -18,8 +18,11 @@ type TextFieldProps = {
 };
 
 const TextField = ({ type, source, placeholder, connectType, testId, validate, context }: TextFieldProps) => {
+  // Login 과 SignUp 에서 동시에 사용되기에 어느 context 를 참조하는지 설정이 필요하였다
+  // 이에 useContextSwitch 에 props 를 전달하여 context 에 맞는 value, error, onChange 를 반환받아온다.
   const inputValue = useContextSwitch({ source, validate, connectType, context });
   if (inputValue === null || inputValue === undefined) return null;
+  // 현 value 가 수정될 시 설정한 Context(Login or SignUp)의 partialState가 변동된다
   const { value, error, onChange } = inputValue;
 
   return (
