@@ -29,6 +29,7 @@ export const signUpInfo: SignUpInfoProps = {
   confirmPassword: '',
 };
 
+// 회원가입 input element 에 대응하는 valid object 자동 생성
 const isValiedSignUpInfo = Object.keys(signUpInfo).reduce((obj, key) => {
   obj[key as keyof IsValiedSignUpInfoProps] = undefined;
   return obj;
@@ -40,9 +41,11 @@ const Signup = (props: SIprops) => {
   const { signInDone, signInLoading } = useSelector((state: RootState) => state.user);
   const { toggleGotoAccount } = props;
 
+  // input value를 reducer 로 한번에 관리
   const [info, setInfo] = useReducer((prevState: SignUpInfoProps, partialState: PartialSignUpInfoProps) => {
     return { ...prevState, ...partialState };
   }, signUpInfo);
+  // 각 input value 기입에 대한 valid 파악 & error 메시지
   const [error, setError] = useReducer(
     (prevState: IsValiedSignUpInfoProps, partialState: PartialIsValiedSignUpInfoProps) => {
       return { ...prevState, ...partialState };
