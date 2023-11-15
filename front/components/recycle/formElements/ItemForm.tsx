@@ -50,6 +50,10 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
     formState: { isSubmitSuccessful },
   } = methods;
 
+  // ItemForm은 add 페이지와 details 페이지 수정에서 활용이 됩니다.
+  // 따라서 만일 상세 페이지에서의 수정이라면 수정하려는 아이템의 정보가 기입창에 기입되어있어야 합니다
+  // 만일 singleItem(상세페이지 내 아이템 정보) 가 존재한다면, 입력폼에 맞게 데이터를 수정한 뒤 reset 해줍니다.
+  // 아니라면 defaultValue 로 reset 해줍니다.
   useEffect(() => {
     if (singleItem) {
       const fetchingClothesValues = revertFetchDataToFormData(singleItem, defaultValues);
@@ -59,13 +63,17 @@ const ItemForm = ({ title, subTitle, type, itemId, Submit, resultNumber, setStat
     }
   }, [singleItem]);
 
-  // 어차피 singleItem 이 있다면 defaultValue -> beforeValues 로 변경된다.
+  // 어차피 singleItem 이 있다면 defaultValue -> beforeValues 로 변경됩니다.
+  // 제출에 성공하였다면, 제출까지 기입하였던 입력값을 모두 초기값으로 되돌립니다.
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset({ defaultValues });
     }
   }, [isSubmitSuccessful]);
 
+  // 상세 페이지에서 아이템을 수정하고자 할 때, 이미지 부분에 대한 처리입니다.
+  // 이미지가 존재한다면(즉, 상세페이지에서의 수정 상황이라면) 우선 이미지가 의류와 관련된 이미지인지 파악합니다.
+  // 결과에 따라 '수정하기' 버튼의 disabled 를 결정합니다.
   useEffect(() => {
     if (imagePath.length === 0) {
       return;
