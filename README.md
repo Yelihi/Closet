@@ -100,6 +100,13 @@ npm run dev
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+<h2 id="담당하였던part"> :large_blue_diamond: 프로젝트 구조</h2>
+<br />
+<img src="front/public/images/closet-architecture.png" width="100%" />
+<br />
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 <h2 id="담당하였던part"> :large_blue_diamond: ERD</h2>
 <br />
 <img src="front/public/images/drawio.png" width="100%" />
